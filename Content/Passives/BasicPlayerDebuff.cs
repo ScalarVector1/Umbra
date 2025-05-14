@@ -1,26 +1,24 @@
-﻿using ReLogic.Content;
+﻿using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Umbra.Core.TreeSystem;
 
 namespace Umbra.Content.Passives
 {
-	internal class StartPoint : Passive
+	internal class PlayerWither : Passive
 	{
 		public override void SetDefaults()
 		{
-			texture = Assets.Passives.StartPassive;
-			difficulty = 0;
-			size = 2;
+			texture = Assets.Passives.PlayerWither;
+			difficulty = 4;
 		}
 
-		public override bool CanDeallocate(Player player)
+		public override void BuffPlayer(Player player)
 		{
-			return false;
+			player.GetModPlayer<TreePlayer>().increasedRegen -= 0.1f;
 		}
 	}
 }

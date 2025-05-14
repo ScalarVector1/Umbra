@@ -9,8 +9,12 @@ namespace Umbra.Core.TreeSystem
 	{
 		public bool active;
 
+		public string nameKey;
+		public string tooltipKey;
+
 		public int difficulty;
 		public Asset<Texture2D> texture;
+		public int size;
 
 		public int ID { get; set; }
 
@@ -18,20 +22,24 @@ namespace Umbra.Core.TreeSystem
 
 		public int X { get; set; }
 		public int Y { get; set; }
-		public int Size { get; set; }
 
-		public virtual string NameKey => $"Mods.Umbra.Passives.{GetType().Name}.Name";
-		public virtual string TooltipKey => $"Mods.Umbra.Passives.{GetType().Name}.Tooltip";
+		[JsonIgnore]
+		public string Name => Language.GetOrRegister(nameKey).Value;
+		[JsonIgnore]
+		public string Tooltip => Language.GetOrRegister(tooltipKey).Value;
 
-		public string Name => Language.GetOrRegister(NameKey).Value;
-		public string Tooltip => Language.GetOrRegister(TooltipKey).Value;
-
+		[JsonIgnore]
 		public Vector2 TreePos => new(X * 16, Y * 16);
-		public int Width => Size == 0 ? 38 : Size == 1 ? 50 : Size == 2 ? 58 : 38;
-		public int Height => Size == 0 ? 38 : Size == 1 ? 50 : Size == 2 ? 58 : 38;
+		[JsonIgnore]
+		public int Width => size == 0 ? 38 : size == 1 ? 50 : size == 2 ? 58 : 38;
+		[JsonIgnore]
+		public int Height => size == 0 ? 38 : size == 1 ? 50 : size == 2 ? 58 : 38;
 
 		public Passive()
 		{
+			nameKey = $"Mods.Umbra.Passives.{GetType().Name}.Name";
+			tooltipKey = $"Mods.Umbra.Passives.{GetType().Name}.Tooltip";
+
 			SetDefaults();
 		}
 
@@ -57,7 +65,7 @@ namespace Umbra.Core.TreeSystem
 			if (active)
 			{
 				color = Color.White;
-				spriteBatch.Draw(Assets.GUI.GlowAlpha.Value, center, null, new Color(180, 120, 255, 0), 0, Assets.GUI.GlowAlpha.Size() / 2f, 0.5f + Size * 0.1f, 0, 0);
+				spriteBatch.Draw(Assets.GUI.GlowAlpha.Value, center, null, new Color(180, 120, 255, 0), 0, Assets.GUI.GlowAlpha.Size() / 2f, 0.5f + size * 0.1f, 0, 0);
 			}
 
 			spriteBatch.Draw(tex, center, null, color, 0, tex.Size() / 2f, 1, 0, 0);

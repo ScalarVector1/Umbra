@@ -23,18 +23,48 @@ Passives: {
 		Tooltip: Enemies have [c/AAAAFF:+2] damage
 	}
 
-	HealthPassive: {
-		Name: Enemy Life
-		Tooltip: Enemies have [c/AAAAFF:10%] more life
+	StartPoint: {
+		Name: Umbral Tree
+		Tooltip: This is the umbral tree. You can spend your Umbra here to make the game more difficult and rewarding. Left click a flashing node to allocate it at its listed cost. You can right click nodes that no others depend on to de-activate them, for a refund of half their cost.
 	}
 
-	DefensePassive: {
+	PlayerWither: {
+		Name: Reduced Regeneration
+		Tooltip: Players have [c/AAAAFF:10%] decreased life regeneration
+	}
+
+	EnemyBleed: {
+		Name: Enemy Bleed Chance
+		Tooltip: Enemies have [c/AAAAFF:+5%] chance to inflict bleeding
+	}
+
+	EnemyLife: {
+		Name: Enemy Life
+		Tooltip: Enemies have [c/AAAAFF:10%] increased life
+	}
+
+	EnemyRegen: {
+		Name: Enemy Life Regeneration
+		Tooltip: Enemies have [c/AAAAFF:+2] life regeneration per second
+	}
+
+	EnemyDefense: {
 		Name: Enemy Defense
 		Tooltip: Enemies have [c/AAAAFF:+1] defense
 	}
 
-	StartPoint: {
-		Name: Umbral Tree
-		Tooltip: This is the umbral tree. You can spend your Umbra here to make the game more difficult and rewarding. Left click a flashing node to allocate it at its listed cost. You can right click nodes that no others depend on to de-activate them, for a refund of half their cost.
+	EnemyEndurance: {
+		Name: Enemy Endurance
+		Tooltip: Enemies take [c/AAAAFF:5%] decreased damage from hits
+	}
+
+	BurningBlood: {
+		Name: Burning Blood
+		Tooltip: Players that are bleeding are also always on fire
+	}
+
+	UndeniableFoes: {
+		Name: Undeniable Foes
+		Tooltip: Enemies are unaffected by knockback
 	}
 }

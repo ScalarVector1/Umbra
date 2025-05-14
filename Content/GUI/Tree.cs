@@ -179,6 +179,18 @@ namespace Umbra.Content.GUI
 				Tooltip.SetTooltip($"Doom is an approximate measure of the influence of the umbral tree on the game's difficulty. Additionally, it provides the following benefits:" +
 					$"\n[c/AAAAFF:{TreeSystem.tree.difficulty * 0.1f}%] increased chungosity");
 			}
+
+			if (editing)
+			{
+				Utils.DrawBorderString(spriteBatch, 
+					"Edit mode controls:\n" +
+					"Left Click choice to select, Left click grid to add\n" +
+					"Left Click node to select, Right click node to delete\n" +
+					"Shift + Left Click node to connect to selected node\n" +
+					"Shift + Right click node to disconnect from selected node\n" +
+					"Right click choice to change selection to that node\n",
+					new Vector2(100, 100), Color.White, 1);
+			}
 		}
 	}
 
@@ -412,7 +424,7 @@ namespace Umbra.Content.GUI
 					glowColor = new(160, 80, 200, 0);
 
 				float prog = hoverTime / 10f;
-				spriteBatch.Draw(glow, GetDimensions().Center(), null, glowColor * prog, 0, glow.Size() / 2f, prog * (0.6f + passive.Size * 0.1f), 0, 0);
+				spriteBatch.Draw(glow, GetDimensions().Center(), null, glowColor * prog, 0, glow.Size() / 2f, prog * (0.6f + passive.size * 0.1f), 0, 0);
 			}
 
 			passive.Draw(spriteBatch, GetDimensions().Center());
@@ -499,6 +511,12 @@ namespace Umbra.Content.GUI
 		{
 			if (Tree.editing)
 			{
+				if (Main.keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftShift) && Tree.selected != null)
+				{
+					ModContent.GetInstance<TreeSystem>().tree.Connect(Tree.selected.ID, passive.ID);
+					return;
+				}
+
 				if (Tree.selected != passive)
 					Tree.selected = passive;
 				//else
@@ -520,6 +538,12 @@ namespace Umbra.Content.GUI
 		{
 			if (Tree.editing)
 			{
+				if (Main.keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftShift) && Tree.selected != null)
+				{
+					ModContent.GetInstance<TreeSystem>().tree.Edges.RemoveAll(n => n.Start == Tree.selected.ID && n.End == passive.ID);
+					return;
+				}
+
 				if (Tree.selected == passive)
 					Tree.selected = null;
 
@@ -628,10 +652,17 @@ namespace Umbra.Content.GUI
 				int x = Tree.selected.X;
 				int y = Tree.selected.Y;
 
+				int cost = Tree.selected.Cost;
+
+				ModContent.GetInstance<TreeSystem>().tree.Nodes.Remove(Tree.selected);
 				Tree.selected = passive.Clone();
 				Tree.selected.ID = id;
 				Tree.selected.X = x;
 				Tree.selected.Y = y;
+				Tree.selected.Cost = cost;
+				ModContent.GetInstance<TreeSystem>().tree.Nodes.Add(Tree.selected);
+
+				UILoader.GetUIState<Tree>().Refresh();
 			}	
 		}
 	}
