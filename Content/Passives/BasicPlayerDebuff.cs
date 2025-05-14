@@ -18,7 +18,7 @@ namespace Umbra.Content.Passives
 
 		public override void BuffPlayer(Player player)
 		{
-			player.GetModPlayer<TreePlayer>().increasedRegen -= 0.1f;
+			player.GetModPlayer<TreePlayer>().increasedRegen -= 0.05f;
 		}
 	}
 }

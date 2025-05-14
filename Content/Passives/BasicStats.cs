@@ -24,6 +24,20 @@ namespace Umbra.Content.Passives
 		}
 	}
 
+	internal class MoreEnemyDamage : Passive
+	{
+		public override void SetDefaults()
+		{
+			texture = Assets.Passives.MoreEnemyDamage;
+			difficulty = 5;
+		}
+
+		public override void OnEnemySpawn(NPC npc)
+		{
+			npc.GetGlobalNPC<TreeNPC>().moreDamage.Add(1.1f);
+		}
+	}
+
 	internal class EnemyBleed : Passive
 	{
 		public override void SetDefaults()
@@ -35,6 +49,20 @@ namespace Umbra.Content.Passives
 		public override void OnEnemySpawn(NPC npc)
 		{
 			npc.GetGlobalNPC<TreeNPC>().AddStatusChance(BuffID.Bleeding, 0.05f);
+		}
+	}
+
+	internal class EnemyPoision : Passive
+	{
+		public override void SetDefaults()
+		{
+			texture = Assets.Passives.EnemyPoision;
+			difficulty = 2;
+		}
+
+		public override void OnEnemySpawn(NPC npc)
+		{
+			npc.GetGlobalNPC<TreeNPC>().AddStatusChance(BuffID.Poisoned, 0.05f);
 		}
 	}
 
@@ -74,6 +102,21 @@ namespace Umbra.Content.Passives
 
 		public override void OnEnemySpawn(NPC npc)
 		{
+			npc.GetGlobalNPC<TreeNPC>().flatDefense += 1;
+		}
+	}
+
+	internal class EnemySurvival : Passive
+	{
+		public override void SetDefaults()
+		{
+			texture = Assets.Passives.EnemySurvival;
+			difficulty = 5;
+		}
+
+		public override void OnEnemySpawn(NPC npc)
+		{
+			npc.GetGlobalNPC<TreeNPC>().flatLife += 25;
 			npc.GetGlobalNPC<TreeNPC>().flatDefense += 1;
 		}
 	}

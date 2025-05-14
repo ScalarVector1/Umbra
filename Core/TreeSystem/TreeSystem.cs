@@ -185,6 +185,15 @@ namespace Umbra.Core.TreeSystem
 			tree.ApplyActiveIDs(activeIDs);
 		}
 
+		public override void PreUpdateEntities()
+		{
+			foreach (Passive passive in tree.Nodes)
+			{
+				if (passive.active)
+					passive.Update();
+			}
+		}
+
 		public void LoadFromFile()
 		{
 			string path = Path.Combine("Data", "Tree.json");

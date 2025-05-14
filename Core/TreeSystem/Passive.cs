@@ -53,6 +53,8 @@ namespace Umbra.Core.TreeSystem
 
 		public virtual void OnEnemySpawn(NPC npc) { }
 
+		public virtual void Update() { }
+
 		public void Draw(SpriteBatch spriteBatch, Vector2 center)
 		{
 			Texture2D tex = texture?.Value ?? Assets.GUI.PassiveFrameTiny.Value;
