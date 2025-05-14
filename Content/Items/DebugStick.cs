@@ -38,6 +38,9 @@ namespace Umbra.Content.Items
 
 		public override bool? UseItem(Player player)
 		{
+			/*UILoader.GetUIState<Tree>().RemoveAllChildren();
+			UILoader.GetUIState<Tree>().OnInitialize();
+			Tree.Populated = false;*/
 			UILoader.GetUIState<Tree>().visible = true;
 			return true;
 		}

@@ -6,8 +6,10 @@ using Terraria.ID;
 using Terraria.ModLoader.UI.Elements;
 using Terraria.UI;
 using Umbra.Content.GUI.FieldEditors;
+using Umbra.Core;
 using Umbra.Core.Loaders.UILoading;
 using Umbra.Core.TreeSystem;
+using static AssGen.Assets;
 
 namespace Umbra.Content.GUI
 {
@@ -86,10 +88,11 @@ namespace Umbra.Content.GUI
 				panel.Top.Set(TopPadding, 0.5f);
 				panel.Width.Set(PanelWidth, 0);
 				panel.Height.Set(PanelHeight, 0);
+				panel.BackgroundColor = new Color(20, 15, 40) * 0.85f;
 				Append(panel);
 
 				closeButton = new UIImageButton(Assets.GUI.CloseButton);
-				closeButton.Left.Set(LeftPadding + PanelWidth - 60, 0.5f);
+				closeButton.Left.Set(LeftPadding + PanelWidth - 32 - 19, 0.5f);
 				closeButton.Top.Set(TopPadding + 10, 0.5f);
 				closeButton.Width.Set(38, 0);
 				closeButton.Height.Set(38, 0);
@@ -98,7 +101,7 @@ namespace Umbra.Content.GUI
 				Append(closeButton);
 
 				exportButton = new UIImageButton(Assets.GUI.ExportButton);
-				exportButton.Left.Set(LeftPadding + PanelWidth - 60, 0.5f);
+				exportButton.Left.Set(LeftPadding + PanelWidth - 32 - 19, 0.5f);
 				exportButton.Top.Set(TopPadding + 56, 0.5f);
 				exportButton.Width.Set(38, 0);
 				exportButton.Height.Set(38, 0);
@@ -111,8 +114,8 @@ namespace Umbra.Content.GUI
 				Append(exportButton);
 
 				editButton = new UIImageButton(Assets.GUI.ExportButton);
-				editButton.Left.Set(LeftPadding + PanelWidth - 60, 0.5f);
-				editButton.Top.Set(TopPadding + 116, 0.5f);
+				editButton.Left.Set(LeftPadding + PanelWidth - 32 - 19, 0.5f);
+				editButton.Top.Set(TopPadding + 102, 0.5f);
 				editButton.Width.Set(38, 0);
 				editButton.Height.Set(38, 0);
 				editButton.OnLeftClick += (a, b) =>
@@ -150,13 +153,32 @@ namespace Umbra.Content.GUI
 			Texture2D tex = Assets.GUI.PassiveFrameTiny.Value;
 			TreePlayer mp = Main.LocalPlayer.GetModPlayer<TreePlayer>();
 
-			spriteBatch.Draw(tex, panel.GetDimensions().ToRectangle().TopLeft() + new Vector2(32, 32), null, Color.White, 0, tex.Size() / 2f, 1, 0, 0);
-			Utils.DrawBorderStringBig(spriteBatch, $"{mp.UmbraPoints}", panel.GetDimensions().ToRectangle().TopLeft() + new Vector2(32, 32), mp.UmbraPoints > 0 ? new Color(210, 160, 255) : Color.Gray, 0.5f, 0.5f, 0.35f);
-			Utils.DrawBorderStringBig(spriteBatch, $"Umbra", panel.GetDimensions().ToRectangle().TopLeft() + new Vector2(56, 32), new Color(240, 210, 255), 0.5f, 0f, 0.35f);
+			Vector2 umbraBasePos = panel.GetDimensions().ToRectangle().TopLeft() + new Vector2(32, 32);
+			Rectangle umbraRect = new Rectangle((int)umbraBasePos.X - 16, (int)umbraBasePos.Y - 16, 132, 32);
 
-			spriteBatch.Draw(tex, panel.GetDimensions().ToRectangle().TopLeft() + new Vector2(32, 76), null, Color.White, 0, tex.Size() / 2f, 1, 0, 0);
-			Utils.DrawBorderStringBig(spriteBatch, $"{TreeSystem.tree.difficulty}", panel.GetDimensions().ToRectangle().TopLeft() + new Vector2(32, 76), new Color(255, 160, 160), 0.5f, 0.5f, 0.35f);
-			Utils.DrawBorderStringBig(spriteBatch, $"Doom", panel.GetDimensions().ToRectangle().TopLeft() + new Vector2(56, 76), new Color(255, 210, 210), 0.5f, 0f, 0.35f);
+			spriteBatch.Draw(tex, umbraBasePos, null, Color.White, 0, tex.Size() / 2f, 1, 0, 0);
+			Utils.DrawBorderStringBig(spriteBatch, $"{mp.UmbraPoints}", umbraBasePos, mp.UmbraPoints > 0 ? new Color(210, 160, 255) : Color.Gray, 0.5f, 0.5f, 0.35f);
+			Utils.DrawBorderStringBig(spriteBatch, $"Umbra", umbraBasePos + new Vector2(24, 0), new Color(240, 210, 255), 0.5f, 0f, 0.35f);
+
+			if(umbraRect.Contains(Main.MouseScreen.ToPoint()))
+			{
+				Tooltip.SetName($"{mp.UmbraPoints} Umbra Points Remaining");
+				Tooltip.SetTooltip($"Umbra points are used to allocate nodes on the umbra tree. The chance to gain a point of umbra increases with your doom, currently you have a [c/AAAAFF:{Math.Round(100 * UmbraDropNPC.UmbraChance, 2)}%] chance to drop an umbra point on killing an enemy.");
+			}
+
+			Vector2 doomBasePos = panel.GetDimensions().ToRectangle().TopLeft() + new Vector2(32, 76);
+			Rectangle doomRect = new Rectangle((int)doomBasePos.X - 16, (int)doomBasePos.Y - 16, 102, 32);
+
+			spriteBatch.Draw(tex, doomBasePos, null, Color.White, 0, tex.Size() / 2f, 1, 0, 0);
+			Utils.DrawBorderStringBig(spriteBatch, $"{TreeSystem.tree.difficulty}", doomBasePos, new Color(255, 160, 160), 0.5f, 0.5f, 0.35f);
+			Utils.DrawBorderStringBig(spriteBatch, $"Doom", doomBasePos + new Vector2(24, 0), new Color(255, 210, 210), 0.5f, 0f, 0.35f);
+
+			if (doomRect.Contains(Main.MouseScreen.ToPoint()))
+			{
+				Tooltip.SetName($"{TreeSystem.tree.difficulty} Doom");
+				Tooltip.SetTooltip($"Doom is an approximate measure of the influence of the umbral tree on the game's difficulty. Additionally, it provides the following benefits:" +
+					$"\n[c/AAAAFF:{TreeSystem.tree.difficulty * 0.1f}%] increased chungosity");
+			}
 		}
 	}
 
@@ -164,7 +186,7 @@ namespace Umbra.Content.GUI
 	{
 		private Vector2 start;
 		private Vector2 root;
-		private Vector2 LineOff;
+		private Vector2 LineOff = Vector2.One * 400;
 		private bool moved;
 
 		private UIElement Panel => Parent;
