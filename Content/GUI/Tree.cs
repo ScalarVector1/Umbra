@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Terraria.Audio;
+using Terraria.GameContent;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
 using Terraria.ModLoader.UI.Elements;
@@ -261,6 +262,18 @@ namespace Umbra.Content.GUI
 			}
 
 			base.Draw(spriteBatch);
+
+			if (Tree.editing)
+			{
+				for (int x = -100; x < 100; x++)
+				{
+					for (int y = -100; y < 100; y++)
+					{
+						Vector2 pos = GetDimensions().Position() + new Vector2(x * 16, y * 16) + LineOff;
+						Main.spriteBatch.Draw(Assets.GUI.Box.Value, pos, null, Color.White * 0.5f, 0f, Assets.GUI.Box.Size() / 2, 0.25f, 0, 0);
+					}
+				}
+			}
 
 			if (Tree.editing && !Children.Any(n => n.IsMouseHovering))
 			{

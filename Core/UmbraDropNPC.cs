@@ -11,11 +11,12 @@ namespace Umbra.Core
 {
 	internal class UmbraDropNPC : GlobalNPC
 	{
-		public static float UmbraChance => 0.02f + MathF.Atan(ModContent.GetInstance<TreeSystem.TreeSystem>().tree.difficulty * 0.01f);
+		public static float UmbraChance => 0.02f + 0.25f * MathF.Atan(ModContent.GetInstance<TreeSystem.TreeSystem>().tree.difficulty * 0.0025f);
 
-		public override void ModifyGlobalLoot(GlobalLoot globalLoot)
+		public override void OnKill(NPC npc)
 		{
-			globalLoot.Add(ItemDropRule.Common(ModContent.ItemType<UmbraPickup>(), (int)(1f / UmbraChance)));
+			if (Main.rand.NextFloat() <= UmbraChance)
+				Item.NewItem(npc.GetSource_Death(), npc.Hitbox, ModContent.ItemType<UmbraPickup>());
 		}
 	}
 }

@@ -22,7 +22,7 @@ namespace Umbra.Content.Passives.Large
 		public override void OnEnemySpawn(NPC npc)
 		{
 			if (npc.boss)
-				npc.GetGlobalNPC<TreeNPC>().moreLife.Add(1.5f);
+				npc.GetGlobalNPC<TreeNPC>().moreLife.Add(0.5f);
 		}
 	}
 

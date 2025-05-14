@@ -75,42 +75,51 @@ Passives: {
 
 	EnemyPoision: {
 		Name: Enemy Poision Chance
-		Tooltip: Enemies have [c/AAAAFF:+1] chance to inflict poisioned
+		Tooltip: Enemies have [c/AAAAFF:+5%] chance to inflict poisioned
 	}
 
 	EnemySurvival: {
 		Name: Enemy Survival
-		Tooltip: 
-				'''
-				Enemies have [c/AAAAFF:+25] life
-				Enemies have [c/AAAAFF:+1] defense
-				'''
+		Tooltip:
+			'''
+			Enemies have [c/AAAAFF:+25] life
+			Enemies have [c/AAAAFF:+1] defense
+			'''
 	}
 
 	HardmodeGate: {
 		Name: Flesh Crucible
-		Tooltip: 
-		'''
-		Sated only by an offering of hellish flesh
-		Enter [c/FF7766:hardmode] to pass this node
-		'''
+		Tooltip:
+			'''
+			Sated only by an offering of hellish flesh
+			Enter [c/FF7766:hardmode] to pass this node
+			'''
 	}
 
 	DeadlyDuels: {
 		Name: Deadly Duels
-		Tooltip: '''Bosses deal [c/AAAAFF:30%] more damage
-		Bosses drop an additional treausre bag'''
+		Tooltip:
+			'''
+			Bosses deal [c/AAAAFF:30%] more damage
+			Bosses drop an additional treausre bag
+			'''
 	}
 
 	ElongatedEngagements: {
 		Name: Elongated Engagements
-		Tooltip: '''Bosses have [c/AAAAFF:50%] more life
-		Bosses drop an additional treausre bag'''
+		Tooltip:
+			'''
+			Bosses have [c/AAAAFF:50%] more life
+			Bosses drop an additional treausre bag
+			'''
 	}
 
 	VitalityVortex: {
 		Name: Vitality Vortex
-		Tooltip: '''Enemies near (within [c/AAAAFF:10] blocks) players have [c/AAAAFF:+20] life regeneration per second	
-		Players have [c/AAAAFF:25%] decreased life regeneration if any enemies are near (within [c/AAAAFF:10] blocks) them'''
+		Tooltip:
+			'''
+			Enemies near (within [c/AAAAFF:10] blocks) players have [c/AAAAFF:+20] life regeneration per second
+			Players have [c/AAAAFF:25%] decreased life regeneration if any enemies are near (within [c/AAAAFF:10] blocks) them
+			'''
 	}
 }
