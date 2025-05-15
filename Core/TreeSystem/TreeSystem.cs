@@ -25,6 +25,12 @@ namespace Umbra.Core.TreeSystem
 			Tree.Populated = false;
 		}
 
+		public override void SaveWorldHeader(TagCompound tag)
+		{
+			tree.CalcDifficulty();
+			tag["lastDifficulty"] = tree.difficulty;
+		}
+
 		public override void SaveWorldData(TagCompound tag)
 		{
 			tag["activeIDs"] = tree.GetActiveIDs();

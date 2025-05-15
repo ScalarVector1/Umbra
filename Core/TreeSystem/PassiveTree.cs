@@ -131,6 +131,11 @@ namespace Umbra.Core.TreeSystem
 			if (nodesById is null)
 				throw new Exception("ApplyActiveIDs was called before GenerateDicts. Please make sure not to run this before GenerateDicts is called!");
 
+			foreach(var node in Nodes)
+			{
+				node.active = false;
+			}
+
 			foreach (int id in toActivate)
 			{
 				if (nodesById.TryGetValue(id, out Passive node))
