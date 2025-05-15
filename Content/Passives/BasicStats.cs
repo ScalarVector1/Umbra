@@ -163,11 +163,8 @@ namespace Umbra.Content.Passives
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			if (npc.boss)
-			{
-				npc.GetGlobalNPC<TreeNPC>().flatDamage += ModContent.GetInstance<TreeSystem>().tree.difficulty / 20;
-				npc.GetGlobalNPC<TreeNPC>().flatLife += ModContent.GetInstance<TreeSystem>().tree.difficulty / 5;
-			}
+			npc.GetGlobalNPC<TreeNPC>().increasedDamage += 0.01f * (ModContent.GetInstance<TreeSystem>().tree.difficulty / 30);
+			npc.GetGlobalNPC<TreeNPC>().flatLife += ModContent.GetInstance<TreeSystem>().tree.difficulty / 20;
 		}
 	}
 

@@ -20,7 +20,7 @@ namespace Umbra.Content.Passives.Large
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			if (!npc.boss && Main.rand.NextBool(10))
+			if (!npc.boss && npc.type != NPCID.Wraith && Main.rand.NextBool(10))
 			{
 				npc.GetGlobalNPC<VengefulShadesNPC>().active = true;
 			}
@@ -40,7 +40,7 @@ namespace Umbra.Content.Passives.Large
 				NPC.NewNPC(npc.GetSource_FromThis(), (int)npc.Center.X, (int)npc.Center.Y, NPCID.Wraith);
 			}
 
-			if (npc.type == NPCID.Wraith)
+			if (npc.type == NPCID.Wraith && ModContent.GetInstance<TreeSystem>().tree.Nodes.Any(n => n.active && n is VengefulShades))
 			{
 				Item.NewItem(npc.GetSource_Death(), npc.Hitbox, ModContent.ItemType<UmbraPickup>());
 			}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Umbra.Core.TreeSystem
@@ -49,6 +50,19 @@ namespace Umbra.Core.TreeSystem
 				statusChances.Add(type, chance);
 		}
 
+		public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
+		{
+			if (spawnRate == 0)
+			{
+				spawnRate = int.MaxValue;
+				maxSpawns = 0;
+				return;
+			}
+
+			spawnRate = (int)(spawnRate / spawnRateModifier);
+			maxSpawns = (int)(maxSpawns * spawnRateModifier);
+		}
+
 		public override void SetDefaults(NPC npc)
 		{
 			foreach (Passive passive in ModContent.GetInstance<TreeSystem>().tree.Nodes)
@@ -57,6 +71,27 @@ namespace Umbra.Core.TreeSystem
 					passive.OnEnemySpawn(npc);
 			}
 
+			if (!Main.expertMode)
+			{
+				ApplyStats(npc);
+			}
+		}
+
+		public override void SetDefaultsFromNetId(NPC npc)
+		{
+			if (!Main.expertMode)
+			{
+				ApplyStats(npc);
+			}
+		}
+
+		public override void ApplyDifficultyAndPlayerScaling(NPC npc, int numPlayers, float balance, float bossAdjustment)
+		{
+			ApplyStats(npc);
+		}
+
+		public void ApplyStats(NPC npc)
+		{
 			// Apply modifers after
 			npc.lifeMax += flatLife;
 			npc.lifeMax += (int)(npc.lifeMax * increasedLife);
@@ -82,19 +117,6 @@ namespace Umbra.Core.TreeSystem
 			{
 				npc.defense += (int)(npc.defense * more);
 			}
-		}
-
-		public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
-		{
-			if (spawnRate == 0)
-			{
-				spawnRate = int.MaxValue;
-				maxSpawns = 0;
-				return;
-			}
-
-			spawnRate = (int)(spawnRate / spawnRateModifier);
-			maxSpawns = (int)(maxSpawns * spawnRateModifier);
 		}
 
 		public override void OnSpawn(NPC npc, IEntitySource source)

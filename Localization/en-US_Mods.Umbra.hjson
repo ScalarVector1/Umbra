@@ -125,16 +125,20 @@ Passives: {
 
 	BossStrength: {
 		Name: Boss Strength
-		Tooltip: 
-		'''Bosses take [c/AAAAFF:2%] decreased damage from hits
-		Bosses deal [c/AAAAFF:5%] increased damage'''
+		Tooltip:
+			'''
+			Bosses take [c/AAAAFF:2%] decreased damage from hits
+			Bosses deal [c/AAAAFF:5%] increased damage
+			'''
 	}
 
 	StrengthPerDoom: {
 		Name: Doom Influence
-		Tooltip: '''Enemies deal [c/AAAAFF:+1] damage per [c/AAAAFF:20] doom
-		Enemies have [c/AAAAFF:+1] life per [c/AAAAFF:5] doom
-		'''
+		Tooltip:
+			'''
+			Enemies deal [c/AAAAFF:1%] increased damage per [c/AAAAFF:30] doom
+			Enemies have [c/AAAAFF:+1] life per [c/AAAAFF:20] doom
+			'''
 	}
 
 	SpawnRate: {
@@ -144,8 +148,11 @@ Passives: {
 
 	HardmodeStrength: {
 		Name: Normal Enemy Strength
-		Tooltip: '''Non-boss enemies take [c/AAAAFF:2%] decreased damage from hits
-		Non-boss enemies have [c/AAAAFF:5%] increased damage'''
+		Tooltip:
+			'''
+			Non-boss enemies take [c/AAAAFF:2%] decreased damage from hits
+			Non-boss enemies have [c/AAAAFF:5%] increased damage
+			'''
 	}
 
 	HardmodeEnemyPoision: {
@@ -160,9 +167,11 @@ Passives: {
 
 	HardmodeStrengthPerDoom: {
 		Name: Doom Influence
-		Tooltip: '''Enemies deal [c/AAAAFF:1%] increased damage per [c/AAAAFF:20] doom
-		Enemies have [c/AAAAFF:+1] life per [c/AAAAFF:5] doom
-		'''
+		Tooltip:
+			'''
+			Enemies deal [c/AAAAFF:1%] increased damage per [c/AAAAFF:20] doom
+			Enemies have [c/AAAAFF:+1] life per [c/AAAAFF:10] doom
+			'''
 	}
 
 	HardmodeDoubleChance: {
@@ -172,8 +181,11 @@ Passives: {
 
 	Comorbidity: {
 		Name: Comorbidity
-		Tooltip: '''Players that are poisioned are also venomed
-		Players that are venomed are also poisioned'''
+		Tooltip:
+			'''
+			Players that are poisioned are also venomed
+			Players that are venomed are also poisioned
+			'''
 	}
 
 	DoomBeacon: {
@@ -183,8 +195,11 @@ Passives: {
 
 	DoomConflux: {
 		Name: Doom Conflux
-		Tooltip: '''Enemies have [c/AAAAFF:+1%] chance to inflict doomed per [c/AAAAFF:10] doom
-		doomed is a debuff which causes players to take 50% more damage'''
+		Tooltip:
+			'''
+			Enemies have [c/AAAAFF:+1%] chance to inflict doomed per [c/AAAAFF:10] doom
+			doomed is a debuff which causes players to take 50% more damage
+			'''
 	}
 
 	InstrumentsOfHarm: {
@@ -199,14 +214,20 @@ Passives: {
 
 	VengefulShades: {
 		Name: Vengeful Shades
-		Tooltip: '''Enemies have a [c/AAAAFF:10%] chance to spawn a wraith on death
-		wraiths always drop an extra umbra point'''
+		Tooltip:
+			'''
+			Enemies have a [c/AAAAFF:10%] chance to spawn a wraith on death
+			wraiths always drop an extra umbra point
+			'''
 	}
 
 	WormsInfluence: {
 		Name: Worms Influence
-		Tooltip: '''Enemies take [c/AAAAFF:15%] decreased damage from hits
-		Worms take an additonal [c/AAAAFF:10%] decreased damage from hits'''
+		Tooltip:
+			'''
+			Enemies take [c/AAAAFF:15%] decreased damage from hits
+			Worms take an additonal [c/AAAAFF:10%] decreased damage from hits
+			'''
 	}
 }
 
