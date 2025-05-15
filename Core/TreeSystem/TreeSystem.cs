@@ -72,6 +72,8 @@ namespace Umbra.Core.TreeSystem
 			}
 
 			tree.GenerateDicts();
+			tree.RegenrateConnections();
+			tree.RegenerateFlows();
 		}
 
 		public void Export()

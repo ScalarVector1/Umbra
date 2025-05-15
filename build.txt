@@ -1,3 +1,4 @@
 displayName = Umbra
 author = ScalarVector
 version = 0.1
+weakReferences = StarlightRiver

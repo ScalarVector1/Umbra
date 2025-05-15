@@ -1,11 +1,13 @@
 ﻿using ReLogic.Content;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Serialization;
 using Terraria.Localization;
+using Umbra.Content.Passives;
 
 namespace Umbra.Core.TreeSystem
 {
-	internal abstract class Passive
+	public abstract class Passive
 	{
 		public bool active;
 
@@ -15,6 +17,10 @@ namespace Umbra.Core.TreeSystem
 		public int difficulty;
 		public Asset<Texture2D> texture;
 		public int size;
+
+		public float opacity = 1;
+
+		public List<Passive> connections = [];
 
 		public int ID { get; set; }
 
@@ -49,6 +55,15 @@ namespace Umbra.Core.TreeSystem
 			texture = Assets.GUI.PassiveFrameTiny;
 		}
 
+		/// <summary>
+		/// If this passive can ever be active given the current game state.
+		/// </summary>
+		/// <returns></returns>
+		public virtual bool CanBeActive() 
+		{
+			return true;
+		}
+
 		public virtual void BuffPlayer(Player player) { }
 
 		public virtual void OnEnemySpawn(NPC npc) { }
@@ -67,10 +82,10 @@ namespace Umbra.Core.TreeSystem
 			if (active)
 			{
 				color = Color.White;
-				spriteBatch.Draw(Assets.GUI.GlowAlpha.Value, center, null, new Color(180, 120, 255, 0), 0, Assets.GUI.GlowAlpha.Size() / 2f, 0.5f + size * 0.1f, 0, 0);
+				spriteBatch.Draw(Assets.GUI.GlowAlpha.Value, center, null, new Color(180, 120, 255, 0) * opacity, 0, Assets.GUI.GlowAlpha.Size() / 2f, 0.5f + size * 0.1f, 0, 0);
 			}
 
-			spriteBatch.Draw(tex, center, null, color, 0, tex.Size() / 2f, 1, 0, 0);
+			spriteBatch.Draw(tex, center, null, color * opacity, 0, tex.Size() / 2f, 1, 0, 0);
 		}
 
 		/// <summary>
@@ -94,7 +109,10 @@ namespace Umbra.Core.TreeSystem
 			return
 				!active &&
 				player.GetModPlayer<TreePlayer>().UmbraPoints >= Cost &&
-				(tree.Edges.Any(n => tree.nodesById[n.Start].active && n.End == ID) || !tree.Edges.Any(n => n.End == ID));
+				connections.Any(n => n.active);
+				
+				// For directed version
+				//(tree.Edges.Any(n => tree.nodesById[n.Start].active && n.End == ID) || !tree.Edges.Any(n => n.End == ID));
 		}
 
 		/// <summary>
@@ -107,6 +125,7 @@ namespace Umbra.Core.TreeSystem
 			active = true;
 
 			ModContent.GetInstance<TreeSystem>().tree.CalcDifficulty();
+			ModContent.GetInstance<TreeSystem>().tree.RegenerateFlows();
 		}
 
 		/// <summary>
@@ -136,7 +155,34 @@ namespace Umbra.Core.TreeSystem
 
 			return
 				active &&
-				!tree.Edges.Any(n => tree.nodesById[n.End].active && n.Start == ID && !tree.Edges.Any(a => a != n && a.End == n.End && tree.nodesById[a.Start].active));
+				!connections.Any(n => n.active && !n.HasPathToStartWithout(this));
+				// For directed version
+				//!tree.Edges.Any(n => tree.nodesById[n.End].active && n.Start == ID && !tree.Edges.Any(a => a != n && a.End == n.End && tree.nodesById[a.Start].active));
+		}
+
+		public bool HasPathToStartWithout(Passive excluded)
+		{
+			HashSet<Passive> visited = new();
+			return HasPathToStartWithoutInternal(this, excluded, visited);
+		}
+
+		private bool HasPathToStartWithoutInternal(Passive current, Passive excluded, HashSet<Passive> visited)
+		{
+			if (current == null || current == excluded || !current.active || visited.Contains(current))
+				return false;
+
+			if (current is StartPoint)
+				return true;
+
+			visited.Add(current);
+
+			foreach (var connection in current.connections)
+			{
+				if (HasPathToStartWithoutInternal(connection, excluded, visited))
+					return true;
+			}
+
+			return false;
 		}
 
 		/// <summary>
@@ -150,6 +196,7 @@ namespace Umbra.Core.TreeSystem
 			active = false;
 
 			ModContent.GetInstance<TreeSystem>().tree.CalcDifficulty();
+			ModContent.GetInstance<TreeSystem>().tree.RegenerateFlows();
 		}
 
 		/// <summary>
@@ -170,7 +217,9 @@ namespace Umbra.Core.TreeSystem
 
 		public Passive Clone()
 		{
-			return MemberwiseClone() as Passive;
+			var clone = MemberwiseClone() as Passive;
+			clone.connections = new();
+			return clone;
 		}
 	}
 }

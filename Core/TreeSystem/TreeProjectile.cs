@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Terraria.DataStructures;
 
 namespace Umbra.Core.TreeSystem
@@ -15,9 +11,9 @@ namespace Umbra.Core.TreeSystem
 
 		public override void OnSpawn(Projectile projectile, IEntitySource source)
 		{
-			if (source is EntitySource_Parent sourcez && sourcez.Entity is NPC npc)
+			if (source is EntitySource_Parent sourcez && sourcez.Entity is NPC npc && npc.TryGetGlobalNPC<TreeNPC>(out TreeNPC treeNPC))
 			{
-				spawner = npc.GetGlobalNPC<TreeNPC>();
+				spawner = treeNPC;
 
 				projectile.damage += spawner.flatDamage;
 				projectile.damage += (int)(projectile.damage * spawner.increasedDamage);

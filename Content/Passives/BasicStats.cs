@@ -20,7 +20,7 @@ namespace Umbra.Content.Passives
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			npc.GetGlobalNPC<TreeNPC>().flatDamage += 2;
+			npc.GetGlobalNPC<TreeNPC>().flatDamage += 1;
 		}
 	}
 
@@ -34,7 +34,7 @@ namespace Umbra.Content.Passives
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			npc.GetGlobalNPC<TreeNPC>().moreDamage.Add(0.1f);
+			npc.GetGlobalNPC<TreeNPC>().moreDamage.Add(0.05f);
 		}
 	}
 
@@ -75,7 +75,7 @@ namespace Umbra.Content.Passives
 		}
 		public override void OnEnemySpawn(NPC npc)
 		{
-			npc.GetGlobalNPC<TreeNPC>().increasedLife += 0.1f;
+			npc.GetGlobalNPC<TreeNPC>().increasedLife += 0.05f;
 		}
 	}
 

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
 
 namespace Umbra.Core.TreeSystem
 {
@@ -35,6 +36,11 @@ namespace Umbra.Core.TreeSystem
 		public static float doubleSpawnChance = 0;
 
 		public override bool InstancePerEntity => true;
+
+		public override bool AppliesToEntity(NPC entity, bool lateInstantiation)
+		{
+			return !entity.friendly && entity.lifeMax > 5 && !NPCID.Sets.CountsAsCritter[entity.type] && entity.damage > 0;
+		}
 
 		public override void ResetEffects(NPC npc)
 		{

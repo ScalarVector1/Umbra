@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
 using Terraria.ModLoader.UI.Elements;
@@ -10,7 +9,6 @@ using Umbra.Content.GUI.FieldEditors;
 using Umbra.Core;
 using Umbra.Core.Loaders.UILoading;
 using Umbra.Core.TreeSystem;
-using static AssGen.Assets;
 
 namespace Umbra.Content.GUI
 {
@@ -127,11 +125,16 @@ namespace Umbra.Content.GUI
 					editing = !editing;
 
 					if (editing)
+					{
 						StartEdit();
+					}
 					else
 					{
 						RemoveChild(selector);
 						RemoveChild(costEditor);
+						TreeSystem.tree.RegenrateConnections();
+						TreeSystem.tree.RegenerateFlows();
+						Refresh();
 					}
 
 					Main.NewText("Editing: " + editing);
@@ -158,20 +161,20 @@ namespace Umbra.Content.GUI
 			TreePlayer mp = Main.LocalPlayer.GetModPlayer<TreePlayer>();
 
 			Vector2 umbraBasePos = panel.GetDimensions().ToRectangle().TopLeft() + new Vector2(32, 32);
-			Rectangle umbraRect = new Rectangle((int)umbraBasePos.X - 16, (int)umbraBasePos.Y - 16, 132, 32);
+			var umbraRect = new Rectangle((int)umbraBasePos.X - 16, (int)umbraBasePos.Y - 16, 132, 32);
 
 			spriteBatch.Draw(tex, umbraBasePos, null, Color.White, 0, tex.Size() / 2f, 1, 0, 0);
 			Utils.DrawBorderStringBig(spriteBatch, $"{mp.UmbraPoints}", umbraBasePos, mp.UmbraPoints > 0 ? new Color(210, 160, 255) : Color.Gray, 0.5f, 0.5f, 0.35f);
 			Utils.DrawBorderStringBig(spriteBatch, $"Umbra", umbraBasePos + new Vector2(24, 0), new Color(240, 210, 255), 0.5f, 0f, 0.35f);
 
-			if(umbraRect.Contains(Main.MouseScreen.ToPoint()))
+			if (umbraRect.Contains(Main.MouseScreen.ToPoint()))
 			{
 				Tooltip.SetName($"{mp.UmbraPoints} Umbra Points Remaining");
 				Tooltip.SetTooltip($"Umbra points are used to allocate nodes on the umbra tree. The chance to gain a point of umbra increases with your doom, currently you have a [c/AAAAFF:{Math.Round(100 * UmbraDropNPC.UmbraChance, 2)}%] chance to drop an umbra point on killing an enemy.");
 			}
 
 			Vector2 doomBasePos = panel.GetDimensions().ToRectangle().TopLeft() + new Vector2(32, 76);
-			Rectangle doomRect = new Rectangle((int)doomBasePos.X - 16, (int)doomBasePos.Y - 16, 102, 32);
+			var doomRect = new Rectangle((int)doomBasePos.X - 16, (int)doomBasePos.Y - 16, 102, 32);
 
 			spriteBatch.Draw(tex, doomBasePos, null, Color.White, 0, tex.Size() / 2f, 1, 0, 0);
 			Utils.DrawBorderStringBig(spriteBatch, $"{TreeSystem.tree.difficulty}", doomBasePos, new Color(255, 160, 160), 0.5f, 0.5f, 0.35f);
@@ -186,7 +189,7 @@ namespace Umbra.Content.GUI
 
 			if (editing)
 			{
-				Utils.DrawBorderString(spriteBatch, 
+				Utils.DrawBorderString(spriteBatch,
 					"Edit mode controls:\n" +
 					"Left Click choice to select, Left click grid to add\n" +
 					"Left Click node to select, Right click node to delete\n" +
@@ -224,11 +227,13 @@ namespace Umbra.Content.GUI
 				Passive start = TreeSystem.tree.nodesById[edge.Start];
 				Passive end = TreeSystem.tree.nodesById[edge.End];
 
+				float opacity = Math.Min(start.opacity, end.opacity);
+
 				Texture2D chainTex = Assets.GUI.Link.Value;
 
 				Color color = Color.DimGray;
 
-				if (end.CanAllocate(Main.LocalPlayer) && start.active)
+				if (end.CanAllocate(Main.LocalPlayer) && start.active || start.CanAllocate(Main.LocalPlayer) && end.active)
 					color = Color.Lerp(Color.Gray, Color.LightGray, (float)Math.Sin(Main.GameUpdateCount * 0.1f) * 0.5f + 0.5f);
 
 				if (end.active && start.active)
@@ -237,30 +242,31 @@ namespace Umbra.Content.GUI
 				for (float k = 0; k <= 1; k += 1 / (Vector2.Distance(start.TreePos, end.TreePos) / 16))
 				{
 					Vector2 pos = GetDimensions().Position() + Vector2.Lerp(start.TreePos, end.TreePos, k) + LineOff;
-					Main.spriteBatch.Draw(chainTex, pos, null, color, start.TreePos.DirectionTo(end.TreePos).ToRotation(), chainTex.Size() / 2, 1, 0, 0);
+					Main.spriteBatch.Draw(chainTex, pos, null, color * opacity, start.TreePos.DirectionTo(end.TreePos).ToRotation(), chainTex.Size() / 2, 1, 0, 0);
 				}
+			}
 
-				if (end.active && start.active)
+			foreach (PassiveEdge edge in TreeSystem.tree.flows)
+			{
+				Passive start = TreeSystem.tree.nodesById[edge.Start];
+				Passive end = TreeSystem.tree.nodesById[edge.End];
+
+				var rand = new Random(start.GetHashCode());
+
+				Texture2D glow = Assets.GUI.GlowAlpha.Value;
+				var glowColor = new Color(rand.Next(150, 200), 100, 255, 0);
+
+				float dist = Vector2.Distance(start.TreePos, end.TreePos);
+
+				for (int k = 0; k < (int)(dist / 20); k++)
 				{
-					var rand = new Random(edge.GetHashCode());
+					float len = (80 + rand.Next(80)) * dist / 50f;
+					float scale = 0.05f + rand.NextSingle() * 0.12f;
 
-					Texture2D glow = Assets.GUI.GlowAlpha.Value;
-					var glowColor = new Color(rand.Next(150, 200), 100, 255)
-					{
-						A = 0
-					};
-
-					for (int k = 0; k < 8; k++)
-					{
-						float dist = Vector2.Distance(start.TreePos, end.TreePos);
-						float len = (40 + rand.Next(120)) * dist / 50;
-						float scale = 0.05f + rand.NextSingle() * 0.15f;
-
-						float progress = (Main.GameUpdateCount + 15 * k) % len / (float)len;
-						Vector2 pos = GetDimensions().Position() + Vector2.SmoothStep(start.TreePos, end.TreePos, progress) + LineOff;
-						float scale2 = (float)Math.Sin(progress * 3.14f) * (0.4f - scale);
-						spriteBatch.Draw(glow, pos, null, glowColor * scale2, 0, glow.Size() / 2f, scale2, 0, 0);
-					}
+					float progress = (Main.GameUpdateCount + 15 * k) % len / (float)len;
+					Vector2 pos = GetDimensions().Position() + Vector2.SmoothStep(start.TreePos, end.TreePos, progress) + LineOff;
+					float scale2 = (float)Math.Sin(progress * 3.14f) * (0.4f - scale);
+					spriteBatch.Draw(glow, pos, null, glowColor * scale2, 0, glow.Size() / 2f, scale2, 0, 0);
 				}
 			}
 
@@ -556,7 +562,7 @@ namespace Umbra.Content.GUI
 			{
 				if (Main.keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftShift) && Tree.selected != null)
 				{
-					ModContent.GetInstance<TreeSystem>().tree.Edges.RemoveAll(n => n.Start == Tree.selected.ID && n.End == passive.ID);
+					ModContent.GetInstance<TreeSystem>().tree.Disconnect(Tree.selected.ID, passive.ID);
 					return;
 				}
 
@@ -679,7 +685,7 @@ namespace Umbra.Content.GUI
 				ModContent.GetInstance<TreeSystem>().tree.Nodes.Add(Tree.selected);
 
 				UILoader.GetUIState<Tree>().Refresh();
-			}	
+			}
 		}
 	}
 }

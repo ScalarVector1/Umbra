@@ -580,6 +580,174 @@
       "cost": 2,
       "x": 14,
       "y": -8
+    },
+    {
+      "type": "StarlightRiverGate",
+      "id": 87,
+      "cost": 0,
+      "x": -27,
+      "y": -18
+    },
+    {
+      "type": "CalamityGate",
+      "id": 88,
+      "cost": 0,
+      "x": -35,
+      "y": -10
+    },
+    {
+      "type": "StarlightEnemyBarrier",
+      "id": 89,
+      "cost": 0,
+      "x": -27,
+      "y": -22
+    },
+    {
+      "type": "StarlightEnemyBarrier",
+      "id": 90,
+      "cost": 0,
+      "x": -31,
+      "y": -26
+    },
+    {
+      "type": "StarlightEnemyBarrier",
+      "id": 92,
+      "cost": 0,
+      "x": -27,
+      "y": -29
+    },
+    {
+      "type": "StarlightEnemyBarrier",
+      "id": 94,
+      "cost": 0,
+      "x": -23,
+      "y": -26
+    },
+    {
+      "type": "StarlightEnemyBarrier",
+      "id": 95,
+      "cost": 0,
+      "x": -23,
+      "y": -29
+    },
+    {
+      "type": "StarlightEnemyBarrier",
+      "id": 91,
+      "cost": 0,
+      "x": -31,
+      "y": -29
+    },
+    {
+      "type": "StarlightEnemyBarrier",
+      "id": 96,
+      "cost": 0,
+      "x": -25,
+      "y": -31
+    },
+    {
+      "type": "StarlightEnemyBarrier",
+      "id": 93,
+      "cost": 0,
+      "x": -29,
+      "y": -31
+    },
+    {
+      "type": "CalamityDamage",
+      "id": 97,
+      "cost": 0,
+      "x": -39,
+      "y": -10
+    },
+    {
+      "type": "CalamityDamage",
+      "id": 98,
+      "cost": 0,
+      "x": -39,
+      "y": -7
+    },
+    {
+      "type": "CalamityDamage",
+      "id": 99,
+      "cost": 0,
+      "x": -39,
+      "y": -13
+    },
+    {
+      "type": "CalamityDamage",
+      "id": 100,
+      "cost": 0,
+      "x": -43,
+      "y": -10
+    },
+    {
+      "type": "CalamityDamage",
+      "id": 101,
+      "cost": 0,
+      "x": -48,
+      "y": -10
+    },
+    {
+      "type": "EnemyDamage",
+      "id": 85,
+      "cost": 0,
+      "x": -27,
+      "y": -6
+    },
+    {
+      "type": "EnemyDamage",
+      "id": 83,
+      "cost": 0,
+      "x": -23,
+      "y": -10
+    },
+    {
+      "type": "EnemyDamage",
+      "id": 84,
+      "cost": 0,
+      "x": -27,
+      "y": -14
+    },
+    {
+      "type": "EnemyDamage",
+      "id": 86,
+      "cost": 0,
+      "x": -31,
+      "y": -10
+    },
+    {
+      "type": "BossStrength",
+      "id": 102,
+      "cost": 0,
+      "x": -27,
+      "y": -1
+    },
+    {
+      "type": "BossStrength",
+      "id": 103,
+      "cost": 0,
+      "x": -31,
+      "y": -1
+    },
+    {
+      "type": "BossStrength",
+      "id": 104,
+      "cost": 0,
+      "x": -34,
+      "y": 2
+    },
+    {
+      "type": "BossStrength",
+      "id": 105,
+      "cost": 0,
+      "x": -37,
+      "y": -1
+    },
+    {
+      "type": "BossStrength",
+      "id": 106,
+      "cost": 0,
+      "x": -34,
+      "y": -4
     }
   ],
   "edges": [
@@ -950,6 +1118,114 @@
     {
       "start": 22,
       "end": 23
+    },
+    {
+      "start": 87,
+      "end": 89
+    },
+    {
+      "start": 89,
+      "end": 90
+    },
+    {
+      "start": 89,
+      "end": 94
+    },
+    {
+      "start": 91,
+      "end": 90
+    },
+    {
+      "start": 94,
+      "end": 95
+    },
+    {
+      "start": 95,
+      "end": 96
+    },
+    {
+      "start": 92,
+      "end": 93
+    },
+    {
+      "start": 92,
+      "end": 96
+    },
+    {
+      "start": 93,
+      "end": 91
+    },
+    {
+      "start": 88,
+      "end": 97
+    },
+    {
+      "start": 97,
+      "end": 98
+    },
+    {
+      "start": 97,
+      "end": 99
+    },
+    {
+      "start": 97,
+      "end": 100
+    },
+    {
+      "start": 100,
+      "end": 101
+    },
+    {
+      "start": 85,
+      "end": 83
+    },
+    {
+      "start": 84,
+      "end": 86
+    },
+    {
+      "start": 83,
+      "end": 84
+    },
+    {
+      "start": 86,
+      "end": 85
+    },
+    {
+      "start": 83,
+      "end": 27
+    },
+    {
+      "start": 84,
+      "end": 87
+    },
+    {
+      "start": 86,
+      "end": 88
+    },
+    {
+      "start": 85,
+      "end": 102
+    },
+    {
+      "start": 102,
+      "end": 103
+    },
+    {
+      "start": 103,
+      "end": 104
+    },
+    {
+      "start": 104,
+      "end": 105
+    },
+    {
+      "start": 105,
+      "end": 106
+    },
+    {
+      "start": 106,
+      "end": 103
     }
   ]
 }

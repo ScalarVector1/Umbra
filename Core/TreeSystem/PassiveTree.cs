@@ -22,6 +22,8 @@ namespace Umbra.Core.TreeSystem
 
 		public int difficulty;
 
+		public List<PassiveEdge> flows = [];
+
 		public List<Passive> Nodes { get; set; }
 		public List<PassiveEdge> Edges { get; set; }
 
@@ -32,7 +34,91 @@ namespace Umbra.Core.TreeSystem
 		/// <param name="end">The end nodes ID</param>
 		public void Connect(int start, int end)
 		{
-			Edges.Add(new(start, end));
+			if (!Edges.Any(n => n.Start == start && n.End == end || n.Start == end && n.End == start))
+			{
+				Edges.Add(new(start, end));
+				nodesById[start].connections.Add(nodesById[end]);
+				nodesById[end].connections.Add(nodesById[start]);
+			}
+
+			RegenerateFlows();
+		}
+
+		/// <summary>
+		/// Removes a connection between two node IDs
+		/// </summary>
+		/// <param name="start"></param>
+		/// <param name="end"></param>
+		public void Disconnect(int start, int end)
+		{
+			Edges.RemoveAll(n => n.Start == start && n.End == end || n.Start == end && n.End == start);
+
+			nodesById[start].connections.Remove(nodesById[end]);
+			nodesById[end].connections.Remove(nodesById[start]);
+
+			RegenerateFlows();
+		}
+
+		/// <summary>
+		/// Called on load to properly inform each node of its neighbors
+		/// </summary>
+		public void RegenrateConnections()
+		{
+			foreach (Passive node in Nodes)
+			{
+				node.connections.Clear();
+			}
+
+			foreach (PassiveEdge edge in Edges)
+			{
+				nodesById[edge.Start].connections.Add(nodesById[edge.End]);
+				nodesById[edge.End].connections.Add(nodesById[edge.Start]);
+			}
+		}
+
+		/// <summary>
+		/// Regenerates the visual flows for the tree
+		/// </summary>
+		public void RegenerateFlows()
+		{
+			flows.Clear();
+
+			if (!nodesById.TryGetValue(0, out Passive startNode) || !startNode.active)
+				return;
+
+			HashSet<int> enqueued = new(); // Track which nodes we've queued
+			HashSet<(int, int)> addedEdges = new(); // Track which directed flows we’ve added
+
+			Queue<Passive> queue = new();
+			queue.Enqueue(startNode);
+			enqueued.Add(startNode.ID);
+
+			while (queue.Count > 0)
+			{
+				Passive current = queue.Dequeue();
+
+				foreach (var neighbor in current.connections)
+				{
+					if (!neighbor.active)
+						continue;
+
+					int from = current.ID;
+					int to = neighbor.ID;
+
+					// Only add one flow per edge, from the direction it was discovered
+					if (addedEdges.Contains((to, from)) || addedEdges.Contains((from, to)))
+						continue;
+
+					flows.Add(new PassiveEdge(from, to));
+					addedEdges.Add((from, to));
+
+					if (!enqueued.Contains(to))
+					{
+						queue.Enqueue(neighbor);
+						enqueued.Add(to);
+					}
+				}
+			}
 		}
 
 		/// <summary>
@@ -71,6 +157,8 @@ namespace Umbra.Core.TreeSystem
 				Edges.RemoveAll(n => n.Start == id || n.End == id);
 
 				GenerateDicts();
+				RegenrateConnections();
+				RegenerateFlows();
 			}
 		}
 
@@ -96,12 +184,12 @@ namespace Umbra.Core.TreeSystem
 		{
 			difficulty = 0;
 
-            foreach (var node in Nodes)
-            {
+			foreach (Passive node in Nodes)
+			{
 				if (node.active)
 					difficulty += node.difficulty;
-            }
-        }
+			}
+		}
 
 		/// <summary>
 		/// Returns a list of integers representing the IDs of active nodes, used to serialize
@@ -131,18 +219,19 @@ namespace Umbra.Core.TreeSystem
 			if (nodesById is null)
 				throw new Exception("ApplyActiveIDs was called before GenerateDicts. Please make sure not to run this before GenerateDicts is called!");
 
-			foreach(var node in Nodes)
+			foreach (Passive node in Nodes)
 			{
 				node.active = false;
 			}
 
 			foreach (int id in toActivate)
 			{
-				if (nodesById.TryGetValue(id, out Passive node))
+				if (nodesById.TryGetValue(id, out Passive node) && node.CanBeActive())
 					node.active = true;
 			}
 
 			CalcDifficulty();
+			RegenerateFlows();
 		}
 	}
 }
