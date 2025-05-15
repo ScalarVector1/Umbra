@@ -134,4 +134,54 @@ namespace Umbra.Content.Passives
 			npc.GetGlobalNPC<TreeNPC>().endurance += 0.05f;
 		}
 	}
+
+	internal class BossStrength : Passive
+	{
+		public override void SetDefaults()
+		{
+			texture = Assets.Passives.BossStrength;
+			difficulty = 3;
+		}
+
+		public override void OnEnemySpawn(NPC npc)
+		{
+			if (npc.boss)
+			{
+				npc.GetGlobalNPC<TreeNPC>().endurance += 0.02f;
+				npc.GetGlobalNPC<TreeNPC>().increasedDamage += 0.05f;
+			}
+		}
+	}
+
+	internal class StrengthPerDoom : Passive
+	{
+		public override void SetDefaults()
+		{
+			texture = Assets.Passives.StrengthPerDoom;
+			difficulty = 8;
+		}
+
+		public override void OnEnemySpawn(NPC npc)
+		{
+			if (npc.boss)
+			{
+				npc.GetGlobalNPC<TreeNPC>().flatDamage += ModContent.GetInstance<TreeSystem>().tree.difficulty / 20;
+				npc.GetGlobalNPC<TreeNPC>().flatLife += ModContent.GetInstance<TreeSystem>().tree.difficulty / 5;
+			}
+		}
+	}
+
+	internal class SpawnRate : Passive
+	{
+		public override void SetDefaults()
+		{
+			texture = Assets.Passives.SpawnRate;
+			difficulty = 2;
+		}
+
+		public override void Update()
+		{
+			TreeNPC.spawnRateModifier += 0.1f;
+		}
+	}
 }

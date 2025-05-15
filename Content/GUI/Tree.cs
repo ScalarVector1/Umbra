@@ -73,8 +73,11 @@ namespace Umbra.Content.GUI
 
 		public void Refresh()
 		{
-			inner.RemoveAllChildren();
-			TreeSystem.tree.Nodes.ForEach(n => inner.Append(new PassiveElement(n) { }));
+			if (inner != null)
+			{
+				inner.RemoveAllChildren();
+				TreeSystem.tree.Nodes.ForEach(n => inner.Append(new PassiveElement(n) { }));
+			}
 		}
 
 		public override void Draw(SpriteBatch spriteBatch)

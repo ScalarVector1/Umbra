@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Terraria.ID;
-using Umbra.Content.Items;
 using Umbra.Core.TreeSystem;
 
 namespace Umbra.Content.Passives.Large
 {
-	internal class VengefulShades : Passive
+	internal class SpontaneousGeneration : Passive
 	{
 		public override void SetDefaults()
 		{
-			texture = Assets.Passives.VengefulShades;
-			difficulty = 30;
+			texture = Assets.Passives.SpontaneousGeneration;
+			difficulty = 50;
 			size = 1;
 		}
 
@@ -22,12 +20,12 @@ namespace Umbra.Content.Passives.Large
 		{
 			if (!npc.boss && Main.rand.NextBool(10))
 			{
-				npc.GetGlobalNPC<VengefulShadesNPC>().active = true;
+				npc.GetGlobalNPC<SpontaneousGenerationNPC>().active = true;
 			}
 		}
 	}
 
-	internal class VengefulShadesNPC : GlobalNPC
+	internal class SpontaneousGenerationNPC : GlobalNPC
 	{
 		public bool active;
 
@@ -37,12 +35,11 @@ namespace Umbra.Content.Passives.Large
 		{
 			if (active)
 			{
-				NPC.NewNPC(npc.GetSource_FromThis(), (int)npc.Center.X, (int)npc.Center.Y, NPCID.Wraith);
-			}
-
-			if (npc.type == NPCID.Wraith)
-			{
-				Item.NewItem(npc.GetSource_Death(), npc.Hitbox, ModContent.ItemType<UmbraPickup>());
+				for (int k = 0; k < 2; k++)
+				{
+					int i = NPC.NewNPC(npc.GetSource_FromThis(), (int)npc.Center.X, (int)npc.Center.Y, npc.type);
+					Main.npc[i].lifeMax = npc.lifeMax / 2;
+				}
 			}
 		}
 	}

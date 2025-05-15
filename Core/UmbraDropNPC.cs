@@ -15,8 +15,13 @@ namespace Umbra.Core
 
 		public override void OnKill(NPC npc)
 		{
-			if (Main.rand.NextFloat() <= UmbraChance)
-				Item.NewItem(npc.GetSource_Death(), npc.Hitbox, ModContent.ItemType<UmbraPickup>());
+			int rolls = npc.boss ? 10 : !npc.friendly ? 1 : 0;
+
+			for (int k = 0; k < rolls; k++)
+			{
+				if (Main.rand.NextFloat() <= UmbraChance)
+					Item.NewItem(npc.GetSource_Death(), npc.Hitbox, ModContent.ItemType<UmbraPickup>());
+			}
 		}
 	}
 }

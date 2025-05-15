@@ -122,4 +122,97 @@ Passives: {
 			Players have [c/AAAAFF:25%] decreased life regeneration if any enemies are near (within [c/AAAAFF:10] blocks) them
 			'''
 	}
+
+	BossStrength: {
+		Name: Boss Strength
+		Tooltip: 
+		'''Bosses take [c/AAAAFF:2%] decreased damage from hits
+		Bosses deal [c/AAAAFF:5%] increased damage'''
+	}
+
+	StrengthPerDoom: {
+		Name: Doom Influence
+		Tooltip: '''Enemies deal [c/AAAAFF:+1] damage per [c/AAAAFF:20] doom
+		Enemies have [c/AAAAFF:+1] life per [c/AAAAFF:5] doom
+		'''
+	}
+
+	SpawnRate: {
+		Name: Spawn Rate
+		Tooltip: "[c/AAAAFF:10%] increased spawn rate"
+	}
+
+	HardmodeStrength: {
+		Name: Normal Enemy Strength
+		Tooltip: '''Non-boss enemies take [c/AAAAFF:2%] decreased damage from hits
+		Non-boss enemies have [c/AAAAFF:5%] increased damage'''
+	}
+
+	HardmodeEnemyPoision: {
+		Name: Enemy Poision Chance
+		Tooltip: Enemies have [c/AAAAFF:+10%] chance to inflict poisioned
+	}
+
+	HardmodeEnemyVenom: {
+		Name: Enemy Venom Chance
+		Tooltip: Enemies have [c/AAAAFF:+2%] chance to inflict venom
+	}
+
+	HardmodeStrengthPerDoom: {
+		Name: Doom Influence
+		Tooltip: '''Enemies deal [c/AAAAFF:1%] increased damage per [c/AAAAFF:20] doom
+		Enemies have [c/AAAAFF:+1] life per [c/AAAAFF:5] doom
+		'''
+	}
+
+	HardmodeDoubleChance: {
+		Name: Twinned Enemy Chance
+		Tooltip: "[c/AAAAFF:+5%] chance for enemies to spawn in pairs"
+	}
+
+	Comorbidity: {
+		Name: Comorbidity
+		Tooltip: '''Players that are poisioned are also venomed
+		Players that are venomed are also poisioned'''
+	}
+
+	DoomBeacon: {
+		Name: Doom Beacon
+		Tooltip: "[c/AAAAFF:1%] increased spawn rate per [c/AAAAFF:5] doom"
+	}
+
+	DoomConflux: {
+		Name: Doom Conflux
+		Tooltip: '''Enemies have [c/AAAAFF:+1%] chance to inflict doomed per [c/AAAAFF:10] doom
+		doomed is a debuff which causes players to take 50% more damage'''
+	}
+
+	InstrumentsOfHarm: {
+		Name: Instruments of Harm
+		Tooltip: Enemies have a [c/AAAAFF:20%] chance to spawn as harmful, having [c/AAAAFF:50%] more damage
+	}
+
+	SpontaneousGeneration: {
+		Name: Spontaneous Generation
+		Tooltip: Enemies have a [c/AAAAFF:10%] chance to split in two on death
+	}
+
+	VengefulShades: {
+		Name: Vengeful Shades
+		Tooltip: '''Enemies have a [c/AAAAFF:10%] chance to spawn a wraith on death
+		wraiths always drop an extra umbra point'''
+	}
+
+	WormsInfluence: {
+		Name: Worms Influence
+		Tooltip: '''Enemies take [c/AAAAFF:15%] decreased damage from hits
+		Worms take an additonal [c/AAAAFF:10%] decreased damage from hits'''
+	}
+}
+
+Buffs: {
+	Doomed: {
+		DisplayName: Doomed
+		Description: Take 50% more damage
+	}
 }
