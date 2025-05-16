@@ -10,6 +10,18 @@ using Terraria.WorldBuilding;
 
 namespace Umbra.Core.TreeSystem
 {
+	internal class TreeNPCGlobals : ModSystem
+	{
+		public static float spawnRateModifier = 1;
+		public static float doubleSpawnChance = 0;
+
+		public override void PostUpdateEverything()
+		{
+			spawnRateModifier = 1;
+			doubleSpawnChance = 0;
+		}
+	}
+
 	internal class TreeNPC : GlobalNPC
 	{
 		public int flatLife;
@@ -37,21 +49,13 @@ namespace Umbra.Core.TreeSystem
 		public Dictionary<int, float> statusChances = [];
 		public int statusDuration = 300;
 
-		public static float spawnRateModifier = 1;
 
-		public static float doubleSpawnChance = 0;
 
 		public override bool InstancePerEntity => true;
 
 		public override bool AppliesToEntity(NPC entity, bool lateInstantiation)
 		{
 			return !entity.friendly && entity.lifeMax > 5 && !NPCID.Sets.CountsAsCritter[entity.type] && entity.damage > 0;
-		}
-
-		public override void ResetEffects(NPC npc)
-		{
-			spawnRateModifier = 1;
-			doubleSpawnChance = 0;
 		}
 
 		public void AddStatusChance(int type, float chance)
@@ -71,8 +75,8 @@ namespace Umbra.Core.TreeSystem
 				return;
 			}
 
-			spawnRate = (int)(spawnRate / spawnRateModifier);
-			maxSpawns = (int)(maxSpawns * spawnRateModifier);
+			spawnRate = (int)(spawnRate / TreeNPCGlobals.spawnRateModifier);
+			maxSpawns = (int)(maxSpawns * TreeNPCGlobals.spawnRateModifier);
 		}
 
 		public override void SetDefaults(NPC npc)
@@ -135,7 +139,7 @@ namespace Umbra.Core.TreeSystem
 
 		public override void OnSpawn(NPC npc, IEntitySource source)
 		{
-			if (!npc.boss && Main.rand.NextFloat() <= doubleSpawnChance)
+			if (!npc.boss && Main.rand.NextFloat() <= TreeNPCGlobals.doubleSpawnChance)
 			{
 				NPC.NewNPC(npc.GetSource_FromThis(), (int)npc.Center.X, (int)npc.Center.Y, npc.type);
 			}
@@ -174,7 +178,7 @@ namespace Umbra.Core.TreeSystem
 			modifiers.FinalDamage *= 1f - endurance;
 		}
 
-		public override void OnHitNPC(NPC npc, NPC target, NPC.HitInfo hit)
+		public override void HitEffect(NPC npc, NPC.HitInfo hit)
 		{
 			float dodge = flatDodge;
 			dodge += dodge * increasedDodge;
@@ -185,10 +189,11 @@ namespace Umbra.Core.TreeSystem
 
 			if (dodgeRoll <= dodge)
 			{
-				dodgeRoll = Main.rand.NextFloat();
-				CombatText.NewText(target.Hitbox, Color.PaleGreen, "Dodge!");
-				target.life += 1;
+				CombatText.NewText(npc.Hitbox, Color.PaleGreen, "Dodge!");
+				npc.life += 1;
 			}
+
+			dodgeRoll = Main.rand.NextFloat();
 		}
 	}
 }

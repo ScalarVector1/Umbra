@@ -20,7 +20,7 @@ namespace Umbra.Content.Passives.Large
 
 		public override void Update()
 		{
-			TreeNPC.spawnRateModifier += 0.01f * (ModContent.GetInstance<TreeSystem>().tree.difficulty / 5);
+			TreeNPCGlobals.spawnRateModifier += 0.01f * (ModContent.GetInstance<TreeSystem>().tree.difficulty / 5);
 		}
 	}
 }

@@ -192,7 +192,7 @@ namespace Umbra.Content.Passives
 
 		public override void Update()
 		{
-			TreeNPC.spawnRateModifier += 0.1f;
+			TreeNPCGlobals.spawnRateModifier += 0.1f;
 		}
 	}
 }

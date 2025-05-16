@@ -83,7 +83,7 @@ namespace Umbra.Content.Passives
 
 		public override void Update()
 		{
-			TreeNPC.doubleSpawnChance += 0.05f;
+			TreeNPCGlobals.doubleSpawnChance += 0.05f;
 		}
 	}
 }
