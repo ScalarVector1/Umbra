@@ -135,6 +135,20 @@ namespace Umbra.Content.Passives
 		}
 	}
 
+	internal class EnemyDodge : Passive
+	{
+		public override void SetDefaults()
+		{
+			texture = Assets.Passives.EnemyDodge;
+			difficulty = 4;
+		}
+
+		public override void OnEnemySpawn(NPC npc)
+		{
+			npc.GetGlobalNPC<TreeNPC>().flatDodge += 0.02f;
+		}
+	}
+
 	internal class BossStrength : Passive
 	{
 		public override void SetDefaults()

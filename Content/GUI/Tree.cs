@@ -675,6 +675,7 @@ namespace Umbra.Content.GUI
 				int y = Tree.selected.Y;
 
 				int cost = Tree.selected.Cost;
+				var connections = Tree.selected.connections;
 
 				ModContent.GetInstance<TreeSystem>().tree.Nodes.Remove(Tree.selected);
 				Tree.selected = passive.Clone();
@@ -682,6 +683,7 @@ namespace Umbra.Content.GUI
 				Tree.selected.X = x;
 				Tree.selected.Y = y;
 				Tree.selected.Cost = cost;
+				Tree.selected.connections = connections;
 				ModContent.GetInstance<TreeSystem>().tree.Nodes.Add(Tree.selected);
 
 				UILoader.GetUIState<Tree>().Refresh();

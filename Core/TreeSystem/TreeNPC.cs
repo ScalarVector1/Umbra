@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.WorldBuilding;
 
 namespace Umbra.Core.TreeSystem
 {
@@ -25,6 +26,11 @@ namespace Umbra.Core.TreeSystem
 		public int flatDefense;
 		public float increasedDefense;
 		public List<float> moreDefense = [];
+
+		public float flatDodge;
+		public float increasedDodge;
+		public List<float> moreDodge = [];
+		public float dodgeRoll;
 
 		public float endurance;
 
@@ -81,6 +87,8 @@ namespace Umbra.Core.TreeSystem
 			{
 				ApplyStats(npc);
 			}
+
+			dodgeRoll = Main.rand.NextFloat();
 		}
 
 		public override void SetDefaultsFromNetId(NPC npc)
@@ -150,7 +158,37 @@ namespace Umbra.Core.TreeSystem
 
 		public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
 		{
+			float dodge = flatDodge;
+			dodge += dodge * increasedDodge;
+			foreach(float more in moreDodge)
+			{
+				dodge += dodge * more;
+			}
+
+			if (dodgeRoll <= dodge)
+			{
+				modifiers.FinalDamage *= 0;
+				modifiers._combatTextHidden = true;
+			}
+
 			modifiers.FinalDamage *= 1f - endurance;
+		}
+
+		public override void OnHitNPC(NPC npc, NPC target, NPC.HitInfo hit)
+		{
+			float dodge = flatDodge;
+			dodge += dodge * increasedDodge;
+			foreach (float more in moreDodge)
+			{
+				dodge += dodge * more;
+			}
+
+			if (dodgeRoll <= dodge)
+			{
+				dodgeRoll = Main.rand.NextFloat();
+				CombatText.NewText(target.Hitbox, Color.PaleGreen, "Dodge!");
+				target.life += 1;
+			}
 		}
 	}
 }

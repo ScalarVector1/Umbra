@@ -10,6 +10,7 @@ namespace Umbra.Core.TreeSystem
 	internal class TreePlayer : ModPlayer
 	{
 		public int UmbraPoints;
+		public bool firstPoint;
 
 		public int flatRegen;
 		public float increasedRegen;
@@ -38,11 +39,13 @@ namespace Umbra.Core.TreeSystem
 		public override void SaveData(TagCompound tag)
 		{
 			tag["points"] = UmbraPoints;
+			tag["firstPoint"] = firstPoint;
 		}
 
 		public override void LoadData(TagCompound tag)
 		{
 			UmbraPoints = tag.GetInt("points");
+			firstPoint = tag.GetBool("firsPoint");
 		}
 	}
 }

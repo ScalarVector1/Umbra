@@ -41,7 +41,10 @@ namespace Umbra.Content.Items
 			/*UILoader.GetUIState<Tree>().RemoveAllChildren();
 			UILoader.GetUIState<Tree>().OnInitialize();
 			Tree.Populated = false;*/
-			UILoader.GetUIState<Tree>().visible = true;
+
+			player.potionDelay = 0;
+			player.potionDelayTime = 0;
+			player.AdjustRemainingPotionSickness();
 			return true;
 		}
 	}

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Umbra.Core.Loaders.UILoading;
 using Terraria.Audio;
 using Terraria.ID;
+using Umbra.Content.GUI;
 using Umbra.Core.TreeSystem;
 
 namespace Umbra.Content.Items
@@ -28,16 +25,16 @@ namespace Umbra.Content.Items
 
 		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 		{
-			var tex = Assets.Items.UmbraPickup.Value;
-			var glow = Assets.GUI.GlowAlpha.Value;
-			var star = Assets.GUI.StarAlpha.Value;
+			Texture2D tex = Assets.Items.UmbraPickup.Value;
+			Texture2D glow = Assets.GUI.GlowAlpha.Value;
+			Texture2D star = Assets.GUI.StarAlpha.Value;
 
-			var back = Assets.GUI.GlowSoft.Value;
+			Texture2D back = Assets.GUI.GlowSoft.Value;
 
 			float sinTime = worldTimer < 60 ? 0.7f + 0.3f * (float)Math.Sin(worldTimer / 60f * 3.14f) : 0.7f + 0.1f * (float)Math.Sin(worldTimer / 30f * 3.14f);
 			float lineTime = Math.Min(1f, worldTimer / 90f);
 
-			Color glowColor = new Color(160, 100, 255, 0);
+			var glowColor = new Color(160, 100, 255, 0);
 
 			spriteBatch.Draw(back, Item.Center + new Vector2(0, -6) - Main.screenPosition, null, Color.Black, rotation, back.Size() / 2f, 1f, 0, 0);
 
@@ -62,6 +59,31 @@ namespace Umbra.Content.Items
 				var d = Dust.NewDustPerfect(Item.Center, DustID.FireworksRGB, Vector2.UnitX.RotatedByRandom(6.28f) * Main.rand.NextFloat(3f), 255, new Color(210, 160, 255), Main.rand.NextFloat(0.3f, 0.8f));
 				d.noGravity = true;
 			}
+
+			if (worldTimer >= 90)
+			{
+				Player nearest = null;
+				float lastDist = float.PositiveInfinity;
+
+				foreach (Player player in Main.ActivePlayers)
+				{
+					float dist = Vector2.Distance(Item.Center, player.Center);
+
+					if (!player.dead && dist < lastDist)
+					{
+						nearest = player;
+						lastDist = dist;
+					}
+				}
+
+				if (nearest != null)
+				{
+					Item.velocity = Vector2.Normalize(nearest.Center - Item.Center) * Math.Min(15, (worldTimer - 90) / 5f);
+
+					var d = Dust.NewDustPerfect(Item.Center, DustID.Shadowflame, Vector2.Zero, 255, new Color(210, 160, 255), Main.rand.NextFloat(0.8f, 1f));
+					d.noGravity = true;
+				}
+			}
 		}
 
 		public override bool CanPickup(Player player)
@@ -71,10 +93,18 @@ namespace Umbra.Content.Items
 
 		public override bool OnPickup(Player player)
 		{
-			player.GetModPlayer<TreePlayer>().UmbraPoints++;
+			var tp = player.GetModPlayer<TreePlayer>();
+
+			if (!tp.firstPoint)
+			{
+				tp.firstPoint = true;
+				UILoader.GetUIState<InventoryButton>().flashing = true;
+			}
+
+			tp.UmbraPoints++;
 			CombatText.NewText(player.Hitbox, new Color(200, 160, 255), "+1 Umbra");
 
-			for(int k = 0; k < 20; k++)
+			for (int k = 0; k < 20; k++)
 			{
 				var d = Dust.NewDustPerfect(Item.Center, DustID.FireworksRGB, Vector2.UnitX.RotatedByRandom(6.28f) * Main.rand.NextFloat(7f), 255, new Color(210, 160, 255), Main.rand.NextFloat(0.3f, 0.8f));
 				d.noGravity = true;

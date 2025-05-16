@@ -249,6 +249,26 @@ Passives: {
 		Name: Calamitous Damage
 		Tooltip: Enemies from Calamity have [c/AAAAFF:+1] damage
 	}
+
+	EnemyDodge: {
+		Name: Enemy Dodge Chance
+		Tooltip: Enemies have [c/AAAAFF:+2%] chance to avoid damage
+	}
+
+	PotionSickness: {
+		Name: Potion Sickness Duration
+		Tooltip: Potion sickness lasts [c/AAAAFF:5] seconds longer
+	}
+
+	PotionHealing: {
+		Name: Reduced Healing
+		Tooltip: Healing items heal [c/AAAAFF:-5] life
+	}
+
+	SicklyPotions: {
+		Name: Sickly Potions
+		Tooltip: Healing items restore health gradually instead of instantaneously
+	}
 }
 
 Buffs: {

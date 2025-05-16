@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
 using Umbra.Content.Items;
 using Umbra.Core.TreeSystem;
 
@@ -11,11 +13,31 @@ namespace Umbra.Core
 {
 	internal class UmbraDropNPC : GlobalNPC
 	{
-		public static float UmbraChance => 0.02f + 0.25f * MathF.Atan(ModContent.GetInstance<TreeSystem.TreeSystem>().tree.difficulty * 0.0025f);
+		public bool umbraDropDisabled;
+
+		public override bool InstancePerEntity => true;
+
+		public static float UmbraChance => 0.02f + 0.1f * MathF.Atan(ModContent.GetInstance<TreeSystem.TreeSystem>().tree.difficulty * 0.001f);
+
+		public override void OnSpawn(NPC npc, IEntitySource source)
+		{
+			if (source is EntitySource_Parent { Entity: NPC { boss: true } })
+				umbraDropDisabled = true;
+		}
 
 		public override void OnKill(NPC npc)
 		{
-			int rolls = npc.boss ? 10 : !npc.friendly ? 1 : 0;
+			if (umbraDropDisabled ||
+				npc.friendly ||
+				NPCID.Sets.CountsAsCritter[npc.type] ||
+				npc.lifeMax <= 5 ||
+				npc.SpawnedFromStatue ||
+				npc.lastInteraction == 255)
+			{
+				return;
+			}
+
+			int rolls = npc.boss ? 5 : 1;
 
 			for (int k = 0; k < rolls; k++)
 			{
