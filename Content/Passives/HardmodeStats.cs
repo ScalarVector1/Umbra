@@ -27,6 +27,20 @@ namespace Umbra.Content.Passives
 		}
 	}
 
+	internal class HardmodeEndurance : Passive
+	{
+		public override void SetDefaults()
+		{
+			texture = Assets.Passives.HardmodeEndurance;
+			difficulty = 6;
+		}
+
+		public override void OnEnemySpawn(NPC npc)
+		{
+			npc.GetGlobalNPC<TreeNPC>().endurance += 0.06f;
+		}
+	}
+
 	internal class HardmodeEnemyPoision : Passive
 	{
 		public override void SetDefaults()

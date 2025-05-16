@@ -79,6 +79,19 @@ namespace Umbra.Content.Passives
 		}
 	}
 
+	internal class EnemyMoreLife : Passive
+	{
+		public override void SetDefaults()
+		{
+			texture = Assets.Passives.EnemyMoreLife;
+			difficulty = 4;
+		}
+		public override void OnEnemySpawn(NPC npc)
+		{
+			npc.GetGlobalNPC<TreeNPC>().moreLife.Add(0.1f);
+		}
+	}
+
 	internal class EnemyRegen : Passive
 	{
 		public override void SetDefaults()

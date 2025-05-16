@@ -269,6 +269,31 @@ Passives: {
 		Name: Sickly Potions
 		Tooltip: Healing items restore health gradually instead of instantaneously
 	}
+
+	EnemyMoreLife: {
+		Name: Mods.Umbra.Passives.EnemyMoreLife.Name
+		Tooltip: Mods.Umbra.Passives.EnemyMoreLife.Tooltip
+	}
+
+	HardmodeEndurance: {
+		Name: Mods.Umbra.Passives.HardmodeEndurance.Name
+		Tooltip: Mods.Umbra.Passives.HardmodeEndurance.Tooltip
+	}
+
+	BadMedicine: {
+		Name: Mods.Umbra.Passives.BadMedicine.Name
+		Tooltip: Mods.Umbra.Passives.BadMedicine.Tooltip
+	}
+
+	Heartbreakers: {
+		Name: Mods.Umbra.Passives.Heartbreakers.Name
+		Tooltip: Mods.Umbra.Passives.Heartbreakers.Tooltip
+	}
+
+	ManaTithe: {
+		Name: Mods.Umbra.Passives.ManaTithe.Name
+		Tooltip: Mods.Umbra.Passives.ManaTithe.Tooltip
+	}
 }
 
 Buffs: {
