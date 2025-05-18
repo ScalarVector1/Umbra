@@ -271,28 +271,72 @@ Passives: {
 	}
 
 	EnemyMoreLife: {
-		Name: Mods.Umbra.Passives.EnemyMoreLife.Name
-		Tooltip: Mods.Umbra.Passives.EnemyMoreLife.Tooltip
+		Name: More Enemy Life
+		Tooltip: Enemies have [c/AAAAFF:10%] more life
 	}
 
 	HardmodeEndurance: {
-		Name: Mods.Umbra.Passives.HardmodeEndurance.Name
-		Tooltip: Mods.Umbra.Passives.HardmodeEndurance.Tooltip
+		Name: Greater Enemy Endurance
+		Tooltip: Enemies take [c/AAAAFF:6%] decreased damage from hits
 	}
 
 	BadMedicine: {
-		Name: Mods.Umbra.Passives.BadMedicine.Name
-		Tooltip: Mods.Umbra.Passives.BadMedicine.Tooltip
+		Name: Bad Medicine
+		Tooltip: '''Consuming healing items inflicts doomed for [c/AAAAFF:5] seconds
+		doomed is a debuff which causes players to take 50% more damage
+		'''
 	}
 
 	Heartbreakers: {
-		Name: Mods.Umbra.Passives.Heartbreakers.Name
-		Tooltip: Mods.Umbra.Passives.Heartbreakers.Tooltip
+		Name: Heartbreakers
+		Tooltip: Players lose [c/AAAAFF:20] maximum life when hurt, slowly recovering over time
 	}
 
 	ManaTithe: {
-		Name: Mods.Umbra.Passives.ManaTithe.Name
-		Tooltip: Mods.Umbra.Passives.ManaTithe.Tooltip
+		Name: Mana Tithe
+		Tooltip: All weapons cost [c/AAAAFF:+4] mana to use
+	}
+
+	ManaCost: {
+		Name: Mana Cost
+		Tooltip: All weapons cost [c/AAAAFF:+1] mana to use
+	}
+
+	ManaDamage: {
+		Name: Mana Leech
+		Tooltip: Players lose [c/AAAAFF:10] mana when hurt
+	}
+
+	PiercePenalty: {
+		Name: Less pierce
+		Tooltip: Hitting an enemy consumes [c/AAAAFF:+1] pierce
+	}
+
+	ManaFlux: {
+		Name: Mana Flux
+		Tooltip: Bleeding players lose mana rapidly
+	}
+
+	Mending: {
+		Name: Mending
+		Tooltip: Enemies have [c/AAAAFF:50%] increased life regeneration
+	}
+
+	PanicGuard: {
+		Name: Panic Guard
+		Tooltip: Enemies below [c/AAAAFF:33%] life have [c/AAAAFF:+15] defense
+	}
+
+	TwistOfFate: {
+		Name: Twist of Fate
+		Tooltip: '''Negates or disables most of the positive effects of doom.
+		
+		[c/FF4444:WARNING]: [c/FFAAAA:This has no positive effects!]'''
+	}
+
+	VampiricHorde: {
+		Name: Vampiric Horde
+		Tooltip: Enemies heal for [c/AAAAFF:100] life on melee hit
 	}
 }
 

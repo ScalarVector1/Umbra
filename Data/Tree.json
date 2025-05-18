@@ -715,41 +715,6 @@
       "y": -10
     },
     {
-      "type": "BossStrength",
-      "id": 102,
-      "cost": 4,
-      "x": -27,
-      "y": -1
-    },
-    {
-      "type": "BossStrength",
-      "id": 103,
-      "cost": 6,
-      "x": -31,
-      "y": -1
-    },
-    {
-      "type": "BossStrength",
-      "id": 104,
-      "cost": 6,
-      "x": -34,
-      "y": 2
-    },
-    {
-      "type": "BossStrength",
-      "id": 105,
-      "cost": 6,
-      "x": -37,
-      "y": -1
-    },
-    {
-      "type": "BossStrength",
-      "id": 106,
-      "cost": 6,
-      "x": -34,
-      "y": -4
-    },
-    {
       "type": "PotionSickness",
       "id": 107,
       "cost": 5,
@@ -853,6 +818,230 @@
       "cost": 14,
       "x": -13,
       "y": 25
+    },
+    {
+      "type": "TwistOfFate",
+      "id": 122,
+      "cost": 0,
+      "x": 0,
+      "y": -5
+    },
+    {
+      "type": "Mending",
+      "id": 123,
+      "cost": 20,
+      "x": -1,
+      "y": -23
+    },
+    {
+      "type": "EnemyDamage",
+      "id": 103,
+      "cost": 2,
+      "x": -31,
+      "y": 3
+    },
+    {
+      "type": "EnemyLife",
+      "id": 105,
+      "cost": 2,
+      "x": -41,
+      "y": 7
+    },
+    {
+      "type": "ManaTithe",
+      "id": 106,
+      "cost": 20,
+      "x": -41,
+      "y": 13
+    },
+    {
+      "type": "ManaCost",
+      "id": 128,
+      "cost": 5,
+      "x": -41,
+      "y": 26
+    },
+    {
+      "type": "ManaFlux",
+      "id": 133,
+      "cost": 15,
+      "x": -41,
+      "y": 22
+    },
+    {
+      "type": "ManaDamage",
+      "id": 124,
+      "cost": 5,
+      "x": -39,
+      "y": 18
+    },
+    {
+      "type": "ManaDamage",
+      "id": 125,
+      "cost": 5,
+      "x": -33,
+      "y": 21
+    },
+    {
+      "type": "ManaDamage",
+      "id": 126,
+      "cost": 5,
+      "x": -37,
+      "y": 24
+    },
+    {
+      "type": "ManaDamage",
+      "id": 127,
+      "cost": 5,
+      "x": -36,
+      "y": 29
+    },
+    {
+      "type": "ManaCost",
+      "id": 132,
+      "cost": 5,
+      "x": -46,
+      "y": 29
+    },
+    {
+      "type": "ManaCost",
+      "id": 131,
+      "cost": 5,
+      "x": -45,
+      "y": 24
+    },
+    {
+      "type": "ManaCost",
+      "id": 130,
+      "cost": 5,
+      "x": -49,
+      "y": 21
+    },
+    {
+      "type": "ManaCost",
+      "id": 129,
+      "cost": 5,
+      "x": -43,
+      "y": 18
+    },
+    {
+      "type": "EnemyDefense",
+      "id": 135,
+      "cost": 2,
+      "x": -53,
+      "y": 7
+    },
+    {
+      "type": "EnemyDefense",
+      "id": 136,
+      "cost": 4,
+      "x": -53,
+      "y": 3
+    },
+    {
+      "type": "EnemyDefense",
+      "id": 137,
+      "cost": 4,
+      "x": -50,
+      "y": 0
+    },
+    {
+      "type": "EnemyDefense",
+      "id": 138,
+      "cost": 4,
+      "x": -56,
+      "y": 0
+    },
+    {
+      "type": "PanicGuard",
+      "id": 139,
+      "cost": 20,
+      "x": -53,
+      "y": -3
+    },
+    {
+      "type": "EnemyLife",
+      "id": 140,
+      "cost": 2,
+      "x": -59,
+      "y": 7
+    },
+    {
+      "type": "EnemyRegen",
+      "id": 141,
+      "cost": 4,
+      "x": -59,
+      "y": 10
+    },
+    {
+      "type": "EnemyRegen",
+      "id": 142,
+      "cost": 4,
+      "x": -56,
+      "y": 13
+    },
+    {
+      "type": "EnemyRegen",
+      "id": 143,
+      "cost": 4,
+      "x": -59,
+      "y": 16
+    },
+    {
+      "type": "EnemyRegen",
+      "id": 144,
+      "cost": 4,
+      "x": -62,
+      "y": 13
+    },
+    {
+      "type": "VampiricHorde",
+      "id": 145,
+      "cost": 10,
+      "x": -59,
+      "y": 13
+    },
+    {
+      "type": "MoreEnemyDamage",
+      "id": 146,
+      "cost": 4,
+      "x": -34,
+      "y": 0
+    },
+    {
+      "type": "Heartbreakers",
+      "id": 147,
+      "cost": 15,
+      "x": -39,
+      "y": 0
+    },
+    {
+      "type": "BadMedicine",
+      "id": 148,
+      "cost": 15,
+      "x": 20,
+      "y": -34
+    },
+    {
+      "type": "PiercePenalty",
+      "id": 134,
+      "cost": 2,
+      "x": -47,
+      "y": 7
+    },
+    {
+      "type": "PiercePenalty",
+      "id": 104,
+      "cost": 2,
+      "x": -35,
+      "y": 7
+    },
+    {
+      "type": "PiercePenalty",
+      "id": 102,
+      "cost": 2,
+      "x": -27,
+      "y": -1
     }
   ],
   "edges": [
@@ -1309,30 +1498,6 @@
       "end": 88
     },
     {
-      "start": 85,
-      "end": 102
-    },
-    {
-      "start": 102,
-      "end": 103
-    },
-    {
-      "start": 103,
-      "end": 104
-    },
-    {
-      "start": 104,
-      "end": 105
-    },
-    {
-      "start": 105,
-      "end": 106
-    },
-    {
-      "start": 106,
-      "end": 103
-    },
-    {
       "start": 107,
       "end": 108
     },
@@ -1395,6 +1560,138 @@
     {
       "start": 118,
       "end": 121
+    },
+    {
+      "start": 0,
+      "end": 122
+    },
+    {
+      "start": 54,
+      "end": 123
+    },
+    {
+      "start": 85,
+      "end": 102
+    },
+    {
+      "start": 102,
+      "end": 103
+    },
+    {
+      "start": 103,
+      "end": 104
+    },
+    {
+      "start": 104,
+      "end": 105
+    },
+    {
+      "start": 105,
+      "end": 106
+    },
+    {
+      "start": 106,
+      "end": 124
+    },
+    {
+      "start": 124,
+      "end": 125
+    },
+    {
+      "start": 126,
+      "end": 125
+    },
+    {
+      "start": 126,
+      "end": 127
+    },
+    {
+      "start": 128,
+      "end": 127
+    },
+    {
+      "start": 129,
+      "end": 106
+    },
+    {
+      "start": 130,
+      "end": 129
+    },
+    {
+      "start": 130,
+      "end": 131
+    },
+    {
+      "start": 131,
+      "end": 132
+    },
+    {
+      "start": 132,
+      "end": 128
+    },
+    {
+      "start": 128,
+      "end": 133
+    },
+    {
+      "start": 105,
+      "end": 134
+    },
+    {
+      "start": 134,
+      "end": 135
+    },
+    {
+      "start": 135,
+      "end": 136
+    },
+    {
+      "start": 136,
+      "end": 137
+    },
+    {
+      "start": 137,
+      "end": 138
+    },
+    {
+      "start": 138,
+      "end": 139
+    },
+    {
+      "start": 140,
+      "end": 135
+    },
+    {
+      "start": 140,
+      "end": 141
+    },
+    {
+      "start": 141,
+      "end": 142
+    },
+    {
+      "start": 142,
+      "end": 143
+    },
+    {
+      "start": 143,
+      "end": 144
+    },
+    {
+      "start": 144,
+      "end": 145
+    },
+    {
+      "start": 103,
+      "end": 146
+    },
+    {
+      "start": 146,
+      "end": 147
+    },
+    {
+      "start": 108,
+      "end": 148
     }
   ]
 }

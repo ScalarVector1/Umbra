@@ -186,18 +186,18 @@ namespace Umbra.Content.GUI
 				if (DoomEffectsSystem.Inverted)
 				{
 					Tooltip.SetTooltip($"Doom is an approximate measure of the influence of the umbral tree on the game's difficulty. You have elected to take the following penalties by having Twist of Fate allocated:" +
-						$"\n[c/AAAAFF:{Math.Round(DoomEffectsSystem.DoomValueMult, 2)}%] decreased gold dropped" +
-						$"\n[c/AAAAFF:-{Math.Round(DoomEffectsSystem.LuckBonus, 2)}] luck" +
-						$"These benefits remain:" +
-						$"\n[c/AAAAFF:+{Math.Round(100 * (UmbraDropNPC.UmbraChance - 0.02f), 2)}%] chance to drop an umbra point");
+						$"\n\n[c/FFDD88:Gold]: [c/AAAAFF:{Math.Round(DoomEffectsSystem.DoomValueMult * 100, 2)}%] decreased gold dropped" +
+						$"\n[c/99FF99:Luck]: [c/AAAAFF:-{Math.Round(DoomEffectsSystem.LuckBonus, 2)}] luck" +
+						$"\n\nThese benefits remain:" +
+						$"\n[c/DDAAFF:Umbra]: [c/AAAAFF:+{Math.Round(100 * (UmbraDropNPC.UmbraChance - 0.02f), 2)}%] chance to drop umbra");
 				}
 				else
 				{
 					Tooltip.SetTooltip($"Doom is an approximate measure of the influence of the umbral tree on the game's difficulty. Additionally, it provides the following benefits:" +
-						$"\n[c/AAAAFF:{Math.Round(DoomEffectsSystem.DoomValueMult, 2)}%] increased gold dropped" +
-						$"\n[c/AAAAFF:+{Math.Round(DoomEffectsSystem.LuckBonus, 2)}] luck" +
-						$"\n[c/AAAAFF:{Math.Round(DoomEffectsSystem.DoubleLootChance, 2)}%] chance for enemies to drop double loot" +
-						$"\n[c/AAAAFF:+{Math.Round(100 * (UmbraDropNPC.UmbraChance - 0.02f), 2)}%] chance to drop an umbra point");
+						$"\n\n[c/FFDD88:Gold]: [c/AAAAFF:{Math.Round(DoomEffectsSystem.DoomValueMult * 100, 2)}%] increased gold dropped" +
+						$"\n[c/99FF99:Luck]: [c/AAAAFF:+{Math.Round(DoomEffectsSystem.LuckBonus, 2)}] luck" +
+						$"\n[c/FF9999:Drops]: [c/AAAAFF:{Math.Round(DoomEffectsSystem.DoubleLootChance * 100, 2)}%] chance to drop double loot" +
+						$"\n[c/DDAAFF:Umbra]: [c/AAAAFF:+{Math.Round(100 * (UmbraDropNPC.UmbraChance - 0.02f), 2)}%] chance to drop umbra");
 				}
 			}
 
