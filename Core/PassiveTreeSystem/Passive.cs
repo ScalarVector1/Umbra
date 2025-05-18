@@ -116,10 +116,7 @@ namespace Umbra.Core.PassiveTreeSystem
 		private void Allocate(Player player)
 		{
 			player.GetModPlayer<TreePlayer>().UmbraPoints -= Cost;
-			active = true;
-
-			TreeSystem.tree.CalcDifficulty();
-			TreeSystem.tree.RegenerateFlows();
+			TreeSystem.tree.Allocate(ID);
 		}
 
 		/// <summary>
@@ -182,10 +179,7 @@ namespace Umbra.Core.PassiveTreeSystem
 		{
 			int refundAmount = Cost / 2;
 			player.GetModPlayer<TreePlayer>().UmbraPoints += refundAmount;
-			active = false;
-
-			TreeSystem.tree.CalcDifficulty();
-			TreeSystem.tree.RegenerateFlows();
+			TreeSystem.tree.Deallocate(ID);
 		}
 
 		/// <summary>

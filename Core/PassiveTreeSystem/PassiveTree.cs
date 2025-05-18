@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Terraria.ModLoader.IO;
+using Umbra.Content.Passives;
 
 namespace Umbra.Core.PassiveTreeSystem
 {
@@ -21,8 +22,8 @@ namespace Umbra.Core.PassiveTreeSystem
 		public Dictionary<int, Passive> nodesById;
 		public Dictionary<(int, int), Passive> nodesByLocation;
 
-		public List<Passive> activeNodes;
-		public Dictionary<Type, int> activeCounts;
+		public List<Passive> activeNodes = [];
+		public Dictionary<Type, int> activeCounts = [];
 
 		public int difficulty;
 
@@ -319,6 +320,9 @@ namespace Umbra.Core.PassiveTreeSystem
 			foreach (Passive node in Nodes)
 			{
 				node.active = false;
+
+				if (node is StartPoint)
+					node.active = true;
 			}
 
 			foreach (int id in toActivate)

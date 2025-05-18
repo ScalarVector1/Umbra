@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 using System.Linq;
 using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
@@ -94,7 +95,7 @@ namespace Umbra.Content.GUI
 				Append(panel);
 
 				closeButton = new UIImageButton(Assets.GUI.CloseButton);
-				closeButton.Left.Set(LeftPadding + PanelWidth - 32 - 19, 0.5f);
+				closeButton.Left.Set(LeftPadding + PanelWidth - 32 - 18, 0.5f);
 				closeButton.Top.Set(TopPadding + 10, 0.5f);
 				closeButton.Width.Set(38, 0);
 				closeButton.Height.Set(38, 0);
@@ -103,7 +104,7 @@ namespace Umbra.Content.GUI
 				Append(closeButton);
 
 				exportButton = new UIImageButton(Assets.GUI.ExportButton);
-				exportButton.Left.Set(LeftPadding + PanelWidth - 32 - 19, 0.5f);
+				exportButton.Left.Set(LeftPadding + PanelWidth - 32 - 18, 0.5f);
 				exportButton.Top.Set(TopPadding + 56, 0.5f);
 				exportButton.Width.Set(38, 0);
 				exportButton.Height.Set(38, 0);
@@ -116,7 +117,7 @@ namespace Umbra.Content.GUI
 				Append(exportButton);
 
 				editButton = new UIImageButton(Assets.GUI.ExportButton);
-				editButton.Left.Set(LeftPadding + PanelWidth - 32 - 19, 0.5f);
+				editButton.Left.Set(LeftPadding + PanelWidth - 32 - 18, 0.5f);
 				editButton.Top.Set(TopPadding + 102, 0.5f);
 				editButton.Width.Set(38, 0);
 				editButton.Height.Set(38, 0);
@@ -224,9 +225,6 @@ namespace Umbra.Content.GUI
 
 		private UIElement Panel => Parent;
 
-		private static TreePlayer TreePlayer => Main.LocalPlayer.GetModPlayer<TreePlayer>();
-		private static TreeSystem TreeSystem => ModContent.GetInstance<TreeSystem>();
-
 		public override void Draw(SpriteBatch spriteBatch)
 		{
 			Rectangle oldRect = spriteBatch.GraphicsDevice.ScissorRectangle;
@@ -315,6 +313,30 @@ namespace Umbra.Content.GUI
 
 			spriteBatch.GraphicsDevice.ScissorRectangle = oldRect;
 			spriteBatch.GraphicsDevice.RasterizerState.ScissorTestEnable = false;
+
+			var frame = Parent.GetDimensions().ToRectangle();
+			frame.Inflate(4, 4);
+			DrawFrame(spriteBatch, frame);
+		}
+
+		public void DrawFrame(SpriteBatch spriteBatch, Rectangle target)
+		{
+			Texture2D tex = Assets.GUI.Frame.Value;
+
+			var color = Color.White;
+
+			var sourceCorner = new Rectangle(0, 4, 12, 12);
+			var sourceEdge = new Rectangle(12, 4, 8, 12);
+
+			spriteBatch.Draw(tex, new Rectangle(target.X + 10, target.Y, target.Width - 32, 6), new Rectangle(10, 6, 2, 6), color, 0, Vector2.Zero, 0, 0);
+			spriteBatch.Draw(tex, new Rectangle(target.X, target.Y + 10, 6, target.Height - 24), new Rectangle(0, 16, 6, 2), color, 0, Vector2.Zero, 0, 0);
+			spriteBatch.Draw(tex, new Rectangle(target.X + 32, target.Y + target.Height - 6, target.Width - 42, 6), new Rectangle(42, tex.Height - 12, 2, 6), color, 0, Vector2.Zero, 0, 0);
+			spriteBatch.Draw(tex, new Rectangle(target.X + target.Width - 6, target.Y + 10, 6, target.Height - 20), new Rectangle(tex.Width - 6, 16, 6, 2), color, 0, Vector2.Zero, 0, 0);
+
+			spriteBatch.Draw(tex, new Rectangle(target.X, target.Y, 10, 10), new Rectangle(0, 6, 10, 10), color, 0, Vector2.Zero, 0, 0);
+			spriteBatch.Draw(tex, new Rectangle(target.X + target.Width - 32, target.Y - 6, 32, 20), new Rectangle(tex.Width - 32, 0, 32, 20), color, 0, Vector2.Zero, 0, 0);
+			spriteBatch.Draw(tex, new Rectangle(target.X + target.Width - 10, target.Y + target.Height - 10, 10, 10), new Rectangle(tex.Width - 10, tex.Height - 16, 10, 10), color, 0, Vector2.Zero, 0, 0);
+			spriteBatch.Draw(tex, new Rectangle(target.X, target.Y + target.Height - 14, 32, 20), new Rectangle(0, tex.Height - 20, 32, 20), color, 0, Vector2.Zero, 0, 0);
 		}
 
 		public override void SafeUpdate(GameTime gameTime)
