@@ -2,7 +2,7 @@
 using Terraria.Audio;
 using Terraria.ID;
 using Umbra.Content.GUI;
-using Umbra.Core.TreeSystem;
+using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Items
 {

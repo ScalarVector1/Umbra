@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Umbra.Core.TreeSystem;
+using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives.Large
 {
@@ -22,7 +22,7 @@ namespace Umbra.Content.Passives.Large
 		public int maxPenalty;
 		public int tickTimer;
 
-		public bool Active => ModContent.GetInstance<TreeSystem>().tree.Nodes.Any(n => n is Heartbreakers && n.active);
+		public bool Active => TreeSystem.tree.AnyActive<Heartbreakers>();
 
 		public override void ModifyMaxStats(out StatModifier health, out StatModifier mana)
 		{

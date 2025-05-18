@@ -282,9 +282,11 @@ Passives: {
 
 	BadMedicine: {
 		Name: Bad Medicine
-		Tooltip: '''Consuming healing items inflicts doomed for [c/AAAAFF:5] seconds
-		doomed is a debuff which causes players to take 50% more damage
-		'''
+		Tooltip:
+			'''
+			Consuming healing items inflicts doomed for [c/AAAAFF:5] seconds
+			doomed is a debuff which causes players to take 50% more damage
+			'''
 	}
 
 	Heartbreakers: {
@@ -329,9 +331,12 @@ Passives: {
 
 	TwistOfFate: {
 		Name: Twist of Fate
-		Tooltip: '''Negates or disables most of the positive effects of doom.
-		
-		[c/FF4444:WARNING]: [c/FFAAAA:This has no positive effects!]'''
+		Tooltip:
+			'''
+			Negates or disables most of the positive effects of doom.
+
+			[c/FF4444:WARNING]: [c/FFAAAA:This has no positive effects!]
+			'''
 	}
 
 	VampiricHorde: {

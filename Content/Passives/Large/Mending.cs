@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Umbra.Core.TreeSystem;
+using Umbra.Core;
+using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives.Large
 {
@@ -18,7 +19,7 @@ namespace Umbra.Content.Passives.Large
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			npc.GetGlobalNPC<TreeNPC>().increasedRegen += 0.5f;
+			npc.GetGlobalNPC<RegenerationNPC>().increasedRegen += 0.5f;
 		}
 	}
 }

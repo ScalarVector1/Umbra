@@ -6,7 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
-using Umbra.Core.TreeSystem;
+using Umbra.Core;
+using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives.Large
 {
@@ -27,7 +28,7 @@ namespace Umbra.Content.Passives.Large
 		public override void BuffPlayer(Player player)
 		{
 			if (Main.npc.Any(n => n.active && Vector2.Distance(n.Center, player.Center) < 160))
-				player.GetModPlayer<TreePlayer>().increasedRegen -= 0.25f;
+				player.GetModPlayer<RegenerationPlayer>().increasedRegen -= 0.25f;
 		}
 	}
 

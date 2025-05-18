@@ -7,11 +7,11 @@ using Terraria.ModLoader.IO;
 using Umbra.Content.GUI;
 using Umbra.Core.Loaders.UILoading;
 
-namespace Umbra.Core.TreeSystem
+namespace Umbra.Core.PassiveTreeSystem
 {
 	internal class TreeSystem : ModSystem
 	{
-		public PassiveTree tree;
+		public static PassiveTree tree;
 
 		public override void Load()
 		{
@@ -33,23 +33,21 @@ namespace Umbra.Core.TreeSystem
 
 		public override void SaveWorldData(TagCompound tag)
 		{
-			tag["activeIDs"] = tree.GetActiveIDs();
+			tree.Save(tag);
 		}
 
 		public override void LoadWorldData(TagCompound tag)
 		{
-			var activeIDs = (List<int>)tag.GetList<int>("activeIDs");
-			tree.ApplyActiveIDs(activeIDs);
+			tree.Load(tag);
 
 			UILoader.GetUIState<Tree>().Refresh();
 		}
 
 		public override void PreUpdateEntities()
 		{
-			foreach (Passive passive in tree.Nodes)
+			foreach (Passive passive in tree.activeNodes)
 			{
-				if (passive.active)
-					passive.Update();
+				passive.Update();
 			}
 		}
 

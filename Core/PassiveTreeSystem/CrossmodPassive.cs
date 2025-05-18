@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Umbra.Core.TreeSystem
+namespace Umbra.Core.PassiveTreeSystem
 {
 	public abstract class CrossmodPassive : Passive
 	{

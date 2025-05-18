@@ -3,12 +3,8 @@ using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Umbra.Core.TreeSystem
+namespace Umbra.Core.PassiveTreeSystem
 {
-	internal class TreeLoader
-	{
-	}
-
 	internal class PassiveConverter : JsonConverter<Passive>
 	{
 		public override Passive Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)

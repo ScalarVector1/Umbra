@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Umbra.Core.TreeSystem;
+using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives.Large
 {
@@ -20,7 +20,7 @@ namespace Umbra.Content.Passives.Large
 
 		public override void Update()
 		{
-			TreeNPCGlobals.spawnRateModifier += 0.01f * (ModContent.GetInstance<TreeSystem>().tree.difficulty / 5);
+			TreeNPCGlobals.spawnRateModifier += 0.01f * (TreeSystem.tree.difficulty / 5);
 		}
 	}
 }

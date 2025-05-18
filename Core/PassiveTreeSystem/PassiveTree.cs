@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Terraria.ModLoader.IO;
 
-namespace Umbra.Core.TreeSystem
+namespace Umbra.Core.PassiveTreeSystem
 {
 	internal class PassiveEdge
 	{
@@ -19,6 +20,9 @@ namespace Umbra.Core.TreeSystem
 	{
 		public Dictionary<int, Passive> nodesById;
 		public Dictionary<(int, int), Passive> nodesByLocation;
+
+		public List<Passive> activeNodes;
+		public Dictionary<Type, int> activeCounts;
 
 		public int difficulty;
 
@@ -86,8 +90,8 @@ namespace Umbra.Core.TreeSystem
 			if (!nodesById.TryGetValue(0, out Passive startNode) || !startNode.active)
 				return;
 
-			HashSet<int> enqueued = new(); // Track which nodes we've queued
-			HashSet<(int, int)> addedEdges = new(); // Track which directed flows we’ve added
+			HashSet<int> enqueued = []; // Track which nodes we've queued
+			HashSet<(int, int)> addedEdges = []; // Track which directed flows we’ve added
 
 			Queue<Passive> queue = new();
 			queue.Enqueue(startNode);
@@ -97,7 +101,7 @@ namespace Umbra.Core.TreeSystem
 			{
 				Passive current = queue.Dequeue();
 
-				foreach (var neighbor in current.connections)
+				foreach (Passive neighbor in current.connections)
 				{
 					if (!neighbor.active)
 						continue;
@@ -117,6 +121,27 @@ namespace Umbra.Core.TreeSystem
 						queue.Enqueue(neighbor);
 						enqueued.Add(to);
 					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Generates the correct active list and active count dict. Called on load or for disaster recovery.
+		/// </summary>
+		public void GenerateActiveCollections()
+		{
+			activeNodes = [];
+			activeCounts = [];
+
+			foreach (Passive node in Nodes)
+			{
+				if (!activeCounts.ContainsKey(node.GetType()))
+					activeCounts.Add(node.GetType(), 0);
+
+				if (node.active)
+				{
+					activeNodes.Add(node);
+					activeCounts[node.GetType()] += 1;
 				}
 			}
 		}
@@ -160,6 +185,56 @@ namespace Umbra.Core.TreeSystem
 				RegenrateConnections();
 				RegenerateFlows();
 			}
+		}
+
+		/// <summary>
+		/// Allocates a node on the tree
+		/// </summary>
+		/// <param name="id">The ID of the node to allocate</param>
+		public void Allocate(int id)
+		{
+			Passive node = nodesById[id];
+
+			node.active = true;
+			activeNodes.Add(node);
+
+			if (activeCounts.ContainsKey(node.GetType()))
+			{
+				activeCounts[node.GetType()] += 1;
+			}
+			else
+			{
+				Main.NewText("Active node tracker bad! Recovering...", Color.Red);
+				GenerateActiveCollections();
+			}
+
+			CalcDifficulty();
+			RegenerateFlows();
+		}
+
+		/// <summary>
+		/// Deallocates a node on the tree
+		/// </summary>
+		/// <param name="id">The ID of the node to deallocate</param>
+		public void Deallocate(int id)
+		{
+			Passive node = nodesById[id];
+
+			node.active = false;
+			activeNodes.Remove(node);
+
+			if (activeCounts.ContainsKey(node.GetType()))
+			{
+				activeCounts[node.GetType()] -= 1;
+			}
+			else
+			{
+				Main.NewText("Active node tracker bad! Recovering...", Color.Red);
+				GenerateActiveCollections();
+			}
+
+			CalcDifficulty();
+			RegenerateFlows();
 		}
 
 		/// <summary>
@@ -210,14 +285,36 @@ namespace Umbra.Core.TreeSystem
 		}
 
 		/// <summary>
-		/// Applies a list of IDs to be activated, sued to deserialize the tree state. Should only
-		/// be called after GenerateDicts has run.
+		/// Gets the active count in this tree for a given passive type
 		/// </summary>
-		/// <param name="toActivate"></param>
-		public void ApplyActiveIDs(List<int> toActivate)
+		/// <typeparam name="T"></typeparam>
+		/// <returns></returns>
+		public int GetActiveCount<T>() where T : Passive
+		{
+			return activeCounts[typeof(T)];
+		}
+
+		/// <summary>
+		/// Shorthand to check if there are any passives of the specific type active
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <returns></returns>
+		public bool AnyActive<T>() where T : Passive
+		{
+			return GetActiveCount<T>() > 0;
+		}
+
+		public void Save(TagCompound tag)
+		{
+			tag["activeIDs"] = GetActiveIDs();
+		}
+
+		public void Load(TagCompound tag)
 		{
 			if (nodesById is null)
 				throw new Exception("ApplyActiveIDs was called before GenerateDicts. Please make sure not to run this before GenerateDicts is called!");
+
+			IList<int> toActivate = tag.GetList<int>("activeIDs");
 
 			foreach (Passive node in Nodes)
 			{
@@ -230,6 +327,7 @@ namespace Umbra.Core.TreeSystem
 					node.active = true;
 			}
 
+			GenerateActiveCollections();
 			CalcDifficulty();
 			RegenerateFlows();
 		}

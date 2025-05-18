@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Umbra.Core.TreeSystem;
+using Umbra.Core.PassiveTreeSystem;
 using StarlightRiver.Core.Systems.BarrierSystem;
 
 namespace Umbra.Content.Passives.Crossmod.StarlightRiverPassives

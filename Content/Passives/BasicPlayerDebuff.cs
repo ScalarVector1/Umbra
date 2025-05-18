@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Umbra.Core;
-using Umbra.Core.TreeSystem;
+using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives
 {
@@ -19,7 +19,7 @@ namespace Umbra.Content.Passives
 
 		public override void BuffPlayer(Player player)
 		{
-			player.GetModPlayer<TreePlayer>().increasedRegen -= 0.05f;
+			player.GetModPlayer<RegenerationPlayer>().increasedRegen -= 0.05f;
 		}
 	}
 

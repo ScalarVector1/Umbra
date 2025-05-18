@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
 using Umbra.Core.Loaders.UILoading;
-using Umbra.Core.TreeSystem;
+using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.GUI
 {

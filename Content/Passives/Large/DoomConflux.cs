@@ -6,7 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria.ID;
-using Umbra.Core.TreeSystem;
+using Umbra.Core;
+using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives.Large
 {
@@ -21,7 +22,7 @@ namespace Umbra.Content.Passives.Large
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			npc.GetGlobalNPC<TreeNPC>().AddStatusChance(ModContent.BuffType<Doomed>(), 0.01f * (ModContent.GetInstance<TreeSystem>().tree.difficulty / 10));
+			npc.GetGlobalNPC<StatusChanceNPC>().AddStatusChance(ModContent.BuffType<Doomed>(), 0.01f * (TreeSystem.tree.difficulty / 10));
 		}
 	}
 

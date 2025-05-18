@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria.ID;
 using Umbra.Core;
-using Umbra.Core.TreeSystem;
+using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives.Large
 {
@@ -26,7 +26,7 @@ namespace Umbra.Content.Passives.Large
 
 	internal class ManaFluxPlayer : ModPlayer
 	{
-		public static bool Active => ModContent.GetInstance<TreeSystem>().tree.Nodes.Any(n => n is ManaFlux && n.active);
+		public static bool Active => TreeSystem.tree.AnyActive<ManaFlux>();
 
 		public override void PostUpdate()
 		{		

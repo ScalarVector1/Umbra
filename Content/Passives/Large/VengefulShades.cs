@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria.ID;
 using Umbra.Content.Items;
-using Umbra.Core.TreeSystem;
+using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives.Large
 {
@@ -40,7 +40,7 @@ namespace Umbra.Content.Passives.Large
 				NPC.NewNPC(npc.GetSource_FromThis(), (int)npc.Center.X, (int)npc.Center.Y, NPCID.Wraith);
 			}
 
-			if (npc.type == NPCID.Wraith && ModContent.GetInstance<TreeSystem>().tree.Nodes.Any(n => n.active && n is VengefulShades))
+			if (npc.type == NPCID.Wraith && TreeSystem.tree.Nodes.Any(n => n.active && n is VengefulShades))
 			{
 				Item.NewItem(npc.GetSource_Death(), npc.Hitbox, ModContent.ItemType<UmbraPickup>());
 			}

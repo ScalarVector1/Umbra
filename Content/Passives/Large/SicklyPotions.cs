@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Umbra.Core.TreeSystem;
+using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives.Large
 {
@@ -24,7 +24,7 @@ namespace Umbra.Content.Passives.Large
 		public int healingToDeliver;
 		public int tickTimer;
 
-		public bool Active => ModContent.GetInstance<TreeSystem>().tree.Nodes.Any(n => n is SicklyPotions && n.active);
+		public bool Active => TreeSystem.tree.AnyActive<SicklyPotions>();
 
 		public override void Load()
 		{

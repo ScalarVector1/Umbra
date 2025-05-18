@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria.GameContent.Bestiary;
 using Terraria.ID;
-using Umbra.Core.TreeSystem;
+using Umbra.Core;
+using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives
 {
@@ -51,7 +52,7 @@ namespace Umbra.Content.Passives
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			npc.GetGlobalNPC<TreeNPC>().AddStatusChance(BuffID.Poisoned, 0.1f);
+			npc.GetGlobalNPC<StatusChanceNPC>().AddStatusChance(BuffID.Poisoned, 0.1f);
 		}
 	}
 
@@ -65,7 +66,7 @@ namespace Umbra.Content.Passives
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			npc.GetGlobalNPC<TreeNPC>().AddStatusChance(BuffID.Venom, 0.02f);
+			npc.GetGlobalNPC<StatusChanceNPC>().AddStatusChance(BuffID.Venom, 0.02f);
 		}
 	}
 
@@ -81,8 +82,8 @@ namespace Umbra.Content.Passives
 		{
 			if (npc.boss)
 			{
-				npc.GetGlobalNPC<TreeNPC>().increasedDamage += 0.01f * (ModContent.GetInstance<TreeSystem>().tree.difficulty / 20);
-				npc.GetGlobalNPC<TreeNPC>().flatLife += ModContent.GetInstance<TreeSystem>().tree.difficulty / 10;
+				npc.GetGlobalNPC<TreeNPC>().increasedDamage += 0.01f * (TreeSystem.tree.difficulty / 20);
+				npc.GetGlobalNPC<TreeNPC>().flatLife += TreeSystem.tree.difficulty / 10;
 			}
 		}
 	}

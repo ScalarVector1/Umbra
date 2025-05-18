@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 using Terraria.Localization;
 using Umbra.Content.Passives;
 
-namespace Umbra.Core.TreeSystem
+namespace Umbra.Core.PassiveTreeSystem
 {
 	public abstract class Passive
 	{
@@ -49,7 +49,7 @@ namespace Umbra.Core.TreeSystem
 			SetDefaults();
 		}
 
-		public virtual void SetDefaults() 
+		public virtual void SetDefaults()
 		{
 			difficulty = 1;
 			texture = Assets.GUI.PassiveFrameTiny;
@@ -59,7 +59,7 @@ namespace Umbra.Core.TreeSystem
 		/// If this passive can ever be active given the current game state.
 		/// </summary>
 		/// <returns></returns>
-		public virtual bool CanBeActive() 
+		public virtual bool CanBeActive()
 		{
 			return true;
 		}
@@ -94,7 +94,7 @@ namespace Umbra.Core.TreeSystem
 		/// <param name="all"></param>
 		public void Connect(int otherID)
 		{
-			ModContent.GetInstance<TreeSystem>().tree.Connect(ID, otherID);
+			TreeSystem.tree.Connect(ID, otherID);
 		}
 
 		/// <summary>
@@ -103,16 +103,10 @@ namespace Umbra.Core.TreeSystem
 		/// <returns></returns>
 		public virtual bool CanAllocate(Player player)
 		{
-			TreeSystem TreeSystem = ModContent.GetInstance<TreeSystem>();
-			PassiveTree tree = TreeSystem.tree;
-
 			return
 				!active &&
 				player.GetModPlayer<TreePlayer>().UmbraPoints >= Cost &&
 				connections.Any(n => n.active);
-				
-				// For directed version
-				//(tree.Edges.Any(n => tree.nodesById[n.Start].active && n.End == ID) || !tree.Edges.Any(n => n.End == ID));
 		}
 
 		/// <summary>
@@ -124,8 +118,8 @@ namespace Umbra.Core.TreeSystem
 			player.GetModPlayer<TreePlayer>().UmbraPoints -= Cost;
 			active = true;
 
-			ModContent.GetInstance<TreeSystem>().tree.CalcDifficulty();
-			ModContent.GetInstance<TreeSystem>().tree.RegenerateFlows();
+			TreeSystem.tree.CalcDifficulty();
+			TreeSystem.tree.RegenerateFlows();
 		}
 
 		/// <summary>
@@ -150,19 +144,14 @@ namespace Umbra.Core.TreeSystem
 		/// <returns></returns>
 		public virtual bool CanDeallocate(Player player)
 		{
-			TreeSystem TreeSystem = ModContent.GetInstance<TreeSystem>();
-			PassiveTree tree = TreeSystem.tree;
-
 			return
 				active &&
 				!connections.Any(n => n.active && !n.HasPathToStartWithout(this));
-				// For directed version
-				//!tree.Edges.Any(n => tree.nodesById[n.End].active && n.Start == ID && !tree.Edges.Any(a => a != n && a.End == n.End && tree.nodesById[a.Start].active));
 		}
 
 		public bool HasPathToStartWithout(Passive excluded)
 		{
-			HashSet<Passive> visited = new();
+			HashSet<Passive> visited = [];
 			return HasPathToStartWithoutInternal(this, excluded, visited);
 		}
 
@@ -176,7 +165,7 @@ namespace Umbra.Core.TreeSystem
 
 			visited.Add(current);
 
-			foreach (var connection in current.connections)
+			foreach (Passive connection in current.connections)
 			{
 				if (HasPathToStartWithoutInternal(connection, excluded, visited))
 					return true;
@@ -195,8 +184,8 @@ namespace Umbra.Core.TreeSystem
 			player.GetModPlayer<TreePlayer>().UmbraPoints += refundAmount;
 			active = false;
 
-			ModContent.GetInstance<TreeSystem>().tree.CalcDifficulty();
-			ModContent.GetInstance<TreeSystem>().tree.RegenerateFlows();
+			TreeSystem.tree.CalcDifficulty();
+			TreeSystem.tree.RegenerateFlows();
 		}
 
 		/// <summary>
@@ -218,7 +207,7 @@ namespace Umbra.Core.TreeSystem
 		public Passive Clone()
 		{
 			var clone = MemberwiseClone() as Passive;
-			clone.connections = new();
+			clone.connections = [];
 			return clone;
 		}
 	}

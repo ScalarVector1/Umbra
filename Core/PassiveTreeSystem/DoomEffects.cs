@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Umbra.Content.Passives.Large;
 
-namespace Umbra.Core.TreeSystem
+namespace Umbra.Core.PassiveTreeSystem
 {
 	internal class DoomEffectsSystem : ModSystem
 	{
-		public static bool Inverted => ModContent.GetInstance<TreeSystem>().tree.Nodes.Any(n => n is TwistOfFate && n.active);
+		public static bool Inverted => TreeSystem.tree.AnyActive<TwistOfFate>();
 
-		public static int Doom => ModContent.GetInstance<TreeSystem>().tree.difficulty;
+		public static int Doom => TreeSystem.tree.difficulty;
 
 		public static float DoomValueMult => 1.7f * MathF.Log(0.01f * Doom + 1);
 		public static float DoubleLootChance => 0.1f * MathF.Atan(Doom * 0.001f);

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Umbra.Core;
-using Umbra.Core.TreeSystem;
+using Umbra.Core.PassiveTreeSystem;
 using static AssGen.Assets;
 
 namespace Umbra.Content.Passives.Large

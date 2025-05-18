@@ -8,7 +8,7 @@ using Terraria.UI;
 using Umbra.Content.GUI.FieldEditors;
 using Umbra.Core;
 using Umbra.Core.Loaders.UILoading;
-using Umbra.Core.TreeSystem;
+using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.GUI
 {
@@ -549,7 +549,7 @@ namespace Umbra.Content.GUI
 			{
 				if (Main.keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftShift) && Tree.selected != null)
 				{
-					ModContent.GetInstance<TreeSystem>().tree.Connect(Tree.selected.ID, passive.ID);
+					TreeSystem.tree.Connect(Tree.selected.ID, passive.ID);
 					return;
 				}
 
@@ -576,14 +576,14 @@ namespace Umbra.Content.GUI
 			{
 				if (Main.keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftShift) && Tree.selected != null)
 				{
-					ModContent.GetInstance<TreeSystem>().tree.Disconnect(Tree.selected.ID, passive.ID);
+					TreeSystem.tree.Disconnect(Tree.selected.ID, passive.ID);
 					return;
 				}
 
 				if (Tree.selected == passive)
 					Tree.selected = null;
 
-				ModContent.GetInstance<TreeSystem>().tree.Remove(passive.ID);
+				TreeSystem.tree.Remove(passive.ID);
 				UILoader.GetUIState<Tree>().Refresh();
 				return;
 			}
@@ -691,14 +691,14 @@ namespace Umbra.Content.GUI
 				int cost = Tree.selected.Cost;
 				var connections = Tree.selected.connections;
 
-				ModContent.GetInstance<TreeSystem>().tree.Nodes.Remove(Tree.selected);
+				TreeSystem.tree.Nodes.Remove(Tree.selected);
 				Tree.selected = passive.Clone();
 				Tree.selected.ID = id;
 				Tree.selected.X = x;
 				Tree.selected.Y = y;
 				Tree.selected.Cost = cost;
 				Tree.selected.connections = connections;
-				ModContent.GetInstance<TreeSystem>().tree.Nodes.Add(Tree.selected);
+				TreeSystem.tree.Nodes.Add(Tree.selected);
 
 				UILoader.GetUIState<Tree>().Refresh();
 			}

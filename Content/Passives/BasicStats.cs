@@ -6,7 +6,8 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Terraria.ID;
-using Umbra.Core.TreeSystem;
+using Umbra.Core;
+using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives
 {
@@ -48,7 +49,7 @@ namespace Umbra.Content.Passives
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			npc.GetGlobalNPC<TreeNPC>().AddStatusChance(BuffID.Bleeding, 0.05f);
+			npc.GetGlobalNPC<StatusChanceNPC>().AddStatusChance(BuffID.Bleeding, 0.05f);
 		}
 	}
 
@@ -62,7 +63,7 @@ namespace Umbra.Content.Passives
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			npc.GetGlobalNPC<TreeNPC>().AddStatusChance(BuffID.Poisoned, 0.05f);
+			npc.GetGlobalNPC<StatusChanceNPC>().AddStatusChance(BuffID.Poisoned, 0.05f);
 		}
 	}
 
@@ -101,7 +102,7 @@ namespace Umbra.Content.Passives
 		}
 		public override void OnEnemySpawn(NPC npc)
 		{
-			npc.GetGlobalNPC<TreeNPC>().flatRegen += 4;
+			npc.GetGlobalNPC<RegenerationNPC>().flatRegen += 4;
 		}
 	}
 
@@ -158,7 +159,7 @@ namespace Umbra.Content.Passives
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			npc.GetGlobalNPC<TreeNPC>().flatDodge += 0.02f;
+			npc.GetGlobalNPC<DodgeNPC>().flatDodge += 0.02f;
 		}
 	}
 
@@ -190,8 +191,8 @@ namespace Umbra.Content.Passives
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			npc.GetGlobalNPC<TreeNPC>().increasedDamage += 0.01f * (ModContent.GetInstance<TreeSystem>().tree.difficulty / 30);
-			npc.GetGlobalNPC<TreeNPC>().flatLife += ModContent.GetInstance<TreeSystem>().tree.difficulty / 20;
+			npc.GetGlobalNPC<TreeNPC>().increasedDamage += 0.01f * (TreeSystem.tree.difficulty / 30);
+			npc.GetGlobalNPC<TreeNPC>().flatLife += TreeSystem.tree.difficulty / 20;
 		}
 	}
 

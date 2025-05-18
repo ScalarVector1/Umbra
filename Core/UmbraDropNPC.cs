@@ -7,7 +7,7 @@ using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Umbra.Content.Items;
-using Umbra.Core.TreeSystem;
+using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Core
 {
@@ -17,7 +17,7 @@ namespace Umbra.Core
 
 		public override bool InstancePerEntity => true;
 
-		public static float UmbraChance => 0.02f + 0.1f * MathF.Atan(ModContent.GetInstance<TreeSystem.TreeSystem>().tree.difficulty * 0.001f);
+		public static float UmbraChance => 0.02f + 0.1f * MathF.Atan(PassiveTreeSystem.TreeSystem.tree.difficulty * 0.001f);
 
 		public override void OnSpawn(NPC npc, IEntitySource source)
 		{

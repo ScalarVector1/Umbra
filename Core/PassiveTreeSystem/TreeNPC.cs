@@ -8,7 +8,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.WorldBuilding;
 
-namespace Umbra.Core.TreeSystem
+namespace Umbra.Core.PassiveTreeSystem
 {
 	internal class TreeNPCGlobals : ModSystem
 	{
@@ -28,9 +28,6 @@ namespace Umbra.Core.TreeSystem
 		public float increasedLife;
 		public List<float> moreLife = [];
 
-		public int flatRegen;
-		public float increasedRegen;
-
 		public int flatDamage;
 		public float increasedDamage;
 		public List<float> moreDamage = [];
@@ -39,31 +36,13 @@ namespace Umbra.Core.TreeSystem
 		public float increasedDefense;
 		public List<float> moreDefense = [];
 
-		public float flatDodge;
-		public float increasedDodge;
-		public List<float> moreDodge = [];
-		public float dodgeRoll;
-
 		public float endurance;
-
-		public Dictionary<int, float> statusChances = [];
-		public int statusDuration = 300;
-
-
 
 		public override bool InstancePerEntity => true;
 
 		public override bool AppliesToEntity(NPC entity, bool lateInstantiation)
 		{
 			return !entity.friendly && entity.lifeMax > 5 && !NPCID.Sets.CountsAsCritter[entity.type] && entity.damage > 0;
-		}
-
-		public void AddStatusChance(int type, float chance)
-		{
-			if (statusChances.ContainsKey(type))
-				statusChances[type] += chance;
-			else
-				statusChances.Add(type, chance);
 		}
 
 		public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
@@ -81,18 +60,15 @@ namespace Umbra.Core.TreeSystem
 
 		public override void SetDefaults(NPC npc)
 		{
-			foreach (Passive passive in ModContent.GetInstance<TreeSystem>().tree.Nodes)
+			foreach (Passive passive in TreeSystem.tree.activeNodes)
 			{
-				if (passive.active)
-					passive.OnEnemySpawn(npc);
+				passive.OnEnemySpawn(npc);
 			}
 
 			if (!Main.expertMode)
 			{
 				ApplyStats(npc);
 			}
-
-			dodgeRoll = Main.rand.NextFloat();
 		}
 
 		public override void SetDefaultsFromNetId(NPC npc)
@@ -145,55 +121,9 @@ namespace Umbra.Core.TreeSystem
 			}
 		}
 
-		public override void UpdateLifeRegen(NPC npc, ref int damage)
-		{
-			npc.lifeRegen += flatRegen;
-			npc.lifeRegen += (int)(npc.lifeRegen * increasedRegen);
-		}
-
-		public override void OnHitPlayer(NPC npc, Player target, Player.HurtInfo hurtInfo)
-		{
-			foreach (KeyValuePair<int, float> pair in statusChances)
-			{
-				if (Main.rand.NextFloat() < pair.Value)
-					target.AddBuff(pair.Key, statusDuration);
-			}
-		}
-
 		public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
 		{
-			float dodge = flatDodge;
-			dodge += dodge * increasedDodge;
-			foreach(float more in moreDodge)
-			{
-				dodge += dodge * more;
-			}
-
-			if (dodgeRoll <= dodge)
-			{
-				modifiers.FinalDamage *= 0;
-				modifiers._combatTextHidden = true;
-			}
-
 			modifiers.FinalDamage *= 1f - endurance;
-		}
-
-		public override void HitEffect(NPC npc, NPC.HitInfo hit)
-		{
-			float dodge = flatDodge;
-			dodge += dodge * increasedDodge;
-			foreach (float more in moreDodge)
-			{
-				dodge += dodge * more;
-			}
-
-			if (dodgeRoll <= dodge)
-			{
-				CombatText.NewText(npc.Hitbox, Color.PaleGreen, "Dodge!");
-				npc.life += 1;
-			}
-
-			dodgeRoll = Main.rand.NextFloat();
 		}
 	}
 }

@@ -43,7 +43,7 @@ namespace Umbra.Core
 			}
 			else
 			{
-				if(self._data.TryGetHeaderData<TreeSystem.TreeSystem>(out var tag))
+				if(self._data.TryGetHeaderData<PassiveTreeSystem.TreeSystem>(out var tag))
 				{
 					difficulties.Add(path, tag.GetInt("lastDifficulty"));
 					return;

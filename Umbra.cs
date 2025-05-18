@@ -4,7 +4,7 @@ global using System;
 global using Terraria;
 global using Terraria.ModLoader;
 using Umbra.Content.GUI;
-using Umbra.Core.TreeSystem;
+using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra
 {

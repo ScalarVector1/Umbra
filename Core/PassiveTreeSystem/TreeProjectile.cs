@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Terraria.DataStructures;
 
-namespace Umbra.Core.TreeSystem
+namespace Umbra.Core.PassiveTreeSystem
 {
 	internal class TreeProjectile : GlobalProjectile
 	{
@@ -20,18 +20,6 @@ namespace Umbra.Core.TreeSystem
 				foreach (float more in spawner.moreDamage)
 				{
 					projectile.damage += (int)(projectile.damage * more);
-				}
-			}
-		}
-
-		public override void OnHitPlayer(Projectile projectile, Player target, Player.HurtInfo info)
-		{
-			if (spawner != null)
-			{
-				foreach (KeyValuePair<int, float> pair in spawner.statusChances)
-				{
-					if (Main.rand.NextFloat() < pair.Value)
-						target.AddBuff(pair.Key, spawner.statusDuration);
 				}
 			}
 		}

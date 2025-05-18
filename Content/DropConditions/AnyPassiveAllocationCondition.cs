@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria.GameContent.ItemDropRules;
-using Umbra.Core.TreeSystem;
+using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.DropConditions
 {
@@ -12,7 +12,7 @@ namespace Umbra.Content.DropConditions
 	{
 		public bool CanDrop(DropAttemptInfo info)
 		{
-			return ModContent.GetInstance<TreeSystem>().tree.Nodes.Any(n => n.active && n is T);
+			return TreeSystem.tree.AnyActive<T>();
 		}
 
 		public bool CanShowItemDropInUI()
