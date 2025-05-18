@@ -183,8 +183,22 @@ namespace Umbra.Content.GUI
 			if (doomRect.Contains(Main.MouseScreen.ToPoint()))
 			{
 				Tooltip.SetName($"{TreeSystem.tree.difficulty} Doom");
-				Tooltip.SetTooltip($"Doom is an approximate measure of the influence of the umbral tree on the game's difficulty. Additionally, it provides the following benefits:" +
-					$"\n[c/AAAAFF:{TreeSystem.tree.difficulty * 0.1f}%] increased chungosity");
+				if (DoomEffectsSystem.Inverted)
+				{
+					Tooltip.SetTooltip($"Doom is an approximate measure of the influence of the umbral tree on the game's difficulty. You have elected to take the following penalties by having Twist of Fate allocated:" +
+						$"\n[c/AAAAFF:{Math.Round(DoomEffectsSystem.DoomValueMult, 2)}%] decreased gold dropped" +
+						$"\n[c/AAAAFF:-{Math.Round(DoomEffectsSystem.LuckBonus, 2)}] luck" +
+						$"These benefits remain:" +
+						$"\n[c/AAAAFF:+{Math.Round(100 * (UmbraDropNPC.UmbraChance - 0.02f), 2)}%] chance to drop an umbra point");
+				}
+				else
+				{
+					Tooltip.SetTooltip($"Doom is an approximate measure of the influence of the umbral tree on the game's difficulty. Additionally, it provides the following benefits:" +
+						$"\n[c/AAAAFF:{Math.Round(DoomEffectsSystem.DoomValueMult, 2)}%] increased gold dropped" +
+						$"\n[c/AAAAFF:+{Math.Round(DoomEffectsSystem.LuckBonus, 2)}] luck" +
+						$"\n[c/AAAAFF:{Math.Round(DoomEffectsSystem.DoubleLootChance, 2)}%] chance for enemies to drop double loot" +
+						$"\n[c/AAAAFF:+{Math.Round(100 * (UmbraDropNPC.UmbraChance - 0.02f), 2)}%] chance to drop an umbra point");
+				}
 			}
 
 			if (editing)

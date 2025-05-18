@@ -1,0 +1,43 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Umbra.Content.Passives.Large;
+using Umbra.Core.TreeSystem;
+
+namespace Umbra.Content.Passives
+{
+	internal class PiercePenalty : Passive
+	{
+		public override void SetDefaults()
+		{
+			texture = Assets.Passives.PiercePenalty;
+			difficulty = 6;
+		}
+
+		public override void Update()
+		{
+			PiercePenaltySystem.penalty += 1;
+		}
+	}
+
+	public class PiercePenaltySystem : ModSystem
+	{
+		public static int penalty;
+
+		public override void PostUpdateEverything()
+		{
+			penalty = 0;
+		}
+	}
+
+	public class PiercePenaltyProjectile : GlobalProjectile
+	{
+		public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
+		{
+			if (projectile.penetrate > 0)
+				projectile.penetrate -= PiercePenaltySystem.penalty;
+		}	
+	}
+}

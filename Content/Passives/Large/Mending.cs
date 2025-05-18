@@ -3,25 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Terraria;
-using Umbra.Core;
 using Umbra.Core.TreeSystem;
-using static AssGen.Assets;
 
 namespace Umbra.Content.Passives.Large
 {
-	internal class ManaTithe : Passive
+	internal class Mending : Passive
 	{
 		public override void SetDefaults()
 		{
-			texture = Assets.Passives.ManaTithe;
-			difficulty = 50;
+			texture = Assets.Passives.Mending;
+			difficulty = 25;
 			size = 1;
 		}
 
-		public override void Update()
+		public override void OnEnemySpawn(NPC npc)
 		{
-			FlatManaCostSystem.flatCostToAdd += 4;
+			npc.GetGlobalNPC<TreeNPC>().increasedRegen += 0.5f;
 		}
 	}
 }
