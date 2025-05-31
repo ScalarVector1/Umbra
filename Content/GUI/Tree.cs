@@ -1,9 +1,9 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader.UI.Elements;
 using Terraria.UI;
 using Umbra.Content.GUI.FieldEditors;
@@ -166,12 +166,12 @@ namespace Umbra.Content.GUI
 
 			spriteBatch.Draw(tex, umbraBasePos, null, Color.White, 0, tex.Size() / 2f, 1, 0, 0);
 			Utils.DrawBorderStringBig(spriteBatch, $"{mp.UmbraPoints}", umbraBasePos, mp.UmbraPoints > 0 ? new Color(210, 160, 255) : Color.Gray, 0.5f, 0.5f, 0.35f);
-			Utils.DrawBorderStringBig(spriteBatch, $"Umbra", umbraBasePos + new Vector2(24, 0), new Color(240, 210, 255), 0.5f, 0f, 0.35f);
+			Utils.DrawBorderStringBig(spriteBatch, Language.GetText("Mods.Umbra.GUI.Tree.Umbra").Value, umbraBasePos + new Vector2(24, 0), new Color(240, 210, 255), 0.5f, 0f, 0.35f);
 
 			if (umbraRect.Contains(Main.MouseScreen.ToPoint()))
 			{
-				Tooltip.SetName($"{mp.UmbraPoints} Umbra Points Remaining");
-				Tooltip.SetTooltip($"Umbra points are used to allocate nodes on the umbra tree. The chance to gain a point of umbra increases with your doom, currently you have a [c/AAAAFF:{Math.Round(100 * UmbraDropNPC.UmbraChance, 2)}%] chance to drop an umbra point on killing an enemy.");
+				Tooltip.SetName(Language.GetText("Mods.Umbra.GUI.Tree.UmbraTooltipTitle").Format(mp.UmbraPoints));
+				Tooltip.SetTooltip(Language.GetText("Mods.Umbra.GUI.Tree.UmbraTooltipDesc").Format(Math.Round(100 * UmbraDropNPC.UmbraChance, 2)));
 			}
 
 			Vector2 doomBasePos = panel.GetDimensions().ToRectangle().TopLeft() + new Vector2(32, 76);
@@ -179,39 +179,34 @@ namespace Umbra.Content.GUI
 
 			spriteBatch.Draw(tex, doomBasePos, null, Color.White, 0, tex.Size() / 2f, 1, 0, 0);
 			Utils.DrawBorderStringBig(spriteBatch, $"{TreeSystem.tree.difficulty}", doomBasePos, new Color(255, 160, 160), 0.5f, 0.5f, 0.35f);
-			Utils.DrawBorderStringBig(spriteBatch, $"Doom", doomBasePos + new Vector2(24, 0), new Color(255, 210, 210), 0.5f, 0f, 0.35f);
+			Utils.DrawBorderStringBig(spriteBatch, Language.GetText("Mods.Umbra.GUI.Tree.Doom").Value, doomBasePos + new Vector2(24, 0), new Color(255, 210, 210), 0.5f, 0f, 0.35f);
 
 			if (doomRect.Contains(Main.MouseScreen.ToPoint()))
 			{
-				Tooltip.SetName($"{TreeSystem.tree.difficulty} Doom");
+				Tooltip.SetName(Language.GetText("Mods.Umbra.GUI.Tree.DoomTooltipTitle").Format(TreeSystem.tree.difficulty));
+
 				if (DoomEffectsSystem.Inverted)
 				{
-					Tooltip.SetTooltip($"Doom is an approximate measure of the influence of the umbral tree on the game's difficulty. You have elected to take the following penalties by having Twist of Fate allocated:" +
-						$"\n\n[c/FFDD88:Gold]: [c/AAAAFF:{Math.Round(DoomEffectsSystem.DoomValueMult * 100, 2)}%] decreased gold dropped" +
-						$"\n[c/99FF99:Luck]: [c/AAAAFF:-{Math.Round(DoomEffectsSystem.LuckBonus, 2)}] luck" +
-						$"\n\nThese benefits remain:" +
-						$"\n[c/DDAAFF:Umbra]: [c/AAAAFF:+{Math.Round(100 * (UmbraDropNPC.UmbraChance - 0.02f), 2)}%] chance to drop umbra");
+					Tooltip.SetTooltip(Language.GetText("Mods.Umbra.GUI.Tree.DoomTooltipDescInverted").Format(
+						Math.Round(DoomEffectsSystem.DoomValueMult * 100, 2),
+						Math.Round(DoomEffectsSystem.LuckBonus, 2),
+						Math.Round(100 * (UmbraDropNPC.UmbraChance - 0.02f), 2)
+					));
 				}
 				else
 				{
-					Tooltip.SetTooltip($"Doom is an approximate measure of the influence of the umbral tree on the game's difficulty. Additionally, it provides the following benefits:" +
-						$"\n\n[c/FFDD88:Gold]: [c/AAAAFF:{Math.Round(DoomEffectsSystem.DoomValueMult * 100, 2)}%] increased gold dropped" +
-						$"\n[c/99FF99:Luck]: [c/AAAAFF:+{Math.Round(DoomEffectsSystem.LuckBonus, 2)}] luck" +
-						$"\n[c/FF9999:Drops]: [c/AAAAFF:{Math.Round(DoomEffectsSystem.DoubleLootChance * 100, 2)}%] chance to drop double loot" +
-						$"\n[c/DDAAFF:Umbra]: [c/AAAAFF:+{Math.Round(100 * (UmbraDropNPC.UmbraChance - 0.02f), 2)}%] chance to drop umbra");
+					Tooltip.SetTooltip(Language.GetText("Mods.Umbra.GUI.Tree.DoomTooltipDescDefault").Format(
+						Math.Round(DoomEffectsSystem.DoomValueMult * 100, 2),
+						Math.Round(DoomEffectsSystem.LuckBonus, 2),
+						Math.Round(DoomEffectsSystem.DoubleLootChance * 100, 2),
+						Math.Round(100 * (UmbraDropNPC.UmbraChance - 0.02f), 2)
+					));
 				}
 			}
 
 			if (editing)
 			{
-				Utils.DrawBorderString(spriteBatch,
-					"Edit mode controls:\n" +
-					"Left Click choice to select, Left click grid to add\n" +
-					"Left Click node to select, Right click node to delete\n" +
-					"Shift + Left Click node to connect to selected node\n" +
-					"Shift + Right click node to disconnect from selected node\n" +
-					"Right click choice to change selection to that node\n",
-					new Vector2(100, 100), Color.White, 1);
+				Utils.DrawBorderString(spriteBatch, Language.GetText("Mods.Umbra.GUI.Tree.EditModeTooltip").Value, new Vector2(100, 100), Color.White, 1);
 			}
 		}
 	}
@@ -323,7 +318,7 @@ namespace Umbra.Content.GUI
 		{
 			Texture2D tex = Assets.GUI.Frame.Value;
 
-			var color = Color.White;
+			Color color = Color.White;
 
 			var sourceCorner = new Rectangle(0, 4, 12, 12);
 			var sourceEdge = new Rectangle(12, 4, 8, 12);
@@ -537,17 +532,15 @@ namespace Umbra.Content.GUI
 				string tip = passive.Tooltip;
 
 				if (passive.difficulty > 0)
-				{
-					tip += $"\nDoom: [c/FFAAAA:{passive.difficulty} Doom]";
-				}
+					tip += "\n" + Language.GetText("Mods.Umbra.GUI.Node.Doom").Format(passive.difficulty);
 
 				if (passive.Cost > 0)
 				{
 					if (!passive.active)
-						tip += $"\nCost: [c/BB88FF:{passive.Cost} Umbra]";
+						tip += "\n" + Language.GetText("Mods.Umbra.GUI.Node.Cost").Format(passive.Cost);
 
 					if (passive.active && passive.CanDeallocate(Main.LocalPlayer))
-						tip += $"\nRefund: [c/BB88FF:{passive.Cost / 2} Umbra]";
+						tip += "\n" + Language.GetText("Mods.Umbra.GUI.Node.Refund").Format(passive.Cost / 2);
 				}
 
 				Tooltip.SetName(passive.Name);
@@ -711,7 +704,7 @@ namespace Umbra.Content.GUI
 				int y = Tree.selected.Y;
 
 				int cost = Tree.selected.Cost;
-				var connections = Tree.selected.connections;
+				List<Passive> connections = Tree.selected.connections;
 
 				TreeSystem.tree.Nodes.Remove(Tree.selected);
 				Tree.selected = passive.Clone();

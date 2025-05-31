@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria.GameContent.UI.Elements;
+using Terraria.Localization;
 using Terraria.UI;
 using Umbra.Core.Loaders.UILoading;
 using Umbra.Core.PassiveTreeSystem;
@@ -65,8 +66,10 @@ namespace Umbra.Content.GUI
 
 			if (treeButton.IsMouseHovering)
 			{
-				Tooltip.SetName($"Umbral Tree ([c/CC88FF:{Main.LocalPlayer.GetModPlayer<TreePlayer>().UmbraPoints}] unspent umbra)");
-				Tooltip.SetTooltip("Click this to open the umbral tree, where you can spend Umbra to increase the difficulty of the game.");
+				int unspent = Main.LocalPlayer.GetModPlayer<TreePlayer>().UmbraPoints;
+
+				Tooltip.SetName(Language.GetText("Mods.Umbra.GUI.InventoryButton.Title").Format(unspent));
+				Tooltip.SetTooltip(Language.GetText("Mods.Umbra.GUI.InventoryButton.Description").Value);
 
 				Main.LocalPlayer.mouseInterface = true;
 			}
