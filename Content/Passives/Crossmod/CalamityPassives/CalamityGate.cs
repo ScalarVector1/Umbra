@@ -9,7 +9,7 @@ namespace Umbra.Content.Passives.Crossmod.CalamityPassives
 {
 	internal class CalamityGate : ModGate
 	{
-		public CalamityGate() : base("Calamity") { }
+		public CalamityGate() : base("CalamityMod") { }
 
 		public override void SetDefaults()
 		{
@@ -20,6 +20,6 @@ namespace Umbra.Content.Passives.Crossmod.CalamityPassives
 
 	internal abstract class CalamityPassive : CrossmodPassive
 	{
-		public CalamityPassive() : base("Calamity") { }
+		public CalamityPassive() : base("CalamityMod") { }
 	}
 }

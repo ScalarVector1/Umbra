@@ -19,7 +19,7 @@ Items: {
 
 GUI: {
 	Tree: {
-		UmbraLabel: Umbra
+		Umbra: Umbra
 		UmbraTooltipTitle: "{0} Umbra Points Remaining"
 		UmbraTooltipDesc:
 			'''
