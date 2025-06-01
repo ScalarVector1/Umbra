@@ -37,7 +37,12 @@ namespace Umbra.Content.Passives
 		public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (projectile.penetrate > 0)
+			{
 				projectile.penetrate -= PiercePenaltySystem.penalty;
+
+				if (projectile.penetrate < 0)
+					projectile.penetrate = 0;
+			}
 		}	
 	}
 }

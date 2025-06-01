@@ -115,7 +115,7 @@ namespace Umbra.Core.PassiveTreeSystem
 
 		public override void OnSpawn(NPC npc, IEntitySource source)
 		{
-			if (!npc.boss && Main.rand.NextFloat() <= TreeNPCGlobals.doubleSpawnChance)
+			if (!npc.boss && npc.aiStyle != NPCAIStyleID.Worm && Main.rand.NextFloat() <= TreeNPCGlobals.doubleSpawnChance)
 			{
 				NPC.NewNPC(npc.GetSource_FromThis(), (int)npc.Center.X, (int)npc.Center.Y, npc.type);
 			}

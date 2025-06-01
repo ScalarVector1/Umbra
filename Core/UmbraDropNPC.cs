@@ -44,6 +44,10 @@ namespace Umbra.Core
 				if (Main.rand.NextFloat() <= UmbraChance)
 					Item.NewItem(npc.GetSource_Death(), npc.Hitbox, ModContent.ItemType<UmbraPickup>());
 			}
+
+			// grant partial points
+			var lastPlayer = Main.player[npc.lastInteraction];
+			lastPlayer.GetModPlayer<TreePlayer>().partialPoints += npc.boss ? 150 : 20;
 		}
 	}
 }

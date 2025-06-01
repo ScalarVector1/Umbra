@@ -292,7 +292,10 @@ namespace Umbra.Core.PassiveTreeSystem
 		/// <returns></returns>
 		public int GetActiveCount<T>() where T : Passive
 		{
-			return activeCounts[typeof(T)];
+			if (activeCounts.ContainsKey(typeof(T)))
+				return activeCounts[typeof(T)];
+
+			return 0;
 		}
 
 		/// <summary>
