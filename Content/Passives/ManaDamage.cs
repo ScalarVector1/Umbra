@@ -30,6 +30,9 @@ namespace Umbra.Content.Passives
 		public override void OnHurt(Player.HurtInfo info)
 		{
 			Player.statMana -= lostOnHit;
+
+			if (Player.statMana < 0)
+				Player.statMana = 0;
 		}
 
 		public override void ResetEffects()

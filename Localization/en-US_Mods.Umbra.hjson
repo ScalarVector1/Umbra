@@ -15,6 +15,15 @@ Items: {
 		DisplayName: Umbra Pickup
 		Tooltip: ""
 	}
+
+	MundanityItem: {
+		DisplayName: Mundanity
+		Tooltip:
+			'''
+			[c/888888:Has no effect]
+			[c/888888:Cannot be removed]
+			'''
+	}
 }
 
 GUI: {
@@ -399,6 +408,16 @@ Passives: {
 	VampiricHorde: {
 		Name: Vampiric Horde
 		Tooltip: Enemies heal for [c/AAAAFF:100] life on melee hit
+	}
+
+	TemporalTrance: {
+		Name: Temporal Trance
+		Tooltip: Everything moves [c/AAAAFF:25%] faster
+	}
+
+	Mundanity: {
+		Name: Mundanity
+		Tooltip: Your first [c/AAAAFF:2] accessory slots are blocked
 	}
 }
 

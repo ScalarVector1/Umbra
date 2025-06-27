@@ -24,7 +24,7 @@ namespace Umbra.Core
 
 		public override bool AppliesToEntity(Item entity, bool lateInstantiation)
 		{
-			return entity.damage > 0;
+			return entity.damage > 0 && entity.pick == 0 && entity.axe == 0 && entity.hammer == 0;
 		}
 
 		public override void SetDefaults(Item entity)
