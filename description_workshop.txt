@@ -1,1 +1,17 @@
-This description will show up on the steam page, check out https://steamcommunity.com/comment/Guide/formattinghelp.
+[h1] Disclaimer [/h1]
+[b] This is a very early demo/test for this mod's concept. While it should be fully functional its far from feature complete and may have issues or poor balance. Play at your own peril. [/b]
+
+[h1] Umbra [/h1]
+Umbra is a slightly different take on the concept of a 'difficulty' mod, it allows you to slowly increase and customize the game difficulty as you play in a style similar to a skill tree. Its intent is to provide a large variety of different and unique ways to make enemies stronger (or you weaker!) that allows you to amp up the difficulty of the game in a way that best suits you. Or you could just try to turn everything on and suffer, if you really want that.
+
+[h2] How to play [/h2]
+As you slay enemies, you will gradually build up to or rarely drop whole [b] Umbra points [/b], which you can spend on the umbral tree to make the game harder. Once you have some points, you can click the umbra bar in your inventory to open the tree and select the ndoes you want by left clicking them. Those available to be allocated will be flashing (note that some nodes cost more than one point). If you change your mind, you can de-allocate a node which no others rely on, but you will only be refunded half (rounded down) of the points you spent on it.
+
+For every node you allocate, you will gain [b] Doom [/b], which increases your luck and the amount of loot you find from enemies. You can hover over the 'doom' number on the umbral tree to see the exact effects!
+
+[h2] Contact [/h2]
+If you have feedback, found a bug, or need assistance, you can find me at:
+My discord server: https://discord.gg/KFpCz5p688
+This projects repository: https://github.com/ScalarVector1/Umbra
+
+Thanks for checking out Umbra!

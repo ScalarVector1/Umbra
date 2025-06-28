@@ -1,1 +1,1 @@
-Modify this file with a description of your mod.
+This is an early demo/concept release for Umbra, a take of a 'difficulty mod' that lets you increase the difficulty of the game incrementally as you progress through a skill-tree-like system. Slay enemies to gain umbra points, and spend them in the umbral tree to make enemies stronger (or yourself weaker) and increase the loot they drop!
