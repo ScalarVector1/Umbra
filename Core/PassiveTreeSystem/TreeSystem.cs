@@ -17,14 +17,16 @@ namespace Umbra.Core.PassiveTreeSystem
 
 		public override void Load()
 		{
-			if (!Main.dedServ)
-				LoadFromFile();
+			LoadFromFile();
 		}
 
 		public override void OnWorldLoad()
 		{
-			UILoader.GetUIState<Tree>().RemoveAllChildren();
-			Tree.Populated = false;
+			if (!Main.dedServ)
+			{
+				UILoader.GetUIState<Tree>().RemoveAllChildren();
+				Tree.Populated = false;
+			}
 		}
 
 		public override void SaveWorldHeader(TagCompound tag)
@@ -62,7 +64,8 @@ namespace Umbra.Core.PassiveTreeSystem
 
 			tree.Load(tag);
 
-			UILoader.GetUIState<Tree>().Refresh();
+			if (!Main.dedServ)
+				UILoader.GetUIState<Tree>().Refresh();
 		}
 
 		public override void PreUpdateEntities()
