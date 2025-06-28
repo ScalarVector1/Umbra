@@ -9,1066 +9,1280 @@
     },
     {
       "type": "EnemyDamage",
-      "id": 2,
+      "id": 1,
       "cost": 1,
-      "x": -4,
-      "y": 0
+      "x": 5,
+      "y": -5
     },
     {
-      "type": "EnemyDamage",
+      "type": "EnemyLife",
+      "id": 2,
+      "cost": 1,
+      "x": -5,
+      "y": -5
+    },
+    {
+      "type": "SpawnRate",
       "id": 3,
-      "cost": 2,
-      "x": -7,
-      "y": -3
+      "cost": 1,
+      "x": 0,
+      "y": 7
     },
     {
       "type": "EnemyDamage",
       "id": 4,
-      "cost": 2,
-      "x": -7,
-      "y": 3
+      "cost": 1,
+      "x": 7,
+      "y": -10
     },
     {
-      "type": "EnemyLife",
+      "type": "EnemyDamage",
       "id": 5,
-      "cost": 2,
-      "x": -11,
-      "y": 3
+      "cost": 1,
+      "x": 10,
+      "y": -13
     },
     {
-      "type": "EnemyLife",
+      "type": "EnemyBleed",
       "id": 6,
-      "cost": 2,
-      "x": -15,
-      "y": 5
+      "cost": 1,
+      "x": 10,
+      "y": -7
+    },
+    {
+      "type": "EnemyBleed",
+      "id": 7,
+      "cost": 1,
+      "x": 13,
+      "y": -10
+    },
+    {
+      "type": "EnemyDamage",
+      "id": 8,
+      "cost": 1,
+      "x": 15,
+      "y": -15
+    },
+    {
+      "type": "EnemyDamage",
+      "id": 9,
+      "cost": 1,
+      "x": 9,
+      "y": -18
     },
     {
       "type": "EnemyDefense",
+      "id": 10,
+      "cost": 2,
+      "x": 4,
+      "y": -20
+    },
+    {
+      "type": "EnemyLife",
       "id": 11,
-      "cost": 2,
-      "x": 12,
-      "y": 0
-    },
-    {
-      "type": "EnemyLife",
-      "id": 12,
-      "cost": 2,
-      "x": 8,
-      "y": -4
-    },
-    {
-      "type": "EnemyDamage",
-      "id": 14,
-      "cost": 2,
-      "x": 12,
-      "y": 5
-    },
-    {
-      "type": "EnemyDamage",
-      "id": 15,
-      "cost": 2,
-      "x": 9,
-      "y": 8
-    },
-    {
-      "type": "EnemyLife",
-      "id": 18,
-      "cost": 2,
-      "x": 5,
+      "cost": 1,
+      "x": -10,
       "y": -7
     },
     {
       "type": "EnemyLife",
-      "id": 19,
-      "cost": 2,
-      "x": 8,
+      "id": 12,
+      "cost": 1,
+      "x": -13,
       "y": -10
+    },
+    {
+      "type": "EnemyEndurance",
+      "id": 13,
+      "cost": 1,
+      "x": -7,
+      "y": -10
+    },
+    {
+      "type": "EnemyEndurance",
+      "id": 14,
+      "cost": 1,
+      "x": -10,
+      "y": -13
     },
     {
       "type": "EnemyLife",
-      "id": 20,
-      "cost": 2,
-      "x": 10,
-      "y": -8
-    },
-    {
-      "type": "EnemyBleed",
-      "id": 25,
-      "cost": 5,
+      "id": 15,
+      "cost": 1,
       "x": -15,
-      "y": -6
-    },
-    {
-      "type": "EnemyBleed",
-      "id": 27,
-      "cost": 5,
-      "x": -16,
-      "y": -10
-    },
-    {
-      "type": "EnemyBleed",
-      "id": 29,
-      "cost": 5,
-      "x": -14,
       "y": -15
+    },
+    {
+      "type": "EnemyLife",
+      "id": 16,
+      "cost": 1,
+      "x": -9,
+      "y": -18
+    },
+    {
+      "type": "EnemyDefense",
+      "id": 17,
+      "cost": 2,
+      "x": -4,
+      "y": -20
+    },
+    {
+      "type": "EnemyMoreLife",
+      "id": 18,
+      "cost": 2,
+      "x": 0,
+      "y": -17
+    },
+    {
+      "type": "VampiricHorde",
+      "id": 19,
+      "cost": 5,
+      "x": 0,
+      "y": -12
+    },
+    {
+      "type": "EnemyDamage",
+      "id": 20,
+      "cost": 1,
+      "x": 19,
+      "y": -9
+    },
+    {
+      "type": "EnemyBleed",
+      "id": 21,
+      "cost": 1,
+      "x": 10,
+      "y": -3
+    },
+    {
+      "type": "EnemyBleed",
+      "id": 22,
+      "cost": 1,
+      "x": 8,
+      "y": 2
+    },
+    {
+      "type": "EnemyBleed",
+      "id": 23,
+      "cost": 1,
+      "x": 6,
+      "y": 8
     },
     {
       "type": "EnemyBleed",
       "id": 24,
       "cost": 2,
-      "x": -11,
-      "y": -3
+      "x": 7,
+      "y": 11
     },
     {
-      "type": "EnemyPoision",
-      "id": 26,
-      "cost": 5,
-      "x": -7,
-      "y": -6
+      "type": "EnemyBleed",
+      "id": 25,
+      "cost": 2,
+      "x": 10,
+      "y": 12
+    },
+    {
+      "type": "BurningBlood",
+      "id": 29,
+      "cost": 8,
+      "x": 10,
+      "y": 7
     },
     {
       "type": "EnemyPoision",
       "id": 28,
-      "cost": 5,
-      "x": -6,
-      "y": -10
+      "cost": 1,
+      "x": 12,
+      "y": 2
     },
     {
       "type": "EnemyPoision",
-      "id": 30,
-      "cost": 5,
-      "x": -8,
-      "y": -15
-    },
-    {
-      "type": "BurningBlood",
-      "id": 31,
-      "cost": 15,
-      "x": -11,
-      "y": -21
-    },
-    {
-      "type": "HardmodeGate",
-      "id": 32,
-      "cost": 0,
-      "x": -11,
-      "y": -26
-    },
-    {
-      "type": "HardmodeEnemyPoision",
-      "id": 34,
-      "cost": 8,
-      "x": -14,
-      "y": -33
-    },
-    {
-      "type": "HardmodeEnemyPoision",
-      "id": 35,
-      "cost": 8,
-      "x": -14,
-      "y": -37
-    },
-    {
-      "type": "HardmodeEnemyVenom",
-      "id": 36,
-      "cost": 8,
-      "x": -8,
-      "y": -33
-    },
-    {
-      "type": "HardmodeEnemyVenom",
-      "id": 37,
-      "cost": 8,
-      "x": -8,
-      "y": -37
-    },
-    {
-      "type": "Comorbidity",
-      "id": 38,
-      "cost": 25,
-      "x": -11,
-      "y": -41
-    },
-    {
-      "type": "HardmodeEnemyVenom",
-      "id": 33,
-      "cost": 8,
-      "x": -11,
-      "y": -30
-    },
-    {
-      "type": "HardmodeStrength",
-      "id": 39,
-      "cost": 8,
-      "x": -17,
-      "y": -30
-    },
-    {
-      "type": "MoreEnemyDamage",
-      "id": 16,
-      "cost": 10,
-      "x": 12,
-      "y": 11
-    },
-    {
-      "type": "MoreEnemyDamage",
-      "id": 17,
-      "cost": 10,
-      "x": 15,
+      "id": 27,
+      "cost": 1,
+      "x": 14,
       "y": 8
     },
     {
-      "type": "MoreEnemyDamage",
-      "id": 41,
-      "cost": 10,
-      "x": 18,
-      "y": 11
-    },
-    {
-      "type": "InstrumentsOfHarm",
-      "id": 42,
-      "cost": 20,
-      "x": 15,
-      "y": 14
-    },
-    {
-      "type": "EnemyEndurance",
-      "id": 43,
-      "cost": 5,
-      "x": 17,
-      "y": 0
-    },
-    {
-      "type": "EnemyEndurance",
-      "id": 44,
-      "cost": 5,
-      "x": 22,
-      "y": 0
-    },
-    {
-      "type": "WormsInfluence",
-      "id": 45,
-      "cost": 15,
-      "x": 28,
-      "y": 0
-    },
-    {
-      "type": "BossStrength",
-      "id": 46,
+      "type": "EnemyPoision",
+      "id": 26,
       "cost": 2,
+      "x": 13,
+      "y": 11
+    },
+    {
+      "type": "SpawnRate",
+      "id": 34,
+      "cost": 1,
       "x": 0,
-      "y": 5
+      "y": 19
     },
     {
-      "type": "BossStrength",
-      "id": 47,
-      "cost": 4,
-      "x": -3,
-      "y": 8
+      "type": "EnemySurvival",
+      "id": 35,
+      "cost": 1,
+      "x": -8,
+      "y": 17
     },
     {
-      "type": "BossStrength",
-      "id": 48,
-      "cost": 4,
-      "x": -3,
-      "y": 12
+      "type": "EnemySurvival",
+      "id": 36,
+      "cost": 1,
+      "x": 8,
+      "y": 17
     },
     {
-      "type": "BossStrength",
-      "id": 49,
-      "cost": 4,
-      "x": 0,
+      "type": "EnemyRegen",
+      "id": 31,
+      "cost": 1,
+      "x": -2,
       "y": 15
     },
     {
-      "type": "ElongatedEngagements",
-      "id": 50,
-      "cost": 10,
-      "x": 4,
-      "y": 19
-    },
-    {
-      "type": "DeadlyDuels",
-      "id": 51,
-      "cost": 10,
-      "x": -4,
-      "y": 19
-    },
-    {
       "type": "EnemyRegen",
-      "id": 52,
+      "id": 30,
+      "cost": 1,
+      "x": -2,
+      "y": 11
+    },
+    {
+      "type": "SpawnRate",
+      "id": 32,
+      "cost": 1,
+      "x": 2,
+      "y": 11
+    },
+    {
+      "type": "SpawnRate",
+      "id": 33,
+      "cost": 1,
+      "x": 2,
+      "y": 15
+    },
+    {
+      "type": "PlayerWither",
+      "id": 37,
+      "cost": 1,
+      "x": -14,
+      "y": 12
+    },
+    {
+      "type": "EnemyLife",
+      "id": 38,
+      "cost": 1,
+      "x": -19,
+      "y": -9
+    },
+    {
+      "type": "PlayerWither",
+      "id": 39,
+      "cost": 1,
+      "x": -19,
+      "y": -2
+    },
+    {
+      "type": "PlayerWither",
+      "id": 40,
+      "cost": 1,
+      "x": -18,
+      "y": 6
+    },
+    {
+      "type": "PlayerWither",
+      "id": 41,
       "cost": 2,
-      "x": 8,
-      "y": -17
-    },
-    {
-      "type": "EnemyRegen",
-      "id": 53,
-      "cost": 3,
-      "x": 4,
-      "y": -19
-    },
-    {
-      "type": "EnemyRegen",
-      "id": 54,
-      "cost": 4,
-      "x": 3,
-      "y": -23
-    },
-    {
-      "type": "EnemyRegen",
-      "id": 55,
-      "cost": 4,
-      "x": 4,
-      "y": -27
+      "x": -23,
+      "y": 6
     },
     {
       "type": "PlayerWither",
-      "id": 57,
-      "cost": 3,
-      "x": 12,
-      "y": -19
+      "id": 42,
+      "cost": 2,
+      "x": -24,
+      "y": 2
     },
     {
       "type": "PlayerWither",
-      "id": 58,
-      "cost": 4,
-      "x": 12,
-      "y": -27
-    },
-    {
-      "type": "PlayerWither",
-      "id": 59,
-      "cost": 4,
-      "x": 13,
-      "y": -23
+      "id": 43,
+      "cost": 2,
+      "x": -24,
+      "y": 10
     },
     {
       "type": "VitalityVortex",
-      "id": 60,
-      "cost": 12,
-      "x": 8,
-      "y": -23
-    },
-    {
-      "type": "PlayerWither",
-      "id": 56,
-      "cost": 4,
-      "x": 8,
-      "y": -29
-    },
-    {
-      "type": "StrengthPerDoom",
-      "id": 61,
-      "cost": 10,
-      "x": 18,
-      "y": -23
-    },
-    {
-      "type": "StrengthPerDoom",
-      "id": 62,
-      "cost": 12,
-      "x": 22,
-      "y": -19
-    },
-    {
-      "type": "StrengthPerDoom",
-      "id": 64,
-      "cost": 14,
-      "x": 20,
-      "y": -17
-    },
-    {
-      "type": "StrengthPerDoom",
-      "id": 63,
-      "cost": 14,
-      "x": 24,
-      "y": -21
-    },
-    {
-      "type": "StrengthPerDoom",
-      "id": 65,
-      "cost": 14,
-      "x": 25,
-      "y": -16
-    },
-    {
-      "type": "DoomConflux",
-      "id": 66,
-      "cost": 30,
-      "x": 28,
-      "y": -13
-    },
-    {
-      "type": "HardmodeGate",
-      "id": 67,
-      "cost": 0,
-      "x": 8,
-      "y": -34
-    },
-    {
-      "type": "HardmodeStrength",
-      "id": 68,
+      "id": 44,
       "cost": 8,
-      "x": 2,
-      "y": -34
-    },
-    {
-      "type": "HardmodeStrength",
-      "id": 40,
-      "cost": 8,
-      "x": -5,
-      "y": -30
-    },
-    {
-      "type": "HardmodeDoubleChance",
-      "id": 69,
-      "cost": 12,
-      "x": -3,
-      "y": -36
-    },
-    {
-      "type": "HardmodeDoubleChance",
-      "id": 70,
-      "cost": 12,
-      "x": -3,
-      "y": -41
-    },
-    {
-      "type": "HardmodeDoubleChance",
-      "id": 71,
-      "cost": 15,
-      "x": -6,
-      "y": -44
-    },
-    {
-      "type": "HardmodeDoubleChance",
-      "id": 72,
-      "cost": 15,
-      "x": 0,
-      "y": -44
-    },
-    {
-      "type": "HardmodeStrengthPerDoom",
-      "id": 73,
-      "cost": 20,
-      "x": 4,
-      "y": -44
-    },
-    {
-      "type": "HardmodeStrengthPerDoom",
-      "id": 74,
-      "cost": 20,
-      "x": -9,
-      "y": -47
-    },
-    {
-      "type": "VengefulShades",
-      "id": 75,
-      "cost": 60,
-      "x": -13,
-      "y": -47
-    },
-    {
-      "type": "SpontaneousGeneration",
-      "id": 76,
-      "cost": 40,
-      "x": 8,
-      "y": -44
-    },
-    {
-      "type": "UndeniableFoes",
-      "id": 10,
-      "cost": 20,
-      "x": -11,
-      "y": 9
-    },
-    {
-      "type": "EnemyDefense",
-      "id": 9,
-      "cost": 4,
-      "x": -11,
-      "y": 15
-    },
-    {
-      "type": "EnemyDefense",
-      "id": 8,
-      "cost": 4,
-      "x": -15,
-      "y": 13
-    },
-    {
-      "type": "EnemySurvival",
-      "id": 7,
-      "cost": 4,
-      "x": -16,
-      "y": 9
-    },
-    {
-      "type": "SpawnRate",
-      "id": 77,
-      "cost": 6,
-      "x": -20,
-      "y": 9
-    },
-    {
-      "type": "SpawnRate",
-      "id": 78,
-      "cost": 8,
-      "x": -23,
-      "y": 12
-    },
-    {
-      "type": "SpawnRate",
-      "id": 80,
-      "cost": 12,
-      "x": -27,
-      "y": 12
-    },
-    {
-      "type": "DoomBeacon",
-      "id": 82,
-      "cost": 30,
-      "x": -30,
-      "y": 9
-    },
-    {
-      "type": "StrengthPerDoom",
-      "id": 79,
-      "cost": 10,
-      "x": -23,
-      "y": 6
-    },
-    {
-      "type": "StrengthPerDoom",
-      "id": 81,
-      "cost": 10,
       "x": -27,
       "y": 6
-    },
-    {
-      "type": "EnemyDefense",
-      "id": 1,
-      "cost": 1,
-      "x": 5,
-      "y": 0
-    },
-    {
-      "type": "EnemySurvival",
-      "id": 13,
-      "cost": 2,
-      "x": 16,
-      "y": -4
-    },
-    {
-      "type": "EnemySurvival",
-      "id": 21,
-      "cost": 2,
-      "x": 19,
-      "y": -7
-    },
-    {
-      "type": "EnemySurvival",
-      "id": 22,
-      "cost": 2,
-      "x": 16,
-      "y": -10
-    },
-    {
-      "type": "EnemySurvival",
-      "id": 23,
-      "cost": 2,
-      "x": 14,
-      "y": -8
-    },
-    {
-      "type": "StarlightRiverGate",
-      "id": 87,
-      "cost": 0,
-      "x": -27,
-      "y": -18
-    },
-    {
-      "type": "CalamityGate",
-      "id": 88,
-      "cost": 0,
-      "x": -35,
-      "y": -10
-    },
-    {
-      "type": "StarlightEnemyBarrier",
-      "id": 89,
-      "cost": 5,
-      "x": -27,
-      "y": -22
-    },
-    {
-      "type": "StarlightEnemyBarrier",
-      "id": 90,
-      "cost": 5,
-      "x": -31,
-      "y": -26
-    },
-    {
-      "type": "StarlightEnemyBarrier",
-      "id": 92,
-      "cost": 5,
-      "x": -27,
-      "y": -29
-    },
-    {
-      "type": "StarlightEnemyBarrier",
-      "id": 94,
-      "cost": 5,
-      "x": -23,
-      "y": -26
-    },
-    {
-      "type": "StarlightEnemyBarrier",
-      "id": 95,
-      "cost": 5,
-      "x": -23,
-      "y": -29
-    },
-    {
-      "type": "StarlightEnemyBarrier",
-      "id": 91,
-      "cost": 5,
-      "x": -31,
-      "y": -29
-    },
-    {
-      "type": "StarlightEnemyBarrier",
-      "id": 96,
-      "cost": 5,
-      "x": -25,
-      "y": -31
-    },
-    {
-      "type": "StarlightEnemyBarrier",
-      "id": 93,
-      "cost": 5,
-      "x": -29,
-      "y": -31
-    },
-    {
-      "type": "CalamityDamage",
-      "id": 97,
-      "cost": 4,
-      "x": -39,
-      "y": -10
-    },
-    {
-      "type": "CalamityDamage",
-      "id": 98,
-      "cost": 6,
-      "x": -39,
-      "y": -7
-    },
-    {
-      "type": "CalamityDamage",
-      "id": 99,
-      "cost": 6,
-      "x": -39,
-      "y": -13
-    },
-    {
-      "type": "CalamityDamage",
-      "id": 100,
-      "cost": 6,
-      "x": -43,
-      "y": -10
-    },
-    {
-      "type": "CalamityDamage",
-      "id": 101,
-      "cost": 8,
-      "x": -48,
-      "y": -10
-    },
-    {
-      "type": "EnemyDamage",
-      "id": 85,
-      "cost": 2,
-      "x": -27,
-      "y": -6
-    },
-    {
-      "type": "EnemyDamage",
-      "id": 83,
-      "cost": 2,
-      "x": -23,
-      "y": -10
-    },
-    {
-      "type": "EnemyDamage",
-      "id": 84,
-      "cost": 2,
-      "x": -27,
-      "y": -14
-    },
-    {
-      "type": "EnemyDamage",
-      "id": 86,
-      "cost": 2,
-      "x": -31,
-      "y": -10
-    },
-    {
-      "type": "PotionSickness",
-      "id": 107,
-      "cost": 5,
-      "x": 16,
-      "y": -30
-    },
-    {
-      "type": "PotionSickness",
-      "id": 113,
-      "cost": 5,
-      "x": 16,
-      "y": -34
-    },
-    {
-      "type": "PotionSickness",
-      "id": 114,
-      "cost": 5,
-      "x": 18,
-      "y": -37
-    },
-    {
-      "type": "PotionSickness",
-      "id": 115,
-      "cost": 5,
-      "x": 18,
-      "y": -40
-    },
-    {
-      "type": "SicklyPotions",
-      "id": 116,
-      "cost": 15,
-      "x": 20,
-      "y": -42
-    },
-    {
-      "type": "PotionHealing",
-      "id": 112,
-      "cost": 5,
-      "x": 22,
-      "y": -40
-    },
-    {
-      "type": "PotionHealing",
-      "id": 111,
-      "cost": 5,
-      "x": 22,
-      "y": -37
-    },
-    {
-      "type": "PotionHealing",
-      "id": 110,
-      "cost": 5,
-      "x": 24,
-      "y": -34
-    },
-    {
-      "type": "PotionHealing",
-      "id": 109,
-      "cost": 5,
-      "x": 24,
-      "y": -30
-    },
-    {
-      "type": "PotionHealing",
-      "id": 108,
-      "cost": 5,
-      "x": 20,
-      "y": -30
-    },
-    {
-      "type": "EnemyDodge",
-      "id": 117,
-      "cost": 10,
-      "x": -11,
-      "y": 20
-    },
-    {
-      "type": "EnemyDodge",
-      "id": 118,
-      "cost": 12,
-      "x": -15,
-      "y": 21
-    },
-    {
-      "type": "EnemyDodge",
-      "id": 119,
-      "cost": 12,
-      "x": -7,
-      "y": 21
-    },
-    {
-      "type": "EnemyDodge",
-      "id": 120,
-      "cost": 14,
-      "x": -9,
-      "y": 25
-    },
-    {
-      "type": "EnemyDodge",
-      "id": 121,
-      "cost": 14,
-      "x": -13,
-      "y": 25
-    },
-    {
-      "type": "TwistOfFate",
-      "id": 122,
-      "cost": 0,
-      "x": 0,
-      "y": -5
-    },
-    {
-      "type": "Mending",
-      "id": 123,
-      "cost": 20,
-      "x": -1,
-      "y": -23
-    },
-    {
-      "type": "EnemyDamage",
-      "id": 103,
-      "cost": 2,
-      "x": -31,
-      "y": 3
-    },
-    {
-      "type": "EnemyLife",
-      "id": 105,
-      "cost": 2,
-      "x": -41,
-      "y": 7
-    },
-    {
-      "type": "ManaTithe",
-      "id": 106,
-      "cost": 20,
-      "x": -41,
-      "y": 13
-    },
-    {
-      "type": "ManaCost",
-      "id": 128,
-      "cost": 5,
-      "x": -41,
-      "y": 26
-    },
-    {
-      "type": "ManaFlux",
-      "id": 133,
-      "cost": 15,
-      "x": -41,
-      "y": 22
-    },
-    {
-      "type": "ManaDamage",
-      "id": 124,
-      "cost": 5,
-      "x": -39,
-      "y": 18
-    },
-    {
-      "type": "ManaDamage",
-      "id": 125,
-      "cost": 5,
-      "x": -33,
-      "y": 21
-    },
-    {
-      "type": "ManaDamage",
-      "id": 126,
-      "cost": 5,
-      "x": -37,
-      "y": 24
-    },
-    {
-      "type": "ManaDamage",
-      "id": 127,
-      "cost": 5,
-      "x": -36,
-      "y": 29
-    },
-    {
-      "type": "ManaCost",
-      "id": 132,
-      "cost": 5,
-      "x": -46,
-      "y": 29
-    },
-    {
-      "type": "ManaCost",
-      "id": 131,
-      "cost": 5,
-      "x": -45,
-      "y": 24
-    },
-    {
-      "type": "ManaCost",
-      "id": 130,
-      "cost": 5,
-      "x": -49,
-      "y": 21
-    },
-    {
-      "type": "ManaCost",
-      "id": 129,
-      "cost": 5,
-      "x": -43,
-      "y": 18
-    },
-    {
-      "type": "EnemyDefense",
-      "id": 135,
-      "cost": 2,
-      "x": -53,
-      "y": 7
-    },
-    {
-      "type": "EnemyDefense",
-      "id": 136,
-      "cost": 4,
-      "x": -53,
-      "y": 3
-    },
-    {
-      "type": "EnemyDefense",
-      "id": 137,
-      "cost": 4,
-      "x": -50,
-      "y": 0
-    },
-    {
-      "type": "EnemyDefense",
-      "id": 138,
-      "cost": 4,
-      "x": -56,
-      "y": 0
-    },
-    {
-      "type": "PanicGuard",
-      "id": 139,
-      "cost": 20,
-      "x": -53,
-      "y": -3
-    },
-    {
-      "type": "EnemyLife",
-      "id": 140,
-      "cost": 2,
-      "x": -59,
-      "y": 7
     },
     {
       "type": "EnemyRegen",
-      "id": 141,
-      "cost": 4,
-      "x": -59,
+      "id": 45,
+      "cost": 2,
+      "x": -31,
+      "y": 6
+    },
+    {
+      "type": "EnemyRegen",
+      "id": 46,
+      "cost": 2,
+      "x": -30,
+      "y": 2
+    },
+    {
+      "type": "EnemyRegen",
+      "id": 47,
+      "cost": 2,
+      "x": -30,
       "y": 10
     },
     {
       "type": "EnemyRegen",
-      "id": 142,
-      "cost": 4,
-      "x": -56,
-      "y": 13
+      "id": 48,
+      "cost": 2,
+      "x": -27,
+      "y": 1
+    },
+    {
+      "type": "PlayerWither",
+      "id": 49,
+      "cost": 2,
+      "x": -27,
+      "y": 11
+    },
+    {
+      "type": "PotionHealing",
+      "id": 50,
+      "cost": 2,
+      "x": -13,
+      "y": 8
+    },
+    {
+      "type": "PotionHealing",
+      "id": 51,
+      "cost": 2,
+      "x": -11,
+      "y": 4
+    },
+    {
+      "type": "PotionHealing",
+      "id": 52,
+      "cost": 2,
+      "x": -11,
+      "y": 0
+    },
+    {
+      "type": "PotionSickness",
+      "id": 53,
+      "cost": 2,
+      "x": -5,
+      "y": 8
+    },
+    {
+      "type": "PotionSickness",
+      "id": 54,
+      "cost": 2,
+      "x": -7,
+      "y": 4
+    },
+    {
+      "type": "PotionSickness",
+      "id": 55,
+      "cost": 2,
+      "x": -7,
+      "y": 0
+    },
+    {
+      "type": "SicklyPotions",
+      "id": 56,
+      "cost": 8,
+      "x": -9,
+      "y": -3
+    },
+    {
+      "type": "BossStrength",
+      "id": 57,
+      "cost": 1,
+      "x": 15,
+      "y": 12
+    },
+    {
+      "type": "BossStrength",
+      "id": 58,
+      "cost": 1,
+      "x": 18,
+      "y": 6
+    },
+    {
+      "type": "BossStrength",
+      "id": 59,
+      "cost": 1,
+      "x": 19,
+      "y": -2
+    },
+    {
+      "type": "BossStrength",
+      "id": 60,
+      "cost": 2,
+      "x": 22,
+      "y": 9
+    },
+    {
+      "type": "ElongatedEngagements",
+      "id": 65,
+      "cost": 12,
+      "x": 23,
+      "y": 18
+    },
+    {
+      "type": "DeadlyDuels",
+      "id": 66,
+      "cost": 12,
+      "x": 31,
+      "y": 10
+    },
+    {
+      "type": "BossStrength",
+      "id": 63,
+      "cost": 2,
+      "x": 20,
+      "y": 11
+    },
+    {
+      "type": "BossStrength",
+      "id": 61,
+      "cost": 2,
+      "x": 24,
+      "y": 7
+    },
+    {
+      "type": "EnemyDamage",
+      "id": 62,
+      "cost": 2,
+      "x": 28,
+      "y": 7
+    },
+    {
+      "type": "EnemyLife",
+      "id": 64,
+      "cost": 2,
+      "x": 20,
+      "y": 15
+    },
+    {
+      "type": "EnemyDefense",
+      "id": 67,
+      "cost": 2,
+      "x": 0,
+      "y": -25
+    },
+    {
+      "type": "EnemyEndurance",
+      "id": 69,
+      "cost": 2,
+      "x": 5,
+      "y": -30
+    },
+    {
+      "type": "EnemySurvival",
+      "id": 68,
+      "cost": 2,
+      "x": -5,
+      "y": -30
+    },
+    {
+      "type": "EnemySurvival",
+      "id": 70,
+      "cost": 2,
+      "x": -5,
+      "y": -39
+    },
+    {
+      "type": "EnemyEndurance",
+      "id": 71,
+      "cost": 2,
+      "x": 5,
+      "y": -39
     },
     {
       "type": "EnemyRegen",
-      "id": 143,
-      "cost": 4,
-      "x": -59,
-      "y": 16
+      "id": 79,
+      "cost": 2,
+      "x": -15,
+      "y": -25
     },
     {
       "type": "EnemyRegen",
-      "id": 144,
-      "cost": 4,
-      "x": -62,
-      "y": 13
+      "id": 80,
+      "cost": 2,
+      "x": -14,
+      "y": -28
     },
     {
-      "type": "VampiricHorde",
-      "id": 145,
-      "cost": 10,
-      "x": -59,
-      "y": 13
+      "type": "EnemyRegen",
+      "id": 81,
+      "cost": 2,
+      "x": -17,
+      "y": -30
+    },
+    {
+      "type": "EnemyMoreLife",
+      "id": 74,
+      "cost": 2,
+      "x": -20,
+      "y": -20
+    },
+    {
+      "type": "EnemyLife",
+      "id": 75,
+      "cost": 2,
+      "x": -25,
+      "y": -25
+    },
+    {
+      "type": "EnemyLife",
+      "id": 76,
+      "cost": 2,
+      "x": -26,
+      "y": -28
+    },
+    {
+      "type": "EnemyLife",
+      "id": 77,
+      "cost": 2,
+      "x": -23,
+      "y": -30
+    },
+    {
+      "type": "InstrumentsOfHarm",
+      "id": 86,
+      "cost": 15,
+      "x": 20,
+      "y": -35
     },
     {
       "type": "MoreEnemyDamage",
-      "id": 146,
-      "cost": 4,
-      "x": -34,
-      "y": 0
+      "id": 84,
+      "cost": 2,
+      "x": 22,
+      "y": -31
     },
     {
-      "type": "Heartbreakers",
-      "id": 147,
-      "cost": 15,
-      "x": -39,
-      "y": 0
+      "type": "MoreEnemyDamage",
+      "id": 85,
+      "cost": 2,
+      "x": 22,
+      "y": -25
     },
     {
-      "type": "BadMedicine",
-      "id": 148,
-      "cost": 15,
+      "type": "EnemyDamage",
+      "id": 90,
+      "cost": 1,
+      "x": 15,
+      "y": -23
+    },
+    {
+      "type": "EnemyDamage",
+      "id": 91,
+      "cost": 1,
+      "x": 25,
+      "y": -23
+    },
+    {
+      "type": "EnemyDamage",
+      "id": 89,
+      "cost": 2,
       "x": 20,
-      "y": -34
+      "y": -18
     },
     {
-      "type": "PiercePenalty",
-      "id": 134,
+      "type": "EnemyBleed",
+      "id": 88,
       "cost": 2,
-      "x": -47,
-      "y": 7
+      "x": 18,
+      "y": -25
     },
     {
-      "type": "PiercePenalty",
-      "id": 104,
+      "type": "EnemyBleed",
+      "id": 87,
       "cost": 2,
-      "x": -35,
-      "y": 7
+      "x": 18,
+      "y": -31
     },
     {
-      "type": "PiercePenalty",
+      "type": "MoreEnemyDamage",
+      "id": 83,
+      "cost": 2,
+      "x": 20,
+      "y": -23
+    },
+    {
+      "type": "EnemyDefense",
+      "id": 92,
+      "cost": 2,
+      "x": -14,
+      "y": 17
+    },
+    {
+      "type": "EnemyDefense",
+      "id": 93,
+      "cost": 2,
+      "x": -17,
+      "y": 20
+    },
+    {
+      "type": "EnemyDefense",
+      "id": 94,
+      "cost": 2,
+      "x": -17,
+      "y": 24
+    },
+    {
+      "type": "PanicGuard",
+      "id": 95,
+      "cost": 12,
+      "x": -20,
+      "y": 27
+    },
+    {
+      "type": "StarlightRiverGate",
+      "id": 96,
+      "cost": 0,
+      "x": -21,
+      "y": 20
+    },
+    {
+      "type": "StarlightEnemyBarrier",
+      "id": 97,
+      "cost": 2,
+      "x": -24,
+      "y": 22
+    },
+    {
+      "type": "StarlightEnemyBarrier",
+      "id": 98,
+      "cost": 3,
+      "x": -27,
+      "y": 19
+    },
+    {
+      "type": "StarlightEnemyBarrier",
+      "id": 99,
+      "cost": 4,
+      "x": -30,
+      "y": 22
+    },
+    {
+      "type": "StarlightEnemyBarrier",
+      "id": 100,
+      "cost": 3,
+      "x": -27,
+      "y": 25
+    },
+    {
+      "type": "ManaTithe",
+      "id": 101,
+      "cost": 8,
+      "x": 0,
+      "y": 23
+    },
+    {
+      "type": "ManaCost",
       "id": 102,
       "cost": 2,
+      "x": -3,
+      "y": 27
+    },
+    {
+      "type": "ManaCost",
+      "id": 103,
+      "cost": 2,
+      "x": -7,
+      "y": 29
+    },
+    {
+      "type": "ManaCost",
+      "id": 104,
+      "cost": 2,
+      "x": -4,
+      "y": 32
+    },
+    {
+      "type": "ManaCost",
+      "id": 105,
+      "cost": 2,
+      "x": -4,
+      "y": 36
+    },
+    {
+      "type": "ManaCost",
+      "id": 106,
+      "cost": 2,
+      "x": 0,
+      "y": 34
+    },
+    {
+      "type": "ManaDamage",
+      "id": 107,
+      "cost": 2,
+      "x": 4,
+      "y": 36
+    },
+    {
+      "type": "ManaDamage",
+      "id": 108,
+      "cost": 2,
+      "x": 4,
+      "y": 32
+    },
+    {
+      "type": "ManaDamage",
+      "id": 109,
+      "cost": 2,
+      "x": 7,
+      "y": 29
+    },
+    {
+      "type": "ManaDamage",
+      "id": 110,
+      "cost": 2,
+      "x": 3,
+      "y": 27
+    },
+    {
+      "type": "ManaFlux",
+      "id": 111,
+      "cost": 12,
+      "x": 0,
+      "y": 30
+    },
+    {
+      "type": "UndeniableFoes",
+      "id": 72,
+      "cost": 12,
+      "x": 0,
+      "y": -37
+    },
+    {
+      "type": "EnemyDefense",
+      "id": 73,
+      "cost": 2,
+      "x": 0,
+      "y": -32
+    },
+    {
+      "type": "Mending",
+      "id": 78,
+      "cost": 10,
+      "x": -20,
+      "y": -28
+    },
+    {
+      "type": "EnemyMoreLife",
+      "id": 82,
+      "cost": 2,
+      "x": -20,
+      "y": -24
+    },
+    {
+      "type": "EnemyLife",
+      "id": 112,
+      "cost": 3,
+      "x": -20,
+      "y": -43
+    },
+    {
+      "type": "EnemyEndurance",
+      "id": 113,
+      "cost": 3,
+      "x": 0,
+      "y": -46
+    },
+    {
+      "type": "EnemyDamage",
+      "id": 114,
+      "cost": 3,
+      "x": 20,
+      "y": -43
+    },
+    {
+      "type": "EnemyRegen",
+      "id": 116,
+      "cost": 3,
+      "x": -36,
+      "y": 6
+    },
+    {
+      "type": "EnemyLife",
+      "id": 118,
+      "cost": 3,
+      "x": -36,
+      "y": -41
+    },
+    {
+      "type": "EnemyRegen",
+      "id": 117,
+      "cost": 3,
+      "x": -36,
+      "y": -10
+    },
+    {
+      "type": "EnemyLife",
+      "id": 119,
+      "cost": 3,
+      "x": -36,
+      "y": -27
+    },
+    {
+      "type": "EnemyDefense",
+      "id": 120,
+      "cost": 3,
+      "x": -32,
+      "y": -12
+    },
+    {
+      "type": "EnemyEndurance",
+      "id": 121,
+      "cost": 4,
+      "x": -29,
+      "y": -15
+    },
+    {
+      "type": "EnemyDefense",
+      "id": 122,
+      "cost": 5,
+      "x": -25,
+      "y": -14
+    },
+    {
+      "type": "EnemyEndurance",
+      "id": 123,
+      "cost": 6,
+      "x": -24,
+      "y": -10
+    },
+    {
+      "type": "WormsInfluence",
+      "id": 124,
+      "cost": 20,
       "x": -27,
+      "y": -7
+    },
+    {
+      "type": "EnemyDamage",
+      "id": 126,
+      "cost": 3,
+      "x": 35,
+      "y": -40
+    },
+    {
+      "type": "EnemyDamage",
+      "id": 127,
+      "cost": 3,
+      "x": 35,
+      "y": -27
+    },
+    {
+      "type": "EnemyDamage",
+      "id": 128,
+      "cost": 3,
+      "x": 35,
+      "y": -10
+    },
+    {
+      "type": "MoreEnemyDamage",
+      "id": 129,
+      "cost": 3,
+      "x": 25,
+      "y": -10
+    },
+    {
+      "type": "MoreEnemyDamage",
+      "id": 130,
+      "cost": 3,
+      "x": 25,
+      "y": -5
+    },
+    {
+      "type": "PiercePenalty",
+      "id": 131,
+      "cost": 5,
+      "x": 25,
       "y": -1
     },
     {
-      "type": "TemporalTrance",
-      "id": 149,
+      "type": "PiercePenalty",
+      "id": 133,
       "cost": 5,
-      "x": 32,
-      "y": -4
+      "x": 29,
+      "y": -5
+    },
+    {
+      "type": "Heartbreakers",
+      "id": 134,
+      "cost": 12,
+      "x": 31,
+      "y": 1
+    },
+    {
+      "type": "SpawnRate",
+      "id": 125,
+      "cost": 3,
+      "x": -12,
+      "y": 29
+    },
+    {
+      "type": "SpawnRate",
+      "id": 132,
+      "cost": 3,
+      "x": 12,
+      "y": 29
+    },
+    {
+      "type": "EnemyMoreLife",
+      "id": 135,
+      "cost": 3,
+      "x": -12,
+      "y": 41
+    },
+    {
+      "type": "EnemyMoreLife",
+      "id": 136,
+      "cost": 3,
+      "x": 12,
+      "y": 41
+    },
+    {
+      "type": "EnemyPoision",
+      "id": 137,
+      "cost": 3,
+      "x": -36,
+      "y": 29
+    },
+    {
+      "type": "EnemyPoision",
+      "id": 138,
+      "cost": 3,
+      "x": 35,
+      "y": 29
+    },
+    {
+      "type": "PlayerWither",
+      "id": 139,
+      "cost": 3,
+      "x": 0,
+      "y": 44
     },
     {
       "type": "Mundanity",
-      "id": 150,
+      "id": 140,
+      "cost": 30,
+      "x": 0,
+      "y": 39
+    },
+    {
+      "type": "HardmodeStrength",
+      "id": 141,
+      "cost": 4,
+      "x": 0,
+      "y": -56
+    },
+    {
+      "type": "HardmodeStrength",
+      "id": 142,
+      "cost": 4,
+      "x": -20,
+      "y": -52
+    },
+    {
+      "type": "HardmodeStrength",
+      "id": 143,
+      "cost": 4,
+      "x": 20,
+      "y": -52
+    },
+    {
+      "type": "HardmodeDoubleChance",
+      "id": 144,
       "cost": 5,
-      "x": 32,
-      "y": 4
+      "x": -2,
+      "y": -61
+    },
+    {
+      "type": "SpawnRate",
+      "id": 145,
+      "cost": 5,
+      "x": 2,
+      "y": -61
+    },
+    {
+      "type": "SpawnRate",
+      "id": 146,
+      "cost": 5,
+      "x": 2,
+      "y": -66
+    },
+    {
+      "type": "HardmodeDoubleChance",
+      "id": 147,
+      "cost": 5,
+      "x": -2,
+      "y": -66
+    },
+    {
+      "type": "SpontaneousGeneration",
+      "id": 148,
+      "cost": 15,
+      "x": 0,
+      "y": -70
+    },
+    {
+      "type": "StrengthPerDoom",
+      "id": 149,
+      "cost": 5,
+      "x": -20,
+      "y": -56
+    },
+    {
+      "type": "StrengthPerDoom",
+      "id": 150,
+      "cost": 6,
+      "x": -23,
+      "y": -59
+    },
+    {
+      "type": "StrengthPerDoom",
+      "id": 151,
+      "cost": 6,
+      "x": -17,
+      "y": -59
+    },
+    {
+      "type": "HardmodeStrengthPerDoom",
+      "id": 152,
+      "cost": 8,
+      "x": -20,
+      "y": -62
+    },
+    {
+      "type": "DoomConflux",
+      "id": 153,
+      "cost": 25,
+      "x": -20,
+      "y": -59
+    },
+    {
+      "type": "HardmodeEnemyVenom",
+      "id": 154,
+      "cost": 4,
+      "x": 20,
+      "y": -57
+    },
+    {
+      "type": "HardmodeEnemyVenom",
+      "id": 155,
+      "cost": 5,
+      "x": 17,
+      "y": -59
+    },
+    {
+      "type": "EnemyPoision",
+      "id": 156,
+      "cost": 5,
+      "x": 23,
+      "y": -59
+    },
+    {
+      "type": "EnemyPoision",
+      "id": 157,
+      "cost": 6,
+      "x": 24,
+      "y": -62
+    },
+    {
+      "type": "HardmodeEnemyVenom",
+      "id": 158,
+      "cost": 6,
+      "x": 16,
+      "y": -62
+    },
+    {
+      "type": "HardmodeEnemyVenom",
+      "id": 160,
+      "cost": 6,
+      "x": 18,
+      "y": -69
+    },
+    {
+      "type": "Comorbidity",
+      "id": 161,
+      "cost": 18,
+      "x": 20,
+      "y": -62
+    },
+    {
+      "type": "EnemyPoision",
+      "id": 159,
+      "cost": 6,
+      "x": 22,
+      "y": -69
+    },
+    {
+      "type": "HardmodeEnemyPoision",
+      "id": 162,
+      "cost": 6,
+      "x": 20,
+      "y": -75
+    },
+    {
+      "type": "DoomBeacon",
+      "id": 163,
+      "cost": 20,
+      "x": -20,
+      "y": -66
+    },
+    {
+      "type": "PotionSickness",
+      "id": 164,
+      "cost": 4,
+      "x": 31,
+      "y": 25
+    },
+    {
+      "type": "PotionSickness",
+      "id": 165,
+      "cost": 4,
+      "x": 28,
+      "y": 28
+    },
+    {
+      "type": "PotionSickness",
+      "id": 166,
+      "cost": 4,
+      "x": 25,
+      "y": 25
+    },
+    {
+      "type": "BadMedicine",
+      "id": 167,
+      "cost": 16,
+      "x": 28,
+      "y": 22
+    },
+    {
+      "type": "TwistOfFate",
+      "id": 168,
+      "cost": 5,
+      "x": 0,
+      "y": -6
+    },
+    {
+      "type": "VengefulShades",
+      "id": 169,
+      "cost": 15,
+      "x": -11,
+      "y": -70
+    },
+    {
+      "type": "CalamityGate",
+      "id": 170,
+      "cost": 0,
+      "x": 41,
+      "y": -10
+    },
+    {
+      "type": "CalamityDamage",
+      "id": 171,
+      "cost": 3,
+      "x": 41,
+      "y": -14
+    },
+    {
+      "type": "CalamityDamage",
+      "id": 172,
+      "cost": 3,
+      "x": 41,
+      "y": -17
+    },
+    {
+      "type": "CalamityDamage",
+      "id": 173,
+      "cost": 4,
+      "x": 44,
+      "y": -20
+    },
+    {
+      "type": "CalamityDamage",
+      "id": 174,
+      "cost": 4,
+      "x": 38,
+      "y": -20
+    },
+    {
+      "type": "EnemyDodge",
+      "id": 175,
+      "cost": 3,
+      "x": -40,
+      "y": -8
+    },
+    {
+      "type": "EnemyDodge",
+      "id": 176,
+      "cost": 4,
+      "x": -43,
+      "y": -5
+    },
+    {
+      "type": "EnemyDodge",
+      "id": 177,
+      "cost": 5,
+      "x": -47,
+      "y": -6
+    },
+    {
+      "type": "EnemyDodge",
+      "id": 178,
+      "cost": 6,
+      "x": -48,
+      "y": -10
+    },
+    {
+      "type": "HardmodeGate",
+      "id": 179,
+      "cost": 0,
+      "x": -27,
+      "y": -47
+    },
+    {
+      "type": "HardmodeGate",
+      "id": 115,
+      "cost": 0,
+      "x": 28,
+      "y": -47
+    },
+    {
+      "type": "TemporalTrance",
+      "id": 180,
+      "cost": 50,
+      "x": 0,
+      "y": -51
     }
   ],
   "edges": [
     {
       "start": 0,
+      "end": 1
+    },
+    {
+      "start": 0,
       "end": 2
     },
     {
-      "start": 2,
+      "start": 0,
       "end": 3
     },
     {
-      "start": 2,
+      "start": 1,
       "end": 4
     },
     {
@@ -1076,7 +1290,7 @@
       "end": 5
     },
     {
-      "start": 5,
+      "start": 1,
       "end": 6
     },
     {
@@ -1085,7 +1299,15 @@
     },
     {
       "start": 7,
+      "end": 7
+    },
+    {
+      "start": 5,
       "end": 8
+    },
+    {
+      "start": 8,
+      "end": 7
     },
     {
       "start": 8,
@@ -1096,20 +1318,28 @@
       "end": 10
     },
     {
+      "start": 2,
+      "end": 11
+    },
+    {
       "start": 11,
       "end": 12
     },
     {
-      "start": 11,
+      "start": 2,
       "end": 13
     },
     {
-      "start": 11,
+      "start": 13,
       "end": 14
     },
     {
-      "start": 14,
+      "start": 12,
       "end": 15
+    },
+    {
+      "start": 15,
+      "end": 14
     },
     {
       "start": 15,
@@ -1120,15 +1350,23 @@
       "end": 17
     },
     {
-      "start": 12,
+      "start": 17,
       "end": 18
+    },
+    {
+      "start": 18,
+      "end": 10
     },
     {
       "start": 18,
       "end": 19
     },
     {
-      "start": 13,
+      "start": 8,
+      "end": 20
+    },
+    {
+      "start": 20,
       "end": 21
     },
     {
@@ -1136,15 +1374,11 @@
       "end": 22
     },
     {
-      "start": 19,
-      "end": 20
-    },
-    {
       "start": 22,
       "end": 23
     },
     {
-      "start": 3,
+      "start": 23,
       "end": 24
     },
     {
@@ -1152,23 +1386,27 @@
       "end": 25
     },
     {
-      "start": 24,
+      "start": 25,
       "end": 26
     },
     {
-      "start": 25,
+      "start": 26,
       "end": 27
     },
     {
-      "start": 26,
+      "start": 27,
       "end": 28
     },
     {
-      "start": 27,
+      "start": 28,
+      "end": 21
+    },
+    {
+      "start": 25,
       "end": 29
     },
     {
-      "start": 28,
+      "start": 3,
       "end": 30
     },
     {
@@ -1176,11 +1414,7 @@
       "end": 31
     },
     {
-      "start": 29,
-      "end": 31
-    },
-    {
-      "start": 31,
+      "start": 3,
       "end": 32
     },
     {
@@ -1193,30 +1427,38 @@
     },
     {
       "start": 34,
+      "end": 31
+    },
+    {
+      "start": 34,
       "end": 35
     },
     {
-      "start": 33,
+      "start": 34,
       "end": 36
     },
     {
-      "start": 36,
+      "start": 35,
       "end": 37
     },
     {
-      "start": 37,
+      "start": 15,
       "end": 38
     },
     {
-      "start": 35,
-      "end": 38
-    },
-    {
-      "start": 33,
+      "start": 38,
       "end": 39
     },
     {
-      "start": 17,
+      "start": 40,
+      "end": 37
+    },
+    {
+      "start": 40,
+      "end": 39
+    },
+    {
+      "start": 40,
       "end": 41
     },
     {
@@ -1224,11 +1466,11 @@
       "end": 42
     },
     {
-      "start": 11,
+      "start": 41,
       "end": 43
     },
     {
-      "start": 43,
+      "start": 41,
       "end": 44
     },
     {
@@ -1236,35 +1478,43 @@
       "end": 45
     },
     {
-      "start": 0,
+      "start": 45,
       "end": 46
     },
     {
-      "start": 46,
-      "end": 47
+      "start": 47,
+      "end": 45
     },
     {
-      "start": 47,
+      "start": 42,
       "end": 48
     },
     {
       "start": 48,
+      "end": 46
+    },
+    {
+      "start": 43,
       "end": 49
     },
     {
       "start": 49,
+      "end": 47
+    },
+    {
+      "start": 40,
       "end": 50
     },
     {
-      "start": 49,
+      "start": 50,
       "end": 51
     },
     {
-      "start": 19,
+      "start": 51,
       "end": 52
     },
     {
-      "start": 52,
+      "start": 50,
       "end": 53
     },
     {
@@ -1280,31 +1530,31 @@
       "end": 56
     },
     {
-      "start": 52,
+      "start": 56,
+      "end": 52
+    },
+    {
+      "start": 36,
       "end": 57
     },
     {
       "start": 57,
-      "end": 59
-    },
-    {
-      "start": 59,
       "end": 58
     },
     {
       "start": 58,
-      "end": 56
-    },
-    {
-      "start": 54,
-      "end": 60
+      "end": 59
     },
     {
       "start": 59,
+      "end": 20
+    },
+    {
+      "start": 58,
       "end": 60
     },
     {
-      "start": 59,
+      "start": 60,
       "end": 61
     },
     {
@@ -1312,59 +1562,59 @@
       "end": 62
     },
     {
-      "start": 62,
-      "end": 64
-    },
-    {
-      "start": 62,
+      "start": 60,
       "end": 63
     },
     {
-      "start": 62,
+      "start": 63,
+      "end": 64
+    },
+    {
+      "start": 64,
       "end": 65
     },
     {
-      "start": 65,
+      "start": 62,
       "end": 66
     },
     {
-      "start": 56,
+      "start": 17,
       "end": 67
+    },
+    {
+      "start": 67,
+      "end": 10
     },
     {
       "start": 67,
       "end": 68
     },
     {
-      "start": 33,
-      "end": 40
-    },
-    {
-      "start": 40,
+      "start": 67,
       "end": 69
     },
     {
       "start": 68,
-      "end": 69
-    },
-    {
-      "start": 69,
       "end": 70
     },
     {
-      "start": 70,
+      "start": 69,
       "end": 71
     },
     {
-      "start": 70,
+      "start": 71,
       "end": 72
+    },
+    {
+      "start": 72,
+      "end": 70
     },
     {
       "start": 72,
       "end": 73
     },
     {
-      "start": 71,
+      "start": 15,
       "end": 74
     },
     {
@@ -1372,11 +1622,11 @@
       "end": 75
     },
     {
-      "start": 73,
+      "start": 75,
       "end": 76
     },
     {
-      "start": 7,
+      "start": 76,
       "end": 77
     },
     {
@@ -1384,87 +1634,91 @@
       "end": 78
     },
     {
-      "start": 78,
-      "end": 80
-    },
-    {
-      "start": 80,
-      "end": 82
-    },
-    {
-      "start": 77,
+      "start": 74,
       "end": 79
     },
     {
       "start": 79,
+      "end": 80
+    },
+    {
+      "start": 80,
       "end": 81
     },
     {
       "start": 81,
+      "end": 78
+    },
+    {
+      "start": 78,
       "end": 82
     },
     {
-      "start": 0,
-      "end": 1
+      "start": 86,
+      "end": 84
     },
     {
-      "start": 1,
-      "end": 11
+      "start": 84,
+      "end": 85
     },
     {
-      "start": 11,
-      "end": 13
-    },
-    {
-      "start": 13,
-      "end": 21
-    },
-    {
-      "start": 21,
-      "end": 22
-    },
-    {
-      "start": 22,
-      "end": 23
+      "start": 86,
+      "end": 87
     },
     {
       "start": 87,
+      "end": 88
+    },
+    {
+      "start": 83,
+      "end": 88
+    },
+    {
+      "start": 83,
+      "end": 85
+    },
+    {
+      "start": 83,
       "end": 89
     },
     {
       "start": 89,
+      "end": 8
+    },
+    {
+      "start": 83,
       "end": 90
     },
     {
-      "start": 89,
-      "end": 94
+      "start": 90,
+      "end": 91
     },
     {
-      "start": 91,
-      "end": 90
+      "start": 35,
+      "end": 92
     },
     {
-      "start": 94,
-      "end": 95
-    },
-    {
-      "start": 95,
-      "end": 96
+      "start": 92,
+      "end": 37
     },
     {
       "start": 92,
       "end": 93
     },
     {
-      "start": 92,
-      "end": 96
+      "start": 93,
+      "end": 94
+    },
+    {
+      "start": 94,
+      "end": 95
     },
     {
       "start": 93,
-      "end": 91
+      "end": 96
     },
     {
-      "start": 88,
+      "start": 96,
       "end": 97
     },
     {
@@ -1472,119 +1726,23 @@
       "end": 98
     },
     {
-      "start": 97,
+      "start": 98,
       "end": 99
     },
     {
-      "start": 97,
+      "start": 99,
       "end": 100
     },
     {
       "start": 100,
+      "end": 97
+    },
+    {
+      "start": 34,
       "end": 101
     },
     {
-      "start": 85,
-      "end": 83
-    },
-    {
-      "start": 84,
-      "end": 86
-    },
-    {
-      "start": 83,
-      "end": 84
-    },
-    {
-      "start": 86,
-      "end": 85
-    },
-    {
-      "start": 83,
-      "end": 27
-    },
-    {
-      "start": 84,
-      "end": 87
-    },
-    {
-      "start": 86,
-      "end": 88
-    },
-    {
-      "start": 107,
-      "end": 108
-    },
-    {
-      "start": 107,
-      "end": 58
-    },
-    {
-      "start": 108,
-      "end": 109
-    },
-    {
-      "start": 109,
-      "end": 110
-    },
-    {
-      "start": 107,
-      "end": 113
-    },
-    {
-      "start": 114,
-      "end": 115
-    },
-    {
-      "start": 114,
-      "end": 113
-    },
-    {
-      "start": 111,
-      "end": 112
-    },
-    {
-      "start": 111,
-      "end": 110
-    },
-    {
-      "start": 112,
-      "end": 116
-    },
-    {
-      "start": 116,
-      "end": 115
-    },
-    {
-      "start": 9,
-      "end": 117
-    },
-    {
-      "start": 117,
-      "end": 118
-    },
-    {
-      "start": 119,
-      "end": 117
-    },
-    {
-      "start": 119,
-      "end": 120
-    },
-    {
-      "start": 118,
-      "end": 121
-    },
-    {
-      "start": 0,
-      "end": 122
-    },
-    {
-      "start": 54,
-      "end": 123
-    },
-    {
-      "start": 85,
+      "start": 101,
       "end": 102
     },
     {
@@ -1605,115 +1763,355 @@
     },
     {
       "start": 106,
+      "end": 107
+    },
+    {
+      "start": 107,
+      "end": 108
+    },
+    {
+      "start": 108,
+      "end": 109
+    },
+    {
+      "start": 109,
+      "end": 110
+    },
+    {
+      "start": 110,
+      "end": 101
+    },
+    {
+      "start": 106,
+      "end": 111
+    },
+    {
+      "start": 78,
+      "end": 112
+    },
+    {
+      "start": 72,
+      "end": 113
+    },
+    {
+      "start": 86,
+      "end": 114
+    },
+    {
+      "start": 114,
+      "end": 113
+    },
+    {
+      "start": 113,
+      "end": 112
+    },
+    {
+      "start": 45,
+      "end": 116
+    },
+    {
+      "start": 116,
+      "end": 117
+    },
+    {
+      "start": 118,
+      "end": 112
+    },
+    {
+      "start": 118,
+      "end": 119
+    },
+    {
+      "start": 119,
+      "end": 117
+    },
+    {
+      "start": 117,
+      "end": 120
+    },
+    {
+      "start": 120,
+      "end": 121
+    },
+    {
+      "start": 121,
+      "end": 122
+    },
+    {
+      "start": 122,
+      "end": 123
+    },
+    {
+      "start": 123,
       "end": 124
     },
     {
-      "start": 124,
-      "end": 125
-    },
-    {
-      "start": 126,
-      "end": 125
+      "start": 114,
+      "end": 126
     },
     {
       "start": 126,
       "end": 127
     },
     {
-      "start": 128,
-      "end": 127
+      "start": 127,
+      "end": 128
+    },
+    {
+      "start": 20,
+      "end": 129
     },
     {
       "start": 129,
-      "end": 106
-    },
-    {
-      "start": 130,
-      "end": 129
+      "end": 130
     },
     {
       "start": 130,
       "end": 131
     },
     {
-      "start": 131,
-      "end": 132
-    },
-    {
-      "start": 132,
-      "end": 128
-    },
-    {
-      "start": 128,
+      "start": 130,
       "end": 133
     },
     {
-      "start": 105,
+      "start": 131,
       "end": 134
     },
     {
       "start": 134,
+      "end": 133
+    },
+    {
+      "start": 128,
+      "end": 129
+    },
+    {
+      "start": 35,
+      "end": 125
+    },
+    {
+      "start": 36,
+      "end": 132
+    },
+    {
+      "start": 125,
       "end": 135
     },
     {
-      "start": 135,
+      "start": 132,
       "end": 136
     },
     {
-      "start": 136,
+      "start": 135,
       "end": 137
     },
     {
       "start": 137,
-      "end": 138
+      "end": 116
     },
     {
       "start": 138,
-      "end": 139
+      "end": 128
     },
     {
-      "start": 140,
+      "start": 138,
+      "end": 136
+    },
+    {
+      "start": 139,
+      "end": 136
+    },
+    {
+      "start": 139,
       "end": 135
     },
     {
-      "start": 140,
-      "end": 141
+      "start": 139,
+      "end": 140
     },
     {
       "start": 141,
       "end": 142
     },
     {
-      "start": 142,
-      "end": 143
+      "start": 143,
+      "end": 141
     },
     {
-      "start": 143,
+      "start": 141,
       "end": 144
     },
     {
-      "start": 144,
+      "start": 141,
       "end": 145
     },
     {
-      "start": 103,
+      "start": 145,
       "end": 146
     },
     {
-      "start": 146,
+      "start": 144,
       "end": 147
     },
     {
-      "start": 108,
+      "start": 146,
       "end": 148
     },
     {
-      "start": 45,
+      "start": 148,
+      "end": 147
+    },
+    {
+      "start": 142,
       "end": 149
     },
     {
-      "start": 45,
+      "start": 149,
       "end": 150
+    },
+    {
+      "start": 149,
+      "end": 151
+    },
+    {
+      "start": 151,
+      "end": 152
+    },
+    {
+      "start": 152,
+      "end": 150
+    },
+    {
+      "start": 152,
+      "end": 153
+    },
+    {
+      "start": 143,
+      "end": 154
+    },
+    {
+      "start": 154,
+      "end": 155
+    },
+    {
+      "start": 154,
+      "end": 156
+    },
+    {
+      "start": 156,
+      "end": 157
+    },
+    {
+      "start": 155,
+      "end": 158
+    },
+    {
+      "start": 157,
+      "end": 159
+    },
+    {
+      "start": 158,
+      "end": 160
+    },
+    {
+      "start": 159,
+      "end": 162
+    },
+    {
+      "start": 162,
+      "end": 160
+    },
+    {
+      "start": 162,
+      "end": 161
+    },
+    {
+      "start": 152,
+      "end": 163
+    },
+    {
+      "start": 138,
+      "end": 164
+    },
+    {
+      "start": 164,
+      "end": 165
+    },
+    {
+      "start": 165,
+      "end": 166
+    },
+    {
+      "start": 166,
+      "end": 167
+    },
+    {
+      "start": 0,
+      "end": 168
+    },
+    {
+      "start": 148,
+      "end": 169
+    },
+    {
+      "start": 169,
+      "end": 163
+    },
+    {
+      "start": 128,
+      "end": 170
+    },
+    {
+      "start": 170,
+      "end": 171
+    },
+    {
+      "start": 171,
+      "end": 172
+    },
+    {
+      "start": 172,
+      "end": 173
+    },
+    {
+      "start": 174,
+      "end": 172
+    },
+    {
+      "start": 117,
+      "end": 175
+    },
+    {
+      "start": 175,
+      "end": 176
+    },
+    {
+      "start": 176,
+      "end": 177
+    },
+    {
+      "start": 177,
+      "end": 178
+    },
+    {
+      "start": 179,
+      "end": 118
+    },
+    {
+      "start": 179,
+      "end": 142
+    },
+    {
+      "start": 115,
+      "end": 126
+    },
+    {
+      "start": 115,
+      "end": 143
+    },
+    {
+      "start": 113,
+      "end": 180
     }
   ]
 }

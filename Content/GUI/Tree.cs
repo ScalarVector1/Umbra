@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
@@ -208,6 +209,7 @@ namespace Umbra.Content.GUI
 
 			if (editing)
 			{
+				Utils.DrawBorderString(spriteBatch, "DEBUG TOOL, USE AT OWN RISK", new Vector2(Main.screenWidth / 2 - 300, Main.screenHeight / 2 - 460), Color.Red, 2);
 				Utils.DrawBorderString(spriteBatch, Language.GetText("Mods.Umbra.GUI.Tree.EditModeTooltip").Value, new Vector2(100, 100), Color.White, 1);
 			}
 		}
@@ -437,7 +439,7 @@ namespace Umbra.Content.GUI
 
 		public override void SafeMouseDown(UIMouseEvent evt)
 		{
-			if (Tree.editing && !moved)
+			if (Tree.editing && !moved && !Main.keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftShift))
 			{
 				PassiveElement pElement = Children.FirstOrDefault(n => n.IsMouseHovering && n is PassiveElement) as PassiveElement;
 

@@ -47,6 +47,7 @@ namespace Umbra.Core.PassiveTreeSystem
 		public override void OnEnterWorld()
 		{
 			UmbraNet.RequestTreeOnJoin();
+			Main.NewText("Thanks for checking out out the Umbra Pre-release! This is a very early demo being used to gauge interest and find issues. PLEASE report any issues to https://discord.gg/KFpCz5p688 or https://github.com/ScalarVector1/Umbra/issues", new Color(200, 150, 255));
 		}
 
 		public override void SaveData(TagCompound tag)

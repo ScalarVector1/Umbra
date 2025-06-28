@@ -40,6 +40,9 @@ namespace Umbra.Core.PassiveTreeSystem
 		/// <param name="end">The end nodes ID</param>
 		public void Connect(int start, int end)
 		{
+			if (start == end)
+				return;
+
 			if (!Edges.Any(n => n.Start == start && n.End == end || n.Start == end && n.End == start))
 			{
 				Edges.Add(new(start, end));
