@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
@@ -12,7 +11,6 @@ using Umbra.Content.Passives.Crossmod;
 using Umbra.Core;
 using Umbra.Core.Loaders.UILoading;
 using Umbra.Core.PassiveTreeSystem;
-using static AssGen.Assets;
 
 namespace Umbra.Content.GUI
 {
@@ -227,15 +225,28 @@ namespace Umbra.Content.GUI
 		private bool moved;
 		private bool freeze;
 
+		private float zoom = 1;
+
 		private PassiveElement movingPassive;
 
 		private UIElement Panel => Parent;
+
+		private Vector2 CenterPos => GetDimensions().Center() + LineOff - Vector2.One * 400;
 
 		public override void Draw(SpriteBatch spriteBatch)
 		{
 			Rectangle oldRect = spriteBatch.GraphicsDevice.ScissorRectangle;
 			spriteBatch.GraphicsDevice.RasterizerState.ScissorTestEnable = true;
-			spriteBatch.GraphicsDevice.ScissorRectangle = Panel.GetDimensions().ToRectangle();
+
+			var scissor = Panel.GetDimensions().ToRectangle();
+			scissor.X = (int)(scissor.X * Main.UIScale);
+			scissor.Y = (int)(scissor.Y * Main.UIScale);
+			scissor.Width = (int)(scissor.Width * Main.UIScale);
+			scissor.Height = (int)(scissor.Height * Main.UIScale);
+
+			spriteBatch.GraphicsDevice.ScissorRectangle = scissor;
+
+			var matrix = Matrix.CreateScale(zoom * Main.UIScale);
 
 			spriteBatch.End();
 			spriteBatch.Begin(default, default, default, default, default, default, Main.UIScaleMatrix);
@@ -259,8 +270,8 @@ namespace Umbra.Content.GUI
 
 				for (float k = 0; k <= 1; k += 1 / (Vector2.Distance(start.TreePos, end.TreePos) / 16))
 				{
-					Vector2 pos = GetDimensions().Position() + Vector2.Lerp(start.TreePos, end.TreePos, k) + LineOff;
-					Main.spriteBatch.Draw(chainTex, pos, null, color * opacity, start.TreePos.DirectionTo(end.TreePos).ToRotation(), chainTex.Size() / 2, 1, 0, 0);
+					Vector2 pos = GetDimensions().Position() + Vector2.Lerp(start.TreePos * zoom, end.TreePos * zoom, k) + LineOff;
+					Main.spriteBatch.Draw(chainTex, pos, null, color * opacity, start.TreePos.DirectionTo(end.TreePos).ToRotation(), chainTex.Size() / 2, zoom, 0, 0);
 				}
 			}
 
@@ -282,9 +293,9 @@ namespace Umbra.Content.GUI
 					float scale = 0.05f + rand.NextSingle() * 0.12f;
 
 					float progress = (Main.GameUpdateCount + 15 * k) % len / (float)len;
-					Vector2 pos = GetDimensions().Position() + Vector2.SmoothStep(start.TreePos, end.TreePos, progress) + LineOff;
+					Vector2 pos = GetDimensions().Position() + Vector2.SmoothStep(start.TreePos * zoom, end.TreePos * zoom, progress) + LineOff;
 					float scale2 = (float)Math.Sin(progress * 3.14f) * (0.4f - scale);
-					spriteBatch.Draw(glow, pos, null, glowColor * scale2, 0, glow.Size() / 2f, scale2, 0, 0);
+					spriteBatch.Draw(glow, pos, null, glowColor * scale2, 0, glow.Size() / 2f, scale2 * zoom, 0, 0);
 				}
 			}
 
@@ -296,22 +307,22 @@ namespace Umbra.Content.GUI
 				{
 					for (int y = -100; y < 100; y++)
 					{
-						Vector2 pos = GetDimensions().Position() + new Vector2(x * 16, y * 16) + LineOff;
-						Main.spriteBatch.Draw(Assets.GUI.Box.Value, pos, null, Color.White * 0.25f, 0f, Assets.GUI.Box.Size() / 2, 0.2f, 0, 0);
+						Vector2 pos = GetDimensions().Position() + new Vector2(x * 16, y * 16) * zoom + LineOff;
+						Main.spriteBatch.Draw(Assets.GUI.Box.Value, pos, null, Color.White * 0.25f, 0f, Assets.GUI.Box.Size() / 2, 0.2f * zoom, 0, 0);
 					}
 				}
 			}
 
 			if (Tree.editing && !Children.Any(n => n.IsMouseHovering))
 			{
-				Vector2 rawAim = (Main.MouseScreen - GetDimensions().Position() - LineOff) / 16;
+				Vector2 rawAim = (Main.MouseScreen - GetDimensions().Position() - LineOff) / (16 * zoom);
 				int aimX = (int)rawAim.X;
 				int aimY = (int)rawAim.Y;
 
-				Vector2 aim = new Vector2(aimX, aimY) * 16 + GetDimensions().Position() + LineOff;
+				Vector2 aim = new Vector2(aimX, aimY) * (16 * zoom) + GetDimensions().Position() + LineOff;
 
 				if (Tree.toPlace != null)
-					spriteBatch.Draw(Tree.toPlace.texture.Value, aim, null, Color.White * 0.5f, 0f, Tree.toPlace.texture.Size() / 2f, 1f, 0, 0);
+					spriteBatch.Draw(Tree.toPlace.texture.Value, aim, null, Color.White * 0.5f, 0f, Tree.toPlace.texture.Size() / 2f, zoom, 0, 0);
 			}
 
 			spriteBatch.End();
@@ -350,7 +361,7 @@ namespace Umbra.Content.GUI
 			if (Panel.IsMouseHovering)
 				Main.LocalPlayer.mouseInterface = true;
 
-			if (Main.mouseLeft && Children.Any(n => n.IsMouseHovering))
+			if (!moved && Main.mouseLeft && Children.Any(n => n.IsMouseHovering))
 				freeze = true;
 
 			if (Main.mouseLeft && Panel.IsMouseHovering && !freeze)
@@ -376,7 +387,7 @@ namespace Umbra.Content.GUI
 
 			if (Tree.editing && freeze && movingPassive != null && movingEnabled)
 			{
-				Vector2 rawAim = (Main.MouseScreen - GetDimensions().Position() - LineOff) / 16;
+				Vector2 rawAim = (Main.MouseScreen - GetDimensions().Position() - LineOff) / (16 * zoom);
 				int aimX = (int)rawAim.X;
 				int aimY = (int)rawAim.Y;
 
@@ -403,8 +414,9 @@ namespace Umbra.Content.GUI
 			{
 				if (element is PassiveElement ele)
 				{
-					element.Left.Set(ele.root.X + LineOff.X, 0);
-					element.Top.Set(ele.root.Y + LineOff.Y, 0);
+					ele.AdjustForScale(zoom);
+					element.Left.Set(ele.scaledRoot.X + LineOff.X, 0);
+					element.Top.Set(ele.scaledRoot.Y + LineOff.Y, 0);
 				}
 			}
 
@@ -415,7 +427,7 @@ namespace Umbra.Content.GUI
 		{
 			if (Tree.editing && Tree.toPlace != null && !Children.Any(n => n.IsMouseHovering) && !moved)
 			{
-				Vector2 rawAim = (Main.MouseScreen - GetDimensions().Position() - LineOff) / 16;
+				Vector2 rawAim = (Main.MouseScreen - GetDimensions().Position() - LineOff) / (16 * zoom);
 				int aimX = (int)rawAim.X;
 				int aimY = (int)rawAim.Y;
 
@@ -441,7 +453,7 @@ namespace Umbra.Content.GUI
 		{
 			if (Tree.editing && !moved && !Main.keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftShift))
 			{
-				PassiveElement pElement = Children.FirstOrDefault(n => n.IsMouseHovering && n is PassiveElement) as PassiveElement;
+				var pElement = Children.FirstOrDefault(n => n.IsMouseHovering && n is PassiveElement) as PassiveElement;
 
 				if (pElement is null)
 					return;
@@ -463,16 +475,35 @@ namespace Umbra.Content.GUI
 			if (movingPassive != null)
 				movingPassive = null;
 		}
+
+		public override void SafeScrollWheel(UIScrollWheelEvent evt)
+		{
+			Vector2 scaledMouseDiff = (CenterPos - Main.MouseScreen) * (1f/zoom);
+
+			zoom += evt.ScrollWheelValue / 1200f * zoom;
+
+			if (zoom < 0.5f)
+				zoom = 0.5f;
+
+			if (zoom > 2f)
+				zoom = 2f;
+
+			Vector2 scaledMouseDiff2 = (CenterPos - Main.MouseScreen) * (1f/zoom);
+
+			LineOff += (scaledMouseDiff - scaledMouseDiff2) * zoom;
+		}
 	}
 
 	internal class PassiveElement : SmartUIElement
 	{
 		public Passive passive;
 		public Vector2 root;
+		public Vector2 scaledRoot;
 
 		private int allocateFlashTime;
 		private int deallocateFlashTime;
 		private int hoverTime;
+		private float scale = 1f;
 
 		public PassiveElement(Passive passive)
 		{
@@ -483,6 +514,15 @@ namespace Umbra.Content.GUI
 			Height.Set(passive.Height, 0);
 
 			root = new Vector2(Left.Pixels, Top.Pixels);
+			scaledRoot = root;
+		}
+
+		public void AdjustForScale(float scale)
+		{
+			scaledRoot = root * scale;
+			Width.Set(passive.Width * scale, 0);
+			Height.Set(passive.Height * scale, 0);
+			this.scale = scale;
 		}
 
 		public override void SafeUpdate(GameTime gameTime)
@@ -508,8 +548,8 @@ namespace Umbra.Content.GUI
 						A = 0
 					};
 
-					spriteBatch.Draw(glow, GetDimensions().Center(), null, glowColor * 0.5f, 0, glow.Size() / 2f, 1f, 0, 0);
-					spriteBatch.Draw(star, GetDimensions().Center(), null, glowColor * 0.25f, 0, star.Size() / 2f, 1f, 0, 0);
+					spriteBatch.Draw(glow, GetDimensions().Center(), null, glowColor * 0.5f, 0, glow.Size() / 2f, scale, 0, 0);
+					spriteBatch.Draw(star, GetDimensions().Center(), null, glowColor * 0.25f, 0, star.Size() / 2f, scale, 0, 0);
 				}
 
 				if (IsMouseHovering)
@@ -522,8 +562,8 @@ namespace Umbra.Content.GUI
 						A = 0
 					};
 
-					spriteBatch.Draw(glow, GetDimensions().Center(), null, glowColor * 0.5f, 0, glow.Size() / 2f, 1f, 0, 0);
-					spriteBatch.Draw(star, GetDimensions().Center(), null, glowColor * 0.25f, 0, star.Size() / 2f, 1f, 0, 0);
+					spriteBatch.Draw(glow, GetDimensions().Center(), null, glowColor * 0.5f, 0, glow.Size() / 2f, scale, 0, 0);
+					spriteBatch.Draw(star, GetDimensions().Center(), null, glowColor * 0.25f, 0, star.Size() / 2f, scale, 0, 0);
 				}
 			}
 
@@ -537,10 +577,10 @@ namespace Umbra.Content.GUI
 					glowColor = new(160, 80, 200, 0);
 
 				float prog = hoverTime / 10f;
-				spriteBatch.Draw(glow, GetDimensions().Center(), null, glowColor * prog, 0, glow.Size() / 2f, prog * (0.6f + passive.size * 0.1f), 0, 0);
+				spriteBatch.Draw(glow, GetDimensions().Center(), null, glowColor * prog, 0, glow.Size() / 2f, prog * scale * (0.6f + passive.size * 0.1f), 0, 0);
 			}
 
-			passive.Draw(spriteBatch, GetDimensions().Center());
+			passive.Draw(spriteBatch, GetDimensions().Center(), scale);
 
 			if (Tree.editing)
 			{
@@ -561,8 +601,8 @@ namespace Umbra.Content.GUI
 
 				glowColor *= prog * 0.5f;
 
-				spriteBatch.Draw(glow, GetDimensions().Center(), null, glowColor, 0, glow.Size() / 2f, 1 + (1f - prog), 0, 0);
-				spriteBatch.Draw(star, GetDimensions().Center(), null, glowColor * 0.5f, 0, star.Size() / 2f, 1 + prog, 0, 0);
+				spriteBatch.Draw(glow, GetDimensions().Center(), null, glowColor, 0, glow.Size() / 2f, scale * (1 + (1f - prog)), 0, 0);
+				spriteBatch.Draw(star, GetDimensions().Center(), null, glowColor * 0.5f, 0, star.Size() / 2f, scale * (1 + prog), 0, 0);
 
 				allocateFlashTime--;
 			}
@@ -581,8 +621,8 @@ namespace Umbra.Content.GUI
 
 				glowColor *= prog * 0.5f;
 
-				spriteBatch.Draw(glow, GetDimensions().Center(), null, glowColor, 0, glow.Size() / 2f, 1 + (1f - prog), 0, 0);
-				spriteBatch.Draw(star, GetDimensions().Center(), null, glowColor * 0.5f, 0, star.Size() / 2f, 1 + (1f - prog), 0, 0);
+				spriteBatch.Draw(glow, GetDimensions().Center(), null, glowColor, 0, glow.Size() / 2f, scale * (1 + (1f - prog)), 0, 0);
+				spriteBatch.Draw(star, GetDimensions().Center(), null, glowColor * 0.5f, 0, star.Size() / 2f, scale * (1 + (1f - prog)), 0, 0);
 
 				deallocateFlashTime--;
 			}

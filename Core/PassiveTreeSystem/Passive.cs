@@ -71,7 +71,7 @@ namespace Umbra.Core.PassiveTreeSystem
 
 		public virtual void Update() { }
 
-		public void Draw(SpriteBatch spriteBatch, Vector2 center)
+		public void Draw(SpriteBatch spriteBatch, Vector2 center, float scale)
 		{
 			Texture2D tex = texture?.Value ?? Assets.GUI.PassiveFrameTiny.Value;
 
@@ -83,10 +83,10 @@ namespace Umbra.Core.PassiveTreeSystem
 			if (active || Tree.editing)
 			{
 				color = Color.White;
-				spriteBatch.Draw(Assets.GUI.GlowAlpha.Value, center, null, new Color(180, 120, 255, 0) * opacity, 0, Assets.GUI.GlowAlpha.Size() / 2f, 0.5f + size * 0.1f, 0, 0);
+				spriteBatch.Draw(Assets.GUI.GlowAlpha.Value, center, null, new Color(180, 120, 255, 0) * opacity, 0, Assets.GUI.GlowAlpha.Size() / 2f, scale * (0.5f + size * 0.1f), 0, 0);
 			}
 
-			spriteBatch.Draw(tex, center, null, color * opacity, 0, tex.Size() / 2f, 1, 0, 0);
+			spriteBatch.Draw(tex, center, null, color * opacity, 0, tex.Size() / 2f, scale, 0, 0);
 		}
 
 		/// <summary>
