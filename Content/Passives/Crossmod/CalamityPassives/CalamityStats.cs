@@ -19,7 +19,7 @@ namespace Umbra.Content.Passives.Crossmod.CalamityPassives
 		[JITWhenModsEnabled("CalamityMod")]
 		public override void OnEnemySpawn(NPC npc)
 		{
-			if (npc.ModNPC.Mod.Name == "CalamityMod")
+			if (npc.ModNPC != null && npc.ModNPC.Mod.Name == "CalamityMod")
 				npc.GetGlobalNPC<TreeNPC>().flatDamage += 1;
 		}
 	}
