@@ -7,9 +7,11 @@ using Terraria.Localization;
 using Terraria.ModLoader.UI.Elements;
 using Terraria.UI;
 using Umbra.Content.GUI.FieldEditors;
+using Umbra.Content.Passives.Crossmod;
 using Umbra.Core;
 using Umbra.Core.Loaders.UILoading;
 using Umbra.Core.PassiveTreeSystem;
+using static AssGen.Assets;
 
 namespace Umbra.Content.GUI
 {
@@ -190,7 +192,7 @@ namespace Umbra.Content.GUI
 					Tooltip.SetTooltip(Language.GetText("Mods.Umbra.GUI.Tree.DoomTooltipDescInverted").Format(
 						Math.Round(DoomEffectsSystem.DoomValueMult * 100, 2),
 						Math.Round(DoomEffectsSystem.LuckBonus, 2),
-						Math.Round(100 * (UmbraDropNPC.UmbraChance - 0.02f), 2)
+						Math.Round(100 * (UmbraDropNPC.UmbraChance - 0.01f), 2)
 					));
 				}
 				else
@@ -199,7 +201,7 @@ namespace Umbra.Content.GUI
 						Math.Round(DoomEffectsSystem.DoomValueMult * 100, 2),
 						Math.Round(DoomEffectsSystem.LuckBonus, 2),
 						Math.Round(DoomEffectsSystem.DoubleLootChance * 100, 2),
-						Math.Round(100 * (UmbraDropNPC.UmbraChance - 0.02f), 2)
+						Math.Round(100 * (UmbraDropNPC.UmbraChance - 0.01f), 2)
 					));
 				}
 			}
@@ -216,7 +218,14 @@ namespace Umbra.Content.GUI
 		private Vector2 start;
 		private Vector2 root;
 		private Vector2 LineOff = Vector2.One * 400;
+
+		private Vector2 mouseDownAt;
+		private bool movingEnabled;
+
 		private bool moved;
+		private bool freeze;
+
+		private PassiveElement movingPassive;
 
 		private UIElement Panel => Parent;
 
@@ -243,7 +252,7 @@ namespace Umbra.Content.GUI
 				if (end.CanAllocate(Main.LocalPlayer) && start.active || start.CanAllocate(Main.LocalPlayer) && end.active)
 					color = Color.Lerp(Color.Gray, Color.LightGray, (float)Math.Sin(Main.GameUpdateCount * 0.1f) * 0.5f + 0.5f);
 
-				if (end.active && start.active)
+				if (end.active && start.active || Tree.editing)
 					color = Color.White;
 
 				for (float k = 0; k <= 1; k += 1 / (Vector2.Distance(start.TreePos, end.TreePos) / 16))
@@ -286,7 +295,7 @@ namespace Umbra.Content.GUI
 					for (int y = -100; y < 100; y++)
 					{
 						Vector2 pos = GetDimensions().Position() + new Vector2(x * 16, y * 16) + LineOff;
-						Main.spriteBatch.Draw(Assets.GUI.Box.Value, pos, null, Color.White * 0.5f, 0f, Assets.GUI.Box.Size() / 2, 0.25f, 0, 0);
+						Main.spriteBatch.Draw(Assets.GUI.Box.Value, pos, null, Color.White * 0.25f, 0f, Assets.GUI.Box.Size() / 2, 0.2f, 0, 0);
 					}
 				}
 			}
@@ -339,7 +348,10 @@ namespace Umbra.Content.GUI
 			if (Panel.IsMouseHovering)
 				Main.LocalPlayer.mouseInterface = true;
 
-			if (Main.mouseLeft && Panel.IsMouseHovering)
+			if (Main.mouseLeft && Children.Any(n => n.IsMouseHovering))
+				freeze = true;
+
+			if (Main.mouseLeft && Panel.IsMouseHovering && !freeze)
 			{
 				if (start == Vector2.Zero)
 				{
@@ -357,7 +369,30 @@ namespace Umbra.Content.GUI
 				start = Vector2.Zero;
 			}
 
-			Recalculate();
+			if (mouseDownAt != default && Vector2.Distance(Main.MouseScreen, mouseDownAt) > 16)
+				movingEnabled = true;
+
+			if (Tree.editing && freeze && movingPassive != null && movingEnabled)
+			{
+				Vector2 rawAim = (Main.MouseScreen - GetDimensions().Position() - LineOff) / 16;
+				int aimX = (int)rawAim.X;
+				int aimY = (int)rawAim.Y;
+
+				movingPassive.passive.X = aimX;
+				movingPassive.passive.Y = aimY;
+				movingPassive.Left.Set(movingPassive.passive.TreePos.X - movingPassive.passive.Width / 2, 0);
+				movingPassive.Top.Set(movingPassive.passive.TreePos.Y - movingPassive.passive.Height / 2, 0);
+				movingPassive.root = new Vector2(movingPassive.Left.Pixels, movingPassive.Top.Pixels);
+				Recalculate();
+			}
+
+			if (!Main.mouseLeft)
+			{
+				freeze = false;
+				movingEnabled = false;
+			}
+
+			//Recalculate();
 		}
 
 		public override void Recalculate()
@@ -395,19 +430,42 @@ namespace Umbra.Content.GUI
 
 					UILoader.GetUIState<Tree>().Refresh();
 				}
-				else
-				{
-					Tree.selected = aimedAt;
-				}
 			}
 
 			moved = false;
+		}
+
+		public override void SafeMouseDown(UIMouseEvent evt)
+		{
+			if (Tree.editing && !moved)
+			{
+				PassiveElement pElement = Children.FirstOrDefault(n => n.IsMouseHovering && n is PassiveElement) as PassiveElement;
+
+				if (pElement is null)
+					return;
+
+				Passive aimedAt = pElement.passive;
+
+				if (aimedAt != null)
+				{
+					Tree.selected = aimedAt;
+					movingPassive = pElement;
+				}
+			}
+
+			mouseDownAt = Main.MouseScreen;
+		}
+
+		public override void SafeMouseUp(UIMouseEvent evt)
+		{
+			if (movingPassive != null)
+				movingPassive = null;
 		}
 	}
 
 	internal class PassiveElement : SmartUIElement
 	{
-		private readonly Passive passive;
+		public Passive passive;
 		public Vector2 root;
 
 		private int allocateFlashTime;
@@ -546,8 +604,6 @@ namespace Umbra.Content.GUI
 				Tooltip.SetName(passive.Name);
 				Tooltip.SetTooltip(tip);
 			}
-
-			Recalculate();
 		}
 
 		public override void SafeMouseOver(UIMouseEvent evt)
@@ -614,14 +670,22 @@ namespace Umbra.Content.GUI
 
 	internal class NodeTypeSelector : SmartUIElement
 	{
-		UIGrid choices = new();
+		readonly UIGrid choices = new();
+		readonly UIScrollbar scroll = new();
 
 		public override void OnInitialize()
 		{
+			scroll.Left.Set(-36, 0);
+			scroll.Top.Set(0, 0);
+			scroll.Width.Set(32, 0);
+			scroll.Height.Set(800, 0);
+			Append(scroll);
+
 			choices.Left.Set(0, 0);
 			choices.Top.Set(0, 0);
 			choices.Width.Set(200, 0);
 			choices.Height.Set(800, 0);
+			choices.SetScrollbar(scroll);
 			Append(choices);
 
 			foreach (Type type in Umbra.Instance.Code.GetTypes())
@@ -632,6 +696,8 @@ namespace Umbra.Content.GUI
 					choices.Add(new NodeChoice(instance));
 				}
 			}
+
+			choices.UpdateOrder();
 		}
 	}
 
@@ -717,6 +783,25 @@ namespace Umbra.Content.GUI
 
 				UILoader.GetUIState<Tree>().Refresh();
 			}
+		}
+
+		public override int CompareTo(object obj)
+		{
+			if (obj is NodeChoice choice)
+			{
+				if (passive.size != choice.passive.size)
+					return passive.size.CompareTo(choice.passive.size);
+
+				if ((passive is ModGate) != (choice.passive is ModGate))
+					return (passive is ModGate).CompareTo(choice.passive is ModGate);
+
+				if ((passive is CrossmodPassive) != (choice.passive is CrossmodPassive))
+					return (passive is CrossmodPassive).CompareTo(choice.passive is CrossmodPassive);
+
+				return passive.Name.CompareTo(choice.passive.Name);
+			}
+
+			return base.CompareTo(obj);
 		}
 	}
 }

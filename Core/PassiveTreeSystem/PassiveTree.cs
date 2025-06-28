@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Terraria.ModLoader.IO;
 using Umbra.Content.Passives;
@@ -211,6 +212,8 @@ namespace Umbra.Core.PassiveTreeSystem
 
 			CalcDifficulty();
 			RegenerateFlows();
+
+			UmbraNet.SyncTree();
 		}
 
 		/// <summary>
@@ -236,6 +239,8 @@ namespace Umbra.Core.PassiveTreeSystem
 
 			CalcDifficulty();
 			RegenerateFlows();
+
+			UmbraNet.SyncTree();
 		}
 
 		/// <summary>
@@ -306,6 +311,46 @@ namespace Umbra.Core.PassiveTreeSystem
 		public bool AnyActive<T>() where T : Passive
 		{
 			return GetActiveCount<T>() > 0;
+		}
+
+		public void Serialize(BinaryWriter writer)
+		{
+			writer.Write(activeNodes.Count);
+
+			for(int k = 0; k < activeNodes.Count; k++)
+			{
+				writer.Write(activeNodes[k].ID);
+			}
+		}
+
+		public void Deserialize(BinaryReader reader)
+		{
+			int count = reader.ReadInt32();
+
+			List<int> toActivate = new();
+
+			for(int k = 0; k < count; k++)
+			{
+				toActivate.Add(reader.ReadInt32());
+			}
+
+			foreach (Passive node in Nodes)
+			{
+				node.active = false;
+
+				if (node is StartPoint)
+					node.active = true;
+			}
+
+			foreach (int id in toActivate)
+			{
+				if (nodesById.TryGetValue(id, out Passive node) && node.CanBeActive())
+					node.active = true;
+			}
+
+			GenerateActiveCollections();
+			CalcDifficulty();
+			RegenerateFlows();
 		}
 
 		public void Save(TagCompound tag)

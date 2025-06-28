@@ -17,7 +17,7 @@ namespace Umbra.Core
 
 		public override bool InstancePerEntity => true;
 
-		public static float UmbraChance => 0.01f + 0.05f * MathF.Atan(PassiveTreeSystem.TreeSystem.tree.difficulty * 0.001f);
+		public static float UmbraChance => 0.01f + 0.05f * MathF.Atan(TreeSystem.tree.difficulty * 0.001f);
 
 		public override void OnSpawn(NPC npc, IEntitySource source)
 		{

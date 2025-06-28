@@ -44,6 +44,11 @@ namespace Umbra.Core.PassiveTreeSystem
 			}
 		}
 
+		public override void OnEnterWorld()
+		{
+			UmbraNet.RequestTreeOnJoin();
+		}
+
 		public override void SaveData(TagCompound tag)
 		{
 			tag["points"] = UmbraPoints;

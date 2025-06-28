@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Serialization;
 using Terraria.Localization;
+using Umbra.Content.GUI;
 using Umbra.Content.Passives;
 
 namespace Umbra.Core.PassiveTreeSystem
@@ -79,7 +80,7 @@ namespace Umbra.Core.PassiveTreeSystem
 			if (CanAllocate(Main.LocalPlayer))
 				color = Color.Lerp(Color.Gray, Color.LightGray, (float)Math.Sin(Main.GameUpdateCount * 0.1f) * 0.5f + 0.5f);
 
-			if (active)
+			if (active || Tree.editing)
 			{
 				color = Color.White;
 				spriteBatch.Draw(Assets.GUI.GlowAlpha.Value, center, null, new Color(180, 120, 255, 0) * opacity, 0, Assets.GUI.GlowAlpha.Size() / 2f, 0.5f + size * 0.1f, 0, 0);

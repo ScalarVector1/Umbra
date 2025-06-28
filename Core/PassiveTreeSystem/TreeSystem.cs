@@ -11,6 +11,8 @@ namespace Umbra.Core.PassiveTreeSystem
 {
 	internal class TreeSystem : ModSystem
 	{
+		public const int TREE_VERSION = -9997;
+
 		public static PassiveTree tree;
 
 		public override void Load()
@@ -34,10 +36,30 @@ namespace Umbra.Core.PassiveTreeSystem
 		public override void SaveWorldData(TagCompound tag)
 		{
 			tree.Save(tag);
+
+			int lastSpent = 0;
+
+			foreach (Passive passive in tree.activeNodes)
+			{
+				lastSpent += passive.Cost;
+			}
+
+			tag["lastSpent"] = lastSpent;
+			tag["lastVersion"] = TREE_VERSION;
 		}
 
 		public override void LoadWorldData(TagCompound tag)
 		{
+			int lastVersion = tag.GetInt("lastVersion");
+
+			if (lastVersion != TREE_VERSION)
+			{
+				tag["activeIDs"] = new List<int>();
+				Main.LocalPlayer.GetModPlayer<TreePlayer>().UmbraPoints += tag.GetInt("lastSpent");
+
+				Notification.DisplayNotification("[c/CC88FF:Tree Reset]", "The umbral tree has changed. As a consequence, all nodes need to be de-allocated. Your spent umbra has been refunded, so you can re-invest into the new tree as you wish!\n\n[c/bbbbbb:Click on this notification to close it.]");
+			}
+
 			tree.Load(tag);
 
 			UILoader.GetUIState<Tree>().Refresh();

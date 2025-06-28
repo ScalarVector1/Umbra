@@ -19,9 +19,20 @@ namespace Umbra.Content.Passives.Large
 
 	internal class TemporalTranceSystem : ModSystem
 	{
+		public static bool dontUpdateUI;
+
 		public override void Load()
 		{
 			On_Main.DoUpdate += TemporalTranceSpeedup;
+			On_Main.UpdateUIStates += DontUpdateUIExtra;
+		}
+
+		private void DontUpdateUIExtra(On_Main.orig_UpdateUIStates orig, GameTime gameTime)
+		{
+			if (!dontUpdateUI)
+				orig(gameTime);
+			else
+				dontUpdateUI = false;
 		}
 
 		private void TemporalTranceSpeedup(On_Main.orig_DoUpdate orig, Main self, ref GameTime gameTime)
@@ -29,7 +40,10 @@ namespace Umbra.Content.Passives.Large
 			orig(self, ref gameTime);
 
 			if (!Main.gameMenu && TreeSystem.tree.AnyActive<TemporalTrance>() && Main.GameUpdateCount % 4 == 0)
+			{
+				dontUpdateUI = true;
 				orig(self, ref gameTime);
+			}
 		}
 	}
 }

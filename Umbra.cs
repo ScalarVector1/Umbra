@@ -3,7 +3,10 @@ global using Microsoft.Xna.Framework.Graphics;
 global using System;
 global using Terraria;
 global using Terraria.ModLoader;
+using System.IO;
+using Terraria.ID;
 using Umbra.Content.GUI;
+using Umbra.Core;
 using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra
@@ -30,6 +33,24 @@ namespace Umbra
 				}
 			}
 #endif
+		}
+
+		public override void HandlePacket(BinaryReader reader, int whoAmI)
+		{
+			string type = reader.ReadString();
+
+			if (type == "RequestTreeOnJoin")
+			{
+				if (Main.netMode == NetmodeID.Server)
+					UmbraNet.SyncTree(whoAmI);
+			}
+			else if (type == "SyncTree")
+			{
+				TreeSystem.tree.Deserialize(reader);
+
+				if (Main.netMode == NetmodeID.Server)
+					UmbraNet.SyncTree(-1, whoAmI);
+			}
 		}
 	}
 }
