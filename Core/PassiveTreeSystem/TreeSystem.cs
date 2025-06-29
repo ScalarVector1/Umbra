@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
-using Terraria;
-using Terraria.DataStructures;
 using Terraria.ModLoader.IO;
 using Umbra.Content.GUI;
+using Umbra.Content.Passives;
 using Umbra.Core.Loaders.UILoading;
 
 namespace Umbra.Core.PassiveTreeSystem
@@ -73,6 +72,18 @@ namespace Umbra.Core.PassiveTreeSystem
 			foreach (Passive passive in tree.activeNodes)
 			{
 				passive.Update();
+			}
+		}
+
+		public override void PostUpdateEverything()
+		{
+			if (!TreeSystem.tree.AnyActive<StartPoint>())
+			{
+				foreach (Passive node in TreeSystem.tree.Nodes)
+				{
+					if (node is StartPoint)
+						TreeSystem.tree.Allocate(node.ID);
+				}
 			}
 		}
 
