@@ -83,7 +83,7 @@ GUI: {
 			'''
 			Click this to open the umbral tree, where you can spend Umbra to increase the difficulty of the game.
 
-			{0}/{1} kills to next point
+			[c/AAAAFF:{0}] / [c/AAAAFF:{1}] kills to next point
 			'''
 	}
 }
@@ -428,6 +428,16 @@ Passives: {
 	FlyingDaggers: {
 		Name: Flying Daggers
 		Tooltip: Enemies throw a dagger in a random direction when they dodge
+	}
+
+	Darkness: {
+		Name: Darkness
+		Tooltip: '''[c/AAAAFF:0.5%] decreased light'''
+	}
+
+	CreepingDarkness: {
+		Name: Creeping Darkness
+		Tooltip: Light decreases while in the dark, recovering slowly when you return to the light
 	}
 }
 

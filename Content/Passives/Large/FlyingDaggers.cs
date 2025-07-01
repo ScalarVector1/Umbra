@@ -23,7 +23,7 @@ namespace Umbra.Content.Passives.Large
 		public override void SetDefaults()
 		{
 			texture = Assets.Passives.FlyingDaggers;
-			difficulty = 20;
+			difficulty = 40;
 			size = 1;
 		}
 
