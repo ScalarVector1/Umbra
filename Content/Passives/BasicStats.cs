@@ -76,7 +76,7 @@ namespace Umbra.Content.Passives
 		}
 		public override void OnEnemySpawn(NPC npc)
 		{
-			npc.GetGlobalNPC<TreeNPC>().increasedLife += 0.05f;
+			npc.GetGlobalNPC<TreeNPC>().increasedLife += 0.03f;
 		}
 	}
 
@@ -102,7 +102,7 @@ namespace Umbra.Content.Passives
 		}
 		public override void OnEnemySpawn(NPC npc)
 		{
-			npc.GetGlobalNPC<RegenerationNPC>().flatRegen += 4;
+			npc.GetGlobalNPC<RegenerationNPC>().flatRegen += 2;
 		}
 	}
 
@@ -140,12 +140,12 @@ namespace Umbra.Content.Passives
 		public override void SetDefaults()
 		{
 			texture = Assets.Passives.EnemyEndurance;
-			difficulty = 5;
+			difficulty = 3;
 		}
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			npc.GetGlobalNPC<TreeNPC>().endurance += 0.05f;
+			npc.GetGlobalNPC<TreeNPC>().endurance += 0.02f;
 		}
 	}
 
@@ -201,12 +201,12 @@ namespace Umbra.Content.Passives
 		public override void SetDefaults()
 		{
 			texture = Assets.Passives.SpawnRate;
-			difficulty = 2;
+			difficulty = 1;
 		}
 
 		public override void Update()
 		{
-			TreeNPCGlobals.spawnRateModifier += 0.1f;
+			TreeNPCGlobals.spawnRateModifier += 0.05f;
 		}
 	}
 }

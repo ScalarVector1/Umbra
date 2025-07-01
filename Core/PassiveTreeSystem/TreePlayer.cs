@@ -11,19 +11,21 @@ namespace Umbra.Core.PassiveTreeSystem
 {
 	internal class TreePlayer : ModPlayer
 	{
-		public const int MAX_PARTIAL_POINTS = 1000;
-
 		public int UmbraPoints;
 		public bool firstPoint;
 
 		public int partialPoints;
+		public int nextPoint = 8;
 
 		public override void UpdateEquips()
 		{
-			if (partialPoints >= MAX_PARTIAL_POINTS)
+			if (partialPoints >= nextPoint)
 			{
-				partialPoints -= MAX_PARTIAL_POINTS;
+				partialPoints -= nextPoint;
 				UmbraPoints += 1;
+
+				if (nextPoint < 40)
+					nextPoint += 2;
 
 				CombatText.NewText(Player.Hitbox, new Color(200, 160, 255), "+1 Umbra");
 
@@ -55,6 +57,7 @@ namespace Umbra.Core.PassiveTreeSystem
 			tag["points"] = UmbraPoints;
 			tag["firstPoint"] = firstPoint;
 			tag["partialPoints"] = partialPoints;
+			tag["nextPoint"] = nextPoint;
 		}
 
 		public override void LoadData(TagCompound tag)
@@ -62,6 +65,7 @@ namespace Umbra.Core.PassiveTreeSystem
 			UmbraPoints = tag.GetInt("points");
 			firstPoint = tag.GetBool("firstPoint");
 			partialPoints = tag.GetInt("partialPoints");
+			nextPoint = tag.GetInt("nextPoint");
 		}
 	}
 }

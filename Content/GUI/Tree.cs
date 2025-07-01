@@ -191,7 +191,7 @@ namespace Umbra.Content.GUI
 					Tooltip.SetTooltip(Language.GetText("Mods.Umbra.GUI.Tree.DoomTooltipDescInverted").Format(
 						Math.Round(DoomEffectsSystem.DoomValueMult * 100, 2),
 						Math.Round(DoomEffectsSystem.LuckBonus, 2),
-						Math.Round(100 * (UmbraDropNPC.UmbraChance - 0.01f), 2)
+						Math.Round(100 * ((UmbraDropNPC.UmbraChance - 0.01f) / 0.01f), 2)
 					));
 				}
 				else
@@ -200,7 +200,7 @@ namespace Umbra.Content.GUI
 						Math.Round(DoomEffectsSystem.DoomValueMult * 100, 2),
 						Math.Round(DoomEffectsSystem.LuckBonus, 2),
 						Math.Round(DoomEffectsSystem.DoubleLootChance * 100, 2),
-						Math.Round(100 * (UmbraDropNPC.UmbraChance - 0.01f), 2)
+						Math.Round(100 * ((UmbraDropNPC.UmbraChance - 0.01f) / 0.01f), 2)
 					));
 				}
 			}
@@ -640,7 +640,7 @@ namespace Umbra.Content.GUI
 						tip += "\n" + Language.GetText("Mods.Umbra.GUI.Node.Cost").Format(passive.Cost);
 
 					if (passive.active && passive.CanDeallocate(Main.LocalPlayer))
-						tip += "\n" + Language.GetText("Mods.Umbra.GUI.Node.Refund").Format(passive.Cost / 2);
+						tip += "\n" + Language.GetText("Mods.Umbra.GUI.Node.Refund").Format((int)Math.Ceiling(passive.Cost / 2f));
 				}
 
 				Tooltip.SetName(passive.Name);

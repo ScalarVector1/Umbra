@@ -21,8 +21,11 @@ namespace Umbra.Core
 
 		public override void UpdateLifeRegen(NPC npc, ref int damage)
 		{
-			npc.lifeRegen += flatRegen;
-			npc.lifeRegen += (int)(npc.lifeRegen * increasedRegen);
+			if (npc.realLife == -1)
+			{
+				npc.lifeRegen += flatRegen;
+				npc.lifeRegen += (int)(npc.lifeRegen * increasedRegen);
+			}
 		}
 	}
 

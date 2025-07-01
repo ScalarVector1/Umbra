@@ -56,7 +56,7 @@ namespace Umbra.Content.GUI
 			base.Draw(spriteBatch);
 
 			var fill = Assets.GUI.BarFill.Value;
-			var fillWidth = (int)(fill.Width * ((float)tp.partialPoints / TreePlayer.MAX_PARTIAL_POINTS));
+			var fillWidth = (int)(fill.Width * ((float)tp.partialPoints / tp.nextPoint));
 			var fillSource = new Rectangle(0, 0, fillWidth, fill.Height);
 			var fillTarget = new Rectangle((int)pos.X - 42, (int)pos.Y - 5, fillWidth, fill.Height);
 
@@ -79,7 +79,7 @@ namespace Umbra.Content.GUI
 				int unspent = tp.UmbraPoints;
 
 				Tooltip.SetName(Language.GetText("Mods.Umbra.GUI.InventoryButton.Title").Format(unspent));
-				Tooltip.SetTooltip(Language.GetText("Mods.Umbra.GUI.InventoryButton.Description").Value);
+				Tooltip.SetTooltip(Language.GetText("Mods.Umbra.GUI.InventoryButton.Description").Format(tp.partialPoints, tp.nextPoint));
 
 				Main.LocalPlayer.mouseInterface = true;
 			}

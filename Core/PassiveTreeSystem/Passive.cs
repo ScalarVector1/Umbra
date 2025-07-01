@@ -178,7 +178,7 @@ namespace Umbra.Core.PassiveTreeSystem
 		/// <param name="player"></param>
 		private void Deallocate(Player player)
 		{
-			int refundAmount = Cost / 2;
+			int refundAmount = (int)Math.Ceiling(Cost / 2f);
 			player.GetModPlayer<TreePlayer>().UmbraPoints += refundAmount;
 			TreeSystem.tree.Deallocate(ID);
 		}

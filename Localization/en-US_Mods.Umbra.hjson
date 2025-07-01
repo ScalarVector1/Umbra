@@ -79,7 +79,12 @@ GUI: {
 
 	InventoryButton: {
 		Title: Umbral Tree ([c/CC88FF:{0}] unspent umbra)
-		Description: Click this to open the umbral tree, where you can spend Umbra to increase the difficulty of the game.
+		Description:
+			'''
+			Click this to open the umbral tree, where you can spend Umbra to increase the difficulty of the game.
+
+			{0}/{1} kills to next point
+			'''
 	}
 }
 
@@ -106,12 +111,12 @@ Passives: {
 
 	EnemyLife: {
 		Name: Enemy Life
-		Tooltip: Enemies have [c/AAAAFF:5%] increased life
+		Tooltip: Enemies have [c/AAAAFF:3%] increased life
 	}
 
 	EnemyRegen: {
 		Name: Enemy Life Regeneration
-		Tooltip: Enemies have [c/AAAAFF:+2] life regeneration per second
+		Tooltip: Enemies have [c/AAAAFF:+1] life regeneration per second
 	}
 
 	EnemyDefense: {
@@ -121,7 +126,7 @@ Passives: {
 
 	EnemyEndurance: {
 		Name: Enemy Endurance
-		Tooltip: Enemies take [c/AAAAFF:5%] decreased damage from hits
+		Tooltip: Enemies take [c/AAAAFF:2%] decreased damage from hits
 	}
 
 	BurningBlood: {
@@ -209,7 +214,7 @@ Passives: {
 
 	SpawnRate: {
 		Name: Spawn Rate
-		Tooltip: "[c/AAAAFF:10%] increased spawn rate"
+		Tooltip: "[c/AAAAFF:5%] increased spawn rate"
 	}
 
 	HardmodeStrength: {
