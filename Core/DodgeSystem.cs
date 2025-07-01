@@ -14,6 +14,8 @@ namespace Umbra.Core
 		public List<float> moreDodge = [];
 		public float dodgeRoll;
 
+		public static event Action<NPC, NPC.HitInfo> OnDodge;
+
 		public override bool InstancePerEntity => true;
 
 		public override bool AppliesToEntity(NPC entity, bool lateInstantiation)
@@ -54,6 +56,7 @@ namespace Umbra.Core
 			if (dodgeRoll <= dodge)
 			{
 				CombatText.NewText(npc.Hitbox, Color.PaleGreen, "Dodge!");
+				OnDodge?.Invoke(npc, hit);
 				npc.life += 1;
 			}
 

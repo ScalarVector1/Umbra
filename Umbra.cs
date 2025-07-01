@@ -3,7 +3,9 @@ global using Microsoft.Xna.Framework.Graphics;
 global using System;
 global using Terraria;
 global using Terraria.ModLoader;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Terraria.ID;
 using Umbra.Content.GUI;
 using Umbra.Core;
@@ -13,6 +15,8 @@ namespace Umbra
 {
 	public class Umbra : Mod
 	{
+		private List<IOrderedLoadable> loadCache;
+
 		public static Umbra Instance { get; set; }
 
 		public Umbra()
@@ -33,6 +37,25 @@ namespace Umbra
 				}
 			}
 #endif
+
+			loadCache = new List<IOrderedLoadable>();
+
+			foreach (Type type in Code.GetTypes())
+			{
+				if (!type.IsAbstract && type.GetInterfaces().Contains(typeof(IOrderedLoadable)))
+				{
+					object instance = Activator.CreateInstance(type);
+					loadCache.Add(instance as IOrderedLoadable);
+				}
+
+				loadCache.Sort((n, t) => n.Priority.CompareTo(t.Priority));
+			}
+
+			for (int k = 0; k < loadCache.Count; k++)
+			{
+				loadCache[k].Load();
+				Terraria.ModLoader.UI.Interface.loadMods.SubProgressText = "Loading " + loadCache[k].GetType().Name;
+			}
 		}
 
 		public override void HandlePacket(BinaryReader reader, int whoAmI)

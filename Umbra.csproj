@@ -2,11 +2,16 @@
 
 	<!-- Import tModLoader mod properties -->
 	<Import Project="..\tModLoader.targets" />
-
+	<Import Project="Shader.targets" />
+	
 	<!-- General -->
 	<PropertyGroup>
 		
 	</PropertyGroup>
+	<ItemGroup>
+	  <None Remove="Effects\Source\GlowingDust.fx" />
+	  <None Remove="Effects\Source\RepeatingChain.fx" />
+	</ItemGroup>
 
 	<!-- References -->
 	<ItemGroup>

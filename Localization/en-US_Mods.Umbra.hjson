@@ -424,6 +424,11 @@ Passives: {
 		Name: Mundanity
 		Tooltip: Your first [c/AAAAFF:2] accessory slots are blocked
 	}
+
+	FlyingDaggers: {
+		Name: Flying Daggers
+		Tooltip: Enemies throw a dagger in a random direction when they dodge
+	}
 }
 
 Buffs: {
@@ -432,3 +437,5 @@ Buffs: {
 		Description: Take 50% more damage
 	}
 }
+
+Projectiles.DodgeDagger.DisplayName: Dodge Dagger

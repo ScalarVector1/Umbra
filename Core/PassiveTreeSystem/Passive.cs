@@ -8,7 +8,7 @@ using Umbra.Content.Passives;
 
 namespace Umbra.Core.PassiveTreeSystem
 {
-	public abstract class Passive
+	public abstract class Passive : ILoadable
 	{
 		public bool active;
 
@@ -204,6 +204,16 @@ namespace Umbra.Core.PassiveTreeSystem
 			var clone = MemberwiseClone() as Passive;
 			clone.connections = [];
 			return clone;
+		}
+
+		public virtual void Load(Mod mod)
+		{
+
+		}
+
+		public virtual void Unload()
+		{
+
 		}
 	}
 }
