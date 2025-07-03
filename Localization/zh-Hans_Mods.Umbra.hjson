@@ -1,444 +1,498 @@
-																							
+# This file will automatically update with entries for new content after a build and reload.
 
 Items: {
-  DebugStick: {
-    DisplayName: "调试棒"
-    Tooltip: '''
-      物品模板
-      替换此提示文本是你的责任
-      富士山下雪了
-						  
-      '''
-  }
+	DebugStick: {
+		DisplayName: 调试棒
+		Tooltip:
+			'''
+			物品模板
+			替换此提示文本是你的责任
+			富士山下雪了
 
-  UmbraPickup: {
-    DisplayName: "本影拾取物"
-    Tooltip: ""
-  }
+			'''
+	}
 
-  MundanityItem: {
-    DisplayName: "俗尘"
-    Tooltip: '''
-	  
-      [c/888888:无效果]
-      [c/888888:无法移除]
-      '''
-  }
+	 Pickup: {
+		DisplayName: 暗影
+		Tooltip: ""
+	}
+
+	MundanityItem: {
+		DisplayName: 俗尘
+		Tooltip:
+			'''
+
+			[c/888888:无效果]
+			[c/888888:无法移除]
+			'''
+	}
 }
 
 GUI: {
-  Tree: {
-    Umbra: "本影"	//not sure it maens "shade" or "core shadow", personally I chose "core shadow"
-    UmbraTooltipTitle: "剩余 {0} 本影点数"
-    UmbraTooltipDesc: '''
-      本影点数用于分配本影树节点。
-      获得本影点数的几率随你的厄难值增加，
-      当前你有[c/AAAAFF:{0}%]几率在击杀敌方时掉落本影点数。
-																						  
-      '''
-    Doom: "厄难" // it's really fun, the Doom provides good luck
-    DoomTooltipTitle: "{0} 厄难"
-    DoomTooltipDescDefault: '''
-      厄难是本影之树对游戏难度影响的度量。
-      此外，它提供以下增益：
-													
+	Tree: {
+		Umbra: 暗影
+		UmbraTooltipTitle: 剩余 {0} 暗影点数
+		UmbraTooltipDesc:
+			'''
+			暗影点数用于激活暗影之树节点。
+			获得暗影点数的几率随你的厄难值增加，
+			当前你有[c/AAAAFF:{0}%]几率在击杀敌方时获得暗影点数。
+			  
+			'''
+		Doom: 厄难
+		DoomTooltipTitle: "{0} 厄难"
+		DoomTooltipDescDefault:
+			'''
+			可以看作暗影之树对于游戏难度影响的一种度量。
+			此外，它提供以下增益：
 
-      [c/FFDD88:金币]：[c/AAAAFF:{0}%] 金币掉落
-      [c/99FF99:幸运]：[c/AAAAFF:+{1}] 幸运值
-      [c/FF9999:掉落]：[c/AAAAFF:{2}%] 几率掉落双倍战利品
-      [c/DDAAFF:本影]：[c/AAAAFF:+{3}%] 几率掉落本影点
-      '''
-    DoomTooltipDescInverted: '''
-      厄难是本影之树对游戏难度影响的度量。
-      你因为选择"命运扭转"获得以下惩罚：
-																					  
 
-      [c/FFDD88:金币]：[c/AAAAFF:{0}%] 金币掉落
-      [c/99FF99:幸运]：[c/AAAAFF:-{1}] 幸运值
+			[c/FFDD88:金币]：[c/AAAAFF:{0}%] 金币掉落
+			[c/99FF99:幸运]：[c/AAAAFF:+{1}] 幸运值
+			[c/FF9999:掉落]：[c/AAAAFF:{2}%] 几率掉落双倍战利品
+			[c/DDAAFF:暗影]：[c/AAAAFF:+{3}%] 几率掉落暗影点
+			'''
+		DoomTooltipDescInverted:
+			'''
+			可以看作暗影之树对于游戏难度影响的一种度量。
+			你因为选择"宿命逆转"而获得以下惩罚：
 
-      这些增益仍然保留：
+														  
+										
 
-      [c/DDAAFF:本影]：[c/AAAAFF:+{2}%] 几率掉落本影点
-      '''
-    EditModeTooltip: '''
-      编辑模式控制：
-      左键点击选择选项，左键点击网格添加
-      左键点击节点选择，右键点击节点删除
-      Shift + 左键点击节点连接到选定节点
-      Shift + 右键点击节点断开与选定节点的连接
-      右键点击选项将该节点更改为选定节点
-													  
-      '''
-  }
+			[c/FFDD88:金币]：[c/AAAAFF:{0}%] 金币掉落
+			[c/99FF99:幸运]：[c/AAAAFF:-{1}] 幸运值
 
-  Node: {
-    Doom: "厄难：[c/FFAAAA:{0} 厄难]"
-    Cost: "花费：[c/BB88FF:{0} 本影]"
-    Refund: "返还：[c/BB88FF:{0} 本影]"
-  }
+			这些增益仍然保留：
 
-  InventoryButton: {
-    Title: "本影之树 ([c/CC88FF:{0}] 未使用本影)"
-    Description: '''
-      点击此处打开本影之树，你可以在此花费本影点来增加游戏难度。
-																										
+			[c/DDAAFF:暗影]：[c/AAAAFF:+{2}%] 几率掉落暗影点
+			'''
+		EditModeTooltip:
+			'''
+			编辑模式控制：
+			左键点击选择选项，左键点击网格添加
+			左键点击节点选择，右键点击节点删除
+			Shift + 左键点击节点连接到选定节点
+			Shift + 右键点击节点断开与选定节点的连接
+			右键点击选项将该节点更改为选定节点
 
-      [c/AAAAFF:{0}] / [c/AAAAFF:{1}] 次击杀到下一个点数
-      '''
-  }
+			'''
+		// CloseButton: Close
+		// FullscreenButton: Toggle Fullscreen
+	}
+
+	Node: {
+		Doom: 厄难：[c/FFAAAA:{0} 厄难]
+		Cost: 花费：[c/BB88FF:{0} 暗影]
+		Refund: 返还：[c/BB88FF:{0} 暗影]
+	}
+
+	InventoryButton: {
+		Title: 暗影之树 ([c/CC88FF:{0}] 未使用的暗影)
+		Description:
+			'''
+			点击此处打开暗影之树，你可以在此花费暗影点来增加游戏难度。
+												
+
+			[c/AAAAFF:{0}] / [c/AAAAFF:{1}] 次击杀到下一个点数
+			'''
+	}
 }
 
 Passives: {
-  EnemyDamage: {
-    Name: "敌方伤害增加"
-    Tooltip: "敌方提高[c/AAAAFF:+1]点伤害"
-  }
+	EnemyDamage: {
+		Name: 敌方伤害增加
+		Tooltip: 敌人的伤害提高[c/AAAAFF:+1]点
+	}
 
-  StartPoint: {
-    Name: "本影之树"
-    Tooltip: "这是本影之树。你可以在此花费本影点数使游戏更具挑战性并获得更多回报。左键点击闪烁的节点，按所需的点数来激活它。右键点击没有其他节点依赖的节点以停用它，这将返还一半点数。"
-  }
+	StartPoint: {
+		Name: 暗影之树
+		Tooltip: 这是暗影之树。你可以在此花费暗影点数来使游戏更具挑战性并获得更多回报。左键点击闪烁的节点，花费所需的点数来激活它。右键点击没有其他节点依赖的节点以停用，这将返还一半点数。
+	}
 
-  PlayerWither: {
-    Name: "降低恢复"
-    Tooltip: "玩家降低[c/AAAAFF:5%]的生命恢复"
-  }
+	PlayerWither: {
+		Name: 降低恢复
+		Tooltip: 玩家降低[c/AAAAFF:5%]的生命恢复
+	}
 
-  EnemyBleed: {
-    Name: "流血附魔"
-    Tooltip: "敌人的攻击有[c/AAAAFF:+5%]几率造成流血"
-  }
+	EnemyBleed: {
+		Name: 流血附魔
+		Tooltip: 敌人的攻击有[c/AAAAFF:+5%]几率造成流血
+	}
 
-  EnemyLife: {
-    Name: "敌方生命"
-    Tooltip: "敌人增加[c/AAAAFF:3%]点生命值"
-  }
+	EnemyLife: {
+		Name: 敌方生命
+		Tooltip: 敌人增加[c/AAAAFF:3%]点生命值
+	}
 
-  EnemyRegen: {
-    Name: "敌方生命恢复"
-    Tooltip: "敌人获得[c/AAAAFF:+1]点生命恢复"
-  }
+	EnemyRegen: {
+		Name: 敌方生命恢复
+		Tooltip: 敌人获得[c/AAAAFF:+1]点生命恢复
+	}
 
-  EnemyDefense: {
-    Name: "敌方防御"
-    Tooltip: "敌人获得[c/AAAAFF:+1]点防御"
-  }
+	EnemyDefense: {
+		Name: 敌方防御
+		Tooltip: 敌人获得[c/AAAAFF:+1]点防御
+	}
 
-  EnemyEndurance: {
-    Name: "敌方耐力"
-    Tooltip: "敌人获得[c/AAAAFF:2%]伤害减免"
-  }
+	EnemyEndurance: {
+		Name: 敌方耐力
+		Tooltip: 敌人获得[c/AAAAFF:2%]伤害减免
+	}
 
-  BurningBlood: {
-    Name: "灼烧之血"
-    Tooltip: "玩家流血时也会着火"
-  }
+	BurningBlood: {
+		Name: 烧灼之血
+		Tooltip: 玩家流血时也会着火
+	}
 
-  UndeniableFoes: {
-    Name: "不可阻挡"
-    Tooltip: "敌人不受击退影响"
-  }
+	UndeniableFoes: {
+		Name: 不可阻挡
+		Tooltip: 敌人不受击退影响
+	}
 
-  MoreEnemyDamage: {
-    Name: "敌方伤害增幅"
-    Tooltip: "敌人造成[c/AAAAFF:5%]额外伤害"
-  }
+	MoreEnemyDamage: {
+		Name: 敌方伤害增幅
+		Tooltip: 敌人造成[c/AAAAFF:5%]额外伤害
+	}
 
-  EnemyPoision: {
-    Name: "中毒附魔"
-    Tooltip: "敌人的攻击有[c/AAAAFF:+5%]几率造成中毒"
-  }
+	EnemyPoision: {
+		Name: 中毒附魔
+		Tooltip: 敌人的攻击有[c/AAAAFF:+5%]几率造成中毒
+	}
 
-  EnemySurvival: {
-    Name: "敌方生存能力"
-    Tooltip: '''
-	  
-      敌人获得[c/AAAAFF:+25]点生命
-      敌人获得[c/AAAAFF:+1]点防御
-      '''
-  }
+	EnemySurvival: {
+		Name: 敌方生存能力
+		Tooltip:
+			'''
 
-  HardmodeGate: {
-    Name: "血肉熔炉"
-    Tooltip: '''
-      只有地狱血肉的祭品才能满足条件
-      进入[c/FF7766:困难模式]才能通过此节点
-											  
-      '''
-  }
+			敌人获得[c/AAAAFF:+25]点生命
+			敌人获得[c/AAAAFF:+1]点防御
+			'''
+	}
 
-  DeadlyDuels: {
-    Name: "致命对决"
-    Tooltip: '''
-      Boss造成[c/AAAAFF:30%]额外伤害
-      Boss会额外掉落一个宝藏袋
-										 
-      '''
-  }
+	HardmodeGate: {
+		Name: 血肉熔炉
+		Tooltip:
+			'''
+			只有地狱的血肉祭品才能满足条件
+			进入[c/FF7766:困难模式]才能通过此节点
 
-  ElongatedEngagements: {
-    Name: "延长战斗"
-    Tooltip: '''
-      Boss获得[c/AAAAFF:50%]额外生命
-      Boss会额外掉落一个宝藏袋
-										 
-      '''
-  }
+			'''
+	}
 
-  VitalityVortex: {
-    Name: "生命涡旋"
-    Tooltip: '''
-      靠近玩家（[c/AAAAFF:10]格范围内）的敌人获得[c/AAAAFF:+20]点生命恢复
-      如果有敌人靠近（[c/AAAAFF:10]格范围内），玩家降低[c/AAAAFF:25%]的生命恢复
-																													 
-      '''
-  }
+	DeadlyDuels: {
+		Name: 致命对决
+		Tooltip:
+			'''
+			Boss造成[c/AAAAFF:30%]额外伤害
+			Boss会额外掉落一个宝藏袋
 
-  BossStrength: {
-    Name: "Boss强度"
-    Tooltip: '''
-      Boss获得[c/AAAAFF:2%]伤害减免
-      Boss造成的伤害增加[c/AAAAFF:5%]
-											 
-      '''
-  }
+			'''
+	}
 
-  StrengthPerDoom: {
-    Name: "厄难影响"
-    Tooltip: '''
-      每[c/AAAAFF:30]点厄难，敌人造成的伤害增加[c/AAAAFF:1%]
-      每[c/AAAAFF:20]点厄难，敌人生命增加[c/AAAAFF:+1]
-														 
-      '''
-  }
+	ElongatedEngagements: {
+		Name: 加时赛
+		Tooltip:
+			'''
+			Boss获得[c/AAAAFF:50%]额外生命
+			Boss会额外掉落一个宝藏袋
 
-  SpawnRate: {
-    Name: "刷怪率"
-    Tooltip: "增加[c/AAAAFF:5%]的刷怪率"
-  }
+			'''
+	}
 
-  HardmodeStrength: {
-    Name: "普通敌人强度"
-    Tooltip: '''
-      非Boss敌人获得[c/AAAAFF:2%]减伤
-      非Boss敌人造成[c/AAAAFF:5%]增伤
-													   
-      '''
-  }
+	VitalityVortex: {
+		Name: 生命涡旋
+		Tooltip:
+			'''
+			靠近玩家（[c/AAAAFF:10]格范围内）的敌人获得[c/AAAAFF:+20]点生命恢复
+			如果有敌人靠近（[c/AAAAFF:10]格范围内），玩家降低[c/AAAAFF:25%]的生命恢复
+																			 
+			'''
+	}
 
-  HardmodeEnemyPoision: {
-    Name: "中毒附魔"
-    Tooltip: "敌人的攻击有[c/AAAAFF:+10%]几率造成中毒"
-  }
+	BossStrength: {
+		Name: Boss强度
+		Tooltip:
+			'''
+			Boss获得[c/AAAAFF:2%]伤害减免
+			Boss造成的伤害增加[c/AAAAFF:5%]
 
-  HardmodeEnemyVenom: {
-    Name: "剧毒附魔"
-    Tooltip: "敌人的攻击有[c/AAAAFF:+2%]几率造成剧毒"
-  }
+			'''
+	}
 
-  HardmodeStrengthPerDoom: {
-    Name: "厄难影响"
-    Tooltip: '''
-      每[c/AAAAFF:20]点厄难，敌人造成[c/AAAAFF:1%]增伤
-      每[c/AAAAFF:10]点厄难，敌人获得[c/AAAAFF:+1]点生命
-														 
-      '''
-  }
+	StrengthPerDoom: {
+		Name: 厄难影响
+		Tooltip:
+			'''
+			每[c/AAAAFF:30]点厄难，敌人造成的伤害增加[c/AAAAFF:1%]
+			每[c/AAAAFF:20]点厄难，敌人生命增加[c/AAAAFF:+1]
+				 
+			'''
+	}
 
-  HardmodeDoubleChance: {
-    Name: "“双人成行”"
-    Tooltip: "[c/AAAAFF:+5%]几率成对刷怪"
-  }
+	SpawnRate: {
+		Name: 刷怪率
+		Tooltip: 增加[c/AAAAFF:5%]的刷怪率
+	}
 
-  Comorbidity: {
-    Name: "并发症"
-    Tooltip: '''
-      受到中毒的玩家将受剧毒影响
-      受到剧毒的玩家也会中毒
-											  
-      '''
-  }
+	HardmodeStrength: {
+		Name: 普通敌人强度
+		Tooltip:
+			'''
+			非Boss敌人获得[c/AAAAFF:2%]减伤
+			非Boss敌人造成[c/AAAAFF:5%]增伤
+			   
+			'''
+	}
 
-  DoomBeacon: {
-    Name: "厄难信标"
-    Tooltip: "每[c/AAAAFF:5]点厄难增加[c/AAAAFF:1%]的刷怪率"
-  }
+	HardmodeEnemyPoision: {
+		Name: 中毒附魔
+		Tooltip: 敌人的攻击有[c/AAAAFF:+10%]几率造成中毒
+	}
 
-  DoomConflux: {
-    Name: "厄难汇流"
-    Tooltip: '''
-      每[c/AAAAFF:10]点厄难，敌人有[c/AAAAFF:+1%]几率造成厄难
-      厄难：
-	  玩家受到的伤害提高50%
-	  
-      '''
-  }
+	HardmodeEnemyVenom: {
+		Name: 剧毒附魔
+		Tooltip: 敌人的攻击有[c/AAAAFF:+2%]几率造成剧毒
+	}
 
-  InstrumentsOfHarm: {
-    Name: "危险手段"
-    Tooltip: "有[c/AAAAFF:20%]几率生成更危险的敌人，造成[c/AAAAFF:50%]增伤"
-  }
+	HardmodeStrengthPerDoom: {
+		Name: 厄难影响
+		Tooltip:
+			'''
+			每[c/AAAAFF:20]点厄难，敌人造成[c/AAAAFF:1%]增伤
+			每[c/AAAAFF:10]点厄难，敌人获得[c/AAAAFF:+1]点生命
+				 
+			'''
+	}
 
-  SpontaneousGeneration: {
-    Name: "自发分裂"
-    Tooltip: "敌人有[c/AAAAFF:10%]几率在死亡时分裂成两个"
-  }
+	HardmodeDoubleChance: {
+		Name: “双人成行”
+		Tooltip: "[c/AAAAFF:+5%]几率成对刷怪"
+	}
 
-  VengefulShades: {
-    Name: "复仇之影"
-    Tooltip: '''
-      敌人有[c/AAAAFF:10%]几率在死亡时生成一个幽灵
-      幽灵总是会额外掉落一个本影点数
-	  
-      '''
-  }
+	Comorbidity: {
+		Name: 并发症
+		Tooltip:
+			'''
+			中毒的玩家将受剧毒影响
+			受到剧毒的玩家也会中毒
 
-  WormsInfluence: {
-    Name: "蠕虫影响"
-    Tooltip: '''
-      敌人获得[c/AAAAFF:15%]减伤
-      蠕虫额外获得[c/AAAAFF:10%]减伤
-	  
-      '''
-  }
+			'''
+	}
 
-  StarlightRiverGate: {
-    Name: "模组锁定：星光之河"
-    Tooltip: "只有在星光之河模组启用时才能分配此节点"
-  }
+	DoomBeacon: {
+		Name: 厄难信标
+		Tooltip: 每[c/AAAAFF:5]点厄难增加[c/AAAAFF:1%]的刷怪率
+	}
 
-  StarlightEnemyBarrier: {
-    Name: "敌方护盾"
-    Tooltip: "敌方获得[c/AAAAFF:+20]点最大护盾"
-  }
+	DoomConflux: {
+		Name: 厄难汇流
+		Tooltip:
+			'''
+			每[c/AAAAFF:10]点厄难，敌人有[c/AAAAFF:+1%]几率造成厄难
+			厄难：
+			玩家受到的伤害提高50%
 
-  CalamityGate: {
-    Name: "模组锁定：灾厄"
-    Tooltip: "只有在灾厄模组启用时才能分配此节点"
-  }
+			'''
+	}
 
-  CalamityDamage: {
-    Name: "灾厄伤害"
-    Tooltip: "来自灾厄的敌人提高[c/AAAAFF:+1]点伤害"
-  }
+	InstrumentsOfHarm: {
+		Name: 危险手段
+		Tooltip: 有[c/AAAAFF:20%]几率生成更危险的敌人，他们拥有[c/AAAAFF:50%]增伤
+	}
 
-  EnemyDodge: {
-    Name: "敌方闪避几率"
-    Tooltip: "敌人有[c/AAAAFF:+2%]几率闪避伤害"
-  }
+	SpontaneousGeneration: {
+		Name: 自发分裂
+		Tooltip: 敌人有[c/AAAAFF:10%]几率在死亡时分裂成两个
+	}
 
-  PotionSickness: {
-    Name: "药水病持续时间"
-    Tooltip: "药水病持续时间提高[c/AAAAFF:5]秒"
-  }
+	VengefulShades: {
+		Name: 复仇之影
+		Tooltip:
+			'''
+			敌人有[c/AAAAFF:10%]几率在死亡时生成一个幽灵
+			幽灵总是会额外掉落一个暗影点数
 
-  PotionHealing: {
-    Name: "降低治疗"
-    Tooltip: "治疗物品恢复生命[c/AAAAFF:-5]点"
-  }
+			'''
+	}
 
-  SicklyPotions: {
-    Name: "药水阳痿"
-    Tooltip: "治疗物品会逐渐恢复生命而非瞬间恢复"
-  }
+	WormsInfluence: {
+		Name: 蠕虫之势
+		Tooltip:
+			'''
+			敌人获得[c/AAAAFF:15%]减伤
+			蠕虫额外获得[c/AAAAFF:10%]减伤
 
-  EnemyMoreLife: {
-    Name: "敌方生命提升"
-    Tooltip: "敌人获得[c/AAAAFF:10%]生命提升"
-  }
+			'''
+	}
 
-  HardmodeEndurance: {
-    Name: "敌方耐力提升"
-    Tooltip: "敌人获得[c/AAAAFF:6%]减伤"
-  }
+	StarlightRiverGate: {
+		Name: 模组锁定：Starlight River
+		Tooltip: 只有在Starlight River Mod 启用时才能激活此节点
+	}
 
-  BadMedicine: {
-    Name: "劣质药物"
-    Tooltip: '''
-      使用治疗物品会施加[c/AAAAFF:5]秒厄难
-      厄难：
-	  使玩家受到的伤害增加50%
-  
-      '''
-  }
+	StarlightEnemyBarrier: {
+		Name: 敌方护盾
+		Tooltip: 敌方获得[c/AAAAFF:+20]点最大护盾
+	}
 
-  Heartbreakers: {
-    Name: "心碎者"
-    Tooltip: "玩家受伤时失去[c/AAAAFF:20]点最大生命，随时间缓慢恢复"
-  }
+	CalamityGate: {
+		Name: 模组锁定：Calamity
+		Tooltip: 只有在Calamity Mod 启用时才能分配此节点
+	}
 
-  ManaTithe: {
-    Name: "魔力税"
-    Tooltip: "所有武器使用消耗[c/AAAAFF:+4]点法力"
-  }
+	CalamityDamage: {
+		Name: 灾厄伤害
+		Tooltip: 来自灾厄的敌人提高[c/AAAAFF:+1]点伤害
+	}
 
-  ManaCost: {
-    Name: "魔力消耗"
-    Tooltip: "所有武器使用消耗[c/AAAAFF:+1]点法力"
-  }
+	EnemyDodge: {
+		Name: 敌方闪避几率
+		Tooltip: 敌人有[c/AAAAFF:+2%]几率闪避伤害
+	}
 
-  ManaDamage: {
-    Name: "魔力偷取"
-    Tooltip: "玩家受伤时失去[c/AAAAFF:10]点法力"
-  }
+	PotionSickness: {
+		Name: 药水病持续时间
+		Tooltip: 药水病持续时间提高[c/AAAAFF:5]秒
+	}
 
-  PiercePenalty: {
-    Name: "减少穿透"
-    Tooltip: "击中敌人消耗[c/AAAAFF:+1]点穿透"
-  }
+	PotionHealing: {
+		Name: 降低治疗
+		Tooltip: 治疗物品恢复生命[c/AAAAFF:-5]点
+	}
 
-  ManaFlux: {
-    Name: "魔力波动"
-    Tooltip: "流血的玩家会快速失去魔力"
-  }
+	SicklyPotions: {
+		Name: 弱效药水
+		Tooltip: 治疗物品会逐渐恢复生命而非瞬间恢复
+	}
 
-  Mending: {
-    Name: "修补"
-    Tooltip: "敌人的生命恢复提高[c/AAAAFF:50%]"
-  }
+	EnemyMoreLife: {
+		Name: 敌方生命提升
+		Tooltip: 敌人获得[c/AAAAFF:10%]生命提升
+	}
 
-  PanicGuard: {
-    Name: "恐慌守卫"
-    Tooltip: "生命低于[c/AAAAFF:33%]的敌人获得[c/AAAAFF:+15]点防御"
-  }
+	HardmodeEndurance: {
+		Name: 敌方耐力提升
+		Tooltip: 敌人获得[c/AAAAFF:6%]减伤
+	}
 
-  TwistOfFate: {
-    Name: "命运扭转"
-    Tooltip: '''
-      抵消或禁用大部分厄难的正面效果。
-															   
+	BadMedicine: {
+		Name: 劣质药品
+		Tooltip:
+			'''
+			使用治疗物品会施加[c/AAAAFF:5]秒厄难
+			厄难：
+			使玩家受到的伤害增加50%
 
-      [c/FF4444:警告]：[c/FFAAAA:这没有任何正面效果！]
-      '''
-  }
+			'''
+	}
 
-  VampiricHorde: {
-    Name: "吸血鬼部落"
-    Tooltip: "敌方在近战攻击时恢复[c/AAAAFF:100]点生命"
-  }
+	Heartbreakers: {
+		Name: 心碎者
+		Tooltip: 玩家受伤时失去[c/AAAAFF:20]点最大生命，随时间缓慢恢复
+	}
 
-  TemporalTrance: {
-    Name: "乎光"
-    Tooltip: "所有东西移动速度提高[c/AAAAFF:25%]"
-  }
+	ManaTithe: {
+		Name: 魔力税
+		Tooltip: 所有武器使用消耗[c/AAAAFF:+4]点法力
+	}
 
-  Mundanity: {
-    Name: "平凡"
-    Tooltip: "你的前[c/AAAAFF:2]个饰品槽被封锁"
-  }
+	ManaCost: {
+		Name: 魔力消耗
+		Tooltip: 所有武器使用消耗[c/AAAAFF:+1]点法力
+	}
 
-  FlyingDaggers: {
-    Name: "飞刀"
-    Tooltip: "敌方在闪避时会向随机方向投掷一把匕首"
-  }
+	ManaDamage: {
+		Name: 魔力偷取
+		Tooltip: 玩家受伤时失去[c/AAAAFF:10]点法力
+	}
+
+	PiercePenalty: {
+		Name: 减少穿甲
+		Tooltip: 击中敌人消耗[c/AAAAFF:+1]点穿甲
+	}
+
+	ManaFlux: {
+		Name: 魔力波动
+		Tooltip: 流血的玩家会快速失去魔力
+	}
+
+	Mending: {
+		Name: 补合
+		Tooltip: 敌人的生命恢复提高[c/AAAAFF:50%]
+	}
+
+	PanicGuard: {
+		Name: 恐慌护盾
+		Tooltip: 生命低于[c/AAAAFF:33%]的敌人获得[c/AAAAFF:+15]点防御
+	}
+
+	TwistOfFate: {
+		Name: 宿命逆转
+		Tooltip:
+			'''
+			抵消或禁用大部分厄难的正面效果。
+					   
+
+			[c/FF4444:警告]：[c/FFAAAA:这没有任何正面效果！]
+			'''
+	}
+
+	VampiricHorde: {
+		Name: 吸血部族
+		Tooltip: 敌方在近战攻击时恢复[c/AAAAFF:100]点生命
+	}
+
+	TemporalTrance: {
+		Name: 飞光
+		Tooltip: 所有东西移动速度提高[c/AAAAFF:25%]
+	}
+
+	Mundanity: {
+		Name: 俗尘
+		Tooltip: 你的前[c/AAAAFF:2]个饰品槽被封锁
+	}
+
+	FlyingDaggers: {
+		Name: 飞刀
+		Tooltip: 敌方在闪避时会向随机方向投掷一把匕首
+	}
+
+	Darkness: {
+		// Name: 黑暗
+		// Tooltip: "降低[c/AAAAFF:0.5%] 光亮度"
+	}
+
+	CreepingDarkness: {
+		// Name: 黑暗蔓延
+		// Tooltip: 身处黑暗中时，亮度会降低。回到光亮中后逐渐恢复。
+	}
+
+	BloodMoonStrength: {
+		// Name: 血月强度
+		/* Tooltip:
+			'''
+			血月生成的敌人增加 [c/AAAAFF:+1] 点伤害
+			血月生成的敌人增加 [c/AAAAFF:+1] 点防御
+			''' */
+	}
+
+	BloodMoonBleed: {
+		// Name: 流血之月
+		// Tooltip: 血月生成的敌人有 [c/AAAAFF:+10%] 的几率造成流血
+	}
+
+	Halfbloods: {
+		// Name: “混血”
+		// Tooltip: 每晚的后半夜总会是血月
+	}
 }
 
 Buffs: {
-  Doomed: {
-    DisplayName: "厄难"
-    Description: "受到的伤害增加50%"
-  }
+	Doomed: {
+		DisplayName: 厄难
+		Description: 受到的伤害增加50%
+	}
 }
 
-Projectiles.DodgeDagger.DisplayName: "闪避匕首"
-																		
+Projectiles.DodgeDagger.DisplayName: 闪避匕首
