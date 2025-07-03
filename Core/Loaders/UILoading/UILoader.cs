@@ -82,7 +82,7 @@ namespace Umbra.Core.Loaders.UILoading
 		{
 			foreach (UserInterface eachState in UserInterfaces)
 			{
-				if (eachState?.CurrentState != null && ((SmartUIState)eachState.CurrentState).Visible)
+				if (eachState?.CurrentState != null && ((SmartUIState)eachState.CurrentState).Visible && Main.InGameUI.CurrentState != eachState.CurrentState)
 					eachState.Update(gameTime);
 			}
 		}

@@ -69,8 +69,8 @@ namespace Umbra.Content.GUI
 			float height = -16;
 			Vector2 pos = Main.MouseScreen + new Vector2(32, 32);
 
-			if (pos.X > Main.screenWidth - (width + 10))
-				pos.X = Main.screenWidth - (width + 10);
+			if (pos.X > Main.screenWidth - (width + 16))
+				pos.X = Main.screenWidth - (width + 16);
 
 			height += ChatManager.GetStringSize(font, tooltip, Vector2.One * 0.8f, 300).Y + 36;
 

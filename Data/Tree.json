@@ -1194,29 +1194,29 @@
       "type": "CalamityDamage",
       "id": 171,
       "cost": 3,
-      "x": 41,
-      "y": -14
+      "x": 45,
+      "y": -10
     },
     {
       "type": "CalamityDamage",
       "id": 172,
       "cost": 3,
-      "x": 41,
-      "y": -17
+      "x": 45,
+      "y": -14
     },
     {
       "type": "CalamityDamage",
       "id": 173,
       "cost": 4,
-      "x": 44,
-      "y": -20
+      "x": 47,
+      "y": -16
     },
     {
       "type": "CalamityDamage",
       "id": 174,
       "cost": 4,
-      "x": 38,
-      "y": -20
+      "x": 43,
+      "y": -16
     },
     {
       "type": "EnemyDodge",
@@ -1273,6 +1273,125 @@
       "cost": 25,
       "x": -45,
       "y": -13
+    },
+    {
+      "type": "BloodMoonStrength",
+      "id": 183,
+      "cost": 4,
+      "x": 42,
+      "y": -31
+    },
+    {
+      "type": "BloodMoonStrength",
+      "id": 184,
+      "cost": 4,
+      "x": 42,
+      "y": -36
+    },
+    {
+      "type": "BloodMoonStrength",
+      "id": 185,
+      "cost": 4,
+      "x": 45,
+      "y": -40
+    },
+    {
+      "type": "BloodMoonBleed",
+      "id": 186,
+      "cost": 4,
+      "x": 48,
+      "y": -24
+    },
+    {
+      "type": "BloodMoonBleed",
+      "id": 187,
+      "cost": 4,
+      "x": 53,
+      "y": -24
+    },
+    {
+      "type": "BloodMoonBleed",
+      "id": 188,
+      "cost": 4,
+      "x": 57,
+      "y": -27
+    },
+    {
+      "type": "BloodMoonBleed",
+      "id": 189,
+      "cost": 4,
+      "x": 51,
+      "y": -27
+    },
+    {
+      "type": "BloodMoonStrength",
+      "id": 190,
+      "cost": 4,
+      "x": 45,
+      "y": -35
+    },
+    {
+      "type": "Halfbloods",
+      "id": 191,
+      "cost": 35,
+      "x": 47,
+      "y": -30
+    },
+    {
+      "type": "BloodMoonBleed",
+      "id": 182,
+      "cost": 4,
+      "x": 44,
+      "y": -27
+    },
+    {
+      "type": "Darkness",
+      "id": 192,
+      "cost": 4,
+      "x": -43,
+      "y": 6
+    },
+    {
+      "type": "Darkness",
+      "id": 193,
+      "cost": 4,
+      "x": -47,
+      "y": 9
+    },
+    {
+      "type": "Darkness",
+      "id": 194,
+      "cost": 4,
+      "x": -53,
+      "y": 9
+    },
+    {
+      "type": "Darkness",
+      "id": 195,
+      "cost": 4,
+      "x": -57,
+      "y": 6
+    },
+    {
+      "type": "EnemyDodge",
+      "id": 196,
+      "cost": 5,
+      "x": -47,
+      "y": 3
+    },
+    {
+      "type": "EnemyDodge",
+      "id": 197,
+      "cost": 5,
+      "x": -53,
+      "y": 3
+    },
+    {
+      "type": "CreepingDarkness",
+      "id": 198,
+      "cost": 15,
+      "x": -50,
+      "y": 6
     }
   ],
   "edges": [
@@ -2119,6 +2238,82 @@
     {
       "start": 178,
       "end": 181
+    },
+    {
+      "start": 127,
+      "end": 182
+    },
+    {
+      "start": 182,
+      "end": 183
+    },
+    {
+      "start": 183,
+      "end": 184
+    },
+    {
+      "start": 184,
+      "end": 185
+    },
+    {
+      "start": 182,
+      "end": 186
+    },
+    {
+      "start": 186,
+      "end": 187
+    },
+    {
+      "start": 187,
+      "end": 188
+    },
+    {
+      "start": 188,
+      "end": 189
+    },
+    {
+      "start": 185,
+      "end": 190
+    },
+    {
+      "start": 190,
+      "end": 191
+    },
+    {
+      "start": 191,
+      "end": 189
+    },
+    {
+      "start": 116,
+      "end": 192
+    },
+    {
+      "start": 192,
+      "end": 193
+    },
+    {
+      "start": 193,
+      "end": 194
+    },
+    {
+      "start": 194,
+      "end": 195
+    },
+    {
+      "start": 192,
+      "end": 196
+    },
+    {
+      "start": 196,
+      "end": 197
+    },
+    {
+      "start": 197,
+      "end": 195
+    },
+    {
+      "start": 195,
+      "end": 198
     }
   ]
 }

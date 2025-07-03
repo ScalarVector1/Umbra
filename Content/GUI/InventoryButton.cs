@@ -36,7 +36,14 @@ namespace Umbra.Content.GUI
 
 		private void openTree(UIMouseEvent evt, UIElement listeningElement)
 		{
-			UILoader.GetUIState<Tree>().visible = true;
+			var tree = UILoader.GetUIState<Tree>();
+			tree.visible = true;
+
+			if (tree.fullscreen)
+				IngameFancyUI.OpenUIState(tree);
+
+			tree.Recalculate();
+
 			flashing = false;
 		}
 

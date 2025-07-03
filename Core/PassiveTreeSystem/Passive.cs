@@ -78,7 +78,7 @@ namespace Umbra.Core.PassiveTreeSystem
 			Color color = Color.DimGray;
 
 			if (CanAllocate(Main.LocalPlayer))
-				color = Color.Lerp(Color.Gray, Color.LightGray, (float)Math.Sin(Main.GameUpdateCount * 0.1f) * 0.5f + 0.5f);
+				color = Color.Lerp(Color.Gray, Color.LightGray, (float)Math.Sin(Main.timeForVisualEffects * 0.1f) * 0.5f + 0.5f);
 
 			if (active || Tree.editing)
 			{

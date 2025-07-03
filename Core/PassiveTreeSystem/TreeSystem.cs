@@ -17,6 +17,20 @@ namespace Umbra.Core.PassiveTreeSystem
 		public override void Load()
 		{
 			LoadFromFile();
+			On_Main.GUIBarsDraw += DontDrawInFullscreenTree;
+			On_Main.CanPauseGame += PauseInFullscreen;
+		}
+
+		private bool PauseInFullscreen(On_Main.orig_CanPauseGame orig)
+		{
+			Tree tree = UILoader.GetUIState<Tree>();
+			return orig() || tree.visible && tree.fullscreen;
+		}
+
+		private void DontDrawInFullscreenTree(On_Main.orig_GUIBarsDraw orig, Main self)
+		{
+			if (!UILoader.GetUIState<Tree>().fullscreen)
+				orig(self);
 		}
 
 		public override void OnWorldLoad()

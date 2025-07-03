@@ -69,6 +69,8 @@ GUI: {
 			Shift + Right click node to disconnect from selected node
 			Right click choice to change selection to that node
 			'''
+		CloseButton: Close
+		FullscreenButton: Toggle Fullscreen
 	}
 
 	Node: {
@@ -432,12 +434,31 @@ Passives: {
 
 	Darkness: {
 		Name: Darkness
-		Tooltip: '''[c/AAAAFF:0.5%] decreased light'''
+		Tooltip: "[c/AAAAFF:0.5%] decreased light"
 	}
 
 	CreepingDarkness: {
 		Name: Creeping Darkness
 		Tooltip: Light decreases while in the dark, recovering slowly when you return to the light
+	}
+
+	BloodMoonStrength: {
+		Name: Blood Moon Enemy Strength
+		Tooltip:
+			'''
+			Enemies that spawn during a blood moon have [c/AAAAFF:+1] damage
+			Enemies that spawn during a blood moon have [c/AAAAFF:+1] defense
+			'''
+	}
+
+	BloodMoonBleed: {
+		Name: Blood Moon Enemy Bleed Chance
+		Tooltip: Enemies that spawn during a blood moon have [c/AAAAFF:+10%] chance to inflict bleeding
+	}
+
+	Halfbloods: {
+		Name: Halfbloods
+		Tooltip: The latter half of every night is always a blood moon
 	}
 }
 

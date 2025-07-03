@@ -23,12 +23,14 @@ namespace Umbra.Content.GUI
 		private UIImageButton closeButton;
 		private UIImageButton exportButton;
 		private UIImageButton editButton;
+		private UIImageButton fullscreenButton;
 
 		private NodeTypeSelector selector;
 		private IntEditor costEditor;
 
 		public bool visible;
 		public static bool editing;
+		public bool fullscreen;
 
 		//Editing vars
 		public static Passive toPlace;
@@ -69,6 +71,15 @@ namespace Umbra.Content.GUI
 			costEditor.Top.Set(TopPadding, 0.5f);
 			costEditor.OnInitialize();
 			Append(costEditor);
+
+			if (fullscreen)
+			{
+				selector.Left.Set(32, 0f);
+				selector.Top.Set(124, 0f);
+
+				costEditor.Left.Set(16, 0f);
+				costEditor.Top.Set(136 + selector.Height.Pixels, 0f);
+			}
 		}
 
 		public void Refresh()
@@ -77,10 +88,12 @@ namespace Umbra.Content.GUI
 			{
 				inner.RemoveAllChildren();
 				TreeSystem.tree.Nodes.ForEach(n => inner.Append(new PassiveElement(n) { }));
+
+				Recalculate();
 			}
 		}
 
-		public override void Draw(SpriteBatch spriteBatch)
+		public override void SafeUpdate(GameTime gameTime)
 		{
 			if (Main.LocalPlayer.controlInv)
 				visible = false;
@@ -95,18 +108,77 @@ namespace Umbra.Content.GUI
 				panel.BackgroundColor = new Color(20, 15, 40) * 0.85f;
 				Append(panel);
 
+				if (fullscreen)
+				{
+					panel.Width.Set(0, 1f);
+					panel.Height.Set(0, 1f);
+					panel.Left.Set(0, 0f);
+					panel.Top.Set(0, 0f);
+				}
+
+				inner = new InnerPanel();
+				inner.Left.Set(0, 0);
+				inner.Top.Set(0, 0);
+				inner.Width.Set(0, 1f);
+				inner.Height.Set(0, 1f);
+				panel.Append(inner);
+
 				closeButton = new UIImageButton(Assets.GUI.CloseButton);
-				closeButton.Left.Set(LeftPadding + PanelWidth - 32 - 18, 0.5f);
-				closeButton.Top.Set(TopPadding + 10, 0.5f);
+				closeButton.Left.Set(-32, 1f);
+				closeButton.Top.Set(-4, 0f);
 				closeButton.Width.Set(38, 0);
 				closeButton.Height.Set(38, 0);
-				closeButton.OnLeftClick += (a, b) => visible = false;
+				closeButton.OnLeftClick += (a, b) =>
+				{
+					if (fullscreen)
+						IngameFancyUI.Close();
+
+					visible = false;
+				};
 				closeButton.SetVisibility(1, 1);
-				Append(closeButton);
+				panel.Append(closeButton);
+
+				fullscreenButton = new UIImageButton(Assets.GUI.fullscreenButton);
+				fullscreenButton.Left.Set(-36 - 38, 1f);
+				fullscreenButton.Top.Set(-4, 0f);
+				fullscreenButton.Width.Set(38, 0);
+				fullscreenButton.Height.Set(38, 0);
+				fullscreenButton.OnLeftClick += (a, b) => {
+					if (!fullscreen)
+					{
+						inner.LineOff += panel.GetDimensions().Position();
+						panel.Width.Set(0, 1f);
+						panel.Height.Set(0, 1f);
+						panel.Left.Set(0, 0f);
+						panel.Top.Set(0, 0f);
+						fullscreen = true;
+
+						Recalculate();
+						IngameFancyUI.OpenUIState(this);
+
+						fullscreenButton.IsMouseHovering = false;
+					}
+					else
+					{
+						panel.Left.Set(LeftPadding, 0.5f);
+						panel.Top.Set(TopPadding, 0.5f);
+						panel.Width.Set(PanelWidth, 0);
+						panel.Height.Set(PanelHeight, 0);
+						fullscreen = false;
+
+						Recalculate();
+						inner.LineOff -= panel.GetDimensions().Position();
+						Recalculate();
+						IngameFancyUI.Close();
+					}
+
+				};
+				fullscreenButton.SetVisibility(1, 1);
+				panel.Append(fullscreenButton);
 
 				exportButton = new UIImageButton(Assets.GUI.ExportButton);
-				exportButton.Left.Set(LeftPadding + PanelWidth - 32 - 18, 0.5f);
-				exportButton.Top.Set(TopPadding + 56, 0.5f);
+				exportButton.Left.Set(-32, 1f);
+				exportButton.Top.Set(38, 0f);
 				exportButton.Width.Set(38, 0);
 				exportButton.Height.Set(38, 0);
 				exportButton.OnLeftClick += (a, b) =>
@@ -115,11 +187,11 @@ namespace Umbra.Content.GUI
 					Main.NewText("Exported tree!");
 				};
 				exportButton.SetVisibility(1, 1);
-				Append(exportButton);
+				panel.Append(exportButton);
 
 				editButton = new UIImageButton(Assets.GUI.ExportButton);
-				editButton.Left.Set(LeftPadding + PanelWidth - 32 - 18, 0.5f);
-				editButton.Top.Set(TopPadding + 102, 0.5f);
+				editButton.Left.Set(-32, 1f);
+				editButton.Top.Set(80, 0f);
 				editButton.Width.Set(38, 0);
 				editButton.Height.Set(38, 0);
 				editButton.OnLeftClick += (a, b) =>
@@ -139,24 +211,20 @@ namespace Umbra.Content.GUI
 						Refresh();
 					}
 
+					Recalculate();
 					Main.NewText("Editing: " + editing);
 				};
 				editButton.SetVisibility(1, 1);
-				Append(editButton);
-
-				inner = new InnerPanel();
-				inner.Left.Set(0, 0);
-				inner.Top.Set(0, 0);
-				inner.Width.Set(PanelWidth - 0, 0);
-				inner.Height.Set(PanelHeight - 0, 0);
-				panel.Append(inner);
+				panel.Append(editButton);
 
 				TreeSystem.tree.Nodes.ForEach(n => inner.Append(new PassiveElement(n)));
+				Recalculate();
 				Populated = true;
 			}
+		}
 
-			Recalculate();
-
+		public override void Draw(SpriteBatch spriteBatch)
+		{
 			base.Draw(spriteBatch);
 
 			Texture2D tex = Assets.GUI.PassiveFrameTiny.Value;
@@ -205,11 +273,38 @@ namespace Umbra.Content.GUI
 				}
 			}
 
+			if (closeButton.IsMouseHovering)
+			{
+				Tooltip.SetName(Language.GetTextValue("Mods.Umbra.GUI.Tree.CloseButton"));
+				Tooltip.SetTooltip("");
+			}
+
+			if (fullscreenButton.IsMouseHovering)
+			{
+				Tooltip.SetName(Language.GetTextValue("Mods.Umbra.GUI.Tree.FullscreenButton"));
+				Tooltip.SetTooltip("");
+			}
+
+			if (exportButton.IsMouseHovering)
+			{
+				Tooltip.SetName("Export Tree [c/FF0000: DEBUG TOOL]");
+				Tooltip.SetTooltip("use at own risk");
+			}
+
+			if (editButton.IsMouseHovering)
+			{
+				Tooltip.SetName("Edit Tree [c/FF0000: DEBUG TOOL]");
+				Tooltip.SetTooltip("use at own risk");
+			}
+
 			if (editing)
 			{
-				Utils.DrawBorderString(spriteBatch, "DEBUG TOOL, USE AT OWN RISK", new Vector2(Main.screenWidth / 2 - 300, Main.screenHeight / 2 - 460), Color.Red, 2);
-				Utils.DrawBorderString(spriteBatch, Language.GetText("Mods.Umbra.GUI.Tree.EditModeTooltip").Value, new Vector2(100, 100), Color.White, 1);
+				Utils.DrawBorderString(spriteBatch, Language.GetText("Mods.Umbra.GUI.Tree.EditModeTooltip").Value, new Vector2(16, Main.screenHeight - 16), Color.White, 1f, 0f, 1f);
 			}
+
+			// Have to redraw since ingame fancy UI disables it normally
+			if (fullscreen)
+				UILoader.GetUIState<Tooltip>().Draw(spriteBatch);
 		}
 	}
 
@@ -217,7 +312,7 @@ namespace Umbra.Content.GUI
 	{
 		private Vector2 start;
 		private Vector2 root;
-		private Vector2 LineOff = Vector2.One * 400;
+		public Vector2 LineOff = Vector2.One * 400;
 
 		private Vector2 mouseDownAt;
 		private bool movingEnabled;
@@ -231,7 +326,7 @@ namespace Umbra.Content.GUI
 
 		private UIElement Panel => Parent;
 
-		private Vector2 CenterPos => GetDimensions().Center() + LineOff - Vector2.One * 400;
+		private Vector2 CenterPos => GetDimensions().Center() + LineOff - new Vector2(GetDimensions().Width, GetDimensions().Height) / 2f;
 
 		public override void Draw(SpriteBatch spriteBatch)
 		{
@@ -263,7 +358,7 @@ namespace Umbra.Content.GUI
 				Color color = Color.DimGray;
 
 				if (end.CanAllocate(Main.LocalPlayer) && start.active || start.CanAllocate(Main.LocalPlayer) && end.active)
-					color = Color.Lerp(Color.Gray, Color.LightGray, (float)Math.Sin(Main.GameUpdateCount * 0.1f) * 0.5f + 0.5f);
+					color = Color.Lerp(Color.Gray, Color.LightGray, (float)Math.Sin(Main.timeForVisualEffects * 0.1f) * 0.5f + 0.5f);
 
 				if (end.active && start.active || Tree.editing)
 					color = Color.White;
@@ -292,7 +387,7 @@ namespace Umbra.Content.GUI
 					float len = (80 + rand.Next(80)) * dist / 50f;
 					float scale = 0.05f + rand.NextSingle() * 0.12f;
 
-					float progress = (Main.GameUpdateCount + 15 * k) % len / (float)len;
+					float progress = ((float)Main.timeForVisualEffects + 15 * k) % len / (float)len;
 					Vector2 pos = GetDimensions().Position() + Vector2.SmoothStep(start.TreePos * zoom, end.TreePos * zoom, progress) + LineOff;
 					float scale2 = (float)Math.Sin(progress * 3.14f) * (0.4f - scale);
 					spriteBatch.Draw(glow, pos, null, glowColor * scale2, 0, glow.Size() / 2f, scale2 * zoom, 0, 0);
@@ -331,9 +426,12 @@ namespace Umbra.Content.GUI
 			spriteBatch.GraphicsDevice.ScissorRectangle = oldRect;
 			spriteBatch.GraphicsDevice.RasterizerState.ScissorTestEnable = false;
 
-			var frame = Parent.GetDimensions().ToRectangle();
-			frame.Inflate(4, 4);
-			DrawFrame(spriteBatch, frame);
+			if (!UILoader.GetUIState<Tree>().fullscreen)
+			{
+				var frame = Parent.GetDimensions().ToRectangle();
+				frame.Inflate(4, 4);
+				DrawFrame(spriteBatch, frame);
+			}
 		}
 
 		public void DrawFrame(SpriteBatch spriteBatch, Rectangle target)
@@ -376,6 +474,7 @@ namespace Umbra.Content.GUI
 					moved = true;
 
 				LineOff = root + Main.MouseScreen - start;
+				Recalculate();
 			}
 			else
 			{
@@ -491,6 +590,7 @@ namespace Umbra.Content.GUI
 			Vector2 scaledMouseDiff2 = (CenterPos - Main.MouseScreen) * (1f/zoom);
 
 			LineOff += (scaledMouseDiff - scaledMouseDiff2) * zoom;
+			Recalculate();
 		}
 	}
 
@@ -717,14 +817,22 @@ namespace Umbra.Content.GUI
 
 		public override void OnInitialize()
 		{
-			scroll.Left.Set(-36, 0);
+			var panel = new UIPanel();
+			panel.Left.Set(0, 0);
+			panel.Top.Set(0, 0);
+			panel.Width.Set(0, 1f);
+			panel.Height.Set(0, 1f);
+			panel.BackgroundColor = new Color(0f, 0f, 0f, 0.4f);
+			Append(panel);
+
+			scroll.Left.Set(-24, 0);
 			scroll.Top.Set(0, 0);
 			scroll.Width.Set(32, 0);
 			scroll.Height.Set(800, 0);
 			Append(scroll);
 
-			choices.Left.Set(0, 0);
-			choices.Top.Set(0, 0);
+			choices.Left.Set(12, 0);
+			choices.Top.Set(12, 0);
 			choices.Width.Set(200, 0);
 			choices.Height.Set(800, 0);
 			choices.SetScrollbar(scroll);
