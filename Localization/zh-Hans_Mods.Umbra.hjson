@@ -47,7 +47,7 @@ GUI: {
 			此外，它提供以下增益：
 
 
-			[c/FFDD88:金币]：[c/AAAAFF:{0}%] 金币掉落
+			[c/FFDD88:金币]：[c/AAAAFF:+{0}%] 金币掉落
 			[c/99FF99:幸运]：[c/AAAAFF:+{1}] 幸运值
 			[c/FF9999:掉落]：[c/AAAAFF:{2}%] 几率掉落双倍战利品
 			[c/DDAAFF:暗影]：[c/AAAAFF:+{3}%] 几率掉落暗影点
@@ -60,7 +60,7 @@ GUI: {
 														  
 										
 
-			[c/FFDD88:金币]：[c/AAAAFF:{0}%] 金币掉落
+			[c/FFDD88:金币]：[c/AAAAFF:-{0}%] 金币掉落
 			[c/99FF99:幸运]：[c/AAAAFF:-{1}] 幸运值
 
 			这些增益仍然保留：
@@ -102,7 +102,7 @@ GUI: {
 Passives: {
 	EnemyDamage: {
 		Name: 敌方伤害增加
-		Tooltip: 敌人的伤害提高[c/AAAAFF:+1]点
+		Tooltip: 敌人的伤害提高[c/AAAAFF:1]点
 	}
 
 	StartPoint: {
@@ -117,7 +117,7 @@ Passives: {
 
 	EnemyBleed: {
 		Name: 流血附魔
-		Tooltip: 敌人的攻击有[c/AAAAFF:+5%]几率造成流血
+		Tooltip: 敌人的攻击有[c/AAAAFF:5%]几率造成流血
 	}
 
 	EnemyLife: {
@@ -127,12 +127,12 @@ Passives: {
 
 	EnemyRegen: {
 		Name: 敌方生命恢复
-		Tooltip: 敌人获得[c/AAAAFF:+1]点生命恢复
+		Tooltip: 敌人获得[c/AAAAFF:1]点生命恢复
 	}
 
 	EnemyDefense: {
 		Name: 敌方防御
-		Tooltip: 敌人获得[c/AAAAFF:+1]点防御
+		Tooltip: 敌人获得[c/AAAAFF:1]点防御
 	}
 
 	EnemyEndurance: {
@@ -157,7 +157,7 @@ Passives: {
 
 	EnemyPoision: {
 		Name: 中毒附魔
-		Tooltip: 敌人的攻击有[c/AAAAFF:+5%]几率造成中毒
+		Tooltip: 敌人的攻击有[c/AAAAFF:5%]几率造成中毒
 	}
 
 	EnemySurvival: {
@@ -165,8 +165,8 @@ Passives: {
 		Tooltip:
 			'''
 
-			敌人获得[c/AAAAFF:+25]点生命
-			敌人获得[c/AAAAFF:+1]点防御
+			敌人获得[c/AAAAFF:25]点生命
+			敌人获得[c/AAAAFF:1]点防御
 			'''
 	}
 
@@ -175,7 +175,7 @@ Passives: {
 		Tooltip:
 			'''
 			只有地狱的血肉祭品才能满足条件
-			进入[c/FF7766:困难模式]才能通过此节点
+			进入[c/FF7766:困难模式]才能点亮此节点
 
 			'''
 	}
@@ -204,7 +204,7 @@ Passives: {
 		Name: 生命涡旋
 		Tooltip:
 			'''
-			靠近玩家（[c/AAAAFF:10]格范围内）的敌人获得[c/AAAAFF:+20]点生命恢复
+			靠近玩家（[c/AAAAFF:10]格范围内）的敌人获得[c/AAAAFF:20]点生命恢复
 			如果有敌人靠近（[c/AAAAFF:10]格范围内），玩家降低[c/AAAAFF:25%]的生命恢复
 																			 
 			'''
@@ -225,7 +225,7 @@ Passives: {
 		Tooltip:
 			'''
 			每[c/AAAAFF:30]点厄难，敌人造成的伤害增加[c/AAAAFF:1%]
-			每[c/AAAAFF:20]点厄难，敌人生命增加[c/AAAAFF:+1]
+			每[c/AAAAFF:20]点厄难，敌人生命增加[c/AAAAFF:1]
 				 
 			'''
 	}
@@ -247,12 +247,12 @@ Passives: {
 
 	HardmodeEnemyPoision: {
 		Name: 中毒附魔
-		Tooltip: 敌人的攻击有[c/AAAAFF:+10%]几率造成中毒
+		Tooltip: 敌人的攻击有[c/AAAAFF:10%]几率造成中毒
 	}
 
 	HardmodeEnemyVenom: {
-		Name: 剧毒附魔
-		Tooltip: 敌人的攻击有[c/AAAAFF:+2%]几率造成剧毒
+		Name: 酸性毒液附魔
+		Tooltip: 敌人的攻击有[c/AAAAFF:2%]几率造成酸性毒液
 	}
 
 	HardmodeStrengthPerDoom: {
@@ -260,22 +260,22 @@ Passives: {
 		Tooltip:
 			'''
 			每[c/AAAAFF:20]点厄难，敌人造成[c/AAAAFF:1%]增伤
-			每[c/AAAAFF:10]点厄难，敌人获得[c/AAAAFF:+1]点生命
+			每[c/AAAAFF:10]点厄难，敌人获得[c/AAAAFF:1]点生命
 				 
 			'''
 	}
 
 	HardmodeDoubleChance: {
 		Name: “双人成行”
-		Tooltip: "[c/AAAAFF:+5%]几率成对刷怪"
+		Tooltip: "[c/AAAAFF:5%]几率成对刷怪"
 	}
 
 	Comorbidity: {
 		Name: 并发症
 		Tooltip:
 			'''
-			中毒的玩家将受剧毒影响
-			受到剧毒的玩家也会中毒
+			中毒的玩家将受酸性毒液影响
+			受到酸性毒液的玩家也会中毒
 
 			'''
 	}
@@ -289,8 +289,8 @@ Passives: {
 		Name: 厄难汇流
 		Tooltip:
 			'''
-			每[c/AAAAFF:10]点厄难，敌人有[c/AAAAFF:+1%]几率造成厄难
-			厄难：
+			每[c/AAAAFF:10]点厄难，敌人有[c/AAAAFF:1%]几率造成厄运减益
+			厄运减益：
 			玩家受到的伤害提高50%
 
 			'''
@@ -311,7 +311,7 @@ Passives: {
 		Tooltip:
 			'''
 			敌人有[c/AAAAFF:10%]几率在死亡时生成一个幽灵
-			幽灵总是会额外掉落一个暗影点数
+			幽灵总是会额外掉落一点暗影点数
 
 			'''
 	}
@@ -327,28 +327,28 @@ Passives: {
 	}
 
 	StarlightRiverGate: {
-		Name: 模组锁定：Starlight River
-		Tooltip: 只有在Starlight River Mod 启用时才能激活此节点
+		Name: 模组锁定：星光之河
+		Tooltip: 只有在星光之河模组启用时才能激活此节点
 	}
 
 	StarlightEnemyBarrier: {
 		Name: 敌方护盾
-		Tooltip: 敌方获得[c/AAAAFF:+20]点最大护盾
+		Tooltip: 敌方获得[c/AAAAFF:20]点最大护盾
 	}
 
 	CalamityGate: {
-		Name: 模组锁定：Calamity
-		Tooltip: 只有在Calamity Mod 启用时才能分配此节点
+		Name: 模组锁定：灾厄
+		Tooltip: 只有在灾厄模组启用时才能分配此节点
 	}
 
 	CalamityDamage: {
 		Name: 灾厄伤害
-		Tooltip: 来自灾厄的敌人提高[c/AAAAFF:+1]点伤害
+		Tooltip: 来自灾厄的敌人提高[c/AAAAFF:1]点伤害
 	}
 
 	EnemyDodge: {
 		Name: 敌方闪避几率
-		Tooltip: 敌人有[c/AAAAFF:+2%]几率闪避伤害
+		Tooltip: 敌人有[c/AAAAFF:2%]几率闪避伤害
 	}
 
 	PotionSickness: {
@@ -358,7 +358,7 @@ Passives: {
 
 	PotionHealing: {
 		Name: 降低治疗
-		Tooltip: 治疗物品恢复生命[c/AAAAFF:-5]点
+		Tooltip: 治疗物品恢复的生命值[c/AAAAFF:-5]点
 	}
 
 	SicklyPotions: {
@@ -373,15 +373,15 @@ Passives: {
 
 	HardmodeEndurance: {
 		Name: 敌方耐力提升
-		Tooltip: 敌人获得[c/AAAAFF:6%]减伤
+		Tooltip: 敌人获得[c/AAAAFF:6%]伤害减免
 	}
 
 	BadMedicine: {
 		Name: 劣质药品
 		Tooltip:
 			'''
-			使用治疗物品会施加[c/AAAAFF:5]秒厄难
-			厄难：
+			使用治疗物品会施加[c/AAAAFF:5]秒厄运减益
+			厄运减益：
 			使玩家受到的伤害增加50%
 
 			'''
@@ -394,12 +394,12 @@ Passives: {
 
 	ManaTithe: {
 		Name: 魔力税
-		Tooltip: 所有武器使用消耗[c/AAAAFF:+4]点法力
+		Tooltip: 所有武器使用时额外消耗[c/AAAAFF:4]点魔力值
 	}
 
 	ManaCost: {
 		Name: 魔力消耗
-		Tooltip: 所有武器使用消耗[c/AAAAFF:+1]点法力
+		Tooltip: 所有武器使用时额外消耗[c/AAAAFF:1]点魔力值
 	}
 
 	ManaDamage: {
@@ -409,7 +409,7 @@ Passives: {
 
 	PiercePenalty: {
 		Name: 减少穿甲
-		Tooltip: 击中敌人消耗[c/AAAAFF:+1]点穿甲
+		Tooltip: 击中敌人时消耗[c/AAAAFF:1]点护甲穿透
 	}
 
 	ManaFlux: {
@@ -424,7 +424,7 @@ Passives: {
 
 	PanicGuard: {
 		Name: 恐慌护盾
-		Tooltip: 生命低于[c/AAAAFF:33%]的敌人获得[c/AAAAFF:+15]点防御
+		Tooltip: 生命低于[c/AAAAFF:33%]的敌人获得[c/AAAAFF:15]点防御
 	}
 
 	TwistOfFate: {
@@ -459,38 +459,38 @@ Passives: {
 	}
 
 	Darkness: {
-		// Name: 黑暗
-		// Tooltip: "降低[c/AAAAFF:0.5%] 光亮度"
+		Name: 黑暗
+		Tooltip: "降低[c/AAAAFF:0.5%] 光亮度"
 	}
 
 	CreepingDarkness: {
-		// Name: 黑暗蔓延
-		// Tooltip: 身处黑暗中时，亮度会降低。回到光亮中后逐渐恢复。
+		Name: 黑暗蔓延
+		Tooltip: 身处黑暗中时，亮度会降低。回到光亮中后逐渐恢复。
 	}
 
 	BloodMoonStrength: {
-		// Name: 血月强度
-		/* Tooltip:
+		Name: 血月强度
+		 Tooltip:
 			'''
-			血月生成的敌人增加 [c/AAAAFF:+1] 点伤害
-			血月生成的敌人增加 [c/AAAAFF:+1] 点防御
-			''' */
+			血月生成的敌人增加 [c/AAAAFF:1] 点伤害
+			血月生成的敌人增加 [c/AAAAFF:1] 点防御
+			''' 
 	}
 
 	BloodMoonBleed: {
-		// Name: 流血之月
-		// Tooltip: 血月生成的敌人有 [c/AAAAFF:+10%] 的几率造成流血
+		Name: 流血之月
+		Tooltip: 血月生成的敌人有 [c/AAAAFF:10%] 的几率造成流血
 	}
 
 	Halfbloods: {
-		// Name: “混血”
-		// Tooltip: 每晚的后半夜总会是血月
+		Name: “混血”
+		Tooltip: 每晚的后半夜总会是血月
 	}
 }
 
 Buffs: {
 	Doomed: {
-		DisplayName: 厄难
+		DisplayName: 厄运
 		Description: 受到的伤害增加50%
 	}
 }
