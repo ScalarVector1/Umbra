@@ -374,7 +374,7 @@ Passives: {
 
 	Heartbreakers: {
 		Name: Разбиватели сердец
-		Tooltip: 
+		Tooltip:
 			'''
 			Снижает максимальный запас здоровья игрока на [c/AAAAFF:20] ед. после каждого получения урона
 			Потерянное максимальное здоровье восстанавливается в течение нескольких секунд
@@ -484,3 +484,14 @@ Buffs: {
 }
 
 Projectiles.DodgeDagger.DisplayName: Летающий кинжал
+
+Configs: {
+	UIConfig: {
+		// DisplayName: U I Config
+
+		UmbraIconPosition: {
+			// Label: Umbra Icon Position
+			// Tooltip: ""
+		}
+	}
+}

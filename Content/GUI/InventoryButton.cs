@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Terraria.GameContent.UI.Elements;
 using Terraria.Localization;
 using Terraria.UI;
+using Umbra.Content.Configs;
 using Umbra.Core.Loaders.UILoading;
 using Umbra.Core.PassiveTreeSystem;
 
@@ -27,14 +28,28 @@ namespace Umbra.Content.GUI
 		{
 			treeButton.Left.Set(574, 0);
 			treeButton.Top.Set(274, 0);
-			treeButton.Width.Set(116, 0);
+			treeButton.Width.Set(92, 0);
 			treeButton.Height.Set(34, 0);
-			treeButton.OnLeftClick += openTree;
+			treeButton.OnLeftClick += OpenTree;
 			treeButton.SetVisibility(1f, 1f);
 			Append(treeButton);
 		}
 
-		private void openTree(UIMouseEvent evt, UIElement listeningElement)
+		public override void SafeUpdate(GameTime gameTime)
+		{
+			Vector2 configPos = ModContent.GetInstance<UIConfig>().UmbraIconPosition;
+
+			if (treeButton.GetDimensions().Position() != configPos)
+			{
+				treeButton.Left.Set(configPos.X, 0);
+				treeButton.Top.Set(configPos.Y, 0);
+				treeButton.Width.Set(92, 0);
+				treeButton.Height.Set(34, 0);
+				Recalculate();
+			}
+		}
+
+		private void OpenTree(UIMouseEvent evt, UIElement listeningElement)
 		{
 			var tree = UILoader.GetUIState<Tree>();
 			tree.visible = true;
@@ -49,23 +64,20 @@ namespace Umbra.Content.GUI
 
 		public override void Draw(SpriteBatch spriteBatch)
 		{
-			treeButton.Top.Set(110, 0);
-			Recalculate();
-
 			var tp = Main.LocalPlayer.GetModPlayer<TreePlayer>();
 
 			Texture2D back = Assets.GUI.GlowSoft.Value;
 
 			Vector2 pos = treeButton.GetDimensions().Center();
 
-			spriteBatch.Draw(back, pos + new Vector2(17, -6), null, Color.Black, 0, back.Size() / 2f, 1f, 0, 0);
+			spriteBatch.Draw(back, pos + new Vector2(30, -6), null, Color.Black, 0, back.Size() / 2f, 1f, 0, 0);
 
 			base.Draw(spriteBatch);
 
 			var fill = Assets.GUI.BarFill.Value;
 			var fillWidth = (int)(fill.Width * ((float)tp.partialPoints / tp.nextPoint));
 			var fillSource = new Rectangle(0, 0, fillWidth, fill.Height);
-			var fillTarget = new Rectangle((int)pos.X - 42, (int)pos.Y - 5, fillWidth, fill.Height);
+			var fillTarget = new Rectangle((int)pos.X - 29, (int)pos.Y - 4, fillWidth, fill.Height);
 
 			spriteBatch.Draw(fill, fillTarget, fillSource, Color.White);
 
@@ -78,7 +90,7 @@ namespace Umbra.Content.GUI
 				scale = 0.85f + 0.05f * MathF.Sin(Main.GameUpdateCount * 0.2f);
 			}
 
-			Vector2 pos2 = pos + new Vector2(17, 0);
+			Vector2 pos2 = pos + new Vector2(30, 0);
 			Utils.DrawBorderString(spriteBatch, $"{tp.UmbraPoints}", pos2, color, scale, 0.5f, 0.6f);
 
 			if (treeButton.IsMouseHovering)

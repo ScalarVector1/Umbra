@@ -12,9 +12,9 @@ Items: {
 			'''
 	}
 
-	 Pickup: {
-		DisplayName: 暗影
-		Tooltip: ""
+	UmbraPickup: {
+		// DisplayName: Umbra Pickup
+		// Tooltip: ""
 	}
 
 	MundanityItem: {
@@ -460,7 +460,7 @@ Passives: {
 
 	Darkness: {
 		Name: 黑暗
-		Tooltip: "降低[c/AAAAFF:0.5%] 光亮度"
+		Tooltip: 降低[c/AAAAFF:0.5%] 光亮度
 	}
 
 	CreepingDarkness: {
@@ -470,11 +470,11 @@ Passives: {
 
 	BloodMoonStrength: {
 		Name: 血月强度
-		 Tooltip:
+		Tooltip:
 			'''
 			血月生成的敌人增加 [c/AAAAFF:1] 点伤害
 			血月生成的敌人增加 [c/AAAAFF:1] 点防御
-			''' 
+			'''
 	}
 
 	BloodMoonBleed: {
@@ -496,3 +496,14 @@ Buffs: {
 }
 
 Projectiles.DodgeDagger.DisplayName: 闪避匕首
+
+Configs: {
+	UIConfig: {
+		// DisplayName: U I Config
+
+		UmbraIconPosition: {
+			// Label: Umbra Icon Position
+			// Tooltip: ""
+		}
+	}
+}

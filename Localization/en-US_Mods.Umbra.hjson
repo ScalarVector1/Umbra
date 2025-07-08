@@ -470,3 +470,14 @@ Buffs: {
 }
 
 Projectiles.DodgeDagger.DisplayName: Dodge Dagger
+
+Configs: {
+	UIConfig: {
+		DisplayName: U I Config
+
+		UmbraIconPosition: {
+			Label: Umbra Icon Position
+			Tooltip: ""
+		}
+	}
+}
