@@ -24,6 +24,10 @@ namespace Umbra.Core.PassiveTreeSystem
 		private bool PauseInFullscreen(On_Main.orig_CanPauseGame orig)
 		{
 			Tree tree = UILoader.GetUIState<Tree>();
+
+			if (tree is null)
+				return orig();
+
 			return orig() || tree.visible && tree.fullscreen;
 		}
 

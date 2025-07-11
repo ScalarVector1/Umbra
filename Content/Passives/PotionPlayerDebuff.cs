@@ -63,10 +63,5 @@ namespace Umbra.Content.Passives
 
 			healValue -= healingDecrease;
 		}
-
-		public override bool? UseItem(Item item, Player player)
-		{
-			return base.UseItem(item, player);
-		}
 	}
 }

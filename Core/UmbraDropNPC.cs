@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.DataStructures;
-using Terraria.GameContent.ItemDropRules;
+﻿using Terraria.DataStructures;
 using Terraria.ID;
 using Umbra.Content.Items;
 using Umbra.Core.PassiveTreeSystem;
@@ -46,7 +40,7 @@ namespace Umbra.Core
 			}
 
 			// grant partial points
-			var lastPlayer = Main.player[npc.lastInteraction];
+			Player lastPlayer = Main.player[npc.lastInteraction];
 			lastPlayer.GetModPlayer<TreePlayer>().partialPoints += npc.boss ? 15 : 1;
 		}
 	}

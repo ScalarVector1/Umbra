@@ -35,7 +35,7 @@ namespace Umbra.Content.Passives.Large
 
 		public override void OnKill(NPC npc)
 		{
-			if (active)
+			if (active && npc.type != NPCID.Wraith)
 			{
 				NPC.NewNPC(npc.GetSource_FromThis(), (int)npc.Center.X, (int)npc.Center.Y, NPCID.Wraith);
 			}

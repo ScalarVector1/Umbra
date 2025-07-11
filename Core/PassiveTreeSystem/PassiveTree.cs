@@ -318,6 +318,8 @@ namespace Umbra.Core.PassiveTreeSystem
 
 		public void Serialize(BinaryWriter writer)
 		{
+			Umbra.Instance.Logger.Info("\n=======================\nSerializing Tree!\n=======================\n");
+
 			writer.Write(activeNodes.Count);
 
 			for(int k = 0; k < activeNodes.Count; k++)
@@ -328,6 +330,8 @@ namespace Umbra.Core.PassiveTreeSystem
 
 		public void Deserialize(BinaryReader reader)
 		{
+			Umbra.Instance.Logger.Info("\n=======================\nDeserializing Tree!\n=======================\n");
+
 			int count = reader.ReadInt32();
 
 			List<int> toActivate = new();
@@ -348,7 +352,10 @@ namespace Umbra.Core.PassiveTreeSystem
 			foreach (int id in toActivate)
 			{
 				if (nodesById.TryGetValue(id, out Passive node) && node.CanBeActive())
+				{
 					node.active = true;
+					Umbra.Instance.Logger.Info($"Active node: {node.Name}({node.ID})");
+				}
 			}
 
 			GenerateActiveCollections();
