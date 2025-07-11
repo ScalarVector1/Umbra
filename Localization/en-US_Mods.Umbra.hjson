@@ -473,20 +473,20 @@ Passives: {
 
 	Sluggishness: {
 		Name: Sluggishness
-		Tooltip: 
-		'''
-		Players use items [c/AAAAFF:10%] slower
-		Players use items [c/AAAAFF:20%] slower when affected by slowness
-		'''
+		Tooltip:
+			'''
+			Players use items [c/AAAAFF:10%] slower
+			Players use items [c/AAAAFF:20%] slower when affected by slowness
+			'''
 	}
 
 	Snowflakes: {
 		Name: Snowflakes
-		Tooltip: 
-		'''
-		Non-boss enemies have a [c/AAAAFF:10%] chance to spawn with an enchanted snowflake
-		Enemies with an enchanted snowflake release deadly ice shards on death
-		'''
+		Tooltip:
+			'''
+			Non-boss enemies have a [c/AAAAFF:10%] chance to spawn with an enchanted snowflake
+			Enemies with an enchanted snowflake release deadly ice shards on death
+			'''
 	}
 }
 

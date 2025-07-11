@@ -33,8 +33,10 @@ namespace Umbra.Core.PassiveTreeSystem
 
 		private void DontDrawInFullscreenTree(On_Main.orig_GUIBarsDraw orig, Main self)
 		{
-			if (!UILoader.GetUIState<Tree>().fullscreen)
-				orig(self);
+			if (UILoader.GetUIState<Tree>().fullscreen && UILoader.GetUIState<Tree>().visible)
+				return;
+
+			orig(self);
 		}
 
 		public override void OnWorldLoad()
