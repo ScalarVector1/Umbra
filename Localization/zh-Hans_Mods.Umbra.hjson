@@ -486,6 +486,26 @@ Passives: {
 		Name: “混血”
 		Tooltip: 每晚的后半夜总会是血月
 	}
+
+	EnemyFrostburn: {
+		// Name: Mods.Umbra.Passives.EnemyFrostburn.Name
+		// Tooltip: Mods.Umbra.Passives.EnemyFrostburn.Tooltip
+	}
+
+	EnemySlow: {
+		// Name: Mods.Umbra.Passives.EnemySlow.Name
+		// Tooltip: Mods.Umbra.Passives.EnemySlow.Tooltip
+	}
+
+	Sluggishness: {
+		// Name: Mods.Umbra.Passives.Sluggishness.Name
+		// Tooltip: Mods.Umbra.Passives.Sluggishness.Tooltip
+	}
+
+	Snowflakes: {
+		// Name: Mods.Umbra.Passives.Snowflakes.Name
+		// Tooltip: Mods.Umbra.Passives.Snowflakes.Tooltip
+	}
 }
 
 Buffs: {
@@ -495,7 +515,11 @@ Buffs: {
 	}
 }
 
-Projectiles.DodgeDagger.DisplayName: 闪避匕首
+Projectiles: {
+	DodgeDagger.DisplayName: 闪避匕首
+	// SnowflakeProjectile.DisplayName: Snowflake Projectile
+	// SnowflakeShard.DisplayName: Snowflake Shard
+}
 
 Configs: {
 	UIConfig: {

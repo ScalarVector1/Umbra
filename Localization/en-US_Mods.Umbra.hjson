@@ -460,6 +460,34 @@ Passives: {
 		Name: Halfbloods
 		Tooltip: The latter half of every night is always a blood moon
 	}
+
+	EnemyFrostburn: {
+		Name: Enemy Frostburn Chance
+		Tooltip: Enemies have [c/AAAAFF:+5%] chance to inflict frostburn
+	}
+
+	EnemySlow: {
+		Name: Enemy Slow Chance
+		Tooltip: Enemies have [c/AAAAFF:+10%] chance to inflict slowness
+	}
+
+	Sluggishness: {
+		Name: Sluggishness
+		Tooltip: 
+		'''
+		Players use items [c/AAAAFF:10%] slower
+		Players use items [c/AAAAFF:20%] slower when affected by slowness
+		'''
+	}
+
+	Snowflakes: {
+		Name: Snowflakes
+		Tooltip: 
+		'''
+		Non-boss enemies have a [c/AAAAFF:10%] chance to spawn with an enchanted snowflake
+		Enemies with an enchanted snowflake release deadly ice shards on death
+		'''
+	}
 }
 
 Buffs: {
@@ -469,7 +497,11 @@ Buffs: {
 	}
 }
 
-Projectiles.DodgeDagger.DisplayName: Dodge Dagger
+Projectiles: {
+	DodgeDagger.DisplayName: Dodge Dagger
+	SnowflakeProjectile.DisplayName: Snowflake Projectile
+	SnowflakeShard.DisplayName: Snowflake Shard
+}
 
 Configs: {
 	UIConfig: {

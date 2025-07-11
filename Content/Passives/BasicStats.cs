@@ -67,6 +67,34 @@ namespace Umbra.Content.Passives
 		}
 	}
 
+	internal class EnemyFrostburn : Passive
+	{
+		public override void SetDefaults()
+		{
+			texture = Assets.Passives.EnemyFrostburn;
+			difficulty = 4;
+		}
+
+		public override void OnEnemySpawn(NPC npc)
+		{
+			npc.GetGlobalNPC<StatusChanceNPC>().AddStatusChance(BuffID.Frostburn, 0.05f);
+		}
+	}
+
+	internal class EnemySlow : Passive
+	{
+		public override void SetDefaults()
+		{
+			texture = Assets.Passives.EnemySlow;
+			difficulty = 6;
+		}
+
+		public override void OnEnemySpawn(NPC npc)
+		{
+			npc.GetGlobalNPC<StatusChanceNPC>().AddStatusChance(BuffID.Slow, 0.1f);
+		}
+	}
+
 	internal class EnemyLife : Passive
 	{
 		public override void SetDefaults()
