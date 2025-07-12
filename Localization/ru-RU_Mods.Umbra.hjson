@@ -477,7 +477,7 @@ Passives: {
 
 	EnemyFrostburn: {
 		Name: Обморожение от атак врагов
-		Tooltip: Увеличивает шанс получить дебафф «{$BuffName.Frostburn}» от атак врагов на [c/AAAAFF:10%]
+		Tooltip: Увеличивает шанс получить дебафф «{$BuffName.Frostburn}» от атак врагов на [c/AAAAFF:5%]
 	}
 
 	EnemySlow: {
