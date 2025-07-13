@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.Audio;
+﻿using Terraria.Audio;
 using Terraria.ID;
 using Umbra.Core;
 using Umbra.Core.PassiveTreeSystem;
@@ -39,9 +34,9 @@ namespace Umbra.Content.Passives.Large
 			{
 				ModContent.GetInstance<PixelationSystem>().QueueRenderAction("OverPlayers", () =>
 				{
-					var tex = Assets.Masks.GlowTrailNoEnd.Value;
+					Texture2D tex = Assets.Masks.GlowTrailNoEnd.Value;
 
-					var color = new Color(160, 220, 255, 0) * (0.25f + MathF.Sin(Main.GameUpdateCount * 0.1f) * 0.15f);
+					Color color = new Color(160, 220, 255, 0) * (0.25f + MathF.Sin(Main.GameUpdateCount * 0.1f) * 0.15f);
 
 					for (int k = 0; k < 8; k++)
 					{
@@ -81,8 +76,8 @@ namespace Umbra.Content.Passives.Large
 		{
 			ModContent.GetInstance<PixelationSystem>().QueueRenderAction("OverPlayers", () =>
 			{
-				var tex = Assets.Masks.GlowTrailNoEnd.Value;
-				var time = 60 - Projectile.timeLeft;
+				Texture2D tex = Assets.Masks.GlowTrailNoEnd.Value;
+				int time = 60 - Projectile.timeLeft;
 
 				for (int k = 0; k < 8; k++)
 				{
@@ -92,8 +87,8 @@ namespace Umbra.Content.Passives.Large
 					float max = 60 - k * 2;
 					float localProg = Math.Clamp((time - min) / max, 0, 1);
 
-					var opacity = Math.Min(localProg * 2, 1f);
-					var scale = 1f;
+					float opacity = Math.Min(localProg * 2, 1f);
+					float scale = 1f;
 
 					if (time > 50)
 					{
@@ -101,19 +96,19 @@ namespace Umbra.Content.Passives.Large
 						scale = 1f + Helpers.Eases.EaseCircularOut((time - 50) / 10f) * 0.4f;
 					}
 
-					var color = new Color(50 + (int)(50 * localProg), 220, 255, 0) * opacity * 0.25f;
+					Color color = new Color(50 + (int)(50 * localProg), 220, 255, 0) * opacity * 0.25f;
 
 					Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, color, rot, new Vector2(0, tex.Height / 2), new Vector2(1.5f * scale, 0.1f), 0);
 					Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, new Color(255, 255, 255, 0) * opacity * 0.5f, rot, new Vector2(0, tex.Height / 2), new Vector2(1f * scale, 0.05f), 0);
 				}
 
-				var coreOpacity = Math.Min(time / 30f, 1f);
+				float coreOpacity = Math.Min(time / 30f, 1f);
 
 				if (time > 50)
 					coreOpacity = 1f - Helpers.Eases.EaseCircularOut((time - 50) / 10f);
 
-				var core = Assets.Masks.GlowAlpha.Value;
-				Main.EntitySpriteDraw(core, Projectile.Center - Main.screenPosition, null, new Color(200, 220, 255, 0) * coreOpacity, 0, core.Size() / 2f, 1, 0 ,0);
+				Texture2D core = Assets.Masks.GlowAlpha.Value;
+				Main.EntitySpriteDraw(core, Projectile.Center - Main.screenPosition, null, new Color(200, 220, 255, 0) * coreOpacity, 0, core.Size() / 2f, 1, 0, 0);
 			});
 
 			return false;

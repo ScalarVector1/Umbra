@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Umbra.Core.PassiveTreeSystem;
-using Umbra.Core;
-using Umbra.Helpers;
-using static AssGen.Assets;
-using Umbra.Core.Loaders;
+﻿using System.Collections.Generic;
 using Terraria.Audio;
 using Terraria.ID;
+using Umbra.Core;
+using Umbra.Core.Loaders;
+using Umbra.Core.PassiveTreeSystem;
+using Umbra.Helpers;
 
 namespace Umbra.Content.Passives.Large
 {
@@ -92,7 +87,7 @@ namespace Umbra.Content.Passives.Large
 				}
 			});
 
-			var tex = Assets.Projectiles.DodgeDagger.Value;
+			Texture2D tex = Assets.Projectiles.DodgeDagger.Value;
 			Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, null, new Color(0.6f, 1.0f, 0.7f, 0f), Projectile.rotation + 1.57f, tex.Size() / 2f, Projectile.scale * 2f, 0, 0);
 			Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation + 1.57f, tex.Size() / 2f, Projectile.scale, 0, 0);
 
@@ -103,7 +98,7 @@ namespace Umbra.Content.Passives.Large
 		{
 			if (cache == null)
 			{
-				cache = new List<Vector2>();
+				cache = [];
 
 				for (int i = 0; i < 30; i++)
 				{
