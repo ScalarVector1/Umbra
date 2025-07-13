@@ -7,6 +7,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Umbra.Core;
 using Umbra.Core.PassiveTreeSystem;
+using Umbra.Helpers;
 
 namespace Umbra.Content.Passives.Large
 {
@@ -55,7 +56,7 @@ namespace Umbra.Content.Passives.Large
 		{
 			if (active)
 			{
-				Projectile.NewProjectile(npc.GetSource_FromThis(), npc.Center, Vector2.Zero, ModContent.ProjectileType<SnowflakeProjectile>(), npc.damage, 0, Main.myPlayer);
+				Projectile.NewProjectile(npc.GetSource_FromThis(), npc.Center, Vector2.Zero, ModContent.ProjectileType<SnowflakeProjectile>(), DifficultyHelper.GetProjectileDamage(100), 0, Main.myPlayer);
 			}
 		}
 	}

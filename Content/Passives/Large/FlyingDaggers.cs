@@ -32,7 +32,7 @@ namespace Umbra.Content.Passives.Large
 			if (TreeSystem.tree.AnyActive<FlyingDaggers>())
 			{
 				SoundEngine.PlaySound(SoundID.DD2_MonkStaffSwing.WithPitchOffset(0.5f), nPC.Center);
-				Projectile.NewProjectile(nPC.GetSource_FromThis(), nPC.Center, Vector2.UnitX.RotatedByRandom(6.28f) * 5f, ModContent.ProjectileType<DodgeDagger>(), 30, 0.5f);
+				Projectile.NewProjectile(nPC.GetSource_FromThis(), nPC.Center, Vector2.UnitX.RotatedByRandom(6.28f) * 5f, ModContent.ProjectileType<DodgeDagger>(), DifficultyHelper.GetProjectileDamage(nPC.damage / 2), 0.5f);
 			}
 		}
 	}
