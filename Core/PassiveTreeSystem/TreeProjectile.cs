@@ -11,7 +11,7 @@ namespace Umbra.Core.PassiveTreeSystem
 
 		public override void OnSpawn(Projectile projectile, IEntitySource source)
 		{
-			if (source is EntitySource_Parent sourcez && sourcez.Entity is NPC npc && npc.TryGetGlobalNPC<TreeNPC>(out TreeNPC treeNPC))
+			if (projectile.hostile && projectile.damage > 0 && source is EntitySource_Parent sourcez && sourcez.Entity is NPC npc && npc.TryGetGlobalNPC<TreeNPC>(out TreeNPC treeNPC))
 			{
 				spawner = treeNPC;
 
