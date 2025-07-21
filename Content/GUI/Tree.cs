@@ -6,6 +6,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader.UI.Elements;
 using Terraria.UI;
+using Umbra.Content.Configs;
 using Umbra.Content.GUI.FieldEditors;
 using Umbra.Content.Passives.Crossmod;
 using Umbra.Core;
@@ -188,41 +189,43 @@ namespace Umbra.Content.GUI
 				fullscreenButton.SetVisibility(1, 1);
 				panel.Append(fullscreenButton);
 
-				editButton = new UIImageButton(Assets.GUI.CustomButton);
-				editButton.Left.Set(-32, 1f);
-				editButton.Top.Set(80, 0f);
-				editButton.Width.Set(38, 0);
-				editButton.Height.Set(38, 0);
-				editButton.OnLeftClick += (a, b) =>
+				if (Main.netMode == NetmodeID.SinglePlayer && ModContent.GetInstance<UIConfig>().ShowCustomMode)
 				{
-					editing = !editing;
-
-					if (editing)
+					editButton = new UIImageButton(Assets.GUI.CustomButton);
+					editButton.Left.Set(-32, 1f);
+					editButton.Top.Set(40, 0f);
+					editButton.Width.Set(38, 0);
+					editButton.Height.Set(38, 0);
+					editButton.OnLeftClick += (a, b) =>
 					{
-						if (!TreeSystem.hasCustomTree)
+						editing = !editing;
+
+						if (editing)
 						{
-							TreeSystem.SwitchToCustomTree();
-							TreeSystem.hasCustomTree = true;
+							if (!TreeSystem.hasCustomTree)
+							{
+								TreeSystem.SwitchToCustomTree();
+								TreeSystem.hasCustomTree = true;
+								Refresh();
+							}
+
+							StartEdit();
+						}
+						else
+						{
+							RemoveChild(selector);
+							RemoveChild(costEditor);
+							RemoveChild(exportButton);
+							TreeSystem.tree.RegenrateConnections();
+							TreeSystem.tree.RegenerateFlows();
 							Refresh();
 						}
 
-						StartEdit();
-					}
-					else
-					{
-						RemoveChild(selector);
-						RemoveChild(costEditor);
-						RemoveChild(exportButton);
-						TreeSystem.tree.RegenrateConnections();
-						TreeSystem.tree.RegenerateFlows();
-						Refresh();
-					}
-
-					Recalculate();
-					Main.NewText("Editing: " + editing);
-				};
-				editButton.SetVisibility(1, 1);
-				panel.Append(editButton);
+						Recalculate();
+					};
+					editButton.SetVisibility(1, 1);
+					panel.Append(editButton);
+				}
 
 				TreeSystem.tree.Nodes.ForEach(n => inner.Append(new PassiveElement(n)));
 				Recalculate();
@@ -298,7 +301,7 @@ namespace Umbra.Content.GUI
 				Tooltip.SetTooltip("");
 			}
 
-			if (editButton.IsMouseHovering)
+			if (editButton != null && editButton.IsMouseHovering)
 			{
 				Tooltip.SetName(Language.GetTextValue("Mods.Umbra.GUI.Tree.EditButton"));
 				Tooltip.SetTooltip(Language.GetTextValue("Mods.Umbra.GUI.Tree.EditButtonDesc"));

@@ -83,7 +83,7 @@ namespace Umbra.Content.Passives.Large
 					float opacity = stacksRemaining / 10f * Eases.SwoopEase(fadeIn / 120f);
 					Color color = new Color(255, 255, 100, 0) * opacity;
 
-					var pulse = new Vector2(1f + 0.1f * MathF.Sin(Main.GameUpdateCount * 0.1f), 1f + 0.1f * MathF.Cos(Main.GameUpdateCount * 0.1f));
+					var pulse = new Vector2(1f + 0.05f * MathF.Sin(Main.GameUpdateCount * 0.1f), 1f + 0.05f * MathF.Cos(Main.GameUpdateCount * 0.1f));
 					float largest = npc.width > npc.height ? npc.width : npc.height;
 
 					Vector2 scale = new Vector2(largest / tex.Width, largest / tex.Height) * pulse;

@@ -552,5 +552,10 @@ Configs: {
 			Label: Положение шкалы мрака на экране
 			Tooltip: ""
 		}
+
+		ShowCustomMode: {
+			// Label: Show Custom Mode
+			// Tooltip: ""
+		}
 	}
 }

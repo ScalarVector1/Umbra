@@ -16,5 +16,8 @@ namespace Umbra.Content.Configs
 		[DefaultValue(typeof(Vector2), "574, 274")]
 		[CustomModConfigItem(typeof(UmbraRepositionElement))]
 		public Vector2 UmbraIconPosition;
+
+		[DefaultValue(typeof(bool), "false")]
+		public bool ShowCustomMode;
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using Terraria.ModLoader.Config.UI;
+using Terraria.ModLoader.UI;
 
 namespace Umbra.Content.GUI.Config
 {
@@ -13,21 +14,15 @@ namespace Umbra.Content.GUI.Config
 			var dims = GetDimensions().ToRectangle();
 
 			float ratio = Main.screenHeight / (float)Main.screenWidth;
-			Height.Set(dims.Width * ratio + 128, 0);
+			Height.Set(dims.Width * ratio + 24 + 16 * ratio, 0);
 			Recalculate();
 		}
 
 		public override void Draw(SpriteBatch spriteBatch)
 		{
-			Width.Set(0, 1f);
-			Recalculate();
-			var dims = GetDimensions().ToRectangle();
-
 			float ratio = Main.screenHeight / (float)Main.screenWidth;
-			Height.Set(dims.Width * ratio + 24 + 16 * ratio, 0);
-			Recalculate();
 
-			dims = GetDimensions().ToRectangle();
+			var dims = GetDimensions().ToRectangle();
 			dims.Height = (int)(dims.Width * ratio);
 
 			DrawBox(spriteBatch, GetDimensions().ToRectangle(), new Color(0.2f, 0.25f, 0.6f) * 0.2f);
@@ -87,8 +82,19 @@ namespace Umbra.Content.GUI.Config
 
 		public override void Update(GameTime gameTime)
 		{
-			var dims = GetDimensions().ToRectangle();
 			float ratio = Main.screenHeight / (float)Main.screenWidth;
+
+			Width.Set(0, 1f);
+			Recalculate();
+			var dims = GetDimensions().ToRectangle();
+
+			Height.Set(dims.Width * ratio + 24 + 16 * ratio, 0);
+			Recalculate();
+
+			Parent.Height.Set(Height.Pixels + 6, 0);
+			Parent.Recalculate();
+
+			dims = GetDimensions().ToRectangle();
 
 			Rectangle preview = dims;
 			preview.Inflate(-16, (int)(-16 * ratio / 2));
@@ -96,8 +102,6 @@ namespace Umbra.Content.GUI.Config
 			preview.Height -= 32;
 
 			preview.Height = (int)(preview.Width * ratio);
-			Height.Set(preview.Width * ratio, 0);
-			Recalculate();
 
 			if (preview.Contains(Main.MouseScreen.ToPoint()) && Main.mouseLeft)
 			{

@@ -564,5 +564,10 @@ Configs: {
 			Label: 暗影图标位置
 			Tooltip: ""
 		}
+
+		ShowCustomMode: {
+			// Label: Show Custom Mode
+			// Tooltip: ""
+		}
 	}
 }

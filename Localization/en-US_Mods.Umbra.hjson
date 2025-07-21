@@ -538,5 +538,14 @@ Configs: {
 			Label: Umbra Icon Position
 			Tooltip: ""
 		}
+
+		ShowCustomMode: {
+			Label: Show custom mode option
+			Tooltip: 
+			'''
+			Allows you to set the umbral tree into custom mode in singleplayer. 
+			You can use this to build custom tree layouts, but it will permanently lock your world to custom mode.
+			'''
+		}
 	}
 }

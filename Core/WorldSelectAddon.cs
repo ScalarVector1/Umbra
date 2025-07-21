@@ -23,6 +23,7 @@ namespace Umbra.Core
 		{
 			orig();
 			difficulties.Clear();
+			customs.Clear();
 		}
 
 		private void DrawAddon(On_UIWorldListItem.orig_DrawSelf orig, UIWorldListItem self, SpriteBatch spriteBatch)
@@ -41,7 +42,9 @@ namespace Umbra.Core
 			if (difficulties.ContainsKey(path) && customs.ContainsKey(path))
 			{
 				if (!customs[path])
+				{
 					Utils.DrawBorderString(spriteBatch, $"{difficulties[path]}", pos + tex.Size() / 2f, new Color(255, 100, 100), 0.7f, 0.5f, 0.5f);
+				}
 				else
 				{
 					Utils.DrawBorderString(spriteBatch, "Custom", pos + tex.Size() / 2f + new Vector2(0, -12), new Color(255, 150, 100), 0.7f, 0.5f, 0.5f);
