@@ -602,9 +602,9 @@ Configs: {
 Misc: {
 	/* Motd:
 		'''
-		Thanks for checking out out the Umbra Pre-release! 
+		Thanks for checking out out the Umbra {0} Pre-release! [i:Umbra/UmbraPickup]
 		This is a very early demo being used to gauge interest and find issues. 
-		PLEASE report any issues to https://discord.gg/KFpCz5p688 or https://github.com/ScalarVector1/Umbra/issues
+		PLEASE report any issues to [c/7799FF:https://discord.gg/KFpCz5p688] or [c/7799FF:https://github.com/ScalarVector1/Umbra/issues]
 		''' */
 	// UmbraGainPopup: +1 Umbra
 }
