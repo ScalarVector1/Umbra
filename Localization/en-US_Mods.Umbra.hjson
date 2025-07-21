@@ -79,6 +79,7 @@ GUI: {
 
 			[c/FF4444: WARNING: This cannot be reversed!]
 			'''
+		MaxOne: Max of 1
 	}
 
 	Node: {
@@ -96,6 +97,8 @@ GUI: {
 			[c/AAAAFF:{0}] / [c/AAAAFF:{1}] kills to next point
 			'''
 	}
+
+	WorldSelect.Custom: Custom
 }
 
 Passives: {
@@ -541,11 +544,11 @@ Configs: {
 
 		ShowCustomMode: {
 			Label: Show custom mode option
-			Tooltip: 
-			'''
-			Allows you to set the umbral tree into custom mode in singleplayer. 
-			You can use this to build custom tree layouts, but it will permanently lock your world to custom mode.
-			'''
+			Tooltip:
+				'''
+				Allows you to set the umbral tree into custom mode in singleplayer. 
+				You can use this to build custom tree layouts, but it will permanently lock your world to custom mode.
+				'''
 		}
 	}
 }

@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Terraria.GameContent.UI.Elements;
 using Terraria.GameContent.UI.States;
+using Terraria.Localization;
 using Terraria.ModLoader.IO;
 using Terraria.Utilities;
 
@@ -47,7 +48,7 @@ namespace Umbra.Core
 				}
 				else
 				{
-					Utils.DrawBorderString(spriteBatch, "Custom", pos + tex.Size() / 2f + new Vector2(0, -12), new Color(255, 150, 100), 0.7f, 0.5f, 0.5f);
+					Utils.DrawBorderString(spriteBatch, Language.GetText("Mods.Umbra.GUI.WorldSelect.Custom").Value, pos + tex.Size() / 2f + new Vector2(0, -12), new Color(255, 150, 100), 0.7f, 0.5f, 0.5f);
 					Utils.DrawBorderString(spriteBatch, $"{difficulties[path]}", pos + tex.Size() / 2f, new Color(255, 150, 100), 0.7f, 0.5f, 0.5f);
 				}
 			}

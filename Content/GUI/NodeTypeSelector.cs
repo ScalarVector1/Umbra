@@ -141,7 +141,7 @@ namespace Umbra.Content.GUI
 			if (IsMouseHovering)
 			{
 				string cost = "\n" + Language.GetText("Mods.Umbra.GUI.Node.Doom").Format(passive.difficulty);
-				string max = passive.AllowDuplicates ? "" : "\nMax of 1";
+				string max = passive.AllowDuplicates ? "" : $"\n{Language.GetText("Mods.Umbra.GUI.Tree.MaxOne").Value}";
 
 				Tooltip.SetName(passive.Name);
 				Tooltip.SetTooltip(passive.Tooltip + cost + max);
