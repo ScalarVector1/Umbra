@@ -77,18 +77,19 @@ GUI: {
 			'''
 		CloseButton: Закрыть
 		FullscreenButton: Полноэкранный режим
-		// ExportButton: Export Tree
-		// EditButton: Enable/Edit custom tree
-		/* EditButtonDesc:
+		ExportButton: Экспорт вашего Дерева мрака
+		EditButton: Режим редактирования
+		EditButtonDesc:
 			'''
-			Changes this world to a custom tree, which you can edit the layout of freely. Great for custom servers!
+			Позволяет вам редактировать Дерево мрака, меняя расположение нод, удаляя старые, добавляя новые и т.д.
+			Не стесняйтесь экспериментировать с этим режимом, чтобы идеально настроить Дерево мрака под себя
 
-			[c/FF4444: WARNING: This cannot be reversed!]
-			''' */
-		// MaxOne: Max of 1
-		// CostEditName: Cost
-		// CostEditDesc: Cost for the selected node
-		// Export: Exported to: {0}
+			[c/FF4444: ВНИМАНИЕ: Начав редактирование Дерева мрака, вы больше не сможете вернуться к его изначальному виду!]
+			'''
+		MaxOne: Вы можете установить только одну такую ноду в Дереве мрака
+		CostEditName: Стоимость в очках мрака
+		CostEditDesc: Позволяет вам изменить стоимость выбранной ноды
+		Export: Ваше дерево мрака было экспортировано в: {0}
 	}
 
 	Node: {
@@ -108,23 +109,26 @@ GUI: {
 	}
 
 	Notification: {
-		// ResetMessageName: "[c/CC88FF:Tree Reset]"
-		/* ResetMessageBody:
+		ResetMessageName: "[c/CC88FF:Перераспределение очков мрака]"
+		ResetMessageBody:
 			'''
-			The umbral tree has changed. As a consequence, all nodes need to be de-allocated. Your spent umbra has been refunded, so you can re-invest into the new tree as you wish!
+			Дерево мрака изменилось с последнего раза, как вы им пользовались.
+			Все ваши открытые ноды были сброшены, а все потраченные на них очки мрака вернулись к вам, теперь вы сможете перераспределить их в новом Дереве мрака.
+			Счастливой игры... ну или приятных страданий, как вам угодно!
 
-			[c/bbbbbb:Click on this notification to close it.]
-			''' */
-		// CustomErrorMessageName: "[c/CC88FF:Tree Reset]"
-		/* CustomErrorMessageBody:
+			[c/bbbbbb:Нажмите на это окошко, чтобы закрыть его]
 			'''
-			An error occured loading your custom tree, or your custom tree was corrupted. You have been reset to the default tree and your points refunded.
+		CustomErrorMessageName: "[c/CC88FF:Перераспределение очков мрака]"
+		CustomErrorMessageBody:
+			'''
+			Возникла ошибка при попытке загрузить пользовательское Дерево мрака, возможно данные о нём были повреждены.
+			Ваше Дерево мрака было возвращено к его изначальному виду, все ваши открытые ноды были сброшены, а потраченные на них очки мрака вернулись к вам
 
-			[c/bbbbbb:Click on this notification to close it.]
-			''' */
+			[c/bbbbbb:Нажмите на это окошко, чтобы закрыть его]
+			'''
 	}
 
-	// WorldSelect.Custom: Custom
+	WorldSelect.Custom: Изм. Дерево мрака
 }
 
 Passives: {
@@ -535,21 +539,22 @@ Passives: {
 	}
 
 	EnemyStrength: {
-		// Name: Normal Enemy Strength
-		/* Tooltip:
+		Name: Сила обычных врагов
+		Tooltip:
 			'''
-			Non-boss enemies have [c/AAAAFF:2%] increased life
-			Non-boss enemies have [c/AAAAFF:2%] increased damage
-			''' */
+			Увеличивает максимальный запас здоровья всех врагов (кроме боссов) на [c/AAAAFF:2%]
+			Увеличивает урон всех врагов (кроме боссов) на [c/AAAAFF:2%]
+			'''
 	}
 
 	GalvanizedGrunts: {
-		// Name: Galvanized Grunts
-		/* Tooltip:
+		Name: Неубиваемые громилы
+		Tooltip:
 			'''
-			Non-boss enemies gain a shield granting them [c/AAAAFF:+50] defense at half life
-			Hitting this shield removes [c/AAAAFF:5] defense from it
-			''' */
+			Даёт всем врагам (кроме боссов) прочный щит, когда их уровень здоровья опускается до половины
+			Этот щит увеличивает их защиту на [c/AAAAFF:50] ед.
+			За каждое попадание по щиту его бонус к защите становится меньше на [c/AAAAFF:5] ед.
+			'''
 	}
 }
 
@@ -564,7 +569,7 @@ Projectiles: {
 	DodgeDagger.DisplayName: Летающий кинжал
 	SnowflakeProjectile.DisplayName: Снежинка
 	SnowflakeShard.DisplayName: Сосульки
-	// Spawner.DisplayName: Spawner
+	Spawner.DisplayName: Спавнер
 }
 
 Configs: {
@@ -577,22 +582,24 @@ Configs: {
 		}
 
 		ShowCustomMode: {
-			// Label: Show custom mode option
-			/* Tooltip:
+			Label: Отображать кнопку с режимом редактирования
+			Tooltip:
 				'''
-				Allows you to set the umbral tree into custom mode in singleplayer. 
-				You can use this to build custom tree layouts, but it will permanently lock your world to custom mode.
-				''' */
+				Эта кнопка позволяет вам войти в режим редактирования Дерева мрака, где можно добавлять или удалять ноды, менять их расположение и т.д
+				Однако ваш мир останется в этом режиме редактирования навсегда и вы не сможете вернуться к изначальному Дереву мрака автоматически
+				'''
 		}
 	}
 }
 
 Misc: {
-	/* Motd:
+	Motd:
 		'''
-		Thanks for checking out out the Umbra Pre-release! 
-		This is a very early demo being used to gauge interest and find issues. 
-		PLEASE report any issues to https://discord.gg/KFpCz5p688 or https://github.com/ScalarVector1/Umbra/issues
-		''' */
-	// UmbraGainPopup: +1 Umbra
+		Спасибо что играете с модом Umbra до его полного релиза!
+		Это очень ранняя демо версия проекта и нам важно собрать как можно более заинтересованную аудиторию, чтобы сделать мод ещё лучше!
+
+		Если вы хотите поделиться впечатлениями или фидбеком, заходите на наш английский сервер по ссылке https://discord.gg/KFpCz5p688
+		Если вы нашли какой-либо баг или столкнулись с другой проблемой, сообщите об этом в нашем репозитории GitHub по ссылке https://github.com/ScalarVector1/Umbra/issues
+		'''
+	UmbraGainPopup: +1 очко мрака
 }
