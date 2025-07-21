@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using Terraria.Localization;
 using Terraria.ModLoader.IO;
 using Umbra.Content.GUI;
 using Umbra.Content.Passives;
@@ -97,7 +98,9 @@ namespace Umbra.Core.PassiveTreeSystem
 					tag["activeIDs"] = new List<int>();
 					Main.LocalPlayer.GetModPlayer<TreePlayer>().UmbraPoints += tag.GetInt("lastSpent");
 
-					Notification.DisplayNotification("[c/CC88FF:Tree Reset]", "The umbral tree has changed. As a consequence, all nodes need to be de-allocated. Your spent umbra has been refunded, so you can re-invest into the new tree as you wish!\n\n[c/bbbbbb:Click on this notification to close it.]");
+					Notification.DisplayNotification(
+						Language.GetTextValue("Mods.Umbra.GUI.Notification.ResetMessageName"),
+						Language.GetTextValue("Mods.Umbra.GUI.Notification.ResetMessageBody"));
 				}
 			}
 			else if (tag.TryGet("customTree", out string customTreeJson))
@@ -110,7 +113,9 @@ namespace Umbra.Core.PassiveTreeSystem
 				tag["activeIDs"] = new List<int>();
 				Main.LocalPlayer.GetModPlayer<TreePlayer>().UmbraPoints += tag.GetInt("lastSpent");
 
-				Notification.DisplayNotification("[c/CC88FF:Tree Reset]", "An error occured loading your custom tree, or your custom tree was corrupted. You have been reset to the default tree and your points refunded.\n\n[c/bbbbbb:Click on this notification to close it.]");
+				Notification.DisplayNotification(
+					Language.GetTextValue("Mods.Umbra.GUI.Notification.CustomErrorMessageName"),
+					Language.GetTextValue("Mods.Umbra.GUI.Notification.CustomErrorMessageBody"));
 			}
 
 			tree.Load(tag);
@@ -223,7 +228,7 @@ namespace Umbra.Core.PassiveTreeSystem
 				Directory.CreateDirectory(path);
 
 			string thisPath = Path.Combine(path, name);
-			Main.NewText("Exported to: " + thisPath, Color.Yellow);
+			Main.NewText(Language.GetText("Mods.Umbra.GUI.Tree.Export").Format(thisPath), Color.Yellow);
 
 			File.WriteAllText(thisPath, GetTreeJson());
 		}

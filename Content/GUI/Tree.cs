@@ -62,11 +62,11 @@ namespace Umbra.Content.GUI
 			selector.Initialize(UserInterface);
 			Append(selector);
 
-			costEditor = new("Cost", (a) =>
+			costEditor = new(Language.GetText("Mods.Umbra.GUI.Tree.CostEditName").Value, (a) =>
 			{
 				if (selected != null)
 					selected.Cost = a;
-			}, 0, () => selected?.Cost ?? 0, "Cost for the selected node");
+			}, 0, () => selected?.Cost ?? 0, Language.GetText("Mods.Umbra.GUI.Tree.CostEditDesc").Value);
 
 			costEditor.Left.Set(LeftPadding - 220, 0.5f);
 			costEditor.Top.Set(TopPadding + selector.Height.Pixels + 12, 0.5f);

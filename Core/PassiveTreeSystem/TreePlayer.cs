@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader.IO;
 
 namespace Umbra.Core.PassiveTreeSystem
@@ -27,7 +28,7 @@ namespace Umbra.Core.PassiveTreeSystem
 				if (nextPoint < 40)
 					nextPoint += 2;
 
-				CombatText.NewText(Player.Hitbox, new Color(200, 160, 255), "+1 Umbra");
+				CombatText.NewText(Player.Hitbox, new Color(200, 160, 255), Language.GetTextValue("Mods.Umbra.Misc.UmbraGainPopup"));
 
 				for (int k = 0; k < 20; k++)
 				{
@@ -49,7 +50,7 @@ namespace Umbra.Core.PassiveTreeSystem
 		public override void OnEnterWorld()
 		{
 			UmbraNet.RequestTreeOnJoin();
-			Main.NewText("Thanks for checking out out the Umbra Pre-release! This is a very early demo being used to gauge interest and find issues. PLEASE report any issues to https://discord.gg/KFpCz5p688 or https://github.com/ScalarVector1/Umbra/issues", new Color(200, 150, 255));
+			Main.NewText(Language.GetText("Mods.Umbra.Misc.Motd").Format(Mod.Version), new Color(225, 200, 255));
 		}
 
 		public override void SaveData(TagCompound tag)

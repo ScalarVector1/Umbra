@@ -3,6 +3,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Umbra.Content.GUI;
 using Umbra.Core.PassiveTreeSystem;
+using Terraria.Localization;
 
 namespace Umbra.Content.Items
 {
@@ -102,7 +103,7 @@ namespace Umbra.Content.Items
 			}
 
 			tp.UmbraPoints++;
-			CombatText.NewText(player.Hitbox, new Color(200, 160, 255), "+1 Umbra");
+			CombatText.NewText(player.Hitbox, new Color(200, 160, 255), Language.GetTextValue("Mods.Umbra.Misc.UmbraGainPopup"));
 
 			for (int k = 0; k < 20; k++)
 			{

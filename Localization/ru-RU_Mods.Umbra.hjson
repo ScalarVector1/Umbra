@@ -86,6 +86,9 @@ GUI: {
 			[c/FF4444: WARNING: This cannot be reversed!]
 			''' */
 		// MaxOne: Max of 1
+		// CostEditName: Cost
+		// CostEditDesc: Cost for the selected node
+		// Export: Exported to: {0}
 	}
 
 	Node: {
@@ -102,6 +105,23 @@ GUI: {
 
 			[c/AAAAFF:{0}] / [c/AAAAFF:{1}] убийств до получения следующего очка мрака
 			'''
+	}
+
+	Notification: {
+		// ResetMessageName: "[c/CC88FF:Tree Reset]"
+		/* ResetMessageBody:
+			'''
+			The umbral tree has changed. As a consequence, all nodes need to be de-allocated. Your spent umbra has been refunded, so you can re-invest into the new tree as you wish!
+
+			[c/bbbbbb:Click on this notification to close it.]
+			''' */
+		// CustomErrorMessageName: "[c/CC88FF:Tree Reset]"
+		/* CustomErrorMessageBody:
+			'''
+			An error occured loading your custom tree, or your custom tree was corrupted. You have been reset to the default tree and your points refunded.
+
+			[c/bbbbbb:Click on this notification to close it.]
+			''' */
 	}
 
 	// WorldSelect.Custom: Custom
@@ -565,4 +585,14 @@ Configs: {
 				''' */
 		}
 	}
+}
+
+Misc: {
+	/* Motd:
+		'''
+		Thanks for checking out out the Umbra Pre-release! 
+		This is a very early demo being used to gauge interest and find issues. 
+		PLEASE report any issues to https://discord.gg/KFpCz5p688 or https://github.com/ScalarVector1/Umbra/issues
+		''' */
+	// UmbraGainPopup: +1 Umbra
 }
