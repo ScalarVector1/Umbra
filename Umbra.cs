@@ -65,7 +65,7 @@ namespace Umbra
 			if (type == "RequestTreeOnJoin")
 			{
 				if (Main.netMode == NetmodeID.Server)
-					UmbraNet.SyncTree(whoAmI);
+					UmbraNet.SyncPotentiallyNewCustomTree(whoAmI);
 			}
 			else if (type == "SyncTree")
 			{
@@ -73,6 +73,21 @@ namespace Umbra
 
 				if (Main.netMode == NetmodeID.Server)
 					UmbraNet.SyncTree(-1, whoAmI);
+			}
+			else if (type == "SyncCustomTree")
+			{
+				if (Main.netMode == NetmodeID.MultiplayerClient)
+				{
+					bool hasCustom = reader.ReadBoolean();
+
+					if (hasCustom)
+					{
+						string customTree = reader.ReadString();
+						TreeSystem.LoadFromString(customTree);
+					}
+
+					TreeSystem.tree.Deserialize(reader);
+				}
 			}
 		}
 	}

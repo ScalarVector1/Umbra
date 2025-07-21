@@ -11,6 +11,7 @@ namespace Umbra.Core
 	internal class WorldSelectAddon : ModSystem
 	{
 		public static Dictionary<string, int> difficulties = [];
+		public static Dictionary<string, bool> customs = [];
 
 		public override void Load()
 		{
@@ -37,19 +38,27 @@ namespace Umbra.Core
 			spriteBatch.Draw(glow, pos + tex.Size() / 2f, null, Color.Black, 0, glow.Size() / 2f, 0.7f, 0, 0);
 			spriteBatch.Draw(tex, pos, Color.White);
 
-			if (difficulties.ContainsKey(path))
+			if (difficulties.ContainsKey(path) && customs.ContainsKey(path))
 			{
-				Utils.DrawBorderString(spriteBatch, $"{difficulties[path]}", pos + tex.Size() / 2f, new Color(255, 100, 100), 0.7f, 0.5f, 0.5f);
+				if (!customs[path])
+					Utils.DrawBorderString(spriteBatch, $"{difficulties[path]}", pos + tex.Size() / 2f, new Color(255, 100, 100), 0.7f, 0.5f, 0.5f);
+				else
+				{
+					Utils.DrawBorderString(spriteBatch, "Custom", pos + tex.Size() / 2f + new Vector2(0, -12), new Color(255, 150, 100), 0.7f, 0.5f, 0.5f);
+					Utils.DrawBorderString(spriteBatch, $"{difficulties[path]}", pos + tex.Size() / 2f, new Color(255, 150, 100), 0.7f, 0.5f, 0.5f);
+				}
 			}
 			else
 			{
 				if(self._data.TryGetHeaderData<PassiveTreeSystem.TreeSystem>(out var tag))
 				{
-					difficulties.Add(path, tag.GetInt("lastDifficulty"));
+					difficulties.TryAdd(path, tag.GetInt("lastDifficulty"));
+					customs.TryAdd(path, tag.GetBool("hasCustomTree"));
 					return;
 				}
 
-				difficulties.Add(path, 0);
+				difficulties.TryAdd(path, 0);
+				customs.TryAdd(path, false);
 			}
 		}
 	}

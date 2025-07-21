@@ -77,6 +77,14 @@ GUI: {
 			'''
 		CloseButton: Закрыть
 		FullscreenButton: Полноэкранный режим
+		// ExportButton: Export Tree
+		// EditButton: Enable/Edit custom tree
+		/* EditButtonDesc:
+			'''
+			Changes this world to a custom tree, which you can edit the layout of freely. Great for custom servers!
+
+			[c/FF4444: WARNING: This cannot be reversed!]
+			''' */
 	}
 
 	Node: {
@@ -502,6 +510,24 @@ Passives: {
 			Враги с зачарованной снежинкой выпускают несколько наносящих урон сосулек после смерти
 			'''
 	}
+
+	EnemyStrength: {
+		// Name: Normal Enemy Strength
+		/* Tooltip:
+			'''
+			Non-boss enemies have [c/AAAAFF:2%] increased life
+			Non-boss enemies have [c/AAAAFF:2%] increased damage
+			''' */
+	}
+
+	GalvanizedGrunts: {
+		// Name: Galvanized Grunts
+		/* Tooltip:
+			'''
+			Non-boss enemies gain a shield granting them [c/AAAAFF:+50] defense at half life
+			Hitting this shield removes [c/AAAAFF:5] defense from it
+			''' */
+	}
 }
 
 Buffs: {
@@ -515,6 +541,7 @@ Projectiles: {
 	DodgeDagger.DisplayName: Летающий кинжал
 	SnowflakeProjectile.DisplayName: Снежинка
 	SnowflakeShard.DisplayName: Сосульки
+	// Spawner.DisplayName: Spawner
 }
 
 Configs: {

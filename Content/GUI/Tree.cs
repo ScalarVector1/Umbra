@@ -57,8 +57,8 @@ namespace Umbra.Content.GUI
 			selector.Left.Set(LeftPadding - 220, 0.5f);
 			selector.Top.Set(TopPadding, 0.5f);
 			selector.Width.Set(200, 0);
-			selector.Height.Set(800, 0);
-			selector.OnInitialize();
+			selector.Height.Set(700, 0);
+			selector.Initialize(UserInterface);
 			Append(selector);
 
 			costEditor = new("Cost", (a) =>
@@ -67,18 +67,30 @@ namespace Umbra.Content.GUI
 					selected.Cost = a;
 			}, 0, () => selected?.Cost ?? 0, "Cost for the selected node");
 
-			costEditor.Left.Set(LeftPadding - 420, 0.5f);
-			costEditor.Top.Set(TopPadding, 0.5f);
+			costEditor.Left.Set(LeftPadding - 220, 0.5f);
+			costEditor.Top.Set(TopPadding + selector.Height.Pixels + 12, 0.5f);
 			costEditor.OnInitialize();
 			Append(costEditor);
+
+			exportButton = new UIImageButton(Assets.GUI.ExportButton);
+			exportButton.Left.Set(LeftPadding - 220 + costEditor.Width.Pixels + 12, 0.5f);
+			exportButton.Top.Set(TopPadding + selector.Height.Pixels + 12, 0.5f);
+			exportButton.Width.Set(38, 0);
+			exportButton.Height.Set(38, 0);
+			exportButton.OnLeftClick += (a, b) => TreeSystem.Export();
+			exportButton.SetVisibility(1, 1);
+			Append(exportButton);
 
 			if (fullscreen)
 			{
 				selector.Left.Set(32, 0f);
 				selector.Top.Set(124, 0f);
 
-				costEditor.Left.Set(16, 0f);
-				costEditor.Top.Set(136 + selector.Height.Pixels, 0f);
+				costEditor.Left.Set(32, 0f);
+				costEditor.Top.Set(124 + selector.Height.Pixels + 12, 0f);
+
+				exportButton.Left.Set(32 + costEditor.Width.Pixels + 12, 0f);
+				exportButton.Top.Set(124 + selector.Height.Pixels + 12, 0f);
 			}
 		}
 
@@ -143,7 +155,8 @@ namespace Umbra.Content.GUI
 				fullscreenButton.Top.Set(-4, 0f);
 				fullscreenButton.Width.Set(38, 0);
 				fullscreenButton.Height.Set(38, 0);
-				fullscreenButton.OnLeftClick += (a, b) => {
+				fullscreenButton.OnLeftClick += (a, b) =>
+				{
 					if (!fullscreen)
 					{
 						inner.LineOff += panel.GetDimensions().Position();
@@ -171,25 +184,11 @@ namespace Umbra.Content.GUI
 						Recalculate();
 						IngameFancyUI.Close();
 					}
-
 				};
 				fullscreenButton.SetVisibility(1, 1);
 				panel.Append(fullscreenButton);
 
-				exportButton = new UIImageButton(Assets.GUI.ExportButton);
-				exportButton.Left.Set(-32, 1f);
-				exportButton.Top.Set(38, 0f);
-				exportButton.Width.Set(38, 0);
-				exportButton.Height.Set(38, 0);
-				exportButton.OnLeftClick += (a, b) =>
-				{
-					TreeSystem.Export();
-					Main.NewText("Exported tree!");
-				};
-				exportButton.SetVisibility(1, 1);
-				panel.Append(exportButton);
-
-				editButton = new UIImageButton(Assets.GUI.ExportButton);
+				editButton = new UIImageButton(Assets.GUI.CustomButton);
 				editButton.Left.Set(-32, 1f);
 				editButton.Top.Set(80, 0f);
 				editButton.Width.Set(38, 0);
@@ -200,12 +199,20 @@ namespace Umbra.Content.GUI
 
 					if (editing)
 					{
+						if (!TreeSystem.hasCustomTree)
+						{
+							TreeSystem.SwitchToCustomTree();
+							TreeSystem.hasCustomTree = true;
+							Refresh();
+						}
+
 						StartEdit();
 					}
 					else
 					{
 						RemoveChild(selector);
 						RemoveChild(costEditor);
+						RemoveChild(exportButton);
 						TreeSystem.tree.RegenrateConnections();
 						TreeSystem.tree.RegenerateFlows();
 						Refresh();
@@ -285,16 +292,16 @@ namespace Umbra.Content.GUI
 				Tooltip.SetTooltip("");
 			}
 
-			if (exportButton.IsMouseHovering)
+			if (exportButton != null && exportButton.IsMouseHovering)
 			{
-				Tooltip.SetName("Export Tree [c/FF0000: DEBUG TOOL]");
-				Tooltip.SetTooltip("use at own risk");
+				Tooltip.SetName(Language.GetTextValue("Mods.Umbra.GUI.Tree.ExportButton"));
+				Tooltip.SetTooltip("");
 			}
 
 			if (editButton.IsMouseHovering)
 			{
-				Tooltip.SetName("Edit Tree [c/FF0000: DEBUG TOOL]");
-				Tooltip.SetTooltip("use at own risk");
+				Tooltip.SetName(Language.GetTextValue("Mods.Umbra.GUI.Tree.EditButton"));
+				Tooltip.SetTooltip(Language.GetTextValue("Mods.Umbra.GUI.Tree.EditButtonDesc"));
 			}
 
 			if (editing)
@@ -305,6 +312,37 @@ namespace Umbra.Content.GUI
 			// Have to redraw since ingame fancy UI disables it normally
 			if (fullscreen)
 				UILoader.GetUIState<Tooltip>().Draw(spriteBatch);
+		}
+
+		public override void Recalculate()
+		{
+			if(editing)
+			{
+				if (fullscreen)
+				{
+					selector.Left.Set(32, 0f);
+					selector.Top.Set(124, 0f);
+
+					costEditor.Left.Set(32, 0f);
+					costEditor.Top.Set(124 + selector.Height.Pixels + 12, 0f);
+
+					exportButton.Left.Set(32 + costEditor.Width.Pixels + 12, 0f);
+					exportButton.Top.Set(124 + selector.Height.Pixels + 12, 0f);
+				}
+				else
+				{
+					selector.Left.Set(LeftPadding - 220, 0.5f);
+					selector.Top.Set(TopPadding, 0.5f);
+
+					costEditor.Left.Set(LeftPadding - 220, 0.5f);
+					costEditor.Top.Set(TopPadding + selector.Height.Pixels + 12, 0.5f);
+
+					exportButton.Left.Set(LeftPadding - 220 + costEditor.Width.Pixels + 12, 0.5f);
+					exportButton.Top.Set(TopPadding + selector.Height.Pixels + 12, 0.5f);
+				}
+			}
+
+			base.Recalculate();
 		}
 	}
 
@@ -395,30 +433,9 @@ namespace Umbra.Content.GUI
 			}
 
 			base.Draw(spriteBatch);
-
+		
 			if (Tree.editing)
-			{
-				for (int x = -100; x < 100; x++)
-				{
-					for (int y = -100; y < 100; y++)
-					{
-						Vector2 pos = GetDimensions().Position() + new Vector2(x * 16, y * 16) * zoom + LineOff;
-						Main.spriteBatch.Draw(Assets.GUI.Box.Value, pos, null, Color.White * 0.25f, 0f, Assets.GUI.Box.Size() / 2, 0.2f * zoom, 0, 0);
-					}
-				}
-			}
-
-			if (Tree.editing && !Children.Any(n => n.IsMouseHovering))
-			{
-				Vector2 rawAim = (Main.MouseScreen - GetDimensions().Position() - LineOff) / (16 * zoom);
-				int aimX = (int)rawAim.X;
-				int aimY = (int)rawAim.Y;
-
-				Vector2 aim = new Vector2(aimX, aimY) * (16 * zoom) + GetDimensions().Position() + LineOff;
-
-				if (Tree.toPlace != null)
-					spriteBatch.Draw(Tree.toPlace.texture.Value, aim, null, Color.White * 0.5f, 0f, Tree.toPlace.texture.Size() / 2f, zoom, 0, 0);
-			}
+				DrawEditing(spriteBatch);
 
 			spriteBatch.End();
 			spriteBatch.Begin(default, default, default, default, default, default, Main.UIScaleMatrix);
@@ -430,28 +447,43 @@ namespace Umbra.Content.GUI
 			{
 				var frame = Parent.GetDimensions().ToRectangle();
 				frame.Inflate(4, 4);
-				DrawFrame(spriteBatch, frame);
+				GUIHelper.DrawFancyFrame(spriteBatch, frame);
 			}
 		}
 
-		public void DrawFrame(SpriteBatch spriteBatch, Rectangle target)
+		/// <summary>
+		/// Draws the extra elements for editing the tree
+		/// </summary>
+		/// <param name="spriteBatch"></param>
+		public void DrawEditing(SpriteBatch spriteBatch)
 		{
-			Texture2D tex = Assets.GUI.Frame.Value;
+			// Draw the dots to guide the grid
+			Texture2D tex = Assets.MagicPixel.Value;
+			float scale = 2f / Assets.MagicPixel.Width() * zoom;
+			Vector2 origin = Assets.MagicPixel.Size() / 2f;
+			Color color = Color.White * 0.25f;
 
-			Color color = Color.White;
+			for (int x = -100; x < 100; x++)
+			{
+				for (int y = -100; y < 100; y++)
+				{
+					Vector2 pos = GetDimensions().Position() + new Vector2(x * 16, y * 16) * zoom + LineOff;
+					Main.spriteBatch.Draw(tex, pos, null, color, 0f, origin, scale, 0, 0);
+				}
+			}
 
-			var sourceCorner = new Rectangle(0, 4, 12, 12);
-			var sourceEdge = new Rectangle(12, 4, 8, 12);
+			// Draw ghost cursor for selected passive
+			if (!Children.Any(n => n.IsMouseHovering))
+			{
+				Vector2 rawAim = (Main.MouseScreen - GetDimensions().Position() - LineOff) / (16 * zoom);
+				int aimX = (int)rawAim.X;
+				int aimY = (int)rawAim.Y;
 
-			spriteBatch.Draw(tex, new Rectangle(target.X + 10, target.Y, target.Width - 32, 6), new Rectangle(10, 6, 2, 6), color, 0, Vector2.Zero, 0, 0);
-			spriteBatch.Draw(tex, new Rectangle(target.X, target.Y + 10, 6, target.Height - 24), new Rectangle(0, 16, 6, 2), color, 0, Vector2.Zero, 0, 0);
-			spriteBatch.Draw(tex, new Rectangle(target.X + 32, target.Y + target.Height - 6, target.Width - 42, 6), new Rectangle(42, tex.Height - 12, 2, 6), color, 0, Vector2.Zero, 0, 0);
-			spriteBatch.Draw(tex, new Rectangle(target.X + target.Width - 6, target.Y + 10, 6, target.Height - 20), new Rectangle(tex.Width - 6, 16, 6, 2), color, 0, Vector2.Zero, 0, 0);
+				Vector2 aim = new Vector2(aimX, aimY) * (16 * zoom) + GetDimensions().Position() + LineOff;
 
-			spriteBatch.Draw(tex, new Rectangle(target.X, target.Y, 10, 10), new Rectangle(0, 6, 10, 10), color, 0, Vector2.Zero, 0, 0);
-			spriteBatch.Draw(tex, new Rectangle(target.X + target.Width - 32, target.Y - 6, 32, 20), new Rectangle(tex.Width - 32, 0, 32, 20), color, 0, Vector2.Zero, 0, 0);
-			spriteBatch.Draw(tex, new Rectangle(target.X + target.Width - 10, target.Y + target.Height - 10, 10, 10), new Rectangle(tex.Width - 10, tex.Height - 16, 10, 10), color, 0, Vector2.Zero, 0, 0);
-			spriteBatch.Draw(tex, new Rectangle(target.X, target.Y + target.Height - 14, 32, 20), new Rectangle(0, tex.Height - 20, 32, 20), color, 0, Vector2.Zero, 0, 0);
+				if (Tree.toPlace != null)
+					spriteBatch.Draw(Tree.toPlace.texture.Value, aim, null, Color.White * 0.5f, 0f, Tree.toPlace.texture.Size() / 2f, zoom, 0, 0);
+			}
 		}
 
 		public override void SafeUpdate(GameTime gameTime)
@@ -532,7 +564,7 @@ namespace Umbra.Content.GUI
 
 				Passive aimedAt = TreeSystem.tree.nodesByLocation.ContainsKey((aimX, aimY)) ? TreeSystem.tree.nodesByLocation[(aimX, aimY)] : null;
 
-				if (aimedAt is null)
+				if (aimedAt is null && TreeSystem.tree.CanInsert(Tree.toPlace))
 				{
 					int newID = TreeSystem.tree.Insert(Tree.toPlace, aimX, aimY);
 
@@ -542,6 +574,10 @@ namespace Umbra.Content.GUI
 					Tree.selected = TreeSystem.tree.nodesById[newID];
 
 					UILoader.GetUIState<Tree>().Refresh();
+				}
+				else
+				{
+					SoundEngine.PlaySound(SoundID.Unlock);
 				}
 			}
 
@@ -577,7 +613,7 @@ namespace Umbra.Content.GUI
 
 		public override void SafeScrollWheel(UIScrollWheelEvent evt)
 		{
-			Vector2 scaledMouseDiff = (CenterPos - Main.MouseScreen) * (1f/zoom);
+			Vector2 scaledMouseDiff = (CenterPos - Main.MouseScreen) * (1f / zoom);
 
 			zoom += evt.ScrollWheelValue / 1200f * zoom;
 
@@ -587,371 +623,10 @@ namespace Umbra.Content.GUI
 			if (zoom > 2f)
 				zoom = 2f;
 
-			Vector2 scaledMouseDiff2 = (CenterPos - Main.MouseScreen) * (1f/zoom);
+			Vector2 scaledMouseDiff2 = (CenterPos - Main.MouseScreen) * (1f / zoom);
 
 			LineOff += (scaledMouseDiff - scaledMouseDiff2) * zoom;
 			Recalculate();
-		}
-	}
-
-	internal class PassiveElement : SmartUIElement
-	{
-		public Passive passive;
-		public Vector2 root;
-		public Vector2 scaledRoot;
-
-		private int allocateFlashTime;
-		private int deallocateFlashTime;
-		private int hoverTime;
-		private float scale = 1f;
-
-		public PassiveElement(Passive passive)
-		{
-			this.passive = passive;
-			Left.Set(passive.TreePos.X - passive.Width / 2, 0);
-			Top.Set(passive.TreePos.Y - passive.Height / 2, 0);
-			Width.Set(passive.Width, 0);
-			Height.Set(passive.Height, 0);
-
-			root = new Vector2(Left.Pixels, Top.Pixels);
-			scaledRoot = root;
-		}
-
-		public void AdjustForScale(float scale)
-		{
-			scaledRoot = root * scale;
-			Width.Set(passive.Width * scale, 0);
-			Height.Set(passive.Height * scale, 0);
-			this.scale = scale;
-		}
-
-		public override void SafeUpdate(GameTime gameTime)
-		{
-			if (IsMouseHovering && hoverTime < 10)
-				hoverTime++;
-
-			if (!IsMouseHovering && hoverTime > 0)
-				hoverTime--;
-		}
-
-		public override void Draw(SpriteBatch spriteBatch)
-		{
-			if (Tree.editing)
-			{
-				if (Tree.selected == passive)
-				{
-					Texture2D glow = Assets.GUI.GlowAlpha.Value;
-					Texture2D star = Assets.GUI.StarAlpha.Value;
-
-					var glowColor = new Color(120, 255, 120)
-					{
-						A = 0
-					};
-
-					spriteBatch.Draw(glow, GetDimensions().Center(), null, glowColor * 0.5f, 0, glow.Size() / 2f, scale, 0, 0);
-					spriteBatch.Draw(star, GetDimensions().Center(), null, glowColor * 0.25f, 0, star.Size() / 2f, scale, 0, 0);
-				}
-
-				if (IsMouseHovering)
-				{
-					Texture2D glow = Assets.GUI.GlowAlpha.Value;
-					Texture2D star = Assets.GUI.StarAlpha.Value;
-
-					var glowColor = new Color(160, 160, 60)
-					{
-						A = 0
-					};
-
-					spriteBatch.Draw(glow, GetDimensions().Center(), null, glowColor * 0.5f, 0, glow.Size() / 2f, scale, 0, 0);
-					spriteBatch.Draw(star, GetDimensions().Center(), null, glowColor * 0.25f, 0, star.Size() / 2f, scale, 0, 0);
-				}
-			}
-
-			if (hoverTime > 0)
-			{
-				Texture2D glow = Assets.GUI.GlowAlpha.Value;
-
-				var glowColor = new Color(80, 80, 80, 0);
-
-				if (passive.active || passive.CanAllocate(Main.LocalPlayer))
-					glowColor = new(160, 80, 200, 0);
-
-				float prog = hoverTime / 10f;
-				spriteBatch.Draw(glow, GetDimensions().Center(), null, glowColor * prog, 0, glow.Size() / 2f, prog * scale * (0.6f + passive.size * 0.1f), 0, 0);
-			}
-
-			passive.Draw(spriteBatch, GetDimensions().Center(), scale);
-
-			if (Tree.editing)
-			{
-				Utils.DrawBorderString(spriteBatch, passive.Cost.ToString(), GetDimensions().ToRectangle().Center(), Color.Lavender);
-			}
-
-			if (allocateFlashTime > 0)
-			{
-				Texture2D glow = Assets.GUI.GlowAlpha.Value;
-				Texture2D star = Assets.GUI.StarAlpha.Value;
-
-				float prog = allocateFlashTime / 20f;
-
-				var glowColor = new Color(180, 120, 255)
-				{
-					A = 0
-				};
-
-				glowColor *= prog * 0.5f;
-
-				spriteBatch.Draw(glow, GetDimensions().Center(), null, glowColor, 0, glow.Size() / 2f, scale * (1 + (1f - prog)), 0, 0);
-				spriteBatch.Draw(star, GetDimensions().Center(), null, glowColor * 0.5f, 0, star.Size() / 2f, scale * (1 + prog), 0, 0);
-
-				allocateFlashTime--;
-			}
-
-			if (deallocateFlashTime > 0)
-			{
-				Texture2D glow = Assets.GUI.GlowAlpha.Value;
-				Texture2D star = Assets.GUI.StarAlpha.Value;
-
-				float prog = deallocateFlashTime / 20f;
-
-				var glowColor = new Color(120, 80, 200)
-				{
-					A = 0
-				};
-
-				glowColor *= prog * 0.5f;
-
-				spriteBatch.Draw(glow, GetDimensions().Center(), null, glowColor, 0, glow.Size() / 2f, scale * (1 + (1f - prog)), 0, 0);
-				spriteBatch.Draw(star, GetDimensions().Center(), null, glowColor * 0.5f, 0, star.Size() / 2f, scale * (1 + (1f - prog)), 0, 0);
-
-				deallocateFlashTime--;
-			}
-
-			if (IsMouseHovering)
-			{
-				string tip = passive.Tooltip;
-
-				if (passive.difficulty > 0)
-					tip += "\n" + Language.GetText("Mods.Umbra.GUI.Node.Doom").Format(passive.difficulty);
-
-				if (passive.Cost > 0)
-				{
-					if (!passive.active)
-						tip += "\n" + Language.GetText("Mods.Umbra.GUI.Node.Cost").Format(passive.Cost);
-
-					if (passive.active && passive.CanDeallocate(Main.LocalPlayer))
-						tip += "\n" + Language.GetText("Mods.Umbra.GUI.Node.Refund").Format((int)Math.Ceiling(passive.Cost / 2f));
-				}
-
-				Tooltip.SetName(passive.Name);
-				Tooltip.SetTooltip(tip);
-			}
-		}
-
-		public override void SafeMouseOver(UIMouseEvent evt)
-		{
-			if (passive.active || passive.CanAllocate(Main.LocalPlayer))
-				SoundEngine.PlaySound(SoundID.DD2_SkeletonHurt.WithPitchOffset(0.5f).WithVolume(0.5f));
-			else
-				SoundEngine.PlaySound(SoundID.DD2_SkeletonHurt.WithPitchOffset(-0.5f).WithVolume(0.25f));
-		}
-
-		public override void SafeClick(UIMouseEvent evt)
-		{
-			if (Tree.editing)
-			{
-				if (Main.keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftShift) && Tree.selected != null)
-				{
-					TreeSystem.tree.Connect(Tree.selected.ID, passive.ID);
-					return;
-				}
-
-				if (Tree.selected != passive)
-					Tree.selected = passive;
-				//else
-				//Tree.selected = null;
-
-				return;
-			}
-
-			if (passive.TryAllocate(Main.LocalPlayer))
-			{
-				allocateFlashTime = 20;
-				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast.WithPitchOffset(-0.1f).WithVolume(0.5f));
-				SoundEngine.PlaySound(SoundID.GuitarAm.WithVolume(0.2f).WithPitchOffset(-0.2f));
-				SoundEngine.PlaySound(SoundID.DrumKick);
-			}
-		}
-
-		public override void SafeRightClick(UIMouseEvent evt)
-		{
-			if (Tree.editing)
-			{
-				if (Main.keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftShift) && Tree.selected != null)
-				{
-					TreeSystem.tree.Disconnect(Tree.selected.ID, passive.ID);
-					return;
-				}
-
-				if (Tree.selected == passive)
-					Tree.selected = null;
-
-				TreeSystem.tree.Remove(passive.ID);
-				UILoader.GetUIState<Tree>().Refresh();
-				return;
-			}
-
-			if (passive.TryDeallocate(Main.LocalPlayer))
-			{
-				deallocateFlashTime = 20;
-				SoundEngine.PlaySound(SoundID.GuitarAm.WithVolume(0.2f).WithPitchOffset(0.1f));
-				SoundEngine.PlaySound(SoundID.DD2_WitherBeastDeath);
-			}
-		}
-	}
-
-	internal class NodeTypeSelector : SmartUIElement
-	{
-		readonly UIGrid choices = new();
-		readonly UIScrollbar scroll = new();
-
-		public override void OnInitialize()
-		{
-			var panel = new UIPanel();
-			panel.Left.Set(0, 0);
-			panel.Top.Set(0, 0);
-			panel.Width.Set(0, 1f);
-			panel.Height.Set(0, 1f);
-			panel.BackgroundColor = new Color(0f, 0f, 0f, 0.4f);
-			Append(panel);
-
-			scroll.Left.Set(-24, 0);
-			scroll.Top.Set(0, 0);
-			scroll.Width.Set(32, 0);
-			scroll.Height.Set(800, 0);
-			Append(scroll);
-
-			choices.Left.Set(12, 0);
-			choices.Top.Set(12, 0);
-			choices.Width.Set(200, 0);
-			choices.Height.Set(800, 0);
-			choices.SetScrollbar(scroll);
-			Append(choices);
-
-			foreach (Type type in Umbra.Instance.Code.GetTypes())
-			{
-				if (!type.IsAbstract && type.IsSubclassOf(typeof(Passive)))
-				{
-					var instance = Activator.CreateInstance(type) as Passive;
-					choices.Add(new NodeChoice(instance));
-				}
-			}
-
-			choices.UpdateOrder();
-		}
-	}
-
-	internal class NodeChoice : SmartUIElement
-	{
-		public Passive passive;
-
-		public NodeChoice(Passive passive)
-		{
-			this.passive = passive;
-
-			Width.Set(40, 0);
-			Height.Set(40, 0);
-		}
-
-		public override void Draw(SpriteBatch spriteBatch)
-		{
-			if (Tree.editing && Tree.toPlace == passive)
-			{
-				Texture2D glow = Assets.GUI.GlowAlpha.Value;
-				Texture2D star = Assets.GUI.StarAlpha.Value;
-
-				var glowColor = new Color(120, 255, 120)
-				{
-					A = 0
-				};
-
-				spriteBatch.Draw(glow, GetDimensions().Center(), null, glowColor * 0.5f, 0, glow.Size() / 2f, 1f, 0, 0);
-				spriteBatch.Draw(star, GetDimensions().Center(), null, glowColor * 0.25f, 0, star.Size() / 2f, 1f, 0, 0);
-			}
-
-			if (Tree.editing && IsMouseHovering)
-			{
-				Texture2D glow = Assets.GUI.GlowAlpha.Value;
-				Texture2D star = Assets.GUI.StarAlpha.Value;
-
-				var glowColor = new Color(160, 160, 60)
-				{
-					A = 0
-				};
-
-				spriteBatch.Draw(glow, GetDimensions().Center(), null, glowColor * 0.5f, 0, glow.Size() / 2f, 1f, 0, 0);
-				spriteBatch.Draw(star, GetDimensions().Center(), null, glowColor * 0.25f, 0, star.Size() / 2f, 1f, 0, 0);
-			}
-
-			spriteBatch.Draw(passive.texture.Value, GetDimensions().ToRectangle(), null, Color.White);
-
-			if (IsMouseHovering)
-			{
-				string cost = $"\nCost: [c/BB88FF:{passive.Cost} Umbra]";
-
-				Tooltip.SetName(passive.Name);
-				Tooltip.SetTooltip(passive.Tooltip + cost);
-			}
-
-			base.Draw(spriteBatch);
-		}
-
-		public override void SafeClick(UIMouseEvent evt)
-		{
-			Tree.toPlace = passive;
-		}
-
-		public override void SafeRightClick(UIMouseEvent evt)
-		{
-			if (Tree.selected != null)
-			{
-				int id = Tree.selected.ID;
-				int x = Tree.selected.X;
-				int y = Tree.selected.Y;
-
-				int cost = Tree.selected.Cost;
-				List<Passive> connections = Tree.selected.connections;
-
-				TreeSystem.tree.Nodes.Remove(Tree.selected);
-				Tree.selected = passive.Clone();
-				Tree.selected.ID = id;
-				Tree.selected.X = x;
-				Tree.selected.Y = y;
-				Tree.selected.Cost = cost;
-				Tree.selected.connections = connections;
-				TreeSystem.tree.Nodes.Add(Tree.selected);
-
-				UILoader.GetUIState<Tree>().Refresh();
-			}
-		}
-
-		public override int CompareTo(object obj)
-		{
-			if (obj is NodeChoice choice)
-			{
-				if (passive.size != choice.passive.size)
-					return passive.size.CompareTo(choice.passive.size);
-
-				if ((passive is ModGate) != (choice.passive is ModGate))
-					return (passive is ModGate).CompareTo(choice.passive is ModGate);
-
-				if ((passive is CrossmodPassive) != (choice.passive is CrossmodPassive))
-					return (passive is CrossmodPassive).CompareTo(choice.passive is CrossmodPassive);
-
-				return passive.Name.CompareTo(choice.passive.Name);
-			}
-
-			return base.CompareTo(obj);
 		}
 	}
 }

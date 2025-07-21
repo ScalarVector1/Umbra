@@ -141,13 +141,6 @@
       "y": -12
     },
     {
-      "type": "EnemyDamage",
-      "id": 20,
-      "cost": 1,
-      "x": 19,
-      "y": -9
-    },
-    {
       "type": "EnemyBleed",
       "id": 21,
       "cost": 1,
@@ -218,20 +211,6 @@
       "y": 19
     },
     {
-      "type": "EnemySurvival",
-      "id": 35,
-      "cost": 1,
-      "x": -8,
-      "y": 17
-    },
-    {
-      "type": "EnemySurvival",
-      "id": 36,
-      "cost": 1,
-      "x": 8,
-      "y": 17
-    },
-    {
       "type": "EnemyRegen",
       "id": 31,
       "cost": 1,
@@ -258,27 +237,6 @@
       "cost": 1,
       "x": 2,
       "y": 15
-    },
-    {
-      "type": "PlayerWither",
-      "id": 37,
-      "cost": 1,
-      "x": -14,
-      "y": 12
-    },
-    {
-      "type": "EnemyLife",
-      "id": 38,
-      "cost": 1,
-      "x": -19,
-      "y": -9
-    },
-    {
-      "type": "PlayerWither",
-      "id": 39,
-      "cost": 1,
-      "x": -19,
-      "y": -2
     },
     {
       "type": "PlayerWither",
@@ -401,24 +359,10 @@
     },
     {
       "type": "BossStrength",
-      "id": 57,
-      "cost": 1,
-      "x": 15,
-      "y": 12
-    },
-    {
-      "type": "BossStrength",
       "id": 58,
       "cost": 1,
       "x": 18,
       "y": 6
-    },
-    {
-      "type": "BossStrength",
-      "id": 59,
-      "cost": 1,
-      "x": 19,
-      "y": -2
     },
     {
       "type": "BossStrength",
@@ -806,34 +750,6 @@
       "y": -43
     },
     {
-      "type": "EnemyRegen",
-      "id": 116,
-      "cost": 3,
-      "x": -36,
-      "y": 6
-    },
-    {
-      "type": "EnemyLife",
-      "id": 118,
-      "cost": 3,
-      "x": -36,
-      "y": -41
-    },
-    {
-      "type": "EnemyRegen",
-      "id": 117,
-      "cost": 3,
-      "x": -36,
-      "y": -10
-    },
-    {
-      "type": "EnemyLife",
-      "id": 119,
-      "cost": 3,
-      "x": -36,
-      "y": -27
-    },
-    {
       "type": "EnemyDefense",
       "id": 120,
       "cost": 3,
@@ -869,27 +785,6 @@
       "y": -7
     },
     {
-      "type": "EnemyDamage",
-      "id": 126,
-      "cost": 3,
-      "x": 35,
-      "y": -40
-    },
-    {
-      "type": "EnemyDamage",
-      "id": 127,
-      "cost": 3,
-      "x": 35,
-      "y": -27
-    },
-    {
-      "type": "EnemyDamage",
-      "id": 128,
-      "cost": 3,
-      "x": 35,
-      "y": -10
-    },
-    {
       "type": "MoreEnemyDamage",
       "id": 129,
       "cost": 3,
@@ -923,55 +818,6 @@
       "cost": 12,
       "x": 31,
       "y": 1
-    },
-    {
-      "type": "SpawnRate",
-      "id": 125,
-      "cost": 3,
-      "x": -12,
-      "y": 29
-    },
-    {
-      "type": "SpawnRate",
-      "id": 132,
-      "cost": 3,
-      "x": 12,
-      "y": 29
-    },
-    {
-      "type": "EnemyMoreLife",
-      "id": 135,
-      "cost": 3,
-      "x": -12,
-      "y": 41
-    },
-    {
-      "type": "EnemyMoreLife",
-      "id": 136,
-      "cost": 3,
-      "x": 12,
-      "y": 41
-    },
-    {
-      "type": "EnemyPoision",
-      "id": 137,
-      "cost": 3,
-      "x": -36,
-      "y": 29
-    },
-    {
-      "type": "EnemyPoision",
-      "id": 138,
-      "cost": 3,
-      "x": 35,
-      "y": 29
-    },
-    {
-      "type": "PlayerWither",
-      "id": 139,
-      "cost": 3,
-      "x": 0,
-      "y": 44
     },
     {
       "type": "Mundanity",
@@ -1518,6 +1364,195 @@
       "cost": 5,
       "x": 9,
       "y": 58
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 118,
+      "cost": 3,
+      "x": -36,
+      "y": -41
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 119,
+      "cost": 3,
+      "x": -36,
+      "y": -27
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 117,
+      "cost": 3,
+      "x": -36,
+      "y": -10
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 116,
+      "cost": 3,
+      "x": -36,
+      "y": 6
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 137,
+      "cost": 3,
+      "x": -36,
+      "y": 29
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 135,
+      "cost": 3,
+      "x": -12,
+      "y": 41
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 136,
+      "cost": 3,
+      "x": 12,
+      "y": 41
+    },
+    {
+      "type": "EnemyMoreLife",
+      "id": 139,
+      "cost": 3,
+      "x": 0,
+      "y": 44
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 138,
+      "cost": 3,
+      "x": 35,
+      "y": 29
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 128,
+      "cost": 3,
+      "x": 35,
+      "y": -10
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 127,
+      "cost": 3,
+      "x": 35,
+      "y": -27
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 126,
+      "cost": 3,
+      "x": 35,
+      "y": -40
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 37,
+      "cost": 1,
+      "x": -14,
+      "y": 12
+    },
+    {
+      "type": "EnemySurvival",
+      "id": 125,
+      "cost": 3,
+      "x": -12,
+      "y": 29
+    },
+    {
+      "type": "EnemySurvival",
+      "id": 132,
+      "cost": 3,
+      "x": 12,
+      "y": 29
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 35,
+      "cost": 1,
+      "x": -8,
+      "y": 17
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 36,
+      "cost": 1,
+      "x": 8,
+      "y": 17
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 57,
+      "cost": 1,
+      "x": 15,
+      "y": 12
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 59,
+      "cost": 1,
+      "x": 19,
+      "y": -2
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 20,
+      "cost": 1,
+      "x": 19,
+      "y": -9
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 39,
+      "cost": 1,
+      "x": -19,
+      "y": -2
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 38,
+      "cost": 1,
+      "x": -19,
+      "y": -9
+    },
+    {
+      "type": "EnemyDefense",
+      "id": 217,
+      "cost": 4,
+      "x": -43,
+      "y": -41
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 218,
+      "cost": 4,
+      "x": -46,
+      "y": -38
+    },
+    {
+      "type": "EnemyDefense",
+      "id": 219,
+      "cost": 4,
+      "x": -49,
+      "y": -41
+    },
+    {
+      "type": "EnemyStrength",
+      "id": 220,
+      "cost": 4,
+      "x": -46,
+      "y": -44
+    },
+    {
+      "type": "GalvanizedGrunts",
+      "id": 221,
+      "cost": 18,
+      "x": -46,
+      "y": -41
     }
   ],
   "edges": [
@@ -2512,6 +2547,26 @@
     {
       "start": 213,
       "end": 216
+    },
+    {
+      "start": 118,
+      "end": 217
+    },
+    {
+      "start": 217,
+      "end": 218
+    },
+    {
+      "start": 218,
+      "end": 219
+    },
+    {
+      "start": 219,
+      "end": 220
+    },
+    {
+      "start": 220,
+      "end": 221
     }
   ]
 }

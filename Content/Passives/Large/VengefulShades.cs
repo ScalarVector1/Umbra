@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria.ID;
 using Umbra.Content.Items;
+using Umbra.Content.Projectiles;
 using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives.Large
@@ -35,9 +36,9 @@ namespace Umbra.Content.Passives.Large
 
 		public override void OnKill(NPC npc)
 		{
-			if (active && npc.type != NPCID.Wraith)
+			if (active && npc.type != NPCID.Wraith && !npc.SpawnedFromStatue)
 			{
-				NPC.NewNPC(npc.GetSource_FromThis(), (int)npc.Center.X, (int)npc.Center.Y, NPCID.Wraith);
+				Projectile.NewProjectile(npc.GetSource_FromThis(), npc.Center, Vector2.Zero, ModContent.ProjectileType<Spawner>(), 0, 0, Main.myPlayer, NPCID.Wraith, 1f);
 			}
 
 			if (npc.type == NPCID.Wraith && TreeSystem.tree.Nodes.Any(n => n.active && n is VengefulShades))

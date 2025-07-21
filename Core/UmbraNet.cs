@@ -30,5 +30,25 @@ namespace Umbra.Core
 			TreeSystem.tree.Serialize(packet);
 			packet.Send(toClient, ignoreClient);
 		}
+
+		public static void SyncPotentiallyNewCustomTree(int toClient = -1, int ignoreClient = -1)
+		{
+			if (Main.netMode == NetmodeID.SinglePlayer)
+				return;
+
+			ModPacket packet = Umbra.Instance.GetPacket();
+			packet.Write("SyncCustomTree");
+
+			bool hasCustom = TreeSystem.hasCustomTree;
+			packet.Write(hasCustom);
+
+			if (hasCustom)
+			{
+				packet.Write(TreeSystem.GetTreeJson());
+			}
+
+			TreeSystem.tree.Serialize(packet);
+			packet.Send(toClient, ignoreClient);
+		}
 	}
 }

@@ -71,6 +71,14 @@ GUI: {
 			'''
 		CloseButton: Close
 		FullscreenButton: Toggle Fullscreen
+		ExportButton: Export Tree
+		EditButton: Enable/Edit custom tree
+		EditButtonDesc:
+			'''
+			Changes this world to a custom tree, which you can edit the layout of freely. Great for custom servers!
+
+			[c/FF4444: WARNING: This cannot be reversed!]
+			'''
 	}
 
 	Node: {
@@ -488,6 +496,24 @@ Passives: {
 			Enemies with an enchanted snowflake release deadly ice shards on death
 			'''
 	}
+
+	EnemyStrength: {
+		Name: Normal Enemy Strength
+		Tooltip:
+			'''
+			Non-boss enemies have [c/AAAAFF:2%] increased life
+			Non-boss enemies have [c/AAAAFF:2%] increased damage
+			'''
+	}
+
+	GalvanizedGrunts: {
+		Name: Galvanized Grunts
+		Tooltip:
+			'''
+			Non-boss enemies gain a shield granting them [c/AAAAFF:+50] defense at half life
+			Hitting this shield removes [c/AAAAFF:5] defense from it
+			'''
+	}
 }
 
 Buffs: {
@@ -501,6 +527,7 @@ Projectiles: {
 	DodgeDagger.DisplayName: Dodge Dagger
 	SnowflakeProjectile.DisplayName: Snowflake Projectile
 	SnowflakeShard.DisplayName: Snowflake Shard
+	Spawner.DisplayName: Spawner
 }
 
 Configs: {

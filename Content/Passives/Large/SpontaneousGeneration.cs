@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Umbra.Content.Projectiles;
 using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives.Large
@@ -33,12 +34,11 @@ namespace Umbra.Content.Passives.Large
 
 		public override void OnKill(NPC npc)
 		{
-			if (active)
+			if (active && !npc.SpawnedFromStatue)
 			{
 				for (int k = 0; k < 2; k++)
 				{
-					int i = NPC.NewNPC(npc.GetSource_FromThis(), (int)npc.Center.X, (int)npc.Center.Y, npc.type);
-					Main.npc[i].lifeMax = npc.lifeMax / 2;
+					Projectile.NewProjectile(npc.GetSource_FromThis(), npc.Center + Vector2.UnitY * (k == 0 ? -16 : 16), Vector2.Zero, ModContent.ProjectileType<Spawner>(), 0, 0, Main.myPlayer, npc.type, 1f);
 				}
 			}
 		}

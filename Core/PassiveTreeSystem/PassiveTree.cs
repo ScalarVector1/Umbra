@@ -152,6 +152,19 @@ namespace Umbra.Core.PassiveTreeSystem
 		}
 
 		/// <summary>
+		/// Gets if this passive can be inserted depending on if it should allow duplicates or not
+		/// </summary>
+		/// <param name="toCheck">The passive to check</param>
+		/// <returns>If the passive is duplicable or there is none on the tree yet</returns>
+		public bool CanInsert(Passive toCheck)
+		{
+			if (toCheck.AllowDuplicates)
+				return true;
+
+			return !Nodes.Any(n => toCheck.GetType() == n.GetType());
+        }
+
+		/// <summary>
 		/// Inserts a new passive, returns its ID
 		/// </summary>
 		/// <param name="toAdd"></param>
@@ -209,7 +222,6 @@ namespace Umbra.Core.PassiveTreeSystem
 			}
 			else
 			{
-				Main.NewText("Active node tracker bad! Recovering...", Color.Red);
 				GenerateActiveCollections();
 			}
 
@@ -236,7 +248,6 @@ namespace Umbra.Core.PassiveTreeSystem
 			}
 			else
 			{
-				Main.NewText("Active node tracker bad! Recovering...", Color.Red);
 				GenerateActiveCollections();
 			}
 

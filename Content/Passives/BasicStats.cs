@@ -11,6 +11,24 @@ using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives
 {
+	internal class EnemyStrength : Passive
+	{
+		public override void SetDefaults()
+		{
+			texture = Assets.Passives.NormalStrenght;
+			difficulty = 2;
+		}
+
+		public override void OnEnemySpawn(NPC npc)
+		{
+			if (!npc.boss)
+			{
+				npc.GetGlobalNPC<TreeNPC>().increasedLife += 0.02f;
+				npc.GetGlobalNPC<TreeNPC>().increasedDamage += 0.02f;
+			}
+		}
+	}
+
 	internal class EnemyDamage : Passive
 	{
 		public override void SetDefaults()

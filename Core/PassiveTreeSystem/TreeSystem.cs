@@ -12,11 +12,14 @@ namespace Umbra.Core.PassiveTreeSystem
 	{
 		public const int TREE_VERSION = -9997;
 
+		public static PassiveTree vanillaTree;
 		public static PassiveTree tree;
+
+		public static bool hasCustomTree;
 
 		public override void Load()
 		{
-			LoadFromFile();
+			LoadVanillaTree();
 			On_Main.GUIBarsDraw += DontDrawInFullscreenTree;
 			On_Main.CanPauseGame += PauseInFullscreen;
 		}
@@ -39,6 +42,12 @@ namespace Umbra.Core.PassiveTreeSystem
 			orig(self);
 		}
 
+		public override void ClearWorld()
+		{
+			hasCustomTree = false;
+			tree = vanillaTree;
+		}
+
 		public override void OnWorldLoad()
 		{
 			if (!Main.dedServ)
@@ -52,11 +61,16 @@ namespace Umbra.Core.PassiveTreeSystem
 		{
 			tree.CalcDifficulty();
 			tag["lastDifficulty"] = tree.difficulty;
+			tag["hasCustomTree"] = hasCustomTree;
 		}
 
 		public override void SaveWorldData(TagCompound tag)
 		{
 			tree.Save(tag);
+			tag["hasCustomTree"] = hasCustomTree;
+
+			if(hasCustomTree)
+				tag["customTree"] = GetTreeJson();
 
 			int lastSpent = 0;
 
@@ -71,14 +85,32 @@ namespace Umbra.Core.PassiveTreeSystem
 
 		public override void LoadWorldData(TagCompound tag)
 		{
-			int lastVersion = tag.GetInt("lastVersion");
+			hasCustomTree = tag.GetBool("hasCustomTree");
 
-			if (lastVersion != TREE_VERSION)
+			if (!hasCustomTree)
 			{
+				tree = vanillaTree;
+				int lastVersion = tag.GetInt("lastVersion");
+
+				if (lastVersion != TREE_VERSION)
+				{
+					tag["activeIDs"] = new List<int>();
+					Main.LocalPlayer.GetModPlayer<TreePlayer>().UmbraPoints += tag.GetInt("lastSpent");
+
+					Notification.DisplayNotification("[c/CC88FF:Tree Reset]", "The umbral tree has changed. As a consequence, all nodes need to be de-allocated. Your spent umbra has been refunded, so you can re-invest into the new tree as you wish!\n\n[c/bbbbbb:Click on this notification to close it.]");
+				}
+			}
+			else if (tag.TryGet("customTree", out string customTreeJson))
+			{
+				LoadFromString(customTreeJson);
+			}
+			else // Fallback base if we have the custom tree flag set but no custom tree saved
+			{
+				tree = vanillaTree;
 				tag["activeIDs"] = new List<int>();
 				Main.LocalPlayer.GetModPlayer<TreePlayer>().UmbraPoints += tag.GetInt("lastSpent");
 
-				Notification.DisplayNotification("[c/CC88FF:Tree Reset]", "The umbral tree has changed. As a consequence, all nodes need to be de-allocated. Your spent umbra has been refunded, so you can re-invest into the new tree as you wish!\n\n[c/bbbbbb:Click on this notification to close it.]");
+				Notification.DisplayNotification("[c/CC88FF:Tree Reset]", "An error occured loading your custom tree, or your custom tree was corrupted. You have been reset to the default tree and your points refunded.\n\n[c/bbbbbb:Click on this notification to close it.]");
 			}
 
 			tree.Load(tag);
@@ -107,9 +139,21 @@ namespace Umbra.Core.PassiveTreeSystem
 			}
 		}
 
-		public void LoadFromFile()
+		public static string GetTreeJson()
 		{
-			string path = Path.Combine("Data", "Tree.json");
+			var options = new JsonSerializerOptions
+			{
+				WriteIndented = true,
+				Converters = { new PassiveConverter() },
+				PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+			};
+
+			return JsonSerializer.Serialize(tree, options);
+		}
+
+		public static void SwitchToCustomTree()
+		{
+			string path = Path.Combine("Data", "Template.json");
 
 			if (Umbra.Instance.FileExists(path))
 			{
@@ -130,21 +174,58 @@ namespace Umbra.Core.PassiveTreeSystem
 			tree.RegenerateFlows();
 		}
 
-		public void Export()
+		public static void LoadFromString(string treeJson)
 		{
-			string downloadsPath = ModLoader.ModPath;
-			string outputPath = Path.Combine(downloadsPath, "TreeExport.json");
-
 			var options = new JsonSerializerOptions
 			{
-				WriteIndented = true,
 				Converters = { new PassiveConverter() },
 				PropertyNamingPolicy = JsonNamingPolicy.CamelCase
 			};
 
-			string json = JsonSerializer.Serialize(tree, options);
+			tree = JsonSerializer.Deserialize<PassiveTree>(treeJson, options);
 
-			File.WriteAllText(outputPath, json);
+			tree.GenerateDicts();
+			tree.RegenrateConnections();
+			tree.RegenerateFlows();
+		}
+
+		public static void LoadVanillaTree()
+		{
+			string path = Path.Combine("Data", "Tree.json");
+
+			if (Umbra.Instance.FileExists(path))
+			{
+				Stream stream = Umbra.Instance.GetFileStream(path);
+
+				var options = new JsonSerializerOptions
+				{
+					Converters = { new PassiveConverter() },
+					PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+				};
+
+				vanillaTree = JsonSerializer.Deserialize<PassiveTree>(stream, options);
+				stream.Close();
+			}
+
+			vanillaTree.GenerateDicts();
+			vanillaTree.RegenrateConnections();
+			vanillaTree.RegenerateFlows();
+
+			tree = vanillaTree;
+		}
+
+		public static void Export()
+		{
+			string path = ModLoader.ModPath.Replace("Mods", "UmbraTreeExports");
+			string name = $"CustomUmbraTree_{Main.worldName}_{DateTime.Now.ToString("MM_dd_yy-HH_mm_ss_fff")}.json";
+
+			if (!Directory.Exists(path))
+				Directory.CreateDirectory(path);
+
+			string thisPath = Path.Combine(path, name);
+			Main.NewText("Exported to: " + thisPath, Color.Yellow);
+
+			File.WriteAllText(thisPath, GetTreeJson());
 		}
 	}
 }

@@ -9,6 +9,8 @@ namespace Umbra.Content.Passives
 {
 	internal class HardmodeGate : Passive
 	{
+		public override bool AllowDuplicates => true;
+
 		public override void SetDefaults()
 		{
 			texture = Assets.Passives.HardmodeGate;

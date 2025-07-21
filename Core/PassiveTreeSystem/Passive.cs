@@ -42,6 +42,13 @@ namespace Umbra.Core.PassiveTreeSystem
 		[JsonIgnore]
 		public int Height => size == 0 ? 38 : size == 1 ? 50 : size == 2 ? 58 : 38;
 
+		/// <summary>
+		/// If more than one of these nodes can be on the tree at a time. Should indicate if the effects can stack
+		/// or not. By default only small nodes are allowed to be duplicated.
+		/// </summary>
+		[JsonIgnore]
+		public virtual bool AllowDuplicates => size == 0;
+
 		public Passive()
 		{
 			nameKey = $"Mods.Umbra.Passives.{GetType().Name}.Name";
