@@ -89,6 +89,20 @@ namespace Umbra
 					TreeSystem.tree.Deserialize(reader);
 				}
 			}
+			else if (type == "PointsSync")
+			{
+				int whosPoints = reader.ReadInt32();
+				TreePlayer tp = Main.player[whosPoints].GetModPlayer<TreePlayer>();
+
+				tp.UmbraPoints = reader.ReadInt32();
+				tp.partialPoints = reader.ReadInt32();
+				tp.nextPoint = reader.ReadInt32();
+
+				if (Main.netMode == NetmodeID.Server)
+					UmbraNet.SyncPoints(whosPoints, -1, whoAmI);
+				else
+					UmbraNet.SyncPoints(whosPoints, -1);
+			}
 		}
 	}
 }

@@ -50,5 +50,23 @@ namespace Umbra.Core
 			TreeSystem.tree.Serialize(packet);
 			packet.Send(toClient, ignoreClient);
 		}
+
+		public static void SyncPoints(int whosPoints, int toClient = -1, int ignoreClient = -1)
+		{
+			if (Main.netMode == NetmodeID.SinglePlayer)
+				return;
+
+			ModPacket packet = Umbra.Instance.GetPacket();
+			packet.Write("PointsSync");
+
+			packet.Write(whosPoints);
+
+			TreePlayer tp = Main.player[whosPoints].GetModPlayer<TreePlayer>();
+			packet.Write(tp.UmbraPoints);
+			packet.Write(tp.partialPoints);
+			packet.Write(tp.nextPoint);
+
+			packet.Send(toClient, ignoreClient);
+		}
 	}
 }

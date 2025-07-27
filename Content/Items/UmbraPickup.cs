@@ -4,6 +4,8 @@ using Terraria.ID;
 using Umbra.Content.GUI;
 using Umbra.Core.PassiveTreeSystem;
 using Terraria.Localization;
+using System.IO;
+using Umbra.Core;
 
 namespace Umbra.Content.Items
 {
@@ -16,6 +18,7 @@ namespace Umbra.Content.Items
 		public override void SetStaticDefaults()
 		{
 			ItemID.Sets.ItemNoGravity[Type] = true;
+			ItemID.Sets.IsAPickup[Type] = true;
 		}
 
 		public override void SetDefaults()
@@ -115,7 +118,19 @@ namespace Umbra.Content.Items
 			SoundEngine.PlaySound(SoundID.GuitarAm.WithVolume(0.4f).WithPitchOffset(-0.4f));
 			SoundEngine.PlaySound(SoundID.DrumKick);
 
+			UmbraNet.SyncPoints(player.whoAmI);
+
 			return false;
+		}
+
+		public override void NetSend(BinaryWriter writer)
+		{
+			writer.Write(worldTimer);
+		}
+
+		public override void NetReceive(BinaryReader reader)
+		{
+			worldTimer = reader.ReadInt32();
 		}
 	}
 }

@@ -125,6 +125,7 @@ namespace Umbra.Core.PassiveTreeSystem
 		{
 			player.GetModPlayer<TreePlayer>().UmbraPoints -= Cost;
 			TreeSystem.tree.Allocate(ID);
+			UmbraNet.SyncPoints(player.whoAmI);
 		}
 
 		/// <summary>
@@ -188,6 +189,7 @@ namespace Umbra.Core.PassiveTreeSystem
 			int refundAmount = (int)Math.Ceiling(Cost / 2f);
 			player.GetModPlayer<TreePlayer>().UmbraPoints += refundAmount;
 			TreeSystem.tree.Deallocate(ID);
+			UmbraNet.SyncPoints(player.whoAmI);
 		}
 
 		/// <summary>

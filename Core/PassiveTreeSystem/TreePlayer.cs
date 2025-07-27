@@ -39,6 +39,8 @@ namespace Umbra.Core.PassiveTreeSystem
 				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast.WithPitchOffset(-0.1f).WithVolume(0.5f));
 				SoundEngine.PlaySound(SoundID.GuitarAm.WithVolume(0.4f).WithPitchOffset(-0.4f));
 				SoundEngine.PlaySound(SoundID.DrumKick);
+
+				UmbraNet.SyncPoints(Player.whoAmI);
 			}
 
 			foreach (Passive passive in TreeSystem.tree.activeNodes)
@@ -50,6 +52,7 @@ namespace Umbra.Core.PassiveTreeSystem
 		public override void OnEnterWorld()
 		{
 			UmbraNet.RequestTreeOnJoin();
+			UmbraNet.SyncPoints(Player.whoAmI);
 			Main.NewText(Language.GetText("Mods.Umbra.Misc.Motd").Format(Mod.Version), new Color(225, 200, 255));
 		}
 
