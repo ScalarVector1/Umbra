@@ -36,11 +36,14 @@ namespace Umbra.Core.PassiveTreeSystem
 					d.noGravity = true;
 				}
 
-				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast.WithPitchOffset(-0.1f).WithVolume(0.5f));
-				SoundEngine.PlaySound(SoundID.GuitarAm.WithVolume(0.4f).WithPitchOffset(-0.4f));
-				SoundEngine.PlaySound(SoundID.DrumKick);
+				if (Main.myPlayer == Player.whoAmI)
+				{
+					SoundEngine.PlaySound(SoundID.DD2_BookStaffCast.WithPitchOffset(-0.1f).WithVolume(0.5f));
+					SoundEngine.PlaySound(SoundID.GuitarAm.WithVolume(0.4f).WithPitchOffset(-0.4f));
+					SoundEngine.PlaySound(SoundID.DrumKick);
 
-				UmbraNet.SyncPoints(Player.whoAmI);
+					UmbraNet.SyncPoints(Player.whoAmI);
+				}
 			}
 
 			foreach (Passive passive in TreeSystem.tree.activeNodes)

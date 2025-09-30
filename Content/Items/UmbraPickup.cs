@@ -114,11 +114,14 @@ namespace Umbra.Content.Items
 				d.noGravity = true;
 			}
 
-			SoundEngine.PlaySound(SoundID.DD2_BookStaffCast.WithPitchOffset(-0.1f).WithVolume(0.5f));
-			SoundEngine.PlaySound(SoundID.GuitarAm.WithVolume(0.4f).WithPitchOffset(-0.4f));
-			SoundEngine.PlaySound(SoundID.DrumKick);
+			if (Main.myPlayer == player.whoAmI)
+			{
+				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast.WithPitchOffset(-0.1f).WithVolume(0.5f));
+				SoundEngine.PlaySound(SoundID.GuitarAm.WithVolume(0.4f).WithPitchOffset(-0.4f));
+				SoundEngine.PlaySound(SoundID.DrumKick);
 
-			UmbraNet.SyncPoints(player.whoAmI);
+				UmbraNet.SyncPoints(player.whoAmI);
+			}
 
 			return false;
 		}
