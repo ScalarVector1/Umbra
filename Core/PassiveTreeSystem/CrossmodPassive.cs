@@ -8,6 +8,9 @@ namespace Umbra.Core.PassiveTreeSystem
 {
 	public abstract class CrossmodPassive : Passive
 	{
+		/// <summary>
+		/// The list of mods that are required to be enabled to allocate this node
+		/// </summary>
 		public List<string> modsRequired = [];
 
 		public CrossmodPassive(params string[] mods) : base()

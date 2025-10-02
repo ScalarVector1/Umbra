@@ -556,6 +556,15 @@ Passives: {
 			За каждое попадание по щиту его бонус к защите становится меньше на [c/AAAAFF:5] ед.
 			'''
 	}
+
+	UnloadedPassive: {
+		// Name: Sealed Node
+		/* Tooltip:
+			'''
+			No effects 
+			[c/777777:The mod this node belongs to is disabled, or it was removed.]
+			''' */
+	}
 }
 
 Buffs: {

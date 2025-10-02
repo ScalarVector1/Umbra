@@ -1,7 +1,6 @@
-﻿using System.Linq;
-using System.Reflection;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
+using Umbra.Content.Passives;
 
 namespace Umbra.Core.PassiveTreeSystem
 {
@@ -19,34 +18,44 @@ namespace Umbra.Core.PassiveTreeSystem
 			if (string.IsNullOrWhiteSpace(typeName))
 				throw new JsonException("Type discriminator cannot be null or empty.");
 
-			// Find a subclass of Passive that matches the given name
-			Type passiveType = Assembly.GetExecutingAssembly()
-				.GetTypes()
-				.FirstOrDefault(t => !t.IsAbstract && typeof(Passive).IsAssignableFrom(t) && t.Name == typeName);
+			// backwards compat with older versions, assume umbra as mod
+			string[] split = typeName.Split('/');
 
-			if (passiveType == null)
-				throw new JsonException($"Unknown Passive subclass: '{typeName}'.");
+			if (split.Length == 1)
+				typeName = $"Umbra/{typeName}";
 
 			// Deserialize into the resolved subclass
-			var passive = (Passive)JsonSerializer.Deserialize(root.GetRawText(), passiveType, options);
-			return passive;
+			if (ModContent.TryFind<Passive>(typeName, out Passive proto))
+			{
+				Passive passive = proto.Clone();
+				passive.ID = root.GetProperty("id").GetInt32();
+				passive.Cost = root.GetProperty("cost").GetInt32();
+				passive.X = root.GetProperty("x").GetInt32();
+				passive.Y = root.GetProperty("y").GetInt32();
+				return passive;
+			}
+			else
+			{
+				UnloadedPassive passive = ModContent.GetInstance<UnloadedPassive>().Clone() as UnloadedPassive;
+				passive.savedType = typeName;
+				passive.ID = root.GetProperty("id").GetInt32();
+				passive.Cost = root.GetProperty("cost").GetInt32();
+				passive.X = root.GetProperty("x").GetInt32();
+				passive.Y = root.GetProperty("y").GetInt32();
+				return passive;
+			}
 		}
 
 		public override void Write(Utf8JsonWriter writer, Passive value, JsonSerializerOptions options)
 		{
-			Type type = value.GetType();
-			JsonElement json = JsonSerializer.SerializeToElement(value, type, options);
+			string typeToWrite = value is UnloadedPassive unloaded ? unloaded.savedType : value.FullName;
 
-			// Manually add the "Type" discriminator
-			using var doc = JsonDocument.Parse(json.GetRawText());
 			writer.WriteStartObject();
-			writer.WriteString("type", type.Name);
-
-			foreach (JsonProperty property in doc.RootElement.EnumerateObject())
-			{
-				property.WriteTo(writer);
-			}
-
+			writer.WriteString("type", typeToWrite);
+			writer.WriteNumber("id", value.ID);
+			writer.WriteNumber("cost", value.Cost);
+			writer.WriteNumber("x", value.X);
+			writer.WriteNumber("y", value.Y);
 			writer.WriteEndObject();
 		}
 	}

@@ -10,7 +10,7 @@ namespace Umbra.Content.Passives.Large
 {
 	internal class FlyingDaggers : Passive
 	{
-		public override void Load(Mod mod)
+		public override void Load()
 		{
 			DodgeNPC.OnDodge += DaggerOnDodge;
 		}

@@ -14,6 +14,7 @@ using Umbra.Core.PassiveTreeSystem;
 using Umbra.Core;
 using Umbra.Core.Loaders.UILoading;
 using Umbra.Content.GUI.FieldEditors;
+using Umbra.Content.Passives;
 
 namespace Umbra.Content.GUI
 {
@@ -58,13 +59,10 @@ namespace Umbra.Content.GUI
 			choices.SetScrollbar(scroll);
 			Append(choices);
 
-			foreach (Type type in Umbra.Instance.Code.GetTypes())
+			foreach (Passive passive in ModContent.GetContent<Passive>())
 			{
-				if (!type.IsAbstract && type.IsSubclassOf(typeof(Passive)))
-				{
-					var instance = Activator.CreateInstance(type) as Passive;
-					choices.Add(new NodeChoice(instance, this));
-				}
+				if (passive is not UnloadedPassive)
+					choices.Add(new NodeChoice(passive, this));
 			}
 
 			choices.UpdateOrder();
@@ -143,7 +141,7 @@ namespace Umbra.Content.GUI
 				string cost = "\n" + Language.GetText("Mods.Umbra.GUI.Node.Doom").Format(passive.difficulty);
 				string max = passive.AllowDuplicates ? "" : $"\n{Language.GetText("Mods.Umbra.GUI.Tree.MaxOne").Value}";
 
-				Tooltip.SetName(passive.Name);
+				Tooltip.SetName(passive.DisplayName);
 				Tooltip.SetTooltip(passive.Tooltip + cost + max);
 			}
 
@@ -152,7 +150,7 @@ namespace Umbra.Content.GUI
 
 		public void ShrinkIfFiltered()
 		{
-			if (!passive.Name.ToLower().Contains(parent.search.currentValue))
+			if (!passive.DisplayName.ToLower().Contains(parent.search.currentValue))
 			{
 				Width.Set(0, 0);
 				Height.Set(0, 0);
@@ -229,7 +227,7 @@ namespace Umbra.Content.GUI
 				if ((passive is CrossmodPassive) != (choice.passive is CrossmodPassive))
 					return (passive is CrossmodPassive).CompareTo(choice.passive is CrossmodPassive);
 
-				return passive.Name.CompareTo(choice.passive.Name);
+				return passive.DisplayName.CompareTo(choice.passive.DisplayName);
 			}
 
 			return base.CompareTo(obj);

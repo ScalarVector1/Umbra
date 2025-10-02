@@ -86,7 +86,7 @@ GUI: {
 			将此世界更改为自定义暗影树，您可以自由编辑其内容。非常适合定制服务器！
 
 			[c/FF4444: 警告: 修改不可恢复!]
-			''' 
+			'''
 		MaxOne: 最多1个
 		CostEditName: 消耗
 		CostEditDesc: 所选节点的消耗
@@ -117,14 +117,14 @@ GUI: {
 			暗影树已被修改。已取消所有节点。花费的暗影点已退还，可以根据自己的意愿重新点亮新暗影树！
 
 			[c/bbbbbb:点击此通知将其关闭。]
-			''' 
+			'''
 		CustomErrorMessageName: "[c/CC88FF:重置暗影树]"
 		CustomErrorMessageBody:
 			'''
 			加载自定义暗影树时出错，或者自定义暗影树文件损坏。已重置为默认暗影树，消耗的暗影点已退还。
 
 			[c/bbbbbb:点击此通知将其关闭。]
-			''' 
+			'''
 	}
 
 	WorldSelect.Custom: 自定义
@@ -552,16 +552,25 @@ Passives: {
 			'''
 			非boss敌人增加[c/AAAAFF:2%]额外生命值
 			非boss敌人增加[c/AAAAFF:2%]额外伤害
-			''' 
+			'''
 	}
 
 	GalvanizedGrunts: {
 		Name: 合金护甲
-		 Tooltip:
+		Tooltip:
 			'''
 			非boss敌人在生命值低于一半时获得[c/AAAAFF:50]防御的护盾
 			攻击护盾时削减[c/AAAAFF:5]点护盾防御
-			''' 
+			'''
+	}
+
+	UnloadedPassive: {
+		// Name: Sealed Node
+		/* Tooltip:
+			'''
+			No effects 
+			[c/777777:The mod this node belongs to is disabled, or it was removed.]
+			''' */
 	}
 }
 
@@ -590,21 +599,21 @@ Configs: {
 
 		ShowCustomMode: {
 			Label: 显示自定义模式选项
-			 Tooltip:
+			Tooltip:
 				'''
 				允许您在单人游戏中将暗影树设置为自定义模式。  
-                                您可以使用此功能构建自定义暗影树，但它会将您的世界永久锁定到自定义模式。
-				''' 
+				                            您可以使用此功能构建自定义暗影树，但它会将您的世界永久锁定到自定义模式。
+				'''
 		}
 	}
 }
 
 Misc: {
-	 Motd:
+	Motd:
 		'''
 		感谢游玩暗影树模组{0}测试版! [i:Umbra/UmbraPickup]
 		这是一个非常早期的演示，用于探索乐趣和发现问题。
 		如果发现BUG，请在[c/7799FF:https://discord.gg/KFpCz5p688]或[c/7799FF:https://github.com/ScalarVector1/Umbra/issues]上提交
-		''' 
+		'''
 	UmbraGainPopup: +1暗影点
 }

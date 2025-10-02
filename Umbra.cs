@@ -26,18 +26,6 @@ namespace Umbra
 
 		public override void Load()
 		{
-#if DEBUG
-			// This has to be here to generate localization, boo womp
-			foreach (Type type in Umbra.Instance.Code.GetTypes())
-			{
-				if (!type.IsAbstract && type.IsSubclassOf(typeof(Passive)))
-				{
-					Passive instance = Activator.CreateInstance(type) as Passive;
-					Logger.Info($"{instance.Name}: {instance.Tooltip}");
-				}
-			}
-#endif
-
 			loadCache = new List<IOrderedLoadable>();
 
 			foreach (Type type in Code.GetTypes())

@@ -216,6 +216,7 @@ namespace Umbra.Content.GUI
 							RemoveChild(selector);
 							RemoveChild(costEditor);
 							RemoveChild(exportButton);
+							//TreeSystem.tree.GenerateDicts();
 							TreeSystem.tree.RegenrateConnections();
 							TreeSystem.tree.RegenerateFlows();
 							Refresh();

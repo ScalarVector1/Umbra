@@ -537,6 +537,15 @@ Passives: {
 			Hitting this shield removes [c/AAAAFF:5] defense from it
 			'''
 	}
+
+	UnloadedPassive: {
+		Name: Sealed Node
+		Tooltip:
+			'''
+			No effects 
+			[c/777777:The mod this node belongs to is disabled, or it was removed.]
+			'''
+	}
 }
 
 Buffs: {

@@ -162,7 +162,7 @@ namespace Umbra.Content.GUI
 						tip += "\n" + Language.GetText("Mods.Umbra.GUI.Node.Refund").Format((int)Math.Ceiling(passive.Cost / 2f));
 				}
 
-				Tooltip.SetName(passive.Name);
+				Tooltip.SetName(passive.DisplayName);
 				Tooltip.SetTooltip(tip);
 			}
 		}

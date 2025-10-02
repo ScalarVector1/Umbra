@@ -8,17 +8,26 @@ using Umbra.Content.Passives;
 
 namespace Umbra.Core.PassiveTreeSystem
 {
-	public abstract class Passive : ILoadable
+	public abstract class Passive : ModType
 	{
 		public bool active;
 
-		public string nameKey;
-		public string tooltipKey;
-
+		/// <summary>
+		/// The amount of doom this passive will provide if allocated
+		/// </summary>
 		public int difficulty;
+		/// <summary>
+		/// The texture this passive will use on the umbral tree
+		/// </summary>
 		public Asset<Texture2D> texture;
+		/// <summary>
+		/// Determines the hitbox size for the passive. 0 is for the basic nodes (example: enemy HP), 1 for notables (example: heartbreakers), and 2 for 'keystones' (example: mundanity)
+		/// </summary>
 		public int size;
 
+		/// <summary>
+		/// Opacity of the node on the tree, used to fade ndoes such as those from unloaded mods
+		/// </summary>
 		public float opacity = 1;
 
 		public List<Passive> connections = [];
@@ -30,10 +39,21 @@ namespace Umbra.Core.PassiveTreeSystem
 		public int X { get; set; }
 		public int Y { get; set; }
 
+		/// <summary>
+		/// The localization key which this passive attempts to get its display name from
+		/// </summary>
 		[JsonIgnore]
-		public string Name => Language.GetOrRegister(nameKey).Value;
+		public string NameKey => $"Mods.{Mod.Name}.Passives.{GetType().Name}.Name";
+		/// <summary>
+		/// The localization key which this passive attempts to get its description from
+		/// </summary>
 		[JsonIgnore]
-		public string Tooltip => Language.GetOrRegister(tooltipKey).Value;
+		public string TooltipKey => $"Mods.{Mod.Name}.Passives.{GetType().Name}.Tooltip";
+
+		[JsonIgnore]
+		public string DisplayName => Language.GetOrRegister(NameKey).Value;
+		[JsonIgnore]
+		public string Tooltip => Language.GetOrRegister(TooltipKey).Value;
 
 		[JsonIgnore]
 		public Vector2 TreePos => new(X * 16, Y * 16);
@@ -51,12 +71,12 @@ namespace Umbra.Core.PassiveTreeSystem
 
 		public Passive()
 		{
-			nameKey = $"Mods.Umbra.Passives.{GetType().Name}.Name";
-			tooltipKey = $"Mods.Umbra.Passives.{GetType().Name}.Tooltip";
-
 			SetDefaults();
 		}
 
+		/// <summary>
+		/// Allows various fields about the passive to be set such as size, difficulty, and texture
+		/// </summary>
 		public virtual void SetDefaults()
 		{
 			difficulty = 1;
@@ -72,10 +92,21 @@ namespace Umbra.Core.PassiveTreeSystem
 			return true;
 		}
 
+		/// <summary>
+		/// Allows you to create effects that change the player's stats for your passive node
+		/// </summary>
+		/// <param name="player">The player being (de)buffed</param>
 		public virtual void BuffPlayer(Player player) { }
 
+		/// <summary>
+		/// Allows you to create effects that modify enemy stats when they spawn
+		/// </summary>
+		/// <param name="npc">The enemy being spawned</param>
 		public virtual void OnEnemySpawn(NPC npc) { }
 
+		/// <summary>
+		/// Allows you to create effects that tick every game update
+		/// </summary>
 		public virtual void Update() { }
 
 		public void Draw(SpriteBatch spriteBatch, Vector2 center, float scale)
@@ -100,7 +131,7 @@ namespace Umbra.Core.PassiveTreeSystem
 		/// Called on load to generate the tree edges
 		/// </summary>
 		/// <param name="all"></param>
-		public void Connect(int otherID)
+		internal void Connect(int otherID)
 		{
 			TreeSystem.tree.Connect(ID, otherID);
 		}
@@ -133,7 +164,7 @@ namespace Umbra.Core.PassiveTreeSystem
 		/// </summary>
 		/// <param name="player"></param>
 		/// <returns></returns>
-		public bool TryAllocate(Player player)
+		internal bool TryAllocate(Player player)
 		{
 			if (CanAllocate(player))
 			{
@@ -155,7 +186,7 @@ namespace Umbra.Core.PassiveTreeSystem
 				!connections.Any(n => n.active && !n.HasPathToStartWithout(this));
 		}
 
-		public bool HasPathToStartWithout(Passive excluded)
+		internal bool HasPathToStartWithout(Passive excluded)
 		{
 			HashSet<Passive> visited = [];
 			return HasPathToStartWithoutInternal(this, excluded, visited);
@@ -197,7 +228,7 @@ namespace Umbra.Core.PassiveTreeSystem
 		/// </summary>
 		/// <param name="player"></param>
 		/// <returns></returns>
-		public bool TryDeallocate(Player player)
+		internal bool TryDeallocate(Player player)
 		{
 			if (CanDeallocate(player))
 			{
@@ -208,21 +239,23 @@ namespace Umbra.Core.PassiveTreeSystem
 			return false;
 		}
 
-		public Passive Clone()
+		internal Passive Clone()
 		{
 			var clone = MemberwiseClone() as Passive;
 			clone.connections = [];
 			return clone;
 		}
 
-		public virtual void Load(Mod mod)
+		public sealed override void Register()
 		{
-
+			ModTypeLookup<Passive>.Register(this);
 		}
 
-		public virtual void Unload()
+		public sealed override void SetupContent()
 		{
-
+			_ = DisplayName;
+			_ = Tooltip;
+			SetStaticDefaults();
 		}
 	}
 }
