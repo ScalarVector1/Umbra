@@ -7,51 +7,51 @@ using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives.Large
 {
-	internal class Heartbreakers : Passive
-	{
-		public override void SetDefaults()
-		{
-			texture = Assets.Passives.Heartbreakers;
-			difficulty = 30;
-			size = 1;
-		}
-	}
+    internal class Heartbreakers : Passive
+    {
+        public override void SetDefaults()
+        {
+            texture = Assets.Passives.Heartbreakers;
+            difficulty = 30;
+            size = 1;
+        }
+    }
 
-	internal class HeartbreakersPlayer : ModPlayer
-	{
-		public int maxPenalty;
-		public int tickTimer;
+    internal class HeartbreakersPlayer : ModPlayer
+    {
+        public int maxPenalty;
+        public int tickTimer;
 
-		public bool Active => TreeSystem.tree.AnyActive<Heartbreakers>();
+        public bool Active => TreeSystem.tree.AnyActive<Heartbreakers>();
 
-		public override void ModifyMaxStats(out StatModifier health, out StatModifier mana)
-		{
-			base.ModifyMaxStats(out health, out mana);
-			health.Base -= maxPenalty;
-		}
+        public override void ModifyMaxStats(out StatModifier health, out StatModifier mana)
+        {
+            base.ModifyMaxStats(out health, out mana);
+            health.Base -= maxPenalty;
+        }
 
-		public override void PostUpdateEquips()
-		{
-			if (maxPenalty > 0)
-			{
-				tickTimer++;
+        public override void PostUpdateEquips()
+        {
+            if (maxPenalty > 0)
+            {
+                tickTimer++;
 
-				if (tickTimer > 10)
-				{
-					maxPenalty--;
-					tickTimer = 0;
-				}
-			}
-			else
-			{
-				tickTimer = 0;
-			}
-		}
+                if (tickTimer > 10)
+                {
+                    maxPenalty--;
+                    tickTimer = 0;
+                }
+            }
+            else
+            {
+                tickTimer = 0;
+            }
+        }
 
-		public override void PostHurt(Player.HurtInfo info)
-		{
-			if (Active)
-				maxPenalty += 20;
-		}
-	}
+        public override void PostHurt(Player.HurtInfo info)
+        {
+            if (Active)
+                maxPenalty += 20;
+        }
+    }
 }

@@ -7,19 +7,19 @@ using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives.Crossmod.CalamityPassives
 {
-	internal class CalamityGate : ModGate
-	{
-		public CalamityGate() : base("CalamityMod") { }
+    internal class CalamityGate : ModGate
+    {
+        public CalamityGate() : base("CalamityMod") { }
 
-		public override void SetDefaults()
-		{
-			texture = Assets.Passives.CalamityGate;
-			size = 1;
-		}
-	}
+        public override void SetDefaults()
+        {
+            texture = Assets.Passives.CalamityGate;
+            size = 1;
+        }
+    }
 
-	internal abstract class CalamityPassive : CrossmodPassive
-	{
-		public CalamityPassive() : base("CalamityMod") { }
-	}
+    internal abstract class CalamityPassive : CrossmodPassive
+    {
+        public CalamityPassive() : base("CalamityMod") { }
+    }
 }

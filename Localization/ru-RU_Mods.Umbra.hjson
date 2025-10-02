@@ -131,7 +131,7 @@ GUI: {
 	WorldSelect.Custom: Изм. Дерево мрака
 }
 
-Passives: {
+UmbraPassives: {
 	EnemyDamage: {
 		Name: Урон врагов
 		Tooltip: Увеличивает урон всех врагов на [c/AAAAFF:1] ед.

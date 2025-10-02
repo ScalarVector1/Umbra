@@ -130,7 +130,7 @@ GUI: {
 	WorldSelect.Custom: 自定义
 }
 
-Passives: {
+UmbraPassives: {
 	EnemyDamage: {
 		Name: 敌方伤害增加
 		Tooltip: 敌人的伤害提高[c/AAAAFF:1]点

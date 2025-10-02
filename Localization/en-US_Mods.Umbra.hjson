@@ -121,7 +121,7 @@ GUI: {
 	WorldSelect.Custom: Custom
 }
 
-Passives: {
+UmbraPassives: {
 	EnemyDamage: {
 		Name: Enemy Damage
 		Tooltip: Enemies have [c/AAAAFF:+1] damage

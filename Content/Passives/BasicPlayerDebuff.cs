@@ -9,31 +9,31 @@ using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives
 {
-	internal class PlayerWither : Passive
-	{
-		public override void SetDefaults()
-		{
-			texture = Assets.Passives.PlayerWither;
-			difficulty = 4;
-		}
+    internal class PlayerWither : Passive
+    {
+        public override void SetDefaults()
+        {
+            texture = Assets.Passives.PlayerWither;
+            difficulty = 4;
+        }
 
-		public override void BuffPlayer(Player player)
-		{
-			player.GetModPlayer<RegenerationPlayer>().increasedRegen -= 0.05f;
-		}
-	}
+        public override void BuffPlayer(Player player)
+        {
+            player.GetModPlayer<RegenerationPlayer>().increasedRegen -= 0.05f;
+        }
+    }
 
-	internal class ManaCost : Passive
-	{
-		public override void SetDefaults()
-		{
-			texture = Assets.Passives.ManaCost;
-			difficulty = 10;
-		}
+    internal class ManaCost : Passive
+    {
+        public override void SetDefaults()
+        {
+            texture = Assets.Passives.ManaCost;
+            difficulty = 10;
+        }
 
-		public override void Update()
-		{
-			FlatManaCostSystem.flatCostToAdd += 1;
-		}
-	}
+        public override void Update()
+        {
+            FlatManaCostSystem.flatCostToAdd += 1;
+        }
+    }
 }
