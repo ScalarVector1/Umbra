@@ -59,7 +59,7 @@ namespace Umbra.Content.Tiles
 			int x = i - tile.TileFrameX / 18;
 			int y = j - tile.TileFrameY / 18;
 
-			int index = ModContent.GetInstance<ShrineEntity>().Find(x, y - 1);
+			int index = ModContent.GetInstance<ShrineEntity>().Find(x, y);
 
 			if (index == -1)
 				return;
@@ -115,7 +115,7 @@ namespace Umbra.Content.Tiles
 				int x = i - tile.TileFrameX / 18;
 				int y = j - tile.TileFrameY / 18;
 
-				int index = ModContent.GetInstance<ShrineEntity>().Find(x, y - 1);
+				int index = ModContent.GetInstance<ShrineEntity>().Find(x, y);
 
 				if (index == -1)
 					return;
@@ -142,7 +142,7 @@ namespace Umbra.Content.Tiles
 			int x = i - tile.TileFrameX / 18;
 			int y = j - tile.TileFrameY / 18;
 
-			int index = ModContent.GetInstance<ShrineEntity>().Find(x, y - 1);
+			int index = ModContent.GetInstance<ShrineEntity>().Find(x, y);
 
 			if (index == -1)
 				return true;
@@ -175,6 +175,7 @@ namespace Umbra.Content.Tiles
 			{
 				tp.UmbraPoints += entity.storedUmbra;
 				entity.storedUmbra = 0;
+				entity.queuedUmbra = 0;
 
 				UmbraNet.SyncPoints(Main.myPlayer);
 				NetMessage.SendTileSquare(Main.myPlayer, i - 3, j - 3, 6);
@@ -218,13 +219,13 @@ namespace Umbra.Content.Tiles
 				return -1;
 			}
 
-			return Place(i - 1, j - 3);
+			return Place(i - 1, j - 2);
 		}
 
 		public override void Update()
 		{
 			if (queuedUmbra > 0)
-				queuedUmbra -= Math.Max(1, queuedUmbra / 30);
+				queuedUmbra -= Math.Max(1, queuedUmbra / 10);
 
 			if (queuedUmbra < 0)
 				queuedUmbra = 0;
