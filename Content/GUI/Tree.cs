@@ -205,7 +205,6 @@ namespace Umbra.Content.GUI
                             if (!TreeSystem.hasCustomTree)
                             {
                                 TreeSystem.SwitchToCustomTree();
-                                TreeSystem.hasCustomTree = true;
                                 Refresh();
                             }
 

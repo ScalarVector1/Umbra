@@ -24,6 +24,11 @@ Items: {
 			[c/888888:Не может быть снята]
 			'''
 	}
+
+	ShrineItem: {
+		// DisplayName: Shrine Item
+		// Tooltip: ""
+	}
 }
 
 GUI: {
@@ -599,6 +604,15 @@ Configs: {
 				'''
 		}
 	}
+
+	CustomTreeConfig: {
+		// DisplayName: Custom Tree Config
+
+		customTreeJson: {
+			// Label: custom Tree Json
+			// Tooltip: ""
+		}
+	}
 }
 
 Misc: {
@@ -612,3 +626,5 @@ Misc: {
 		'''
 	UmbraGainPopup: +1 очко мрака
 }
+
+// Tiles.Shrine.MapEntry: Shrine

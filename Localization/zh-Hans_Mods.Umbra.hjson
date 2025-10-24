@@ -26,6 +26,11 @@ Items: {
 			[c/888888:无法移除]
 			'''
 	}
+
+	ShrineItem: {
+		// DisplayName: Shrine Item
+		// Tooltip: ""
+	}
 }
 
 GUI: {
@@ -606,6 +611,15 @@ Configs: {
 				'''
 		}
 	}
+
+	CustomTreeConfig: {
+		// DisplayName: Custom Tree Config
+
+		customTreeJson: {
+			// Label: custom Tree Json
+			// Tooltip: ""
+		}
+	}
 }
 
 Misc: {
@@ -617,3 +631,5 @@ Misc: {
 		'''
 	UmbraGainPopup: +1暗影点
 }
+
+// Tiles.Shrine.MapEntry: Shrine

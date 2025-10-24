@@ -3,6 +3,7 @@ using System.IO;
 using System.Text.Json;
 using Terraria.Localization;
 using Terraria.ModLoader.IO;
+using Umbra.Content.Configs;
 using Umbra.Content.GUI;
 using Umbra.Content.Passives;
 using Umbra.Core.Loaders.UILoading;
@@ -177,6 +178,8 @@ namespace Umbra.Core.PassiveTreeSystem
             tree.GenerateDicts();
             tree.RegenrateConnections();
             tree.RegenerateFlows();
+
+            hasCustomTree = true;
         }
 
         public static void LoadFromString(string treeJson)
@@ -232,5 +235,24 @@ namespace Umbra.Core.PassiveTreeSystem
 
             File.WriteAllText(thisPath, GetTreeJson());
         }
-    }
+
+		public override void PostWorldGen()
+		{
+            var defaultCustom = ModContent.GetInstance<CustomTreeConfig>().customTreeJson;
+
+            if (!string.IsNullOrEmpty(defaultCustom))
+            {
+                try
+                {
+                    hasCustomTree = true;
+                    LoadFromString(defaultCustom);
+                }
+                catch
+                {
+                    hasCustomTree = false;
+                    throw new Exception("Your umbra default custom tree JSON in your configuration is invalid or malformed!");
+                }
+            }
+		}
+	}
 }

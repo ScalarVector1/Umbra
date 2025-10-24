@@ -24,6 +24,16 @@ Items: {
 			[c/888888:Cannot be removed]
 			'''
 	}
+
+	ShrineItem: {
+		DisplayName: Umbral Shrine
+		Tooltip: 
+			'''
+			A dark shrine which can hold umbra
+			Right clicking the shrine will depoist all of your umbra
+			Right clicking the shrine while holding no umbra will withdraw the stored umbra
+			'''
+	}
 }
 
 GUI: {
@@ -580,6 +590,15 @@ Configs: {
 				'''
 		}
 	}
+
+	CustomTreeConfig: {
+		DisplayName: Custom Tree Config
+
+		customTreeJson: {
+			Label: custom Tree Json
+			Tooltip: ""
+		}
+	}
 }
 
 Misc: {
@@ -591,3 +610,5 @@ Misc: {
 		'''
 	UmbraGainPopup: +1 Umbra
 }
+
+Tiles.Shrine.MapEntry: Umbral Shrine
