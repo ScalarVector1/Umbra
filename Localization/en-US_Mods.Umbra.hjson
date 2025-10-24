@@ -27,7 +27,7 @@ Items: {
 
 	ShrineItem: {
 		DisplayName: Umbral Shrine
-		Tooltip: 
+		Tooltip:
 			'''
 			A dark shrine which can hold umbra
 			Right clicking the shrine will depoist all of your umbra

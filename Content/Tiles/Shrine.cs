@@ -102,7 +102,7 @@ namespace Umbra.Content.Tiles
 				offset += Vector2.UnitX.RotatedBy(Main.GameUpdateCount * 0.1f) * 2f;
 				Vector2 drawPos = pos + offset + Vector2.One * Main.offScreenRange - Main.screenPosition;
 
-				Utils.DrawBorderString(spriteBatch, $"{entity.storedUmbra}", drawPos, new Color(200, 140, 255) * alpha, 1f, 0.5f, 0.5f);
+				Utils.DrawBorderString(spriteBatch, $"{entity.ShownUmbra}", drawPos, new Color(200, 140, 255) * alpha, 1f, 0.5f, 0.5f);
 			}
 		}
 
@@ -152,6 +152,7 @@ namespace Umbra.Content.Tiles
 
 			if (tp.UmbraPoints > 0)
 			{
+				entity.queuedUmbra += tp.UmbraPoints;
 				entity.storedUmbra += tp.UmbraPoints;
 				tp.UmbraPoints = 0;
 
@@ -196,8 +197,11 @@ namespace Umbra.Content.Tiles
 	}
 	internal sealed class ShrineEntity : ModTileEntity
 	{
+		public int queuedUmbra;
 		public int storedUmbra;
-		public float Power => Math.Min(1f, storedUmbra / 100f);
+
+		public int ShownUmbra => storedUmbra - queuedUmbra;
+		public float Power => Math.Min(1f, ShownUmbra / 100f);
 
 		public override bool IsTileValidForEntity(int i, int j)
 		{
@@ -215,6 +219,15 @@ namespace Umbra.Content.Tiles
 			}
 
 			return Place(i - 1, j - 3);
+		}
+
+		public override void Update()
+		{
+			if (queuedUmbra > 0)
+				queuedUmbra -= Math.Max(1, queuedUmbra / 30);
+
+			if (queuedUmbra < 0)
+				queuedUmbra = 0;
 		}
 
 		public override void SaveData(TagCompound tag)

@@ -28,8 +28,13 @@ Items: {
 	}
 
 	ShrineItem: {
-		// DisplayName: Shrine Item
-		// Tooltip: ""
+		// DisplayName: Umbral Shrine
+		/* Tooltip:
+			'''
+			A dark shrine which can hold umbra
+			Right clicking the shrine will depoist all of your umbra
+			Right clicking the shrine while holding no umbra will withdraw the stored umbra
+			''' */
 	}
 }
 
@@ -632,4 +637,4 @@ Misc: {
 	UmbraGainPopup: +1暗影点
 }
 
-// Tiles.Shrine.MapEntry: Shrine
+// Tiles.Shrine.MapEntry: Umbral Shrine
