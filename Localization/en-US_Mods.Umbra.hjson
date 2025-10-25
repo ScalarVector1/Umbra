@@ -612,3 +612,25 @@ Misc: {
 }
 
 Tiles.Shrine.MapEntry: Umbral Shrine
+
+Achievements: {
+	FeatOfHaste: {
+		FriendlyName: Feat Of Haste
+		Description: Slay the moon lord while the 'Temporal Trance' node is allocated on the umbral tree, proving great speed and agility.
+	}
+
+	UmbralAcolyte: {
+		FriendlyName: Umbral Acolyte
+		Description: Allocate your first node on the umbral tree.
+	}
+
+	UmbralAdept: {
+		FriendlyName: Umbral Adept
+		Description: Reach 100 doom by allocating nodes on the umbral tree.
+	}
+
+	UmbralMaster: {
+		FriendlyName: Umbral Master
+		Description: Reach 1000 doom by allocating nodes on the umbral tree. Good luck.
+	}
+}

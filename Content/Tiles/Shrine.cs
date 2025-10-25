@@ -268,7 +268,7 @@ namespace Umbra.Content.Tiles
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.consumable = true;
 			Item.createTile = ModContent.TileType<Shrine>();
-			Item.rare = ItemRarityID.Purple;
+			Item.rare = ItemRarityID.LightPurple;
 			Item.value = 0;
 		}
 

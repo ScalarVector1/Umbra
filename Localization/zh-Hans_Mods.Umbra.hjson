@@ -638,3 +638,25 @@ Misc: {
 }
 
 // Tiles.Shrine.MapEntry: Umbral Shrine
+
+Achievements: {
+	FeatOfHaste: {
+		// FriendlyName: Feat Of Haste
+		// Description: Mods.Umbra.Achievements.FeatOfHaste.Description
+	}
+
+	UmbralAcolyte: {
+		// FriendlyName: Umbral Acolyte
+		// Description: Mods.Umbra.Achievements.UmbralAcolyte.Description
+	}
+
+	UmbralAdept: {
+		// FriendlyName: Umbral Adept
+		// Description: Mods.Umbra.Achievements.UmbralAdept.Description
+	}
+
+	UmbralMaster: {
+		// FriendlyName: Umbral Master
+		// Description: Mods.Umbra.Achievements.UmbralMaster.Description
+	}
+}
