@@ -39,7 +39,7 @@ namespace Umbra.Content.Tiles
 				int x = i - tile.TileFrameX / 18;
 				int y = j - tile.TileFrameY / 18;
 
-				int index = ModContent.GetInstance<ShrineEntity>().Find(x, y - 1);
+				int index = ModContent.GetInstance<ShrineEntity>().Find(x, y);
 
 				if (index == -1)
 					return;
