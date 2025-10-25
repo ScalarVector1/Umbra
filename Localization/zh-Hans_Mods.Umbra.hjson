@@ -642,21 +642,21 @@ Misc: {
 Achievements: {
 	FeatOfHaste: {
 		// FriendlyName: Feat Of Haste
-		// Description: Mods.Umbra.Achievements.FeatOfHaste.Description
+		// Description: Slay the moon lord while the 'Temporal Trance' node is allocated on the umbral tree, proving great speed and agility.
 	}
 
 	UmbralAcolyte: {
 		// FriendlyName: Umbral Acolyte
-		// Description: Mods.Umbra.Achievements.UmbralAcolyte.Description
+		// Description: Allocate your first node on the umbral tree.
 	}
 
 	UmbralAdept: {
 		// FriendlyName: Umbral Adept
-		// Description: Mods.Umbra.Achievements.UmbralAdept.Description
+		// Description: Reach 100 doom by allocating nodes on the umbral tree.
 	}
 
 	UmbralMaster: {
 		// FriendlyName: Umbral Master
-		// Description: Mods.Umbra.Achievements.UmbralMaster.Description
+		// Description: Reach 1000 doom by allocating nodes on the umbral tree. Good luck.
 	}
 }
