@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Serialization;
+using Terraria.Achievements;
 using Terraria.Localization;
+using Umbra.Content.Achievements;
 using Umbra.Content.GUI;
 using Umbra.Content.Passives;
 
@@ -157,7 +159,11 @@ namespace Umbra.Core.PassiveTreeSystem
             player.GetModPlayer<TreePlayer>().UmbraPoints -= Cost;
             TreeSystem.tree.Allocate(ID);
             UmbraNet.SyncPoints(player.whoAmI);
-        }
+
+            UmbralAcolyte.condition.Complete();
+            UmbralAdept.condition.Value = Math.Max(TreeSystem.tree.difficulty, UmbralAdept.condition.Value);
+			UmbralMaster.condition.Value = Math.Max(TreeSystem.tree.difficulty, UmbralMaster.condition.Value);
+		}
 
         /// <summary>
         /// Tries to allocate this passive, returns if it was successful or not

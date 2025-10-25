@@ -26,6 +26,16 @@ Items: {
 			[c/888888:无法移除]
 			'''
 	}
+
+	ShrineItem: {
+		// DisplayName: Umbral Shrine
+		/* Tooltip:
+			'''
+			A dark shrine which can hold umbra
+			Right clicking the shrine will depoist all of your umbra
+			Right clicking the shrine while holding no umbra will withdraw the stored umbra
+			''' */
+	}
 }
 
 GUI: {
@@ -606,6 +616,15 @@ Configs: {
 				'''
 		}
 	}
+
+	CustomTreeConfig: {
+		// DisplayName: Custom Tree Config
+
+		customTreeJson: {
+			// Label: custom Tree Json
+			// Tooltip: ""
+		}
+	}
 }
 
 Misc: {
@@ -616,4 +635,28 @@ Misc: {
 		如果发现BUG，请在[c/7799FF:https://discord.gg/KFpCz5p688]或[c/7799FF:https://github.com/ScalarVector1/Umbra/issues]上提交
 		'''
 	UmbraGainPopup: +1暗影点
+}
+
+// Tiles.Shrine.MapEntry: Umbral Shrine
+
+Achievements: {
+	FeatOfHaste: {
+		// FriendlyName: Feat Of Haste
+		// Description: Mods.Umbra.Achievements.FeatOfHaste.Description
+	}
+
+	UmbralAcolyte: {
+		// FriendlyName: Umbral Acolyte
+		// Description: Mods.Umbra.Achievements.UmbralAcolyte.Description
+	}
+
+	UmbralAdept: {
+		// FriendlyName: Umbral Adept
+		// Description: Mods.Umbra.Achievements.UmbralAdept.Description
+	}
+
+	UmbralMaster: {
+		// FriendlyName: Umbral Master
+		// Description: Mods.Umbra.Achievements.UmbralMaster.Description
+	}
 }

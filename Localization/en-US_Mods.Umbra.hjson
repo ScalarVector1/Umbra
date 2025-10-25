@@ -24,6 +24,16 @@ Items: {
 			[c/888888:Cannot be removed]
 			'''
 	}
+
+	ShrineItem: {
+		DisplayName: Umbral Shrine
+		Tooltip:
+			'''
+			A dark shrine which can hold umbra
+			Right clicking the shrine will depoist all of your umbra
+			Right clicking the shrine while holding no umbra will withdraw the stored umbra
+			'''
+	}
 }
 
 GUI: {
@@ -580,6 +590,15 @@ Configs: {
 				'''
 		}
 	}
+
+	CustomTreeConfig: {
+		DisplayName: Custom Tree Config
+
+		customTreeJson: {
+			Label: custom Tree Json
+			Tooltip: ""
+		}
+	}
 }
 
 Misc: {
@@ -590,4 +609,28 @@ Misc: {
 		PLEASE report any issues to [c/7799FF:https://discord.gg/KFpCz5p688] or [c/7799FF:https://github.com/ScalarVector1/Umbra/issues]
 		'''
 	UmbraGainPopup: +1 Umbra
+}
+
+Tiles.Shrine.MapEntry: Umbral Shrine
+
+Achievements: {
+	FeatOfHaste: {
+		FriendlyName: Feat Of Haste
+		Description: Slay the moon lord while the 'Temporal Trance' node is allocated on the umbral tree, proving great speed and agility.
+	}
+
+	UmbralAcolyte: {
+		FriendlyName: Umbral Acolyte
+		Description: Allocate your first node on the umbral tree.
+	}
+
+	UmbralAdept: {
+		FriendlyName: Umbral Adept
+		Description: Reach 100 doom by allocating nodes on the umbral tree.
+	}
+
+	UmbralMaster: {
+		FriendlyName: Umbral Master
+		Description: Reach 1000 doom by allocating nodes on the umbral tree. Good luck.
+	}
 }
