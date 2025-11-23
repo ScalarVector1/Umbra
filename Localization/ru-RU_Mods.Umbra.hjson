@@ -87,6 +87,7 @@ GUI: {
 			'''
 		CloseButton: Закрыть
 		FullscreenButton: Полноэкранный режим
+		// StatButton: Toggle Effects List
 		ExportButton: Экспорт вашего Дерева мрака
 		EditButton: Режим редактирования
 		EditButtonDesc:

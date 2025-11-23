@@ -265,17 +265,18 @@ namespace Umbra.Content.GUI
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
+			base.Draw(spriteBatch);
 
-            Texture2D tex = Assets.GUI.PassiveFrameTiny.Value;
-            TreePlayer mp = Main.LocalPlayer.GetModPlayer<TreePlayer>();
+            Texture2D tex = Assets.GUI.DoomIcon.Value;
+			Texture2D umbraTex = Assets.Items.UmbraPickup.Value;
+			TreePlayer mp = Main.LocalPlayer.GetModPlayer<TreePlayer>();
 
-            Vector2 umbraBasePos = panel.GetDimensions().ToRectangle().TopLeft() + new Vector2(32, 32);
+            Vector2 umbraBasePos = panel.GetDimensions().ToRectangle().TopLeft() + new Vector2(28, 26);
             var umbraRect = new Rectangle((int)umbraBasePos.X - 16, (int)umbraBasePos.Y - 16, 132, 32);
 
-            spriteBatch.Draw(tex, umbraBasePos, null, Color.White, 0, tex.Size() / 2f, 1, 0, 0);
-            Utils.DrawBorderStringBig(spriteBatch, $"{mp.UmbraPoints}", umbraBasePos, mp.UmbraPoints > 0 ? new Color(210, 160, 255) : Color.Gray, 0.5f, 0.5f, 0.35f);
-            Utils.DrawBorderStringBig(spriteBatch, Language.GetText("Mods.Umbra.GUI.Tree.Umbra").Value, umbraBasePos + new Vector2(24, 0), new Color(240, 210, 255), 0.5f, 0f, 0.35f);
+			spriteBatch.Draw(umbraTex, umbraBasePos + new Vector2(0, 2), null, Color.White, 0, umbraTex.Size() / 2f, 1, 0, 0);
+            Utils.DrawBorderStringBig(spriteBatch, $"{mp.UmbraPoints}", umbraBasePos, mp.UmbraPoints > 0 ? new Color(187, 136, 255) : Color.Gray, 0.35f, 0.5f, 0.35f);
+            Utils.DrawBorderStringBig(spriteBatch, Language.GetText("Mods.Umbra.GUI.Tree.Umbra").Value, umbraBasePos + new Vector2(26, 0), new Color(187, 136, 255), 0.4f, 0f, 0.35f);
 
             if (umbraRect.Contains(Main.MouseScreen.ToPoint()))
             {
@@ -283,12 +284,12 @@ namespace Umbra.Content.GUI
                 Tooltip.SetTooltip(Language.GetText("Mods.Umbra.GUI.Tree.UmbraTooltipDesc").Format(Math.Round(100 * UmbraDropNPC.UmbraChance, 2)));
             }
 
-            Vector2 doomBasePos = panel.GetDimensions().ToRectangle().TopLeft() + new Vector2(32, 76);
+            Vector2 doomBasePos = panel.GetDimensions().ToRectangle().TopLeft() + new Vector2(28, 72);
             var doomRect = new Rectangle((int)doomBasePos.X - 16, (int)doomBasePos.Y - 16, 102, 32);
 
             spriteBatch.Draw(tex, doomBasePos, null, Color.White, 0, tex.Size() / 2f, 1, 0, 0);
-            Utils.DrawBorderStringBig(spriteBatch, $"{TreeSystem.tree.difficulty}", doomBasePos, new Color(255, 160, 160), 0.5f, 0.5f, 0.35f);
-            Utils.DrawBorderStringBig(spriteBatch, Language.GetText("Mods.Umbra.GUI.Tree.Doom").Value, doomBasePos + new Vector2(24, 0), new Color(255, 210, 210), 0.5f, 0f, 0.35f);
+            Utils.DrawBorderStringBig(spriteBatch, $"{TreeSystem.tree.difficulty}", doomBasePos, new Color(255, 130, 130), 0.35f, 0.5f, 0.35f);
+            Utils.DrawBorderStringBig(spriteBatch, Language.GetText("Mods.Umbra.GUI.Tree.Doom").Value, doomBasePos + new Vector2(26, 0), new Color(255, 130, 130), 0.4f, 0f, 0.35f);
 
             if (doomRect.Contains(Main.MouseScreen.ToPoint()))
             {
@@ -489,7 +490,11 @@ namespace Umbra.Content.GUI
 
             base.Draw(spriteBatch);
 
-            if (Tree.editing)
+			Texture2D backdrop = Assets.GUI.GlowSoft.Value;
+			spriteBatch.Draw(backdrop, GetDimensions().ToRectangle().TopLeft(), null, Color.Black, 0, backdrop.Size() / 2f, 10f, 0, 0);
+			spriteBatch.Draw(backdrop, GetDimensions().ToRectangle().TopRight(), null, Color.Black, 0, backdrop.Size() / 2f, 10f, 0, 0);
+
+			if (Tree.editing)
                 DrawEditing(spriteBatch);
 
             spriteBatch.End();

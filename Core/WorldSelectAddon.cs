@@ -33,23 +33,23 @@ namespace Umbra.Core
 
             string path = self._data.Path;
 
-            Vector2 pos = self.GetDimensions().ToRectangle().TopLeft() + new Vector2(156, 32);
-
-            var tex = Assets.Items.UmbraPickup.Value;
-            var glow = Assets.GUI.GlowSoft.Value;
-            spriteBatch.Draw(glow, pos + tex.Size() / 2f, null, Color.Black, 0, glow.Size() / 2f, 0.7f, 0, 0);
-            spriteBatch.Draw(tex, pos, Color.White);
-
-            if (difficulties.ContainsKey(path) && customs.ContainsKey(path))
+            if (difficulties.ContainsKey(path) && customs.ContainsKey(path) && difficulties[path] > 0)
             {
+                Vector2 pos = self.GetDimensions().ToRectangle().TopLeft() + new Vector2(156, 29);
+
+                var tex = Assets.GUI.DoomIcon.Value;
+                var glow = Assets.GUI.GlowSoft.Value;
+                spriteBatch.Draw(glow, pos + tex.Size() / 2f, null, Color.Black, 0, glow.Size() / 2f, 0.7f, 0, 0);
+                spriteBatch.Draw(tex, pos + new Vector2(0, -3), Color.White);
+
                 if (!customs[path])
                 {
-                    Utils.DrawBorderString(spriteBatch, $"{difficulties[path]}", pos + tex.Size() / 2f, new Color(255, 100, 100), 0.7f, 0.5f, 0.5f);
+                    Utils.DrawBorderString(spriteBatch, $"{difficulties[path]}", pos + tex.Size() / 2f, new Color(255, 100, 100), 0.8f, 0.5f, 0.5f);
                 }
                 else
                 {
-                    Utils.DrawBorderString(spriteBatch, Language.GetText("Mods.Umbra.GUI.WorldSelect.Custom").Value, pos + tex.Size() / 2f + new Vector2(0, -12), new Color(255, 150, 100), 0.7f, 0.5f, 0.5f);
-                    Utils.DrawBorderString(spriteBatch, $"{difficulties[path]}", pos + tex.Size() / 2f, new Color(255, 150, 100), 0.7f, 0.5f, 0.5f);
+                    Utils.DrawBorderString(spriteBatch, Language.GetText("Mods.Umbra.GUI.WorldSelect.Custom").Value, pos + tex.Size() / 2f + new Vector2(0, -12), new Color(255, 150, 100), 0.6f, 0.5f, 0.5f);
+                    Utils.DrawBorderString(spriteBatch, $"{difficulties[path]}", pos + tex.Size() / 2f, new Color(255, 150, 100), 0.8f, 0.5f, 0.5f);
                 }
             }
             else

@@ -89,6 +89,7 @@ GUI: {
 			'''
 		CloseButton: 关闭
 		FullscreenButton: 切换全屏
+		// StatButton: Toggle Effects List
 		ExportButton: 导出暗影树
 		EditButton: 编辑暗影树
 		EditButtonDesc:
