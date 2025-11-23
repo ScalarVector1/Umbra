@@ -1,43 +1,36 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Umbra.Core.PassiveTreeSystem;
-using Umbra.Core;
+﻿using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives
 {
-    internal class ManaDamage : Passive
-    {
-        public override void SetDefaults()
-        {
-            texture = Assets.Passives.ManaDamage;
-            difficulty = 4;
-        }
+	internal class ManaDamage : Passive
+	{
+		public override void SetDefaults()
+		{
+			texture = Assets.Passives.ManaDamage;
+			difficulty = 4;
+		}
 
-        public override void BuffPlayer(Player player)
-        {
-            player.GetModPlayer<ManaStealPlayer>().lostOnHit += 10;
-        }
-    }
+		public override void BuffPlayer(Player player)
+		{
+			player.GetModPlayer<ManaStealPlayer>().lostOnHit += 10;
+		}
+	}
 
-    internal class ManaStealPlayer : ModPlayer
-    {
-        public int lostOnHit;
+	internal class ManaStealPlayer : ModPlayer
+	{
+		public int lostOnHit;
 
-        public override void OnHurt(Player.HurtInfo info)
-        {
-            Player.statMana -= lostOnHit;
+		public override void OnHurt(Player.HurtInfo info)
+		{
+			Player.statMana -= lostOnHit;
 
-            if (Player.statMana < 0)
-                Player.statMana = 0;
-        }
+			if (Player.statMana < 0)
+				Player.statMana = 0;
+		}
 
-        public override void ResetEffects()
-        {
-            lostOnHit = 0;
-        }
-    }
+		public override void ResetEffects()
+		{
+			lostOnHit = 0;
+		}
+	}
 }

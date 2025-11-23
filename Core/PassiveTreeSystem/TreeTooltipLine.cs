@@ -133,7 +133,7 @@ namespace Umbra.Core.PassiveTreeSystem
 
 		public void Demo()
 		{
-			foreach(var line in ordered)
+			foreach (TreeTooltipLine line in ordered)
 			{
 				Main.NewText(line.displayedText);
 			}

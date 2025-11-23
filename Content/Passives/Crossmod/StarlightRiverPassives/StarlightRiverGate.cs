@@ -1,26 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Umbra.Core.PassiveTreeSystem;
+﻿using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives.Crossmod.StarlightRiverPassives
 {
-    internal class StarlightRiverGate : ModGate
-    {
-        public StarlightRiverGate() : base("StarlightRiver") { }
+	internal class StarlightRiverGate : ModGate
+	{
+		public StarlightRiverGate() : base("StarlightRiver") { }
 
-        public override void SetDefaults()
-        {
-            texture = Assets.Passives.StarlightRiverGate;
-            size = 1;
+		public override void SetDefaults()
+		{
+			texture = Assets.Passives.StarlightRiverGate;
+			size = 1;
 			contributesToTooltips = false;
 		}
-    }
+	}
 
-    internal abstract class StarlightRiverPassive : CrossmodPassive
-    {
-        public StarlightRiverPassive() : base("StarlightRiver") { }
-    }
+	internal abstract class StarlightRiverPassive : CrossmodPassive
+	{
+		public StarlightRiverPassive() : base("StarlightRiver") { }
+	}
 }

@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.GameContent.UI.Elements;
+﻿using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
 using Terraria.UI.Chat;
-using Umbra.Content.GUI.FieldEditors;
+using Umbra.Content.GUI.Editor;
 using Umbra.Core;
 using Umbra.Core.Loaders.UILoading;
 using Umbra.Core.PassiveTreeSystem;
-using static AssGen.Assets;
 
 namespace Umbra.Content.GUI
 {
@@ -25,7 +19,7 @@ namespace Umbra.Content.GUI
 		public StatPanel(UserInterface ui)
 		{
 			panel = new UIPanel();
-			list = new UIList();
+			list = [];
 			scroll = new(ui);
 
 			Width.Set(366, 0);
@@ -65,7 +59,7 @@ namespace Umbra.Content.GUI
 		{
 			list.Clear();
 
-			foreach(var line in TreeSystem.tree.tooltips.ordered)
+			foreach (TreeTooltipLine line in TreeSystem.tree.tooltips.ordered)
 			{
 				list.Add(new StatPanelLine(line, this));
 			}
@@ -100,7 +94,7 @@ namespace Umbra.Content.GUI
 			text = ChatManager.ParseMessage(line.displayedText, Color.White).ToArray();
 
 			ReLogic.Graphics.DynamicSpriteFont font = Terraria.GameContent.FontAssets.MouseText.Value;
-			var size = ChatManager.GetStringSize(font, text, Vector2.One * 0.8f, 300);
+			Vector2 size = ChatManager.GetStringSize(font, text, Vector2.One * 0.8f, 300);
 
 			Width.Set(0, 1);
 			Height.Set(size.Y + 6, 0);
@@ -109,8 +103,8 @@ namespace Umbra.Content.GUI
 
 		public override void Draw(SpriteBatch spriteBatch)
 		{
-			var bullet = Assets.Passives.UnloadedPassive.Value;
-			var line = Assets.MagicPixel.Value;
+			Texture2D bullet = Assets.Passives.UnloadedPassive.Value;
+			Texture2D line = Assets.MagicPixel.Value;
 
 			ReLogic.Graphics.DynamicSpriteFont font = Terraria.GameContent.FontAssets.MouseText.Value;
 
@@ -120,7 +114,7 @@ namespace Umbra.Content.GUI
 			spriteBatch.Draw(line, new Rectangle((int)pos.X, (int)pos.Y, 334, 4), Color.Black * 0.25f);
 
 			ChatManager.DrawColorCodedStringWithShadow(spriteBatch, font, text, pos + new Vector2(34, 10), 0, Vector2.Zero, Vector2.One * 0.8f, out int hovered, 300);
-		
+
 			base.Draw(spriteBatch);
 		}
 
@@ -139,7 +133,7 @@ namespace Umbra.Content.GUI
 			else
 			{
 				ReLogic.Graphics.DynamicSpriteFont font = Terraria.GameContent.FontAssets.MouseText.Value;
-				var size = ChatManager.GetStringSize(font, text, Vector2.One * 0.8f, 300);
+				Vector2 size = ChatManager.GetStringSize(font, text, Vector2.One * 0.8f, 300);
 
 				Width.Set(0, 1);
 				Height.Set(size.Y + 6, 0);
@@ -160,5 +154,4 @@ namespace Umbra.Content.GUI
 			return base.CompareTo(obj);
 		}
 	}
-
 }

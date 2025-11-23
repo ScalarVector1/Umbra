@@ -229,6 +229,9 @@ namespace Umbra.Content.Tiles
 
 			if (queuedUmbra < 0)
 				queuedUmbra = 0;
+
+			if (storedUmbra < 0)
+				storedUmbra = 0;
 		}
 
 		public override void SaveData(TagCompound tag)
