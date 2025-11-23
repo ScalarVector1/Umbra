@@ -26,6 +26,10 @@ namespace Umbra.Core.PassiveTreeSystem
         /// Determines the hitbox size for the passive. 0 is for the basic nodes (example: enemy HP), 1 for notables (example: heartbreakers), and 2 for 'keystones' (example: mundanity)
         /// </summary>
         public int size;
+        /// <summary>
+        /// If this node should have its tooltip added to the list of all effects of the tree
+        /// </summary>
+        public bool contributesToTooltips = true;
 
         /// <summary>
         /// Opacity of the node on the tree, used to fade ndoes such as those from unloaded mods

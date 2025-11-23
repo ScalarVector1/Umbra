@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Umbra.Core.Loaders.UILoading;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Terraria.ModLoader.IO;
@@ -29,6 +30,8 @@ namespace Umbra.Core.PassiveTreeSystem
         public int difficulty;
 
         public List<PassiveEdge> flows = [];
+
+        public TreeTooltipCollection tooltips = new();
 
         public List<Passive> Nodes { get; set; }
         public List<PassiveEdge> Edges { get; set; }
@@ -225,7 +228,7 @@ namespace Umbra.Core.PassiveTreeSystem
                 GenerateActiveCollections();
             }
 
-            CalcDifficulty();
+            CalcDifficultyAndTooltips();
             RegenerateFlows();
 
             UmbraNet.SyncTree();
@@ -251,7 +254,7 @@ namespace Umbra.Core.PassiveTreeSystem
                 GenerateActiveCollections();
             }
 
-            CalcDifficulty();
+            CalcDifficultyAndTooltips();
             RegenerateFlows();
 
             UmbraNet.SyncTree();
@@ -275,15 +278,26 @@ namespace Umbra.Core.PassiveTreeSystem
         /// <summary>
         /// Recalculates the total tree difficulty
         /// </summary>
-        public void CalcDifficulty()
+        public void CalcDifficultyAndTooltips()
         {
             difficulty = 0;
+            tooltips.Clear();
 
             foreach (Passive node in Nodes)
             {
                 if (node.active)
+                {
                     difficulty += node.difficulty;
+
+                    if (node.contributesToTooltips)
+                        tooltips.AddFromPassive(node);
+                }
             }
+
+            tooltips.PrepareForDisplay();
+
+            if (TreeSystem.tree == this)
+                UILoader.GetUIState<Content.GUI.Tree>()?.statPanel?.Populate();
         }
 
         /// <summary>
@@ -363,7 +377,7 @@ namespace Umbra.Core.PassiveTreeSystem
             }
 
             GenerateActiveCollections();
-            CalcDifficulty();
+            CalcDifficultyAndTooltips();
             RegenerateFlows();
         }
 
@@ -394,7 +408,7 @@ namespace Umbra.Core.PassiveTreeSystem
             }
 
             GenerateActiveCollections();
-            CalcDifficulty();
+            CalcDifficultyAndTooltips();
             RegenerateFlows();
         }
     }

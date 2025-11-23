@@ -16,6 +16,7 @@ namespace Umbra.Content.Passives
             texture = Assets.Passives.StartPassive;
             difficulty = 0;
             size = 2;
+            contributesToTooltips = false;
         }
 
         public override bool CanDeallocate(Player player)

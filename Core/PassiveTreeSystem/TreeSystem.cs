@@ -61,7 +61,7 @@ namespace Umbra.Core.PassiveTreeSystem
 
         public override void SaveWorldHeader(TagCompound tag)
         {
-            tree.CalcDifficulty();
+            tree.CalcDifficultyAndTooltips();
             tag["lastDifficulty"] = tree.difficulty;
             tag["hasCustomTree"] = hasCustomTree;
         }

@@ -16,7 +16,8 @@ namespace Umbra.Content.Passives
             texture = Assets.Passives.HardmodeGate;
             difficulty = 0;
             size = 2;
-        }
+			contributesToTooltips = false;
+		}
 
         public override bool CanAllocate(Player player)
         {

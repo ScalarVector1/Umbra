@@ -15,7 +15,8 @@ namespace Umbra.Content.Passives.Crossmod.CalamityPassives
         {
             texture = Assets.Passives.CalamityGate;
             size = 1;
-        }
+			contributesToTooltips = false;
+		}
     }
 
     internal abstract class CalamityPassive : CrossmodPassive

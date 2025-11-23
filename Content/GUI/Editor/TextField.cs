@@ -22,6 +22,7 @@ namespace Umbra.Content.GUI.FieldEditors
         public bool updated;
         public bool reset;
         public InputType inputType;
+        public Color color = Color.Gray;
 
         public string currentValue = "";
 
@@ -123,7 +124,7 @@ namespace Umbra.Content.GUI.FieldEditors
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            GUIHelper.DrawBox(spriteBatch, GetDimensions().ToRectangle(), Color.Gray);
+            GUIHelper.DrawBox(spriteBatch, GetDimensions().ToRectangle(), color);
 
             if (typing)
             {
@@ -134,9 +135,9 @@ namespace Umbra.Content.GUI.FieldEditors
                 Main.instance.DrawWindowsIMEPanel(GetDimensions().Position());
             }
 
-            Vector2 pos = GetDimensions().Position() + Vector2.One * 4;
+            Vector2 pos = GetDimensions().Position() + Vector2.One * 6;
 
-            const float scale = 0.75f;
+            const float scale = 0.95f;
             string displayed = currentValue ?? "";
 
             Utils.DrawBorderString(spriteBatch, displayed, pos, Color.White, scale);
@@ -154,7 +155,7 @@ namespace Umbra.Content.GUI.FieldEditors
                 pos.X += FontAssets.MouseText.Value.MeasureString(compositionString).X * scale;
             }
 
-            if (Main.GameUpdateCount % 20 < 10)
+            if (Main.timeForVisualEffects % 20 < 10)
                 Utils.DrawBorderString(spriteBatch, "|", pos, Color.White, scale);
         }
     }

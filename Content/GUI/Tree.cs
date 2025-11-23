@@ -25,13 +25,17 @@ namespace Umbra.Content.GUI
         private UIImageButton exportButton;
         private UIImageButton editButton;
         private UIImageButton fullscreenButton;
+		private UIImageButton statButton;
 
-        private NodeTypeSelector selector;
+		private NodeTypeSelector selector;
         private IntEditor costEditor;
+
+        public StatPanel statPanel;
 
         public bool visible;
         public static bool editing;
         public bool fullscreen;
+        public bool statsVisible;
 
         //Editing vars
         public static Passive toPlace;
@@ -136,7 +140,11 @@ namespace Umbra.Content.GUI
                 inner.Height.Set(0, 1f);
                 panel.Append(inner);
 
-                closeButton = new UIImageButton(Assets.GUI.CloseButton);
+                statPanel = new StatPanel(UserInterface);
+                statPanel.Left.Set(-LeftPadding + 32, 0.5f);
+				statPanel.Top.Set(TopPadding, 0.5f);
+
+				closeButton = new UIImageButton(Assets.GUI.CloseButton);
                 closeButton.Left.Set(-32, 1f);
                 closeButton.Top.Set(-4, 0f);
                 closeButton.Width.Set(38, 0);
@@ -189,7 +197,29 @@ namespace Umbra.Content.GUI
                 fullscreenButton.SetVisibility(1, 1);
                 panel.Append(fullscreenButton);
 
-                if (Main.netMode == NetmodeID.SinglePlayer && ModContent.GetInstance<UIConfig>().ShowCustomMode)
+                statButton = new UIImageButton(Assets.GUI.statsButton);
+				statButton.Left.Set(-36 - 38 - 40, 1f);
+				statButton.Top.Set(-4, 0f);
+				statButton.Width.Set(38, 0);
+				statButton.Height.Set(38, 0);
+				statButton.OnLeftClick += (a, b) =>
+                {
+                    if (!statsVisible)
+                    {
+                        statPanel.Populate();
+                        Append(statPanel);
+                        statsVisible = true;
+                    }
+                    else
+                    {
+                        RemoveChild(statPanel);
+                        statsVisible = false;
+                    }
+                };
+                statButton.SetVisibility(1, 1);
+                panel.Append(statButton);
+
+				if (Main.netMode == NetmodeID.SinglePlayer && ModContent.GetInstance<UIConfig>().ShowCustomMode)
                 {
                     editButton = new UIImageButton(Assets.GUI.CustomButton);
                     editButton.Left.Set(-32, 1f);
@@ -295,7 +325,13 @@ namespace Umbra.Content.GUI
                 Tooltip.SetTooltip("");
             }
 
-            if (exportButton != null && exportButton.IsMouseHovering)
+			if (statButton.IsMouseHovering)
+			{
+				Tooltip.SetName(Language.GetTextValue("Mods.Umbra.GUI.Tree.StatButton"));
+				Tooltip.SetTooltip("");
+			}
+
+			if (exportButton != null && exportButton.IsMouseHovering)
             {
                 Tooltip.SetName(Language.GetTextValue("Mods.Umbra.GUI.Tree.ExportButton"));
                 Tooltip.SetTooltip("");
@@ -342,10 +378,26 @@ namespace Umbra.Content.GUI
 
                     exportButton.Left.Set(LeftPadding - 220 + costEditor.Width.Pixels + 12, 0.5f);
                     exportButton.Top.Set(TopPadding + selector.Height.Pixels + 12, 0.5f);
+				}
+            }
+
+            if (statPanel != null)
+            {
+                if (fullscreen)
+                {
+                    statPanel.Left.Set(-380, 1);
+                    statPanel.Top.Set(64, 0);
+                    statPanel.Height.Set(-128, 1);
+                }
+                else
+                {
+                    statPanel.Left.Set(-LeftPadding + 32, 0.5f);
+                    statPanel.Top.Set(TopPadding, 0.5f);
+                    statPanel.Height.Set(800, 0);
                 }
             }
 
-            base.Recalculate();
+			base.Recalculate();
         }
     }
 

@@ -16,6 +16,7 @@ namespace Umbra.Content.Passives.Large
             texture = Assets.Passives.TwistOfFate;
             difficulty = 0;
             size = 1;
-        }
+			contributesToTooltips = false;
+		}
     }
 }

@@ -14,6 +14,7 @@ namespace Umbra.Content.Passives
         public override void SetDefaults()
         {
             texture = Assets.Passives.UnloadedPassive;
+            contributesToTooltips = false;
         }
     }
 }

@@ -15,7 +15,8 @@ namespace Umbra.Content.Passives.Crossmod.StarlightRiverPassives
         {
             texture = Assets.Passives.StarlightRiverGate;
             size = 1;
-        }
+			contributesToTooltips = false;
+		}
     }
 
     internal abstract class StarlightRiverPassive : CrossmodPassive
