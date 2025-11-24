@@ -58,7 +58,7 @@ namespace Umbra.Core.PassiveTreeSystem
 		[JsonIgnore]
 		public string DisplayName => Language.GetOrRegister(NameKey).Value;
 		[JsonIgnore]
-		public string Tooltip => Language.GetOrRegister(TooltipKey).Value;
+		public virtual string Tooltip => Language.GetOrRegister(TooltipKey).Value;
 
 		[JsonIgnore]
 		public Vector2 TreePos => new(X * 16, Y * 16);
@@ -114,7 +114,7 @@ namespace Umbra.Core.PassiveTreeSystem
 		/// </summary>
 		public virtual void Update() { }
 
-		public void Draw(SpriteBatch spriteBatch, Vector2 center, float scale)
+		public virtual void Draw(SpriteBatch spriteBatch, Vector2 center, float scale)
 		{
 			Texture2D tex = texture?.Value ?? Assets.GUI.PassiveFrameTiny.Value;
 
@@ -161,11 +161,20 @@ namespace Umbra.Core.PassiveTreeSystem
 		{
 			player.GetModPlayer<TreePlayer>().UmbraPoints -= Cost;
 			TreeSystem.tree.Allocate(ID);
+			OnAllocate();
 			UmbraNet.SyncPoints(player.whoAmI);
 
 			UmbralAcolyte.condition.Complete();
 			UmbralAdept.condition.Value = Math.Max(TreeSystem.tree.difficulty, UmbralAdept.condition.Value);
 			UmbralMaster.condition.Value = Math.Max(TreeSystem.tree.difficulty, UmbralMaster.condition.Value);
+		}
+
+		/// <summary>
+		/// Allows additional effects to happen when this passive is allocated
+		/// </summary>
+		public virtual void OnAllocate()
+		{
+
 		}
 
 		/// <summary>
@@ -229,7 +238,16 @@ namespace Umbra.Core.PassiveTreeSystem
 			int refundAmount = (int)Math.Ceiling(Cost / 2f);
 			player.GetModPlayer<TreePlayer>().UmbraPoints += refundAmount;
 			TreeSystem.tree.Deallocate(ID);
+			OnDeallocate();
 			UmbraNet.SyncPoints(player.whoAmI);
+		}
+
+		/// <summary>
+		/// Allows effects to happen when this passive is deallocated
+		/// </summary>
+		public virtual void OnDeallocate()
+		{
+
 		}
 
 		/// <summary>
@@ -246,6 +264,14 @@ namespace Umbra.Core.PassiveTreeSystem
 			}
 
 			return false;
+		}
+
+		/// <summary>
+		/// Allows you to make things happen when this passive is clicked while already allocated
+		/// </summary>
+		public virtual void OnClick()
+		{
+
 		}
 
 		internal Passive Clone()

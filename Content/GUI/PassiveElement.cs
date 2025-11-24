@@ -182,12 +182,19 @@ namespace Umbra.Content.GUI
 		/// </summary>
 		public void ClickNormal()
 		{
-			if (passive.TryAllocate(Main.LocalPlayer))
+			if (passive.active)
 			{
-				allocateFlashTime = 20;
-				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast.WithPitchOffset(-0.1f).WithVolume(0.5f));
-				SoundEngine.PlaySound(SoundID.GuitarAm.WithVolume(0.2f).WithPitchOffset(-0.2f));
-				SoundEngine.PlaySound(SoundID.DrumKick);
+				passive.OnClick();
+			}
+			else
+			{
+				if (passive.TryAllocate(Main.LocalPlayer))
+				{
+					allocateFlashTime = 20;
+					SoundEngine.PlaySound(SoundID.DD2_BookStaffCast.WithPitchOffset(-0.1f).WithVolume(0.5f));
+					SoundEngine.PlaySound(SoundID.GuitarAm.WithVolume(0.2f).WithPitchOffset(-0.2f));
+					SoundEngine.PlaySound(SoundID.DrumKick);
+				}
 			}
 		}
 

@@ -36,6 +36,8 @@ namespace Umbra.Core.PassiveTreeSystem
 		public List<Passive> Nodes { get; set; }
 		public List<PassiveEdge> Edges { get; set; }
 
+		public Dictionary<int, Item> storedItems = [];
+
 		/// <summary>
 		/// Adds a connection between two node IDs
 		/// </summary>
@@ -384,6 +386,8 @@ namespace Umbra.Core.PassiveTreeSystem
 		public void Save(TagCompound tag)
 		{
 			tag["activeIDs"] = GetActiveIDs();
+			tag["itemKeys"] = storedItems.Keys.ToList();
+			tag["items"] = storedItems.Values.ToList();
 		}
 
 		public void Load(TagCompound tag)
@@ -405,6 +409,14 @@ namespace Umbra.Core.PassiveTreeSystem
 			{
 				if (nodesById.TryGetValue(id, out Passive node) && node.CanBeActive())
 					node.active = true;
+			}
+
+			var keys = tag.GetList<int>("itemKeys");
+			var values = tag.GetList<Item>("items");
+
+			for (int k = 0; k < keys.Count; k++)
+			{
+				storedItems.Add(keys[k], values[k]);
 			}
 
 			GenerateActiveCollections();

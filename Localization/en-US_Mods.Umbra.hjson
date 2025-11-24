@@ -541,6 +541,11 @@ UmbraPassives: {
 			[c/777777:The mod this node belongs to is disabled, or it was removed.]
 			'''
 	}
+
+	Slot: {
+		Name: Mods.Umbra.UmbraPassives.Slot.Name
+		Tooltip: Mods.Umbra.UmbraPassives.Slot.Tooltip
+	}
 }
 
 Buffs: {

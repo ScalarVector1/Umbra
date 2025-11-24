@@ -104,7 +104,7 @@ namespace Umbra.Core.PassiveTreeSystem
 		{
 			string[] passiveLines = passive.Tooltip.Split("\n");
 
-			foreach (string line in passiveLines)
+			foreach (string line in passiveLines.Where(n => !string.IsNullOrEmpty(n)))
 			{
 				string key = TreeTooltipLine.CalculateKey(line);
 

@@ -1,10 +1,7 @@
-﻿using StarlightRiver.Content.Items.Hovers;
-using StarlightRiver.Content.Tiles.Permafrost;
-using System.IO;
+﻿using System.IO;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.Enums;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader.IO;
 using Terraria.ObjectData;
@@ -67,7 +64,7 @@ namespace Umbra.Content.Tiles
 			var entity = (ShrineEntity)TileEntity.ByID[index];
 			float power = entity.Power;
 
-			var bauble = Assets.Tiles.ShrineBauble.Value;
+			Texture2D bauble = Assets.Tiles.ShrineBauble.Value;
 
 			Texture2D glow = Assets.GUI.GlowAlpha.Value;
 			Texture2D star = Assets.GUI.StarAlpha.Value;
@@ -92,7 +89,7 @@ namespace Umbra.Content.Tiles
 
 			// Draw number if nearby
 			pos = new Vector2(i, j) * 16 + new Vector2(8, 8 - 64);
-			var dist = Vector2.Distance(pos, Main.LocalPlayer.Center);
+			float dist = Vector2.Distance(pos, Main.LocalPlayer.Center);
 
 			if (dist < 200)
 			{
@@ -148,7 +145,7 @@ namespace Umbra.Content.Tiles
 				return true;
 
 			var entity = (ShrineEntity)TileEntity.ByID[index];
-			var tp = Main.LocalPlayer.GetModPlayer<TreePlayer>();
+			TreePlayer tp = Main.LocalPlayer.GetModPlayer<TreePlayer>();
 
 			if (tp.UmbraPoints > 0)
 			{
