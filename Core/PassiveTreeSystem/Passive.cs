@@ -56,7 +56,7 @@ namespace Umbra.Core.PassiveTreeSystem
 		public string TooltipKey => $"Mods.{Mod.Name}.UmbraPassives.{GetType().Name}.Tooltip";
 
 		[JsonIgnore]
-		public string DisplayName => Language.GetOrRegister(NameKey).Value;
+		public virtual string DisplayName => Language.GetOrRegister(NameKey).Value;
 		[JsonIgnore]
 		public virtual string Tooltip => Language.GetOrRegister(TooltipKey).Value;
 

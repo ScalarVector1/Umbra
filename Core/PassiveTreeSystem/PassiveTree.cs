@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using Terraria.ModLoader.IO;
+using Umbra.Content.Items.Slottables;
 using Umbra.Content.Passives;
 using Umbra.Core.Loaders.UILoading;
 
@@ -294,6 +295,12 @@ namespace Umbra.Core.PassiveTreeSystem
 					if (node.contributesToTooltips)
 						tooltips.AddFromPassive(node);
 				}
+			}
+
+			foreach (Item item in storedItems.Values)
+			{
+				if (item.ModItem is Slottable slottable)
+					difficulty += slottable.difficulty;
 			}
 
 			tooltips.PrepareForDisplay();

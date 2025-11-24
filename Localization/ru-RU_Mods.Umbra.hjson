@@ -34,6 +34,31 @@ Items: {
 			Right clicking the shrine while holding no umbra will withdraw the stored umbra
 			''' */
 	}
+
+	Slottable: {
+		// DisplayName: Development Jewel
+		// Tooltip: This jewel is used for testing the jewel system
+	}
+
+	CraftedGem: {
+		// DisplayName: Crafted Gem
+		// Tooltip: ""
+	}
+
+	LargeGem: {
+		// DisplayName: Large Gem
+		// Tooltip: ""
+	}
+
+	BasicSetting: {
+		// DisplayName: Basic Setting
+		// Tooltip: ""
+	}
+
+	DoomSigil: {
+		// DisplayName: Doom Sigil
+		// Tooltip: ""
+	}
 }
 
 GUI: {
@@ -578,7 +603,7 @@ UmbraPassives: {
 	}
 
 	Slot: {
-		// Name: Mods.Umbra.UmbraPassives.Slot.Name
+		// Name: Jewel Slot
 		// Tooltip: Mods.Umbra.UmbraPassives.Slot.Tooltip
 	}
 }
