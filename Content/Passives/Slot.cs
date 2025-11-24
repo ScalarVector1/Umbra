@@ -32,7 +32,7 @@ namespace Umbra.Content.Passives
 
 				for (int k = 0; k < 6; k++)
 				{
-					float sin = (float)Math.Sin((Main.timeForVisualEffects + k * 20) / 120f * 6.28f);
+					float sin = (float)Math.Sin((Main.timeForVisualEffects + ID * 17 + k * 30) / 180f * 6.28f);
 					Color color = alphaColor;
 
 					if (k == 0)
@@ -42,9 +42,9 @@ namespace Umbra.Content.Passives
 					if (k == 4)
 						color.B += 200;
 
-					float rot = (float)Main.timeForVisualEffects * (0.002f * k) * (k % 2 == 0 ? -1 : 1) + k;
+					float rot = (float)(Main.timeForVisualEffects + ID * 17) * (0.005f + 0.0005f * k) * (k % 2 == 0 ? -1 : 1) + k;
 
-					spriteBatch.Draw(shine, center, null, color * sin * 0.25f, rot, shine.Size() / 2f, scale * (0.4f + sin * 0.4f) * 0.7f, 0, 0);
+					spriteBatch.Draw(shine, center, null, color * sin * 0.2f, rot, shine.Size() / 2f, scale * (0.4f + sin * 0.4f) * 0.65f, 0, 0);
 					spriteBatch.Draw(shine, center, null, new Color(255, 255, 255, 0) * sin * 0.1f, rot, shine.Size() / 2f, scale * (0.4f + sin * 0.4f) * 0.5f, 0, 0);
 				}
 
