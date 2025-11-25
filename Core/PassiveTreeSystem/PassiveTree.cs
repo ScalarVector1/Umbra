@@ -300,7 +300,7 @@ namespace Umbra.Core.PassiveTreeSystem
 			foreach (Item item in storedItems.Values)
 			{
 				if (item.ModItem is Slottable slottable)
-					difficulty += slottable.difficulty;
+					difficulty += slottable.Difficulty;
 			}
 
 			tooltips.PrepareForDisplay();
@@ -358,6 +358,17 @@ namespace Umbra.Core.PassiveTreeSystem
 			{
 				writer.Write(activeNodes[k].ID);
 			}
+
+			writer.Write(storedItems.Count);
+
+			var keys = storedItems.Keys.ToList();
+			var values = storedItems.Values.ToList();
+
+			for (int k = 0; k < storedItems.Count; k++)
+			{
+				writer.Write(keys[k]);
+				ItemIO.Send(values[k], writer);
+			}
 		}
 
 		public void Deserialize(BinaryReader reader)
@@ -383,6 +394,19 @@ namespace Umbra.Core.PassiveTreeSystem
 			{
 				if (nodesById.TryGetValue(id, out Passive node) && node.CanBeActive())
 					node.active = true;
+			}
+
+			int itemCount = reader.ReadInt32();
+
+			storedItems.Clear();
+			for (int k = 0; k < itemCount; k++)
+			{
+				int key = reader.ReadInt32();
+
+				Item item = new();
+				ItemIO.Receive(item, reader);
+
+				storedItems.Add(key, item);
 			}
 
 			GenerateActiveCollections();
@@ -418,8 +442,8 @@ namespace Umbra.Core.PassiveTreeSystem
 					node.active = true;
 			}
 
-			var keys = tag.GetList<int>("itemKeys");
-			var values = tag.GetList<Item>("items");
+			IList<int> keys = tag.GetList<int>("itemKeys");
+			IList<Item> values = tag.GetList<Item>("items");
 
 			for (int k = 0; k < keys.Count; k++)
 			{

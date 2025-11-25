@@ -159,6 +159,31 @@ namespace Umbra.Core.PassiveTreeSystem
 
 		public static void SwitchToCustomTree()
 		{
+			string path = Path.Combine("Data", "Tree.json");
+
+			if (Umbra.Instance.FileExists(path))
+			{
+				Stream stream = Umbra.Instance.GetFileStream(path);
+
+				var options = new JsonSerializerOptions
+				{
+					Converters = { new PassiveConverter() },
+					PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+				};
+
+				tree = JsonSerializer.Deserialize<PassiveTree>(stream, options);
+				stream.Close();
+			}
+
+			tree.GenerateDicts();
+			tree.RegenrateConnections();
+			tree.RegenerateFlows();
+
+			hasCustomTree = true;
+		}
+
+		public static void SwitchToClearTree()
+		{
 			string path = Path.Combine("Data", "Template.json");
 
 			if (Umbra.Instance.FileExists(path))

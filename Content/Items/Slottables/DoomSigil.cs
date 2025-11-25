@@ -16,7 +16,7 @@ namespace Umbra.Content.Items.Slottables
 		public override void SetDefaults()
 		{
 			base.SetDefaults();
-			difficulty = 100;
+			baseDifficulty = 100;
 		}
 
 		public override void DrawInSlot(SpriteBatch spriteBatch, Vector2 center, float scale, int slotID)

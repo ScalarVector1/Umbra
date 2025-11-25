@@ -1,1628 +1,1558 @@
 {
   "nodes": [
     {
-      "type": "Umbra/StartPoint",
+      "type": "StartPoint",
       "id": 0,
       "cost": 0,
       "x": 0,
       "y": 0
     },
     {
-      "type": "Umbra/EnemyDamage",
+      "type": "EnemyDamage",
       "id": 1,
       "cost": 1,
       "x": 5,
       "y": -5
     },
     {
-      "type": "Umbra/EnemyLife",
+      "type": "EnemyLife",
       "id": 2,
       "cost": 1,
       "x": -5,
       "y": -5
     },
     {
-      "type": "Umbra/SpawnRate",
+      "type": "SpawnRate",
       "id": 3,
       "cost": 1,
       "x": 0,
       "y": 7
     },
     {
-      "type": "Umbra/EnemyDamage",
+      "type": "EnemyDamage",
       "id": 4,
       "cost": 1,
       "x": 7,
       "y": -10
     },
     {
-      "type": "Umbra/EnemyDamage",
+      "type": "EnemyDamage",
       "id": 5,
       "cost": 1,
       "x": 10,
       "y": -13
     },
     {
-      "type": "Umbra/EnemyBleed",
+      "type": "EnemyBleed",
       "id": 6,
       "cost": 1,
       "x": 10,
       "y": -7
     },
     {
-      "type": "Umbra/EnemyBleed",
+      "type": "EnemyBleed",
       "id": 7,
       "cost": 1,
       "x": 13,
       "y": -10
     },
     {
-      "type": "Umbra/EnemyDamage",
+      "type": "EnemyDamage",
       "id": 8,
       "cost": 1,
       "x": 15,
       "y": -15
     },
     {
-      "type": "Umbra/EnemyDamage",
+      "type": "EnemyDamage",
       "id": 9,
       "cost": 1,
       "x": 9,
       "y": -18
     },
     {
-      "type": "Umbra/EnemyDefense",
+      "type": "EnemyDefense",
       "id": 10,
       "cost": 2,
       "x": 4,
       "y": -20
     },
     {
-      "type": "Umbra/EnemyLife",
+      "type": "EnemyLife",
       "id": 11,
       "cost": 1,
       "x": -10,
       "y": -7
     },
     {
-      "type": "Umbra/EnemyLife",
+      "type": "EnemyLife",
       "id": 12,
       "cost": 1,
       "x": -13,
       "y": -10
     },
     {
-      "type": "Umbra/EnemyEndurance",
+      "type": "EnemyEndurance",
       "id": 13,
       "cost": 1,
       "x": -7,
       "y": -10
     },
     {
-      "type": "Umbra/EnemyEndurance",
+      "type": "EnemyEndurance",
       "id": 14,
       "cost": 1,
       "x": -10,
       "y": -13
     },
     {
-      "type": "Umbra/EnemyLife",
+      "type": "EnemyLife",
       "id": 15,
       "cost": 1,
       "x": -15,
       "y": -15
     },
     {
-      "type": "Umbra/EnemyLife",
+      "type": "EnemyLife",
       "id": 16,
       "cost": 1,
       "x": -9,
       "y": -18
     },
     {
-      "type": "Umbra/EnemyDefense",
+      "type": "EnemyDefense",
       "id": 17,
       "cost": 2,
       "x": -4,
       "y": -20
     },
     {
-      "type": "Umbra/EnemyMoreLife",
+      "type": "EnemyMoreLife",
       "id": 18,
       "cost": 2,
       "x": 0,
       "y": -17
     },
     {
-      "type": "Umbra/VampiricHorde",
+      "type": "VampiricHorde",
       "id": 19,
       "cost": 5,
       "x": 0,
       "y": -12
     },
     {
-      "type": "Umbra/EnemyBleed",
+      "type": "EnemyBleed",
       "id": 21,
       "cost": 1,
       "x": 10,
       "y": -3
     },
     {
-      "type": "Umbra/EnemyBleed",
+      "type": "EnemyBleed",
       "id": 22,
       "cost": 1,
       "x": 8,
       "y": 2
     },
     {
-      "type": "Umbra/EnemyBleed",
+      "type": "EnemyBleed",
       "id": 23,
       "cost": 1,
       "x": 6,
       "y": 8
     },
     {
-      "type": "Umbra/EnemyBleed",
+      "type": "EnemyBleed",
       "id": 24,
       "cost": 2,
       "x": 7,
       "y": 11
     },
     {
-      "type": "Umbra/EnemyBleed",
+      "type": "EnemyBleed",
       "id": 25,
       "cost": 2,
       "x": 10,
       "y": 12
     },
     {
-      "type": "Umbra/BurningBlood",
+      "type": "BurningBlood",
       "id": 29,
       "cost": 8,
       "x": 10,
       "y": 7
     },
     {
-      "type": "Umbra/EnemyPoision",
+      "type": "EnemyPoision",
       "id": 28,
       "cost": 1,
       "x": 12,
       "y": 2
     },
     {
-      "type": "Umbra/EnemyPoision",
+      "type": "EnemyPoision",
       "id": 27,
       "cost": 1,
       "x": 14,
       "y": 8
     },
     {
-      "type": "Umbra/EnemyPoision",
+      "type": "EnemyPoision",
       "id": 26,
       "cost": 2,
       "x": 13,
       "y": 11
     },
     {
-      "type": "Umbra/SpawnRate",
+      "type": "SpawnRate",
       "id": 34,
       "cost": 1,
       "x": 0,
       "y": 19
     },
     {
-      "type": "Umbra/EnemyRegen",
+      "type": "EnemyRegen",
       "id": 31,
       "cost": 1,
       "x": -2,
       "y": 15
     },
     {
-      "type": "Umbra/EnemyRegen",
+      "type": "EnemyRegen",
       "id": 30,
       "cost": 1,
       "x": -2,
       "y": 11
     },
     {
-      "type": "Umbra/SpawnRate",
+      "type": "SpawnRate",
       "id": 32,
       "cost": 1,
       "x": 2,
       "y": 11
     },
     {
-      "type": "Umbra/SpawnRate",
+      "type": "SpawnRate",
       "id": 33,
       "cost": 1,
       "x": 2,
       "y": 15
     },
     {
-      "type": "Umbra/PlayerWither",
+      "type": "PlayerWither",
       "id": 40,
       "cost": 1,
       "x": -18,
       "y": 6
     },
     {
-      "type": "Umbra/PlayerWither",
+      "type": "PlayerWither",
       "id": 41,
       "cost": 2,
       "x": -23,
       "y": 6
     },
     {
-      "type": "Umbra/PlayerWither",
+      "type": "PlayerWither",
       "id": 42,
       "cost": 2,
       "x": -24,
       "y": 2
     },
     {
-      "type": "Umbra/PlayerWither",
+      "type": "PlayerWither",
       "id": 43,
       "cost": 2,
       "x": -24,
       "y": 10
     },
     {
-      "type": "Umbra/VitalityVortex",
+      "type": "VitalityVortex",
       "id": 44,
       "cost": 8,
       "x": -27,
       "y": 6
     },
     {
-      "type": "Umbra/EnemyRegen",
+      "type": "EnemyRegen",
       "id": 45,
       "cost": 2,
       "x": -31,
       "y": 6
     },
     {
-      "type": "Umbra/EnemyRegen",
+      "type": "EnemyRegen",
       "id": 46,
       "cost": 2,
       "x": -30,
       "y": 2
     },
     {
-      "type": "Umbra/EnemyRegen",
+      "type": "EnemyRegen",
       "id": 47,
       "cost": 2,
       "x": -30,
       "y": 10
     },
     {
-      "type": "Umbra/EnemyRegen",
+      "type": "EnemyRegen",
       "id": 48,
       "cost": 2,
       "x": -27,
       "y": 1
     },
     {
-      "type": "Umbra/PlayerWither",
+      "type": "PlayerWither",
       "id": 49,
       "cost": 2,
       "x": -27,
       "y": 11
     },
     {
-      "type": "Umbra/PotionHealing",
+      "type": "PotionHealing",
       "id": 50,
       "cost": 2,
       "x": -13,
       "y": 8
     },
     {
-      "type": "Umbra/PotionHealing",
+      "type": "PotionHealing",
       "id": 51,
       "cost": 2,
       "x": -11,
       "y": 4
     },
     {
-      "type": "Umbra/PotionHealing",
+      "type": "PotionHealing",
       "id": 52,
       "cost": 2,
       "x": -11,
       "y": 0
     },
     {
-      "type": "Umbra/PotionSickness",
+      "type": "PotionSickness",
       "id": 53,
       "cost": 2,
       "x": -5,
       "y": 8
     },
     {
-      "type": "Umbra/PotionSickness",
+      "type": "PotionSickness",
       "id": 54,
       "cost": 2,
       "x": -7,
       "y": 4
     },
     {
-      "type": "Umbra/PotionSickness",
+      "type": "PotionSickness",
       "id": 55,
       "cost": 2,
       "x": -7,
       "y": 0
     },
     {
-      "type": "Umbra/SicklyPotions",
+      "type": "SicklyPotions",
       "id": 56,
       "cost": 8,
       "x": -9,
       "y": -3
     },
     {
-      "type": "Umbra/BossStrength",
+      "type": "BossStrength",
       "id": 58,
       "cost": 1,
       "x": 18,
       "y": 6
     },
     {
-      "type": "Umbra/BossStrength",
+      "type": "BossStrength",
       "id": 60,
       "cost": 2,
       "x": 22,
       "y": 9
     },
     {
-      "type": "Umbra/ElongatedEngagements",
+      "type": "ElongatedEngagements",
       "id": 65,
       "cost": 12,
       "x": 23,
       "y": 18
     },
     {
-      "type": "Umbra/DeadlyDuels",
+      "type": "DeadlyDuels",
       "id": 66,
       "cost": 12,
       "x": 31,
       "y": 10
     },
     {
-      "type": "Umbra/BossStrength",
+      "type": "BossStrength",
       "id": 63,
       "cost": 2,
       "x": 20,
       "y": 11
     },
     {
-      "type": "Umbra/BossStrength",
+      "type": "BossStrength",
       "id": 61,
       "cost": 2,
       "x": 24,
       "y": 7
     },
     {
-      "type": "Umbra/EnemyDamage",
+      "type": "EnemyDamage",
       "id": 62,
       "cost": 2,
       "x": 28,
       "y": 7
     },
     {
-      "type": "Umbra/EnemyLife",
+      "type": "EnemyLife",
       "id": 64,
       "cost": 2,
       "x": 20,
       "y": 15
     },
     {
-      "type": "Umbra/EnemyDefense",
+      "type": "EnemyDefense",
       "id": 67,
       "cost": 2,
       "x": 0,
       "y": -25
     },
     {
-      "type": "Umbra/EnemyEndurance",
+      "type": "EnemyEndurance",
       "id": 69,
       "cost": 2,
       "x": 5,
       "y": -30
     },
     {
-      "type": "Umbra/EnemySurvival",
+      "type": "EnemySurvival",
       "id": 68,
       "cost": 2,
       "x": -5,
       "y": -30
     },
     {
-      "type": "Umbra/EnemySurvival",
+      "type": "EnemySurvival",
       "id": 70,
       "cost": 2,
       "x": -5,
       "y": -39
     },
     {
-      "type": "Umbra/EnemyEndurance",
+      "type": "EnemyEndurance",
       "id": 71,
       "cost": 2,
       "x": 5,
       "y": -39
     },
     {
-      "type": "Umbra/EnemyRegen",
+      "type": "EnemyRegen",
       "id": 79,
       "cost": 2,
       "x": -15,
       "y": -25
     },
     {
-      "type": "Umbra/EnemyRegen",
+      "type": "EnemyRegen",
       "id": 80,
       "cost": 2,
       "x": -14,
       "y": -28
     },
     {
-      "type": "Umbra/EnemyRegen",
+      "type": "EnemyRegen",
       "id": 81,
       "cost": 2,
       "x": -17,
       "y": -30
     },
     {
-      "type": "Umbra/EnemyMoreLife",
+      "type": "EnemyMoreLife",
       "id": 74,
       "cost": 2,
       "x": -20,
       "y": -20
     },
     {
-      "type": "Umbra/EnemyLife",
+      "type": "EnemyLife",
       "id": 75,
       "cost": 2,
       "x": -25,
       "y": -25
     },
     {
-      "type": "Umbra/EnemyLife",
+      "type": "EnemyLife",
       "id": 76,
       "cost": 2,
       "x": -26,
       "y": -28
     },
     {
-      "type": "Umbra/EnemyLife",
+      "type": "EnemyLife",
       "id": 77,
       "cost": 2,
       "x": -23,
       "y": -30
     },
     {
-      "type": "Umbra/InstrumentsOfHarm",
+      "type": "InstrumentsOfHarm",
       "id": 86,
       "cost": 15,
       "x": 20,
       "y": -35
     },
     {
-      "type": "Umbra/MoreEnemyDamage",
+      "type": "MoreEnemyDamage",
       "id": 84,
       "cost": 2,
       "x": 22,
       "y": -31
     },
     {
-      "type": "Umbra/MoreEnemyDamage",
+      "type": "MoreEnemyDamage",
       "id": 85,
       "cost": 2,
       "x": 22,
       "y": -25
     },
     {
-      "type": "Umbra/EnemyDamage",
+      "type": "EnemyDamage",
       "id": 90,
       "cost": 1,
       "x": 15,
       "y": -23
     },
     {
-      "type": "Umbra/EnemyDamage",
+      "type": "EnemyDamage",
       "id": 91,
       "cost": 1,
       "x": 25,
       "y": -23
     },
     {
-      "type": "Umbra/EnemyDamage",
+      "type": "EnemyDamage",
       "id": 89,
       "cost": 2,
       "x": 20,
       "y": -18
     },
     {
-      "type": "Umbra/EnemyBleed",
+      "type": "EnemyBleed",
       "id": 88,
       "cost": 2,
       "x": 18,
       "y": -25
     },
     {
-      "type": "Umbra/EnemyBleed",
+      "type": "EnemyBleed",
       "id": 87,
       "cost": 2,
       "x": 18,
       "y": -31
     },
     {
-      "type": "Umbra/MoreEnemyDamage",
+      "type": "MoreEnemyDamage",
       "id": 83,
       "cost": 2,
       "x": 20,
       "y": -23
     },
     {
-      "type": "Umbra/EnemyDefense",
+      "type": "EnemyDefense",
       "id": 92,
       "cost": 2,
       "x": -14,
       "y": 17
     },
     {
-      "type": "Umbra/EnemyDefense",
+      "type": "EnemyDefense",
       "id": 93,
       "cost": 2,
       "x": -17,
       "y": 20
     },
     {
-      "type": "Umbra/EnemyDefense",
+      "type": "EnemyDefense",
       "id": 94,
       "cost": 2,
       "x": -17,
       "y": 24
     },
     {
-      "type": "Umbra/PanicGuard",
+      "type": "PanicGuard",
       "id": 95,
       "cost": 12,
       "x": -20,
       "y": 27
     },
     {
-      "type": "Umbra/StarlightRiverGate",
+      "type": "StarlightRiverGate",
       "id": 96,
       "cost": 0,
       "x": -21,
       "y": 20
     },
     {
-      "type": "Umbra/StarlightEnemyBarrier",
+      "type": "StarlightEnemyBarrier",
       "id": 97,
       "cost": 2,
       "x": -24,
       "y": 22
     },
     {
-      "type": "Umbra/StarlightEnemyBarrier",
+      "type": "StarlightEnemyBarrier",
       "id": 98,
       "cost": 3,
       "x": -27,
       "y": 19
     },
     {
-      "type": "Umbra/StarlightEnemyBarrier",
+      "type": "StarlightEnemyBarrier",
       "id": 99,
       "cost": 4,
       "x": -30,
       "y": 22
     },
     {
-      "type": "Umbra/StarlightEnemyBarrier",
+      "type": "StarlightEnemyBarrier",
       "id": 100,
       "cost": 3,
       "x": -27,
       "y": 25
     },
     {
-      "type": "Umbra/ManaTithe",
+      "type": "ManaTithe",
       "id": 101,
       "cost": 8,
       "x": 0,
       "y": 23
     },
     {
-      "type": "Umbra/ManaCost",
+      "type": "ManaCost",
       "id": 102,
       "cost": 2,
       "x": -3,
       "y": 27
     },
     {
-      "type": "Umbra/ManaCost",
+      "type": "ManaCost",
       "id": 103,
       "cost": 2,
       "x": -7,
       "y": 29
     },
     {
-      "type": "Umbra/ManaCost",
+      "type": "ManaCost",
       "id": 104,
       "cost": 2,
       "x": -4,
       "y": 32
     },
     {
-      "type": "Umbra/ManaCost",
+      "type": "ManaCost",
       "id": 105,
       "cost": 2,
       "x": -4,
       "y": 36
     },
     {
-      "type": "Umbra/ManaCost",
+      "type": "ManaCost",
       "id": 106,
       "cost": 2,
       "x": 0,
       "y": 34
     },
     {
-      "type": "Umbra/ManaDamage",
+      "type": "ManaDamage",
       "id": 107,
       "cost": 2,
       "x": 4,
       "y": 36
     },
     {
-      "type": "Umbra/ManaDamage",
+      "type": "ManaDamage",
       "id": 108,
       "cost": 2,
       "x": 4,
       "y": 32
     },
     {
-      "type": "Umbra/ManaDamage",
+      "type": "ManaDamage",
       "id": 109,
       "cost": 2,
       "x": 7,
       "y": 29
     },
     {
-      "type": "Umbra/ManaDamage",
+      "type": "ManaDamage",
       "id": 110,
       "cost": 2,
       "x": 3,
       "y": 27
     },
     {
-      "type": "Umbra/ManaFlux",
+      "type": "ManaFlux",
       "id": 111,
       "cost": 12,
       "x": 0,
       "y": 30
     },
     {
-      "type": "Umbra/UndeniableFoes",
+      "type": "UndeniableFoes",
       "id": 72,
       "cost": 12,
       "x": 0,
       "y": -37
     },
     {
-      "type": "Umbra/Mending",
+      "type": "EnemyDefense",
+      "id": 73,
+      "cost": 2,
+      "x": 0,
+      "y": -32
+    },
+    {
+      "type": "Mending",
       "id": 78,
       "cost": 10,
       "x": -20,
       "y": -28
     },
     {
-      "type": "Umbra/EnemyLife",
+      "type": "EnemyMoreLife",
+      "id": 82,
+      "cost": 2,
+      "x": -20,
+      "y": -24
+    },
+    {
+      "type": "EnemyLife",
       "id": 112,
       "cost": 3,
       "x": -20,
       "y": -43
     },
     {
-      "type": "Umbra/EnemyEndurance",
+      "type": "EnemyEndurance",
       "id": 113,
       "cost": 3,
       "x": 0,
       "y": -46
     },
     {
-      "type": "Umbra/EnemyDamage",
+      "type": "EnemyDamage",
       "id": 114,
       "cost": 3,
       "x": 20,
       "y": -43
     },
     {
-      "type": "Umbra/EnemyDefense",
+      "type": "EnemyDefense",
       "id": 120,
       "cost": 3,
       "x": -32,
       "y": -12
     },
     {
-      "type": "Umbra/EnemyEndurance",
+      "type": "EnemyEndurance",
       "id": 121,
       "cost": 4,
       "x": -29,
       "y": -15
     },
     {
-      "type": "Umbra/EnemyDefense",
+      "type": "EnemyDefense",
       "id": 122,
       "cost": 5,
       "x": -25,
       "y": -14
     },
     {
-      "type": "Umbra/EnemyEndurance",
+      "type": "EnemyEndurance",
       "id": 123,
       "cost": 6,
       "x": -24,
       "y": -10
     },
     {
-      "type": "Umbra/WormsInfluence",
+      "type": "WormsInfluence",
       "id": 124,
       "cost": 20,
       "x": -27,
       "y": -7
     },
     {
-      "type": "Umbra/MoreEnemyDamage",
+      "type": "MoreEnemyDamage",
       "id": 129,
       "cost": 3,
       "x": 25,
       "y": -10
     },
     {
-      "type": "Umbra/MoreEnemyDamage",
+      "type": "MoreEnemyDamage",
       "id": 130,
       "cost": 3,
       "x": 25,
       "y": -5
     },
     {
-      "type": "Umbra/PiercePenalty",
+      "type": "PiercePenalty",
       "id": 131,
       "cost": 5,
       "x": 25,
       "y": -1
     },
     {
-      "type": "Umbra/PiercePenalty",
+      "type": "PiercePenalty",
       "id": 133,
       "cost": 5,
       "x": 29,
       "y": -5
     },
     {
-      "type": "Umbra/Heartbreakers",
+      "type": "Heartbreakers",
       "id": 134,
       "cost": 12,
       "x": 31,
       "y": 1
     },
     {
-      "type": "Umbra/Mundanity",
+      "type": "Mundanity",
       "id": 140,
       "cost": 30,
       "x": 0,
       "y": 39
     },
     {
-      "type": "Umbra/HardmodeStrength",
+      "type": "HardmodeStrength",
       "id": 141,
       "cost": 4,
       "x": 0,
       "y": -56
     },
     {
-      "type": "Umbra/HardmodeStrength",
+      "type": "HardmodeStrength",
       "id": 142,
       "cost": 4,
       "x": -20,
       "y": -52
     },
     {
-      "type": "Umbra/HardmodeStrength",
+      "type": "HardmodeStrength",
       "id": 143,
       "cost": 4,
       "x": 20,
       "y": -52
     },
     {
-      "type": "Umbra/HardmodeDoubleChance",
+      "type": "HardmodeDoubleChance",
       "id": 144,
       "cost": 5,
       "x": -2,
       "y": -61
     },
     {
-      "type": "Umbra/SpawnRate",
+      "type": "SpawnRate",
       "id": 145,
       "cost": 5,
       "x": 2,
       "y": -61
     },
     {
-      "type": "Umbra/SpawnRate",
+      "type": "SpawnRate",
       "id": 146,
       "cost": 5,
       "x": 2,
       "y": -66
     },
     {
-      "type": "Umbra/HardmodeDoubleChance",
+      "type": "HardmodeDoubleChance",
       "id": 147,
       "cost": 5,
       "x": -2,
       "y": -66
     },
     {
-      "type": "Umbra/SpontaneousGeneration",
+      "type": "SpontaneousGeneration",
       "id": 148,
       "cost": 15,
       "x": 0,
       "y": -70
     },
     {
-      "type": "Umbra/StrengthPerDoom",
+      "type": "StrengthPerDoom",
       "id": 149,
       "cost": 5,
       "x": -20,
       "y": -56
     },
     {
-      "type": "Umbra/StrengthPerDoom",
+      "type": "StrengthPerDoom",
       "id": 150,
       "cost": 6,
       "x": -23,
       "y": -59
     },
     {
-      "type": "Umbra/StrengthPerDoom",
+      "type": "StrengthPerDoom",
       "id": 151,
       "cost": 6,
       "x": -17,
       "y": -59
     },
     {
-      "type": "Umbra/HardmodeStrengthPerDoom",
+      "type": "HardmodeStrengthPerDoom",
       "id": 152,
       "cost": 8,
       "x": -20,
       "y": -62
     },
     {
-      "type": "Umbra/DoomConflux",
+      "type": "DoomConflux",
       "id": 153,
       "cost": 25,
       "x": -20,
       "y": -59
     },
     {
-      "type": "Umbra/HardmodeEnemyVenom",
+      "type": "HardmodeEnemyVenom",
       "id": 154,
       "cost": 4,
       "x": 20,
       "y": -57
     },
     {
-      "type": "Umbra/HardmodeEnemyVenom",
+      "type": "HardmodeEnemyVenom",
       "id": 155,
       "cost": 5,
       "x": 17,
       "y": -59
     },
     {
-      "type": "Umbra/EnemyPoision",
+      "type": "EnemyPoision",
       "id": 156,
       "cost": 5,
       "x": 23,
       "y": -59
     },
     {
-      "type": "Umbra/EnemyPoision",
+      "type": "EnemyPoision",
       "id": 157,
       "cost": 6,
       "x": 24,
       "y": -62
     },
     {
-      "type": "Umbra/HardmodeEnemyVenom",
+      "type": "HardmodeEnemyVenom",
       "id": 158,
       "cost": 6,
       "x": 16,
       "y": -62
     },
     {
-      "type": "Umbra/HardmodeEnemyVenom",
+      "type": "HardmodeEnemyVenom",
       "id": 160,
       "cost": 6,
       "x": 18,
       "y": -69
     },
     {
-      "type": "Umbra/Comorbidity",
+      "type": "Comorbidity",
       "id": 161,
       "cost": 18,
       "x": 20,
       "y": -62
     },
     {
-      "type": "Umbra/EnemyPoision",
+      "type": "EnemyPoision",
       "id": 159,
       "cost": 6,
       "x": 22,
       "y": -69
     },
     {
-      "type": "Umbra/HardmodeEnemyPoision",
+      "type": "HardmodeEnemyPoision",
       "id": 162,
       "cost": 6,
       "x": 20,
       "y": -75
     },
     {
-      "type": "Umbra/DoomBeacon",
+      "type": "DoomBeacon",
       "id": 163,
       "cost": 20,
       "x": -20,
       "y": -66
     },
     {
-      "type": "Umbra/PotionSickness",
+      "type": "PotionSickness",
       "id": 164,
       "cost": 4,
       "x": 31,
       "y": 25
     },
     {
-      "type": "Umbra/PotionSickness",
+      "type": "PotionSickness",
       "id": 165,
       "cost": 4,
       "x": 28,
       "y": 28
     },
     {
-      "type": "Umbra/PotionSickness",
+      "type": "PotionSickness",
       "id": 166,
       "cost": 4,
       "x": 25,
       "y": 25
     },
     {
-      "type": "Umbra/BadMedicine",
+      "type": "BadMedicine",
       "id": 167,
       "cost": 16,
       "x": 28,
       "y": 22
     },
     {
-      "type": "Umbra/TwistOfFate",
+      "type": "TwistOfFate",
       "id": 168,
       "cost": 5,
       "x": 0,
       "y": -6
     },
     {
-      "type": "Umbra/VengefulShades",
+      "type": "VengefulShades",
       "id": 169,
       "cost": 15,
       "x": -11,
       "y": -70
     },
     {
-      "type": "Umbra/CalamityGate",
+      "type": "CalamityGate",
       "id": 170,
       "cost": 0,
       "x": 41,
       "y": -10
     },
     {
-      "type": "Umbra/CalamityDamage",
+      "type": "CalamityDamage",
       "id": 171,
       "cost": 3,
       "x": 45,
       "y": -10
     },
     {
-      "type": "Umbra/CalamityDamage",
+      "type": "CalamityDamage",
       "id": 172,
       "cost": 3,
       "x": 45,
       "y": -14
     },
     {
-      "type": "Umbra/CalamityDamage",
+      "type": "CalamityDamage",
       "id": 173,
       "cost": 4,
       "x": 47,
       "y": -16
     },
     {
-      "type": "Umbra/CalamityDamage",
+      "type": "CalamityDamage",
       "id": 174,
       "cost": 4,
       "x": 43,
       "y": -16
     },
     {
-      "type": "Umbra/EnemyDodge",
+      "type": "EnemyDodge",
       "id": 175,
       "cost": 3,
       "x": -40,
       "y": -8
     },
     {
-      "type": "Umbra/EnemyDodge",
+      "type": "EnemyDodge",
       "id": 176,
       "cost": 4,
       "x": -43,
       "y": -5
     },
     {
-      "type": "Umbra/EnemyDodge",
+      "type": "EnemyDodge",
       "id": 177,
       "cost": 5,
       "x": -47,
       "y": -6
     },
     {
-      "type": "Umbra/EnemyDodge",
+      "type": "EnemyDodge",
       "id": 178,
       "cost": 6,
       "x": -48,
       "y": -10
     },
     {
-      "type": "Umbra/HardmodeGate",
+      "type": "HardmodeGate",
       "id": 179,
       "cost": 0,
       "x": -27,
       "y": -47
     },
     {
-      "type": "Umbra/HardmodeGate",
+      "type": "HardmodeGate",
       "id": 115,
       "cost": 0,
       "x": 28,
       "y": -47
     },
     {
-      "type": "Umbra/TemporalTrance",
+      "type": "TemporalTrance",
       "id": 180,
       "cost": 50,
       "x": 0,
       "y": -51
     },
     {
-      "type": "Umbra/FlyingDaggers",
+      "type": "FlyingDaggers",
       "id": 181,
       "cost": 25,
       "x": -45,
       "y": -13
     },
     {
-      "type": "Umbra/BloodMoonStrength",
+      "type": "BloodMoonStrength",
       "id": 183,
       "cost": 4,
       "x": 42,
       "y": -31
     },
     {
-      "type": "Umbra/BloodMoonStrength",
+      "type": "BloodMoonStrength",
       "id": 184,
       "cost": 4,
       "x": 42,
       "y": -36
     },
     {
-      "type": "Umbra/BloodMoonStrength",
+      "type": "BloodMoonStrength",
       "id": 185,
       "cost": 4,
       "x": 45,
       "y": -40
     },
     {
-      "type": "Umbra/BloodMoonBleed",
+      "type": "BloodMoonBleed",
       "id": 186,
       "cost": 4,
       "x": 48,
       "y": -24
     },
     {
-      "type": "Umbra/BloodMoonBleed",
+      "type": "BloodMoonBleed",
       "id": 187,
       "cost": 4,
       "x": 53,
       "y": -24
     },
     {
-      "type": "Umbra/BloodMoonBleed",
+      "type": "BloodMoonBleed",
       "id": 188,
       "cost": 4,
       "x": 57,
       "y": -27
     },
     {
-      "type": "Umbra/BloodMoonBleed",
+      "type": "BloodMoonBleed",
       "id": 189,
       "cost": 4,
       "x": 51,
       "y": -27
     },
     {
-      "type": "Umbra/BloodMoonStrength",
+      "type": "BloodMoonStrength",
       "id": 190,
       "cost": 4,
       "x": 45,
       "y": -35
     },
     {
-      "type": "Umbra/Halfbloods",
+      "type": "Halfbloods",
       "id": 191,
       "cost": 35,
       "x": 47,
       "y": -30
     },
     {
-      "type": "Umbra/BloodMoonBleed",
+      "type": "BloodMoonBleed",
       "id": 182,
       "cost": 4,
       "x": 44,
       "y": -27
     },
     {
-      "type": "Umbra/Darkness",
+      "type": "Darkness",
       "id": 192,
       "cost": 4,
       "x": -43,
       "y": 6
     },
     {
-      "type": "Umbra/Darkness",
+      "type": "Darkness",
       "id": 193,
       "cost": 4,
       "x": -47,
       "y": 9
     },
     {
-      "type": "Umbra/Darkness",
+      "type": "Darkness",
       "id": 194,
       "cost": 4,
       "x": -53,
       "y": 9
     },
     {
-      "type": "Umbra/Darkness",
+      "type": "Darkness",
       "id": 195,
       "cost": 4,
       "x": -57,
       "y": 6
     },
     {
-      "type": "Umbra/EnemyDodge",
+      "type": "EnemyDodge",
       "id": 196,
       "cost": 5,
       "x": -47,
       "y": 3
     },
     {
-      "type": "Umbra/EnemyDodge",
+      "type": "EnemyDodge",
       "id": 197,
       "cost": 5,
       "x": -53,
       "y": 3
     },
     {
-      "type": "Umbra/CreepingDarkness",
+      "type": "CreepingDarkness",
       "id": 198,
       "cost": 15,
       "x": -50,
       "y": 6
     },
     {
-      "type": "Umbra/EnemySlow",
+      "type": "EnemySlow",
       "id": 199,
       "cost": 3,
       "x": -41,
       "y": 29
     },
     {
-      "type": "Umbra/EnemySlow",
+      "type": "EnemySlow",
       "id": 200,
       "cost": 3,
       "x": -49,
       "y": 25
     },
     {
-      "type": "Umbra/EnemySlow",
+      "type": "EnemySlow",
       "id": 201,
       "cost": 3,
       "x": -53,
       "y": 30
     },
     {
-      "type": "Umbra/EnemySlow",
+      "type": "EnemySlow",
       "id": 202,
       "cost": 3,
       "x": -49,
       "y": 34
     },
     {
-      "type": "Umbra/EnemySlow",
+      "type": "EnemySlow",
       "id": 203,
       "cost": 3,
       "x": -46,
       "y": 32
     },
     {
-      "type": "Umbra/Sluggishness",
+      "type": "Sluggishness",
       "id": 204,
       "cost": 20,
       "x": -49,
       "y": 30
     },
     {
-      "type": "Umbra/EnemyPoision",
+      "type": "EnemyPoision",
       "id": 205,
       "cost": 3,
       "x": -45,
       "y": 26
     },
     {
-      "type": "Umbra/EnemyPoision",
+      "type": "EnemyPoision",
       "id": 206,
       "cost": 3,
       "x": -52,
       "y": 27
     },
     {
-      "type": "Umbra/EnemyPoision",
+      "type": "EnemyPoision",
       "id": 207,
       "cost": 3,
       "x": -52,
       "y": 33
     },
     {
-      "type": "Umbra/EnemyFrostburn",
+      "type": "EnemyFrostburn",
       "id": 208,
       "cost": 3,
       "x": 0,
       "y": 49
     },
     {
-      "type": "Umbra/Snowflakes",
+      "type": "Snowflakes",
       "id": 210,
       "cost": 25,
       "x": 0,
       "y": 58
     },
     {
-      "type": "Umbra/EnemyFrostburn",
+      "type": "EnemyFrostburn",
       "id": 215,
       "cost": 5,
       "x": 0,
       "y": 67
     },
     {
-      "type": "Umbra/EnemySlow",
+      "type": "EnemySlow",
       "id": 213,
       "cost": 3,
       "x": 4,
       "y": 58
     },
     {
-      "type": "Umbra/EnemyFrostburn",
+      "type": "EnemyFrostburn",
       "id": 209,
       "cost": 3,
       "x": 0,
       "y": 54
     },
     {
-      "type": "Umbra/EnemySlow",
+      "type": "EnemySlow",
       "id": 211,
       "cost": 3,
       "x": -4,
       "y": 58
     },
     {
-      "type": "Umbra/EnemySlow",
+      "type": "EnemySlow",
       "id": 214,
       "cost": 5,
       "x": -9,
       "y": 58
     },
     {
-      "type": "Umbra/EnemyFrostburn",
+      "type": "EnemyFrostburn",
       "id": 212,
       "cost": 3,
       "x": 0,
       "y": 62
     },
     {
-      "type": "Umbra/EnemySlow",
+      "type": "EnemySlow",
       "id": 216,
       "cost": 5,
       "x": 9,
       "y": 58
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 118,
       "cost": 3,
       "x": -36,
       "y": -41
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 119,
       "cost": 3,
       "x": -36,
       "y": -27
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 117,
       "cost": 3,
       "x": -36,
       "y": -10
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 116,
       "cost": 3,
       "x": -36,
       "y": 6
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 137,
       "cost": 3,
       "x": -36,
       "y": 29
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 135,
       "cost": 3,
       "x": -12,
       "y": 41
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 136,
       "cost": 3,
       "x": 12,
       "y": 41
     },
     {
-      "type": "Umbra/EnemyMoreLife",
+      "type": "EnemyMoreLife",
       "id": 139,
       "cost": 3,
       "x": 0,
       "y": 44
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 138,
       "cost": 3,
       "x": 35,
       "y": 29
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 128,
       "cost": 3,
       "x": 35,
       "y": -10
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 127,
       "cost": 3,
       "x": 35,
       "y": -27
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 126,
       "cost": 3,
       "x": 35,
       "y": -40
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 37,
       "cost": 1,
       "x": -14,
       "y": 12
     },
     {
-      "type": "Umbra/EnemySurvival",
+      "type": "EnemySurvival",
       "id": 125,
       "cost": 3,
       "x": -12,
       "y": 29
     },
     {
-      "type": "Umbra/EnemySurvival",
+      "type": "EnemySurvival",
       "id": 132,
       "cost": 3,
       "x": 12,
       "y": 29
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 35,
       "cost": 1,
       "x": -8,
       "y": 17
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 36,
       "cost": 1,
       "x": 8,
       "y": 17
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 57,
       "cost": 1,
       "x": 15,
       "y": 12
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 59,
       "cost": 1,
       "x": 19,
       "y": -2
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 20,
       "cost": 1,
       "x": 19,
       "y": -9
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 39,
       "cost": 1,
       "x": -19,
       "y": -2
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 38,
       "cost": 1,
       "x": -19,
       "y": -9
     },
     {
-      "type": "Umbra/EnemyDefense",
+      "type": "EnemyDefense",
       "id": 217,
       "cost": 4,
       "x": -43,
       "y": -41
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 218,
       "cost": 4,
       "x": -46,
       "y": -38
     },
     {
-      "type": "Umbra/EnemyDefense",
+      "type": "EnemyDefense",
       "id": 219,
       "cost": 4,
       "x": -49,
       "y": -41
     },
     {
-      "type": "Umbra/EnemyStrength",
+      "type": "EnemyStrength",
       "id": 220,
       "cost": 4,
       "x": -46,
       "y": -44
     },
     {
-      "type": "Umbra/GalvanizedGrunts",
+      "type": "GalvanizedGrunts",
       "id": 221,
       "cost": 18,
       "x": -46,
       "y": -41
-    },
-    {
-      "type": "Umbra/Slot",
-      "id": 73,
-      "cost": 25,
-      "x": 0,
-      "y": -32
-    },
-    {
-      "type": "Umbra/Slot",
-      "id": 82,
-      "cost": 25,
-      "x": -20,
-      "y": -24
-    },
-    {
-      "type": "Umbra/Slot",
-      "id": 222,
-      "cost": 25,
-      "x": 20,
-      "y": -28
-    },
-    {
-      "type": "Umbra/EnemyMoreLife",
-      "id": 223,
-      "cost": 5,
-      "x": -29,
-      "y": 34
-    },
-    {
-      "type": "Umbra/EnemyMoreLife",
-      "id": 224,
-      "cost": 5,
-      "x": -21,
-      "y": 38
-    },
-    {
-      "type": "Umbra/Slot",
-      "id": 225,
-      "cost": 25,
-      "x": -27,
-      "y": 39
-    },
-    {
-      "type": "Umbra/EnemyDefense",
-      "id": 226,
-      "cost": 5,
-      "x": 20,
-      "y": 38
-    },
-    {
-      "type": "Umbra/EnemyDefense",
-      "id": 227,
-      "cost": 5,
-      "x": 28,
-      "y": 34
-    },
-    {
-      "type": "Umbra/Slot",
-      "id": 228,
-      "cost": 25,
-      "x": 26,
-      "y": 39
-    },
-    {
-      "type": "Umbra/Slot",
-      "id": 229,
-      "cost": 40,
-      "x": -10,
-      "y": -60
-    },
-    {
-      "type": "Umbra/Slot",
-      "id": 230,
-      "cost": 40,
-      "x": 10,
-      "y": -60
-    },
-    {
-      "type": "Umbra/Slot",
-      "id": 231,
-      "cost": 30,
-      "x": 52,
-      "y": -34
     }
   ],
   "edges": [
@@ -2247,12 +2177,20 @@
       "end": 136
     },
     {
+      "start": 135,
+      "end": 137
+    },
+    {
       "start": 137,
       "end": 116
     },
     {
       "start": 138,
       "end": 128
+    },
+    {
+      "start": 138,
+      "end": 136
     },
     {
       "start": 139,
@@ -2629,70 +2567,6 @@
     {
       "start": 220,
       "end": 221
-    },
-    {
-      "start": 86,
-      "end": 222
-    },
-    {
-      "start": 137,
-      "end": 223
-    },
-    {
-      "start": 224,
-      "end": 135
-    },
-    {
-      "start": 224,
-      "end": 225
-    },
-    {
-      "start": 225,
-      "end": 223
-    },
-    {
-      "start": 224,
-      "end": 223
-    },
-    {
-      "start": 136,
-      "end": 226
-    },
-    {
-      "start": 226,
-      "end": 227
-    },
-    {
-      "start": 227,
-      "end": 138
-    },
-    {
-      "start": 227,
-      "end": 228
-    },
-    {
-      "start": 228,
-      "end": 226
-    },
-    {
-      "start": 229,
-      "end": 151
-    },
-    {
-      "start": 230,
-      "end": 155
-    },
-    {
-      "start": 230,
-      "end": 148
-    },
-    {
-      "start": 229,
-      "end": 148
-    },
-    {
-      "start": 191,
-      "end": 231
     }
   ]
 }

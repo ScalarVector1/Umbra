@@ -1,7 +1,10 @@
-﻿using Terraria;
+﻿using System.Text;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Umbra.Content.Items.Slottables;
+using Umbra.Content.Items.Slottables.Effects;
+using Umbra.Core;
 using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives
@@ -14,7 +17,28 @@ namespace Umbra.Content.Passives
 
 		public override string DisplayName => SlottedItem?.Item?.Name ?? base.Name;
 
-		public override string Tooltip => SlottedItem?.Item?.ToolTip?._text?.Value ?? "";
+		public override string Tooltip
+		{
+			get
+			{
+				if (SlottedItem is not null)
+				{
+					StringBuilder builder = new();
+
+					foreach(SlottableEffect effect in SlottedItem.effects)
+					{
+						builder.AppendLine(effect.Tooltip);
+					}
+
+					return builder.ToString();
+				}
+				else
+				{
+					return "";
+				}
+			}
+		}
+
 
 		public override void SetDefaults()
 		{
@@ -37,6 +61,7 @@ namespace Umbra.Content.Passives
 				Main.mouseItem.TurnToAir();
 
 				SlottedItem?.OnSocket();
+				UmbraNet.SyncTree();
 			}
 			else if ((Main.mouseItem is null || Main.mouseItem.IsAir) && SlottedItem is not null)
 			{
@@ -44,9 +69,11 @@ namespace Umbra.Content.Passives
 
 				Main.mouseItem = SlottedItem.Item.Clone();
 				TreeSystem.tree.storedItems.Remove(ID);
+				UmbraNet.SyncTree();
 			}
 
 			TreeSystem.tree.CalcDifficultyAndTooltips();
+			
 		}
 
 		public override bool CanDeallocate(Player player)

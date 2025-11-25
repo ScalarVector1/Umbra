@@ -41,13 +41,37 @@ Items: {
 	}
 
 	CraftedGem: {
-		DisplayName: Crafted Gem
-		Tooltip: ""
+		DisplayName: "{0} {1} Crafted Gemstone"
+		Tooltip:
+			'''
+			[c/AAAAAA:Place this into a socket on the umbral tree to gain it's effects]
+			[c/AAAAAA:Can be reforged to change some effects]
+			'''
+		Variant1_0: Rough
+		Variant1_1: Artificial
+		Variant1_2: Imperfect
+		Variant1_3: Dirty
+		Variant1_4: Flawed
+		Variant2_0: Cluster
+		Variant2_1: Geode
+		Variant2_2: Crystal
+		Variant2_3: Clump
+		Variant2_4: Stone
 	}
 
 	LargeGem: {
-		DisplayName: Large Gem
-		Tooltip: ""
+		DisplayName: "{0} {1} Large Gemstone"
+		Tooltip: "[c/AAAAAA:Place this into a socket on the umbral tree to gain it's effects]"
+		Variant1_0: Gleaming
+		Variant1_1: Shining
+		Variant1_2: Bright
+		Variant1_3: Radiant
+		Variant1_4: Stellar
+		Variant2_0: Cluster
+		Variant2_1: Geode
+		Variant2_2: Crystal
+		Variant2_3: Jewel
+		Variant2_4: Stone
 	}
 
 	BasicSetting: {
@@ -571,6 +595,18 @@ UmbraPassives: {
 		Name: Jewel Slot
 		Tooltip: Mods.Umbra.UmbraPassives.Slot.Tooltip
 	}
+}
+
+UmbraSlottableEffects: {
+	PlayerLifeEffect.Tooltip: Players have [c/AAAAFF:+{0}] life
+	PlayerCritEffect.Tooltip: Players have [c/AAAAFF:+{0}%] critical strike chance
+	PlayerDamageEffect.Tooltip: Players have [c/AAAAFF:{0}%] increased damage
+	PlayerDefenseEffect.Tooltip: Players have [c/AAAAFF:+{0}] defense
+	PlayerEnduranceEffect.Tooltip: Players take [c/AAAAFF:{0}%] decreased damage from hits
+	PlayerLifeRegenEffect.Tooltip: Players have [c/AAAAFF:+{0}] life regeneration per second
+	PlayerManaEffect.Tooltip: Players have [c/AAAAFF:+{0}] mana
+	PlayerManaRegenEffect.Tooltip: Players have [c/AAAAFF:+{0}] mana regeneration per second
+	PlayerSpeedEffect.Tooltip: Players have [c/AAAAFF:{0}%] increased movement speed
 }
 
 Buffs: {
