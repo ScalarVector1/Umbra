@@ -83,6 +83,11 @@ Items: {
 		// DisplayName: Doom Sigil
 		// Tooltip: ""
 	}
+
+	CraftableGemCraft: {
+		// DisplayName: Craftable Gem Craft
+		// Tooltip: ""
+	}
 }
 
 GUI: {

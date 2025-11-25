@@ -15,7 +15,7 @@ namespace Umbra.Content.Passives
 
 		public Slottable SlottedItem => TreeSystem.tree.storedItems.ContainsKey(ID) ? TreeSystem.tree.storedItems[ID].ModItem as Slottable : null;
 
-		public override string DisplayName => SlottedItem?.Item?.Name ?? base.Name;
+		public override string DisplayName => SlottedItem?.Item?.Name ?? base.DisplayName;
 
 		public override string Tooltip
 		{
@@ -34,7 +34,7 @@ namespace Umbra.Content.Passives
 				}
 				else
 				{
-					return "";
+					return base.Tooltip;
 				}
 			}
 		}

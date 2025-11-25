@@ -83,6 +83,11 @@ Items: {
 		DisplayName: Doom Sigil
 		Tooltip: ""
 	}
+
+	CraftableGemCraft: {
+		DisplayName: Random Crafted Gemstone
+		Tooltip: "[c/AAAAAA:Craft a random crafted gemstone, which can be placed in slots in the umbral tree for beneficial effects]"
+	}
 }
 
 GUI: {
@@ -592,8 +597,8 @@ UmbraPassives: {
 	}
 
 	Slot: {
-		Name: Jewel Slot
-		Tooltip: Mods.Umbra.UmbraPassives.Slot.Tooltip
+		Name: Gemstone Slot
+		Tooltip: Can hold a gemstone
 	}
 }
 
