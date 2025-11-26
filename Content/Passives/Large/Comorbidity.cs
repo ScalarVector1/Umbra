@@ -46,7 +46,9 @@ namespace Umbra.Content.Passives.Large
 					player.AddBuff(BuffID.Poisoned, duration);
 
 					int poisonIndex = player.FindBuffIndex(BuffID.Poisoned);
-					player.buffTime[poisonIndex] = duration;
+
+					if (poisonIndex != -1)
+						player.buffTime[poisonIndex] = duration;
 				}
 				else
 				{
