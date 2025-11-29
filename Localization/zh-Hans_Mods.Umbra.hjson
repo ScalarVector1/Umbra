@@ -87,8 +87,8 @@ Items: {
 	}
 
 	CraftableGemCraft: {
-		// DisplayName: Craftable Gem Craft
-		// Tooltip: ""
+		// DisplayName: Random Crafted Gemstone
+		// Tooltip: "[c/AAAAAA:Craft a random crafted gemstone, which can be placed in slots in the umbral tree for beneficial effects]"
 	}
 }
 
@@ -639,8 +639,8 @@ UmbraPassives: {
 	}
 
 	Slot: {
-		// Name: Jewel Slot
-		// Tooltip: Mods.Umbra.UmbraPassives.Slot.Tooltip
+		// Name: Gemstone Slot
+		// Tooltip: Can hold a gemstone
 	}
 }
 
@@ -654,6 +654,8 @@ UmbraSlottableEffects: {
 	// PlayerManaEffect.Tooltip: Players have [c/AAAAFF:+{0}] mana
 	// PlayerManaRegenEffect.Tooltip: Players have [c/AAAAFF:+{0}] mana regeneration per second
 	// PlayerSpeedEffect.Tooltip: Players have [c/AAAAFF:{0}%] increased movement speed
+	// Flamebolts.Tooltip: Mods.Umbra.UmbraSlottableEffects.Flamebolts.Tooltip
+	// HealThorns.Tooltip: Mods.Umbra.UmbraSlottableEffects.HealThorns.Tooltip
 }
 
 Buffs: {
@@ -668,6 +670,8 @@ Projectiles: {
 	SnowflakeProjectile.DisplayName: 雪花
 	SnowflakeShard.DisplayName: 雪花碎片
 	Spawner.DisplayName: 生成
+	// Flamebolt.DisplayName: Flamebolt
+	// HealThornProjectile.DisplayName: Heal Thorn Projectile
 }
 
 Configs: {

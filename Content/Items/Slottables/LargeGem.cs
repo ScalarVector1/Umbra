@@ -20,6 +20,11 @@ namespace Umbra.Content.Items.Slottables
 
 		public override string Texture => "Umbra/Assets/Items/Gem";
 
+		public static readonly List<SlottableEffect> specialPool = [
+			ModContent.GetInstance<Flamebolts>(),
+			ModContent.GetInstance<HealThorns>()
+			];
+
 		public static readonly List<SlottableEffect> effectPool = [
 			ModContent.GetInstance<PlayerLifeEffect>(),
 			ModContent.GetInstance<PlayerManaEffect>(),
@@ -34,6 +39,8 @@ namespace Umbra.Content.Items.Slottables
 
 		public void RollGem()
 		{
+			AddEffect(specialPool[Main.rand.Next(specialPool.Count)], 1);
+
 			var rolled = effectPool.OrderBy(n => Main.rand.Next()).ToList();
 			int effectCount = 3;
 

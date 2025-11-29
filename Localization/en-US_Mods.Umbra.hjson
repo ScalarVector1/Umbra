@@ -612,6 +612,8 @@ UmbraSlottableEffects: {
 	PlayerManaEffect.Tooltip: Players have [c/AAAAFF:+{0}] mana
 	PlayerManaRegenEffect.Tooltip: Players have [c/AAAAFF:+{0}] mana regeneration per second
 	PlayerSpeedEffect.Tooltip: Players have [c/AAAAFF:{0}%] increased movement speed
+	Flamebolts.Tooltip: "[i:75]Players release homing flame bolts when they attack"
+	HealThorns.Tooltip: "[i:75]Players unleash powerful poision thorns when using healing items"
 }
 
 Buffs: {
@@ -626,6 +628,8 @@ Projectiles: {
 	SnowflakeProjectile.DisplayName: Snowflake Projectile
 	SnowflakeShard.DisplayName: Snowflake Shard
 	Spawner.DisplayName: Spawner
+	Flamebolt.DisplayName: Flamebolt
+	HealThornProjectile.DisplayName: Heal Thorn Projectile
 }
 
 Configs: {
