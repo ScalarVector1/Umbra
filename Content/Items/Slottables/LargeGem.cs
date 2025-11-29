@@ -22,7 +22,9 @@ namespace Umbra.Content.Items.Slottables
 
 		public static readonly List<SlottableEffect> specialPool = [
 			ModContent.GetInstance<Flamebolts>(),
-			ModContent.GetInstance<HealThorns>()
+			ModContent.GetInstance<HealThorns>(),
+			ModContent.GetInstance<ExtraHeal>(),
+			ModContent.GetInstance<ShockingCrits>()
 			];
 
 		public static readonly List<SlottableEffect> effectPool = [

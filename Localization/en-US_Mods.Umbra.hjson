@@ -614,6 +614,8 @@ UmbraSlottableEffects: {
 	PlayerSpeedEffect.Tooltip: Players have [c/AAAAFF:{0}%] increased movement speed
 	Flamebolts.Tooltip: "[i:75]Players release homing flame bolts when they attack"
 	HealThorns.Tooltip: "[i:75]Players unleash powerful poision thorns when using healing items"
+	ExtraHeal.Tooltip: "[i:75]Players heal an additional [c/FFFFAA:50] life when they have [c/FFFFAA:30] seconds of potion sickness remaining"
+	ShockingCrits.Tooltip: "[i:75]Players shock enemies with chain lightning when they critically strike"
 }
 
 Buffs: {
@@ -630,6 +632,7 @@ Projectiles: {
 	Spawner.DisplayName: Spawner
 	Flamebolt.DisplayName: Flamebolt
 	HealThornProjectile.DisplayName: Heal Thorn Projectile
+	ShockingCritsProjectile.DisplayName: Shocking Crits Projectile
 }
 
 Configs: {
