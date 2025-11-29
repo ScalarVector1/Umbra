@@ -442,6 +442,8 @@ namespace Umbra.Core.PassiveTreeSystem
 					node.active = true;
 			}
 
+			storedItems.Clear();
+
 			IList<int> keys = tag.GetList<int>("itemKeys");
 			IList<Item> values = tag.GetList<Item>("items");
 

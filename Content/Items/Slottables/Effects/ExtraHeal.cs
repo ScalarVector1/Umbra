@@ -20,7 +20,7 @@ namespace Umbra.Content.Items.Slottables.Effects
 	{
 		public bool extraHealActive;
 
-		public override void PostUpdateBuffs()
+		public override void PostUpdateEquips()
 		{
 			if(extraHealActive && Player.HasBuff(BuffID.PotionSickness))
 			{

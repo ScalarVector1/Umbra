@@ -90,6 +90,11 @@ Items: {
 		// DisplayName: Random Crafted Gemstone
 		// Tooltip: "[c/AAAAAA:Craft a random crafted gemstone, which can be placed in slots in the umbral tree for beneficial effects]"
 	}
+
+	LargeGemDropPlaceholder: {
+		// DisplayName: Random Large Gemstone
+		// Tooltip: "[c/AAAAAA:A random, unmodifiable gemstone, which can be placed in slots in the umbral tree for powerful effects]"
+	}
 }
 
 GUI: {

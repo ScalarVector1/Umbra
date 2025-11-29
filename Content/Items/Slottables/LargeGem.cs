@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReLogic.Utilities;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -122,6 +123,29 @@ namespace Umbra.Content.Items.Slottables
 
 		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 		{
+			Texture2D shine = Assets.Masks.ShinyGlow.Value;
+
+			alphaColor = Item.color;
+			alphaColor.A = 0;
+
+			for (int k = 0; k < 6; k++)
+			{
+				float sin = (float)Math.Sin((Main.timeForVisualEffects * 1.7f + k * 30) / 180f * 6.28f);
+				Color color = alphaColor;
+
+				if (k == 0)
+					color.R += 200;
+				if (k == 2)
+					color.G += 200;
+				if (k == 4)
+					color.B += 200;
+
+				float rot = (float)(Main.timeForVisualEffects * 1.7f) * (0.005f + 0.0005f * k) * (k % 2 == 0 ? -1 : 1) + k;
+
+				spriteBatch.Draw(shine, Item.Center - Main.screenPosition, null, color * sin * 0.2f, rot, shine.Size() / 2f, scale * (0.4f + sin * 0.4f) * 0.65f, 0, 0);
+				spriteBatch.Draw(shine, Item.Center - Main.screenPosition, null, new Color(255, 255, 255, 0) * sin * 0.1f, rot, shine.Size() / 2f, scale * (0.4f + sin * 0.4f) * 0.5f, 0, 0);
+			}
+
 			Texture2D tex = Assets.Items.Gem.Value;
 			Texture2D tex2 = Assets.Items.GemAdd.Value;
 
@@ -129,6 +153,21 @@ namespace Umbra.Content.Items.Slottables
 			spriteBatch.Draw(tex2, Item.Center - Main.screenPosition, null, new Color(255, 220, 180, 0).MultiplyRGBA(lightColor), rotation, tex2.Size() / 2f, scale, 0, 0);
 
 			return false;
+		}
+
+		public override void Update(ref float gravity, ref float maxFallSpeed)
+		{
+			Lighting.AddLight(Item.Center, Item.color.ToVector3());
+			Lighting.AddLight(Item.Center, Color.White.ToVector3() * 0.5f);
+
+			if (Main.rand.NextBool(5))
+			{
+				Color color = Item.color;
+				color.A = 0;
+				Dust.NewDust(Item.position, Item.width, Item.height, ModContent.DustType<Dusts.PixelatedEmber>(), 0, 0, 0, color, 0.1f);
+			}
+			
+			gravity = 0.01f;
 		}
 
 		public override void NetSend(BinaryWriter writer)

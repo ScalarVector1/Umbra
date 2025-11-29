@@ -30,7 +30,7 @@ namespace Umbra.Content.Items.Slottables.Effects
 			{
 				for(int k = 0; k < 10; k++)
 				{
-					Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.UnitX.RotatedBy( k / 10f * 6.28f), ModContent.ProjectileType<HealThornProjectile>(), 80, 0, player.whoAmI, 0, k * 5);
+					Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.UnitX.RotatedBy( k / 10f * 6.28f), ModContent.ProjectileType<HealThornProjectile>(), 140, 0, player.whoAmI, 0, k * 5);
 				}
 			}
 
