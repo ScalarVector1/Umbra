@@ -22,7 +22,7 @@ namespace Umbra.Content.DropConditions
 
 		public string GetConditionDescription()
 		{
-			return Umbra.Instance.GetLocalization("DropRules.NotDownedCultist").Value;
+			return "";
 		}
 	}
 }
