@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Umbra.Content.Items.Slottables;
 using Umbra.Content.Items.Slottables.Effects;
 using Umbra.Core;
@@ -16,6 +17,8 @@ namespace Umbra.Content.Passives
 		public Slottable SlottedItem => TreeSystem.tree.storedItems.ContainsKey(ID) ? TreeSystem.tree.storedItems[ID].ModItem as Slottable : null;
 
 		public override string DisplayName => SlottedItem?.Item?.Name ?? base.DisplayName;
+
+		public override int DisplayDifficulty => SlottedItem?.Difficulty ?? difficulty;
 
 		public override string Tooltip
 		{

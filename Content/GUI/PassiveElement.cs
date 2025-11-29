@@ -144,8 +144,8 @@ namespace Umbra.Content.GUI
 			{
 				string tip = passive.Tooltip;
 
-				if (passive.difficulty > 0)
-					tip += "\n" + Language.GetText("Mods.Umbra.GUI.Node.Doom").Format(passive.difficulty);
+				if (passive.DisplayDifficulty > 0)
+					tip += "\n" + Language.GetText("Mods.Umbra.GUI.Node.Doom").Format(passive.DisplayDifficulty);
 
 				if (passive.Cost > 0)
 				{

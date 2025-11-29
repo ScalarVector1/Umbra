@@ -61,6 +61,9 @@ namespace Umbra.Core.PassiveTreeSystem
 		public virtual string Tooltip => Language.GetOrRegister(TooltipKey).Value;
 
 		[JsonIgnore]
+		public virtual int DisplayDifficulty => difficulty;
+
+		[JsonIgnore]
 		public Vector2 TreePos => new(X * 16, Y * 16);
 		[JsonIgnore]
 		public int Width => size == 0 ? 38 : size == 1 ? 50 : size == 2 ? 58 : 38;

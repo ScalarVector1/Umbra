@@ -78,12 +78,16 @@ Items: {
 
 	BasicSetting: {
 		// DisplayName: Basic Setting
-		// Tooltip: ""
+		// Tooltip: Used to craft gemstones
 	}
 
 	DoomSigil: {
 		// DisplayName: Doom Sigil
-		// Tooltip: ""
+		/* Tooltip:
+			'''
+			Fills a gemstone socket but has no positive effects
+			[c/AAAAAA:Place this into a socket on the umbral tree to gain it's effects]
+			''' */
 	}
 
 	CraftableGemCraft: {
@@ -742,5 +746,10 @@ Achievements: {
 	UmbralMaster: {
 		// FriendlyName: Umbral Master
 		// Description: Reach 1000 doom by allocating nodes on the umbral tree. Good luck.
+	}
+
+	GlimmerOfHope: {
+		// FriendlyName: Glimmer Of Hope
+		// Description: Mods.Umbra.Achievements.GlimmerOfHope.Description
 	}
 }

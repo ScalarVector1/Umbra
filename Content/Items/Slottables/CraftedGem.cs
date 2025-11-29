@@ -10,6 +10,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader.IO;
 using Terraria.Utilities;
+using Umbra.Content.Achievements;
 using Umbra.Content.Items.Slottables.Effects;
 using Umbra.Helpers;
 
@@ -144,6 +145,8 @@ namespace Umbra.Content.Items.Slottables
 		{
 			SoundEngine.PlaySound(SoundID.DD2_WitherBeastCrystalImpact.WithPitchOffset(-0.5f));
 			SoundEngine.PlaySound(SoundID.Shatter.WithPitchOffset(-0.3f).WithVolume(0.25f));
+
+			GlimmerOfHope.condition.Complete();
 		}
 
 		public override void OnDesocket()

@@ -34,7 +34,7 @@ namespace Umbra.Content.Achievements
 
 		public override IEnumerable<Position> GetModdedConstraints()
 		{
-			yield return new After(ModContent.GetInstance<UmbralMaster>());
+			yield return new After(ModContent.GetInstance<GlimmerOfHope>());
 		}
 	}
 }

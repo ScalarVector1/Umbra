@@ -12,7 +12,7 @@ namespace Umbra.Core.PassiveTreeSystem
 {
 	internal class TreeSystem : ModSystem
 	{
-		public const int TREE_VERSION = -9997;
+		public const int TREE_VERSION = -9996;
 
 		public static PassiveTree vanillaTree;
 		public static PassiveTree tree;

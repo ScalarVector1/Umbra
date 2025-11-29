@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Policy;
+using Terraria.Localization;
 using Terraria.ModLoader.IO;
 using Umbra.Content.Items.Slottables.Effects;
 using Umbra.Core.PassiveTreeSystem;
@@ -150,6 +152,9 @@ namespace Umbra.Content.Items.Slottables
 			{
 				tooltips.Add(new($"SlottableEffect{effect.Name}", effect.Tooltip));
 			}
+
+			if (Difficulty > 0)
+				tooltips.Add(new($"Difficulty", Language.GetText("Mods.Umbra.GUI.Node.Doom").Format(Difficulty)));
 		}
 
 		public override void NetSend(BinaryWriter writer)

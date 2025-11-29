@@ -17,6 +17,8 @@ namespace Umbra.Content.Items.Slottables
 		{
 			base.SetDefaults();
 			baseDifficulty = 100;
+			Item.color = Color.White;
+			Item.rare = ItemRarityID.Orange;
 		}
 
 		public override void DrawInSlot(SpriteBatch spriteBatch, Vector2 center, float scale, int slotID)
@@ -43,6 +45,21 @@ namespace Umbra.Content.Items.Slottables
 		{
 			SoundEngine.PlaySound(SoundID.DD2_FlameburstTowerShot.WithPitchOffset(-2.5f));
 			SoundEngine.PlaySound(SoundID.Tink.WithPitchOffset(-0.9f));
+		}
+
+		public override void AddRecipes()
+		{
+			CreateRecipe()
+			.AddIngredient(ModContent.ItemType<BasicSetting>())
+			.AddIngredient(ItemID.Obsidian, 20)
+			.AddIngredient(ItemID.GoldBar, 5)
+			.Register();
+
+			CreateRecipe()
+			.AddIngredient(ModContent.ItemType<BasicSetting>())
+			.AddIngredient(ItemID.Obsidian, 20)
+			.AddIngredient(ItemID.PlatinumBar, 5)
+			.Register();
 		}
 	}
 }
