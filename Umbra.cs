@@ -6,6 +6,7 @@ global using Terraria.ModLoader;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Umbra.Core;
 using Umbra.Core.PassiveTreeSystem;
@@ -87,8 +88,22 @@ namespace Umbra
 
 				if (Main.netMode == NetmodeID.Server)
 					UmbraNet.SyncPoints(whosPoints, -1, whoAmI);
+			}
+			else if (type == "TESync")
+			{
+				int id = reader.ReadInt32();
+
+				if (TileEntity.ByID.ContainsKey(id))
+				{
+					TileEntity.ByID[id].NetReceive(reader);
+
+					if (Main.netMode == NetmodeID.Server)
+						UmbraNet.SyncTileEntity(id, -1, whoAmI);
+				}
 				else
-					UmbraNet.SyncPoints(whosPoints, -1);
+				{
+					Logger.Error($"Could not find TE: {id} on server!");
+				}
 			}
 		}
 	}

@@ -27,6 +27,22 @@ namespace Umbra.Content.Tiles
 			num = 1;
 		}
 
+		public override bool CanKillTile(int i, int j, ref bool blockDamaged)
+		{
+			Tile tile = Framing.GetTileSafely(i, j);
+
+			int x = i - tile.TileFrameX / 18;
+			int y = j - tile.TileFrameY / 18;
+
+			int index = ModContent.GetInstance<ShrineEntity>().Find(x, y);
+
+			if (index == -1)
+				return true;
+
+			var entity = (ShrineEntity)TileEntity.ByID[index];
+			return entity.storedUmbra <= 0;
+		}
+
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 		{
 			Tile tile = Framing.GetTileSafely(i, j);
@@ -154,6 +170,7 @@ namespace Umbra.Content.Tiles
 				tp.UmbraPoints = 0;
 
 				UmbraNet.SyncPoints(Main.myPlayer);
+				UmbraNet.SyncTileEntity(entity.ID);
 				NetMessage.SendTileSquare(Main.myPlayer, i - 3, j - 3, 6);
 
 				Vector2 pos = new Vector2(x + 1, y) * 16 + Vector2.One * 8;
@@ -175,6 +192,7 @@ namespace Umbra.Content.Tiles
 				entity.queuedUmbra = 0;
 
 				UmbraNet.SyncPoints(Main.myPlayer);
+				UmbraNet.SyncTileEntity(entity.ID);
 				NetMessage.SendTileSquare(Main.myPlayer, i - 3, j - 3, 6);
 
 				Vector2 pos = new Vector2(x + 1, y) * 16 + Vector2.One * 8;
@@ -221,6 +239,8 @@ namespace Umbra.Content.Tiles
 
 		public override void Update()
 		{
+			int oldQueued = queuedUmbra;
+
 			if (queuedUmbra > 0)
 				queuedUmbra -= Math.Max(1, queuedUmbra / 10);
 
@@ -229,6 +249,9 @@ namespace Umbra.Content.Tiles
 
 			if (storedUmbra < 0)
 				storedUmbra = 0;
+
+			if (queuedUmbra != oldQueued)
+				UmbraNet.SyncTileEntity(ID);
 		}
 
 		public override void SaveData(TagCompound tag)
@@ -244,11 +267,13 @@ namespace Umbra.Content.Tiles
 		public override void NetSend(BinaryWriter writer)
 		{
 			writer.Write(storedUmbra);
+			writer.Write(queuedUmbra);
 		}
 
 		public override void NetReceive(BinaryReader reader)
 		{
 			storedUmbra = reader.ReadInt32();
+			queuedUmbra = reader.ReadInt32();
 		}
 	}
 

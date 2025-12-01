@@ -750,6 +750,6 @@ Achievements: {
 
 	GlimmerOfHope: {
 		// FriendlyName: Glimmer Of Hope
-		// Description: Mods.Umbra.Achievements.GlimmerOfHope.Description
+		// Description: Obtain a gemstone and place it into a socket on the umbral tree to harness its powerful effects.
 	}
 }

@@ -1,4 +1,5 @@
-﻿using Terraria.ID;
+﻿using Terraria.DataStructures;
+using Terraria.ID;
 using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Core
@@ -60,6 +61,20 @@ namespace Umbra.Core
 			packet.Write(tp.UmbraPoints);
 			packet.Write(tp.partialPoints);
 			packet.Write(tp.nextPoint);
+
+			packet.Send(toClient, ignoreClient);
+		}
+
+		public static void SyncTileEntity(int entityId, int toClient = -1, int ignoreClient = -1)
+		{
+			if (Main.netMode == NetmodeID.SinglePlayer)
+				return;
+
+			ModPacket packet = Umbra.Instance.GetPacket();
+			packet.Write("TESync");
+
+			packet.Write(entityId);
+			TileEntity.ByID[entityId].NetSend(packet);
 
 			packet.Send(toClient, ignoreClient);
 		}

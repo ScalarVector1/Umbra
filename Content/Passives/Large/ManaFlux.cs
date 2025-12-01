@@ -26,7 +26,9 @@ namespace Umbra.Content.Passives.Large
 		public override void PostUpdate()
 		{
 			if (Active && Player.HasBuff(BuffID.Bleeding) && Player.statMana > 0)
-				Player.statMana--;
+			{
+				Player.CheckMana(1, true, true);
+			}
 		}
 	}
 }

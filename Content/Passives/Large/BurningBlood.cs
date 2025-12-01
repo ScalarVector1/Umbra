@@ -23,8 +23,11 @@ namespace Umbra.Content.Passives.Large
 				{
 					player.AddBuff(BuffID.OnFire, duration);
 
-					int fireIndex = player.FindBuffIndex(BuffID.OnFire);
-					player.buffTime[fireIndex] = duration;
+					if (player.HasBuff(BuffID.OnFire))
+					{
+						int fireIndex = player.FindBuffIndex(BuffID.OnFire);
+						player.buffTime[fireIndex] = duration;
+					}
 				}
 				else
 				{
