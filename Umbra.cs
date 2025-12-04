@@ -6,8 +6,10 @@ global using Terraria.ModLoader;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Terraria.Chat;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Umbra.Core;
 using Umbra.Core.PassiveTreeSystem;
 
@@ -49,6 +51,16 @@ namespace Umbra
 		public override void HandlePacket(BinaryReader reader, int whoAmI)
 		{
 			string type = reader.ReadString();
+
+#if DEBUG
+			Logger.Info($"Recieved packet: {type} from: {whoAmI}");
+
+			if (Main.netMode == NetmodeID.MultiplayerClient)
+				Main.NewText($"CLIENT: Recieved packet: {type} from: {whoAmI}", Color.Wheat);
+
+			if (Main.netMode == NetmodeID.Server)
+				ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral($"SERVER: Recieved packet: {type} from: {whoAmI}"), Color.Lavender);
+#endif
 
 			if (type == "RequestTreeOnJoin")
 			{

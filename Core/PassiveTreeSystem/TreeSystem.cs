@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader.IO;
 using Umbra.Content.Configs;
@@ -135,7 +136,7 @@ namespace Umbra.Core.PassiveTreeSystem
 
 		public override void PostUpdateEverything()
 		{
-			if (!TreeSystem.tree.AnyActive<StartPoint>())
+			if (!TreeSystem.tree.AnyActive<StartPoint>() && Main.netMode != NetmodeID.MultiplayerClient)
 			{
 				foreach (Passive node in TreeSystem.tree.Nodes)
 				{
