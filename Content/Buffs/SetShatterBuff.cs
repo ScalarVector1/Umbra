@@ -23,7 +23,11 @@ namespace Umbra.Content.Buffs
 		private void DontUpdateWhileShattered(On_Player.orig_UpdateArmorSets orig, Player self, int i)
 		{
 			if (self.HasBuff<SetShatterBuff>())
-				return;
+			{
+				self.head = 0;
+				self.body = 0;
+				self.legs = 0;
+			}
 
 			orig(self, i);
 		}

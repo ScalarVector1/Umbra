@@ -688,6 +688,9 @@ UmbraSlottableEffects: {
 	// PlayerManaEffect.Tooltip: Players have [c/AAAAFF:+{0}] mana
 	// PlayerManaRegenEffect.Tooltip: Players have [c/AAAAFF:+{0}] mana regeneration per second
 	// PlayerSpeedEffect.Tooltip: Players have [c/AAAAFF:{0}%] increased movement speed
+	// PlayerFlightEffect.Tooltip: Players have [c/AAAAFF:+{0}] seconds of flight time with wings
+	// PlayerKnockbackEffect.Tooltip: Players have [c/AAAAFF:{0}%] increased knockback
+	// PlayerArmorPenetrateEffect.Tooltip: Players penetrate [c/AAAAFF:+{0}] defense
 	// Flamebolts.Tooltip: "[i:75]Players release homing flame bolts when they attack"
 	// HealThorns.Tooltip: "[i:75]Players unleash powerful poision thorns when using healing items"
 	// ExtraHeal.Tooltip: "[i:75]Players heal an additional [c/FFFFAA:50] life when they have [c/FFFFAA:30] seconds of potion sickness remaining"
