@@ -350,7 +350,7 @@ namespace Umbra.Core.PassiveTreeSystem
 			return GetActiveCount<T>() > 0;
 		}
 
-		public void Serialize(BinaryWriter writer)
+		public void SerializeState(BinaryWriter writer)
 		{
 			writer.Write(activeNodes.Count);
 
@@ -371,7 +371,7 @@ namespace Umbra.Core.PassiveTreeSystem
 			}
 		}
 
-		public void Deserialize(BinaryReader reader)
+		public void DeserializeState(BinaryReader reader)
 		{
 			int count = reader.ReadInt32();
 
@@ -412,6 +412,83 @@ namespace Umbra.Core.PassiveTreeSystem
 			GenerateActiveCollections();
 			CalcDifficultyAndTooltips();
 			RegenerateFlows();
+		}
+
+		public void SerializeLayout(BinaryWriter writer)
+		{
+			var allPassives = ModContent.GetContent<Passive>().ToList();
+			allPassives.RemoveAll(n => !Nodes.Any(a => a.FullName == n.FullName));
+			Dictionary<string, int> ids = new();
+
+			writer.Write(allPassives.Count());
+
+			for(int k = 0; k < allPassives.Count(); k++)
+			{
+				ids.Add(allPassives[k].FullName, k);
+				writer.Write(allPassives[k].FullName);
+			}
+
+			// send layout
+			writer.Write(Nodes.Count());
+
+			for(int k = 0; k < Nodes.Count(); k++)
+			{
+				var passive = Nodes[k];
+				writer.Write(ids[passive.FullName]);
+				writer.Write(passive.ID);
+				writer.Write(passive.Cost);
+				writer.Write(passive.X);
+				writer.Write(passive.Y);
+			}
+
+			writer.Write(Edges.Count());
+
+			for (int k = 0; k < Edges.Count(); k++)
+			{
+				var edge = Edges[k];
+				writer.Write(edge.Start);
+				writer.Write(edge.End);
+			}
+		}
+
+		public void DeserializeLayout(BinaryReader reader)
+		{
+			Nodes = new();
+			Edges = new();
+
+			int count = reader.ReadInt32();
+			Dictionary<int, Passive> byID = new();
+
+			for(int k = 0; k < count; k++)
+			{
+				if (ModContent.TryFind<Passive>(reader.ReadString(), out Passive proto))
+					byID.Add(k, proto);
+				else
+					byID.Add(k, ModContent.GetInstance<UnloadedPassive>());
+			}
+
+			// recieve layout
+			int nodeCount = reader.ReadInt32();
+
+			for(int k = 0; k < nodeCount; k++)
+			{
+				var newPassive = byID[reader.ReadInt32()].Clone();
+				newPassive.ID = reader.ReadInt32();
+				newPassive.Cost = reader.ReadInt32();
+				newPassive.X = reader.ReadInt32();
+				newPassive.Y = reader.ReadInt32();
+				Nodes.Add(newPassive);
+			}
+
+			int edgeCount = reader.ReadInt32();
+
+			for(int k = 0; k < edgeCount; k++)
+			{
+				Edges.Add(new(reader.ReadInt32(), reader.ReadInt32()));
+			}
+
+			GenerateDicts();
+			RegenrateConnections();
 		}
 
 		public void Save(TagCompound tag)

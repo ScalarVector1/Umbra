@@ -69,7 +69,7 @@ namespace Umbra
 			}
 			else if (type == "SyncTree")
 			{
-				TreeSystem.tree.Deserialize(reader);
+				TreeSystem.tree.DeserializeState(reader);
 
 				if (Main.netMode == NetmodeID.Server)
 					UmbraNet.SyncTree(-1, whoAmI);
@@ -82,11 +82,11 @@ namespace Umbra
 
 					if (hasCustom)
 					{
-						string customTree = reader.ReadString();
-						TreeSystem.LoadFromString(customTree);
+						TreeSystem.tree = new();
+						TreeSystem.tree.DeserializeLayout(reader);
 					}
 
-					TreeSystem.tree.Deserialize(reader);
+					TreeSystem.tree.DeserializeState(reader);
 				}
 			}
 			else if (type == "PointsSync")

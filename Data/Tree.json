@@ -1623,6 +1623,125 @@
       "cost": 30,
       "x": 52,
       "y": -34
+    },
+    {
+      "type": "Umbra/PotionHealing",
+      "id": 232,
+      "cost": 3,
+      "x": 35,
+      "y": 6
+    },
+    {
+      "type": "Umbra/WeaknessWhilePotion",
+      "id": 233,
+      "cost": 5,
+      "x": 41,
+      "y": 6
+    },
+    {
+      "type": "Umbra/WeaknessWhilePotion",
+      "id": 234,
+      "cost": 5,
+      "x": 41,
+      "y": 12
+    },
+    {
+      "type": "Umbra/WeaknessWhilePotion",
+      "id": 235,
+      "cost": 5,
+      "x": 44,
+      "y": 16
+    },
+    {
+      "type": "Umbra/WeaknessWhilePotion",
+      "id": 239,
+      "cost": 5,
+      "x": 41,
+      "y": 0
+    },
+    {
+      "type": "Umbra/CorrosiveConcoctions",
+      "id": 240,
+      "cost": 25,
+      "x": 44,
+      "y": -2
+    },
+    {
+      "type": "Umbra/DefenseWhilePotion",
+      "id": 241,
+      "cost": 6,
+      "x": 41,
+      "y": -4
+    },
+    {
+      "type": "Umbra/DefenseWhilePotion",
+      "id": 242,
+      "cost": 6,
+      "x": 47,
+      "y": -4
+    },
+    {
+      "type": "Umbra/DefenseWhilePotion",
+      "id": 236,
+      "cost": 5,
+      "x": 47,
+      "y": 12
+    },
+    {
+      "type": "Umbra/DefenseWhilePotion",
+      "id": 237,
+      "cost": 5,
+      "x": 47,
+      "y": 6
+    },
+    {
+      "type": "Umbra/DefenseWhilePotion",
+      "id": 238,
+      "cost": 5,
+      "x": 47,
+      "y": 0
+    },
+    {
+      "type": "Umbra/EnemyPenetrate",
+      "id": 243,
+      "cost": 5,
+      "x": 39,
+      "y": 33
+    },
+    {
+      "type": "Umbra/EnemyPenetrate",
+      "id": 244,
+      "cost": 5,
+      "x": 41,
+      "y": 38
+    },
+    {
+      "type": "Umbra/SetShatter",
+      "id": 245,
+      "cost": 22,
+      "x": 43,
+      "y": 45
+    },
+    {
+      "type": "Umbra/PiercePenalty",
+      "id": 246,
+      "cost": 3,
+      "x": 45,
+      "y": 38
+    },
+    {
+      "type": "Umbra/PiercePenalty",
+      "id": 247,
+      "cost": 3,
+      "x": 47,
+      "y": 33
+    },
+    {
+      "type": "Umbra/EnemyPenetrate",
+      "id": 248,
+      "cost": 5,
+      "x": 43,
+      "y": 35
     }
   ],
   "edges": [
@@ -2251,10 +2370,6 @@
       "end": 116
     },
     {
-      "start": 138,
-      "end": 128
-    },
-    {
       "start": 139,
       "end": 136
     },
@@ -2693,6 +2808,90 @@
     {
       "start": 191,
       "end": 231
+    },
+    {
+      "start": 138,
+      "end": 232
+    },
+    {
+      "start": 232,
+      "end": 128
+    },
+    {
+      "start": 232,
+      "end": 233
+    },
+    {
+      "start": 233,
+      "end": 234
+    },
+    {
+      "start": 234,
+      "end": 235
+    },
+    {
+      "start": 235,
+      "end": 236
+    },
+    {
+      "start": 236,
+      "end": 237
+    },
+    {
+      "start": 237,
+      "end": 238
+    },
+    {
+      "start": 233,
+      "end": 239
+    },
+    {
+      "start": 239,
+      "end": 240
+    },
+    {
+      "start": 240,
+      "end": 238
+    },
+    {
+      "start": 240,
+      "end": 241
+    },
+    {
+      "start": 241,
+      "end": 242
+    },
+    {
+      "start": 242,
+      "end": 240
+    },
+    {
+      "start": 138,
+      "end": 243
+    },
+    {
+      "start": 243,
+      "end": 244
+    },
+    {
+      "start": 244,
+      "end": 245
+    },
+    {
+      "start": 245,
+      "end": 246
+    },
+    {
+      "start": 246,
+      "end": 247
+    },
+    {
+      "start": 247,
+      "end": 248
+    },
+    {
+      "start": 248,
+      "end": 243
     }
   ]
 }

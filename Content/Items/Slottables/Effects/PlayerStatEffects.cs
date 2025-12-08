@@ -10,41 +10,41 @@ namespace Umbra.Content.Items.Slottables.Effects
 {
 	internal class PlayerLifeEffect : SlottableEffect
 	{
-		public override string Tooltip => Language.GetOrRegister(TooltipKey).Format(tier * 20);
+		public override string Tooltip => Language.GetOrRegister(TooltipKey).Format(tier * 10);
 
 		public override void BuffPlayer(Player player)
 		{
-			player.statLifeMax2 += tier * 20;
+			player.statLifeMax2 += tier * 10;
 		}
 	}
 
 	internal class PlayerManaEffect : SlottableEffect
 	{
-		public override string Tooltip => Language.GetOrRegister(TooltipKey).Format(tier * 20);
+		public override string Tooltip => Language.GetOrRegister(TooltipKey).Format(tier * 10);
 
 		public override void BuffPlayer(Player player)
 		{
-			player.statManaMax2 += tier * 20;
+			player.statManaMax2 += tier * 10;
 		}
 	}
 
 	internal class PlayerLifeRegenEffect : SlottableEffect
 	{
-		public override string Tooltip => Language.GetOrRegister(TooltipKey).Format(tier * 2);
+		public override string Tooltip => Language.GetOrRegister(TooltipKey).Format(tier);
 
 		public override void BuffPlayer(Player player)
 		{
-			player.lifeRegen += tier * 2;
+			player.lifeRegen += tier;
 		}
 	}
 
 	internal class PlayerManaRegenEffect : SlottableEffect
 	{
-		public override string Tooltip => Language.GetOrRegister(TooltipKey).Format(tier * 4);
+		public override string Tooltip => Language.GetOrRegister(TooltipKey).Format(tier);
 
 		public override void BuffPlayer(Player player)
 		{
-			player.manaRegen += tier * 4;
+			player.manaRegen += tier;
 		}
 	}
 
@@ -95,6 +95,36 @@ namespace Umbra.Content.Items.Slottables.Effects
 		public override void BuffPlayer(Player player)
 		{
 			player.allCrit += tier;
+		}
+	}
+
+	internal class PlayerFlightEffect : SlottableEffect
+	{
+		public override string Tooltip => Language.GetOrRegister(TooltipKey).Format(tier);
+
+		public override void BuffPlayer(Player player)
+		{
+			player.wingTimeMax += tier * 60;
+		}
+	}
+
+	internal class PlayerKnockbackEffect : SlottableEffect
+	{
+		public override string Tooltip => Language.GetOrRegister(TooltipKey).Format(tier * 3);
+
+		public override void BuffPlayer(Player player)
+		{
+			player.allKB += tier * 0.03f;
+		}
+	}
+
+	internal class PlayerArmorPenetrateEffect : SlottableEffect
+	{
+		public override string Tooltip => Language.GetOrRegister(TooltipKey).Format(tier);
+
+		public override void BuffPlayer(Player player)
+		{
+			player.armorPenetration += tier;
 		}
 	}
 }

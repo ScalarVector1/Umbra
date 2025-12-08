@@ -33,6 +33,9 @@ namespace Umbra.Content.Items.Slottables
 			ModContent.GetInstance<PlayerSpeedEffect>(),
 			ModContent.GetInstance<PlayerDamageEffect>(),
 			ModContent.GetInstance<PlayerCritEffect>(),
+			ModContent.GetInstance<PlayerFlightEffect>(),
+			ModContent.GetInstance<PlayerKnockbackEffect>(),
+			ModContent.GetInstance<PlayerArmorPenetrateEffect>(),
 			];
 
 		public override void Load()

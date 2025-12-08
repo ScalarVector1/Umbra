@@ -73,7 +73,12 @@ namespace Umbra.Core.PassiveTreeSystem
 			tag["hasCustomTree"] = hasCustomTree;
 
 			if (hasCustomTree)
-				tag["customTree"] = GetTreeJson();
+			{
+				MemoryStream customTree = new();
+				var writer = new BinaryWriter(customTree);
+				tree.SerializeLayout(writer);
+				tag["customTreeBytes"] = customTree.ToArray();
+			}
 
 			int lastSpent = 0;
 
@@ -105,15 +110,20 @@ namespace Umbra.Core.PassiveTreeSystem
 						Language.GetTextValue("Mods.Umbra.GUI.Notification.ResetMessageBody"));
 				}
 			}
-			else if (tag.TryGet("customTree", out string customTreeJson))
+			else if (tag.TryGet("customTreeBytes", out byte[] customTreeJson))
 			{
-				LoadFromString(customTreeJson);
+				var stream = customTreeJson.ToMemoryStream();
+				var reader = new BinaryReader(stream);
+
+				tree = new();
+				tree.DeserializeLayout(reader);
 			}
 			else // Fallback base if we have the custom tree flag set but no custom tree saved
 			{
 				tree = vanillaTree;
 				tag["activeIDs"] = new List<int>();
 				Main.LocalPlayer.GetModPlayer<TreePlayer>().UmbraPoints += tag.GetInt("lastSpent");
+				hasCustomTree = false;
 
 				Notification.DisplayNotification(
 					Language.GetTextValue("Mods.Umbra.GUI.Notification.CustomErrorMessageName"),

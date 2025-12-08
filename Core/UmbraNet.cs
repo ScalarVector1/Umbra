@@ -23,7 +23,7 @@ namespace Umbra.Core
 
 			ModPacket packet = Umbra.Instance.GetPacket();
 			packet.Write("SyncTree");
-			TreeSystem.tree.Serialize(packet);
+			TreeSystem.tree.SerializeState(packet);
 			packet.Send(toClient, ignoreClient);
 		}
 
@@ -40,10 +40,10 @@ namespace Umbra.Core
 
 			if (hasCustom)
 			{
-				packet.Write(TreeSystem.GetTreeJson());
+				TreeSystem.tree.SerializeLayout(packet);
 			}
 
-			TreeSystem.tree.Serialize(packet);
+			TreeSystem.tree.SerializeState(packet);
 			packet.Send(toClient, ignoreClient);
 		}
 

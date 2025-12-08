@@ -39,6 +39,9 @@ namespace Umbra.Content.Items.Slottables
 			ModContent.GetInstance<PlayerSpeedEffect>(),
 			ModContent.GetInstance<PlayerDamageEffect>(),
 			ModContent.GetInstance<PlayerCritEffect>(),
+			ModContent.GetInstance<PlayerFlightEffect>(),
+			ModContent.GetInstance<PlayerKnockbackEffect>(),
+			ModContent.GetInstance<PlayerArmorPenetrateEffect>(),
 			];
 
 		public void RollGem()
@@ -46,11 +49,12 @@ namespace Umbra.Content.Items.Slottables
 			AddEffect(specialPool[Main.rand.Next(specialPool.Count)], 1);
 
 			var rolled = effectPool.OrderBy(n => Main.rand.Next()).ToList();
-			int effectCount = 3;
+			int effectCount = Main.rand.Next(2, 4);
+			int maxTier = effectCount == 2 ? 7 : 5;
 
 			for (int k = 0; k < effectCount; k++)
 			{
-				AddEffect(rolled[k], Main.rand.Next(2, 6));
+				AddEffect(rolled[k], Main.rand.Next(2, maxTier));
 			}
 
 			nameVariant1 = Main.rand.Next(5);
