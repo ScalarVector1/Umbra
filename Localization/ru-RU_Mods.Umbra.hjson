@@ -644,6 +644,31 @@ UmbraPassives: {
 		// Name: Gemstone Slot
 		// Tooltip: Can hold a gemstone
 	}
+
+	DefenseWhilePotion: {
+		// Name: Potion Defense Penalty
+		// Tooltip: Players have [c/AAAAFF:-2] defense while under the effects of potion sickness
+	}
+
+	CorrosiveConcoctions: {
+		// Name: Corrosive Concoctions
+		// Tooltip: Consuming healing items inflicts set shatter for [c/AAAAFF:20] seconds [c/999999:(set shatter disables set bonuses from armor)]
+	}
+
+	SetShatter: {
+		// Name: Set Shatter
+		// Tooltip: Players are inflicted with set shatter when hit below half health [c/999999:(set shatter disables set bonuses from armor)]
+	}
+
+	WeaknessWhilePotion: {
+		// Name: Potion Damage Penalty
+		// Tooltip: Players deal [c/AAAAFF:2%] decreased damage while under the effects of potion sickness
+	}
+
+	EnemyPenetrate: {
+		// Name: Enemy Defense Penetration
+		// Tooltip: Enemies penetrate [c/AAAAFF:+2] defense
+	}
 }
 
 UmbraSlottableEffects: {
@@ -666,6 +691,11 @@ Buffs: {
 	Doomed: {
 		DisplayName: Обречён
 		Description: Увеличивает получаемый урон на 50%
+	}
+
+	SetShatterBuff: {
+		// DisplayName: Set Shatter
+		// Description: Set bonuses are disabled
 	}
 }
 

@@ -23,13 +23,25 @@ namespace Umbra.Content.Passives.Large
 			size = 1;
 		}
 
-		private void DaggerOnDodge(NPC nPC, NPC.HitInfo info)
+		private void DaggerOnDodge(NPC npc, NPC.HitInfo info)
 		{
-			if (TreeSystem.tree.AnyActive<FlyingDaggers>())
+			if (TreeSystem.tree.AnyActive<FlyingDaggers>() && FlyingDaggersSystem.daggerCooldown <= 0)
 			{
-				SoundEngine.PlaySound(SoundID.DD2_MonkStaffSwing.WithPitchOffset(0.5f), nPC.Center);
-				Projectile.NewProjectile(nPC.GetSource_FromThis(), nPC.Center, Vector2.UnitX.RotatedByRandom(6.28f) * 5f, ModContent.ProjectileType<DodgeDagger>(), DifficultyHelper.GetProjectileDamage(nPC.damage / 2), 0.5f);
+				SoundEngine.PlaySound(SoundID.DD2_MonkStaffSwing.WithPitchOffset(0.5f), npc.Center);
+				Projectile.NewProjectile(npc.GetSource_FromThis(), npc.Center, Vector2.UnitX.RotatedByRandom(6.28f) * 5f, ModContent.ProjectileType<DodgeDagger>(), DifficultyHelper.GetProjectileDamage(40, 60, 100), 0.5f);
+				FlyingDaggersSystem.daggerCooldown = 60;
 			}
+		}
+	}
+
+	internal class FlyingDaggersSystem : ModSystem
+	{
+		public static int daggerCooldown;
+
+		public override void PostUpdateEverything()
+		{
+			if (daggerCooldown > 0)
+				daggerCooldown--;
 		}
 	}
 

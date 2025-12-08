@@ -1,4 +1,5 @@
-﻿using Umbra.Core.PassiveTreeSystem;
+﻿using Umbra.Content.Buffs;
+using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives.Large
 {

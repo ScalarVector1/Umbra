@@ -76,8 +76,8 @@ namespace Umbra.Content.Passives
 		{
 			if (npc.boss)
 			{
-				npc.GetGlobalNPC<TreeNPC>().increasedDamage += 0.01f * (TreeSystem.tree.difficulty / 20);
-				npc.GetGlobalNPC<TreeNPC>().flatLife += TreeSystem.tree.difficulty / 10;
+				npc.GetGlobalNPC<TreeNPC>().increasedDamage += 0.01f * (TreeSystem.tree.difficulty / 150);
+				npc.GetGlobalNPC<TreeNPC>().flatLife += TreeSystem.tree.difficulty / 50;
 			}
 		}
 	}

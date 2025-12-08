@@ -230,8 +230,8 @@ namespace Umbra.Content.Passives
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			npc.GetGlobalNPC<TreeNPC>().increasedDamage += 0.01f * (TreeSystem.tree.difficulty / 30);
-			npc.GetGlobalNPC<TreeNPC>().flatLife += TreeSystem.tree.difficulty / 20;
+			npc.GetGlobalNPC<ArmorPenetrationNPC>().penetrate += TreeSystem.tree.difficulty / 150;
+			npc.GetGlobalNPC<TreeNPC>().flatLife += TreeSystem.tree.difficulty / 50;
 		}
 	}
 
@@ -246,6 +246,20 @@ namespace Umbra.Content.Passives
 		public override void Update()
 		{
 			TreeNPCGlobals.spawnRateModifier += 0.05f;
+		}
+	}
+
+	internal class EnemyPenetrate : Passive
+	{
+		public override void SetDefaults()
+		{
+			texture = Assets.Passives.EnemyPenetrate;
+			difficulty = 5;
+		}
+
+		public override void OnEnemySpawn(NPC npc)
+		{
+			npc.GetGlobalNPC<ArmorPenetrationNPC>().penetrate += 2;
 		}
 	}
 }

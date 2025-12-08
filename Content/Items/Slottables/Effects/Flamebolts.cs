@@ -48,7 +48,7 @@ namespace Umbra.Content.Items.Slottables.Effects
 					mp.flameboltCooldown = 30;
 					Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.UnitX.RotatedByRandom(6.28f) * 20, ModContent.ProjectileType<Flamebolt>(), item.damage / 2, 0, player.whoAmI, -1);
 
-					SoundEngine.PlaySound(SoundID.DD2_BetsyFireballShot.WithPitchOffset(0.5f));
+					SoundEngine.PlaySound(SoundID.DD2_BetsyFireballShot.WithPitchOffset(0.5f), player.Center);
 				}
 			}
 
@@ -93,7 +93,7 @@ namespace Umbra.Content.Items.Slottables.Effects
 				{
 					var dist = Vector2.Distance(npc.Center, Projectile.Center);
 
-					if (npc.CanBeChasedBy(this) && dist < best)
+					if (!npc.friendly && !npc.dontTakeDamage && !npc.immortal && npc.CanBeChasedBy(this) && dist < best)
 					{
 						candidate = npc;
 						best = dist;
@@ -117,7 +117,7 @@ namespace Umbra.Content.Items.Slottables.Effects
 
 				Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.Center.DirectionTo(targetNPC.Center) * 40, 0.05f);
 
-				if (!targetNPC.active || !targetNPC.CanBeChasedBy(this))
+				if (targetNPC.friendly || targetNPC.dontTakeDamage || targetNPC.immortal || !targetNPC.active || !targetNPC.CanBeChasedBy(this))
 					Target = -1;
 			}
 
@@ -165,12 +165,12 @@ namespace Umbra.Content.Items.Slottables.Effects
 
 			target.AddBuff(BuffID.OnFire, 60);
 
-			SoundEngine.PlaySound(SoundID.DD2_BetsyFireballImpact.WithPitchOffset(0.5f));
+			SoundEngine.PlaySound(SoundID.DD2_BetsyFireballImpact.WithPitchOffset(0.5f), Projectile.Center);
 		}
 
 		public override bool? CanHitNPC(NPC target)
 		{
-			return Projectile.timeLeft > 30;
+			return Projectile.timeLeft > 30 ? null : false;
 		}
 
 		protected void ManageCaches()

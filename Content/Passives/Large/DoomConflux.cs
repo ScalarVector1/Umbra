@@ -1,4 +1,5 @@
-﻿using Umbra.Core;
+﻿using Umbra.Content.Buffs;
+using Umbra.Core;
 using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives.Large
@@ -15,25 +16,6 @@ namespace Umbra.Content.Passives.Large
 		public override void OnEnemySpawn(NPC npc)
 		{
 			npc.GetGlobalNPC<StatusChanceNPC>().AddStatusChance(ModContent.BuffType<Doomed>(), 0.01f * (TreeSystem.tree.difficulty / 10));
-		}
-	}
-
-	internal class Doomed : ModBuff
-	{
-		public override void SetStaticDefaults()
-		{
-			Main.debuff[Type] = true;
-		}
-
-		public override string Texture => "Umbra/Assets/Buffs/Doomed";
-	}
-
-	internal class DoomedPlayer : ModPlayer
-	{
-		public override void ModifyHurt(ref Player.HurtModifiers modifiers)
-		{
-			if (Player.HasBuff<Doomed>())
-				modifiers.FinalDamage *= 1.5f;
 		}
 	}
 }
