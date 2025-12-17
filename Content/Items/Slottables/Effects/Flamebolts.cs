@@ -74,7 +74,8 @@ namespace Umbra.Content.Items.Slottables.Effects
 			Projectile.friendly = true;
 			Projectile.tileCollide = false;
 			Projectile.penetrate = -1;
-			Projectile.usesLocalNPCImmunity = true;
+			Projectile.usesIDStaticNPCImmunity = true;
+			Projectile.localNPCHitCooldown = -1;
 		}
 
 		public override void AI()

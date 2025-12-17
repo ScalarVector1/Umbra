@@ -77,6 +77,8 @@ namespace Umbra.Content.Items.Slottables.Effects
 			Projectile.timeLeft = 180;
 			Projectile.tileCollide = false;
 			Projectile.ignoreWater = true;
+			Projectile.usesIDStaticNPCImmunity = true;
+			Projectile.localNPCHitCooldown = -1;
 		}
 
 		public override void AI()

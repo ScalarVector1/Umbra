@@ -23,7 +23,7 @@ namespace Umbra.Content.Passives.Large
 	{
 		public override void OnHurt(Player.HurtInfo info)
 		{
-			if (Player.statLife < Player.statLifeMax2 / 2)
+			if (TreeSystem.tree.AnyActive<SetShatter>() && Player.statLife < Player.statLifeMax2 / 2)
 				Player.AddBuff(ModContent.BuffType<SetShatterBuff>(), 600);
 		}
 	}

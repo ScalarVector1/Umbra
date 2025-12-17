@@ -1,5 +1,6 @@
 ﻿using Terraria.Audio;
 using Terraria.ID;
+using Umbra.Compat;
 using Umbra.Core.PassiveTreeSystem;
 using Umbra.Core.PixelationSystem;
 using Umbra.Helpers;
@@ -17,7 +18,7 @@ namespace Umbra.Content.Passives.Large
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			if (!npc.boss)
+			if (!ExtraBossMarks.DoICountAsABoss(npc))
 			{
 				npc.GetGlobalNPC<GalvanizedGruntsNPC>().active = true;
 			}

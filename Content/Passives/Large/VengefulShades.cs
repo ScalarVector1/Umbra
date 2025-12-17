@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Terraria.ID;
+using Umbra.Compat;
 using Umbra.Content.Items;
 using Umbra.Content.Projectiles;
 using Umbra.Core.PassiveTreeSystem;
@@ -17,7 +18,7 @@ namespace Umbra.Content.Passives.Large
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			if (!npc.boss && npc.type != NPCID.Wraith && Main.rand.NextBool(10))
+			if (!ExtraBossMarks.DoICountAsABoss(npc) && npc.type != NPCID.Wraith && Main.rand.NextBool(10))
 			{
 				npc.GetGlobalNPC<VengefulShadesNPC>().active = true;
 			}

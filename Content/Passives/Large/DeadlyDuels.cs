@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
+using Umbra.Compat;
 using Umbra.Content.DropConditions;
 using Umbra.Core.PassiveTreeSystem;
 
@@ -17,7 +19,7 @@ namespace Umbra.Content.Passives.Large
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			if (npc.boss)
+			if (ExtraBossMarks.DoICountAsABoss(npc))
 				npc.GetGlobalNPC<TreeNPC>().moreDamage.Add(0.3f);
 		}
 	}
@@ -26,7 +28,7 @@ namespace Umbra.Content.Passives.Large
 	{
 		public override bool AppliesToEntity(NPC entity, bool lateInstantiation)
 		{
-			return entity.boss;
+			return ExtraBossMarks.DoICountAsABoss(entity);
 		}
 
 		public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)

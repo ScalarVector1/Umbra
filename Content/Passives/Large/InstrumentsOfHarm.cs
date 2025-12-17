@@ -1,4 +1,5 @@
-﻿using Umbra.Core.PassiveTreeSystem;
+﻿using Umbra.Compat;
+using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives.Large
 {
@@ -13,7 +14,7 @@ namespace Umbra.Content.Passives.Large
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			if (!npc.boss && Main.rand.NextBool(5))
+			if (!ExtraBossMarks.DoICountAsABoss(npc) && Main.rand.NextBool(5))
 			{
 				npc.GetGlobalNPC<HarmfulNPC>().active = true;
 				npc.GetGlobalNPC<TreeNPC>().moreDamage.Add(0.5f);

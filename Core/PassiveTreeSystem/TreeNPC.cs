@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Umbra.Compat;
 
 namespace Umbra.Core.PassiveTreeSystem
 {
@@ -109,7 +110,7 @@ namespace Umbra.Core.PassiveTreeSystem
 
 		public override void OnSpawn(NPC npc, IEntitySource source)
 		{
-			if (!npc.boss && npc.aiStyle != NPCAIStyleID.Worm && Main.rand.NextFloat() <= TreeNPCGlobals.doubleSpawnChance)
+			if (!ExtraBossMarks.DoICountAsABoss(npc) && npc.aiStyle != NPCAIStyleID.Worm && Main.rand.NextFloat() <= TreeNPCGlobals.doubleSpawnChance)
 			{
 				NPC.NewNPC(npc.GetSource_FromThis(), (int)npc.Center.X, (int)npc.Center.Y, npc.type);
 			}

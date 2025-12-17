@@ -1,4 +1,5 @@
-﻿using Umbra.Content.Projectiles;
+﻿using Umbra.Compat;
+using Umbra.Content.Projectiles;
 using Umbra.Core.PassiveTreeSystem;
 
 namespace Umbra.Content.Passives.Large
@@ -14,7 +15,7 @@ namespace Umbra.Content.Passives.Large
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			if (!npc.boss && Main.rand.NextBool(10))
+			if (!ExtraBossMarks.DoICountAsABoss(npc) && Main.rand.NextBool(10))
 			{
 				npc.GetGlobalNPC<SpontaneousGenerationNPC>().active = true;
 			}

@@ -1,4 +1,5 @@
 ﻿using Terraria.ID;
+using Umbra.Compat;
 using Umbra.Core;
 using Umbra.Core.PassiveTreeSystem;
 
@@ -14,7 +15,7 @@ namespace Umbra.Content.Passives
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			if (!npc.boss)
+			if (!ExtraBossMarks.DoICountAsABoss(npc))
 			{
 				npc.GetGlobalNPC<TreeNPC>().endurance += 0.02f;
 				npc.GetGlobalNPC<TreeNPC>().increasedDamage += 0.05f;
@@ -74,11 +75,8 @@ namespace Umbra.Content.Passives
 
 		public override void OnEnemySpawn(NPC npc)
 		{
-			if (npc.boss)
-			{
-				npc.GetGlobalNPC<TreeNPC>().increasedDamage += 0.01f * (TreeSystem.tree.difficulty / 150);
-				npc.GetGlobalNPC<TreeNPC>().flatLife += TreeSystem.tree.difficulty / 50;
-			}
+			npc.GetGlobalNPC<TreeNPC>().increasedDamage += 0.01f * (TreeSystem.tree.difficulty / 150);
+			npc.GetGlobalNPC<TreeNPC>().flatLife += TreeSystem.tree.difficulty / 50;
 		}
 	}
 
