@@ -40,7 +40,7 @@ namespace Umbra.Content.Items.Slottables.Effects
 		{
 			if (!frostShellActive)
 			{
-				shellTimer = 600;
+				shellTimer = 300;
 				shellHitpoints = 0;
 				return;
 			}
@@ -69,7 +69,7 @@ namespace Umbra.Content.Items.Slottables.Effects
 			{
 				modifiers.FinalDamage.Flat -= shellHitpoints;
 				shellHitpoints = 0;
-				shellTimer = 600;
+				shellTimer = 300;
 
 				SoundEngine.PlaySound(SoundID.Shatter.WithPitchOffset(-0.2f), Player.Center);
 
@@ -77,6 +77,7 @@ namespace Umbra.Content.Items.Slottables.Effects
 				{
 					Vector2 off = Main.rand.NextVector2Circular(1, 1);
 					Dust.NewDustPerfect(Player.Center + off * 25, DustID.Ice, off * Main.rand.NextFloat(6));
+					Dust.NewDustPerfect(Player.Center + off * 25, ModContent.DustType<Dusts.PixelatedEmber>(), off * Main.rand.NextFloat(6), 0, new Color(200, 255, 255, 0), 0.1f);
 				}
 			}
 		}
@@ -151,14 +152,20 @@ namespace Umbra.Content.Items.Slottables.Effects
 
 		public override void PostDraw(SpriteBatch spriteBatch, int buffIndex, BuffDrawParams drawParams)
 		{
-			var hitpoints = Main.LocalPlayer.GetModPlayer<FrostShellPlayer>().shellHitpoints;
+			var mp = Main.LocalPlayer.GetModPlayer<FrostShellPlayer>();
+			var hitpoints = mp.shellHitpoints;
 
 			Color color = hitpoints == 0 ? Color.Gray : Color.White;
 
-			if (hitpoints == Main.LocalPlayer.GetModPlayer<FrostShellPlayer>().shellHitpointsMax)
+			if (hitpoints == mp.shellHitpointsMax)
 				color = Color.SkyBlue;
 
 			Utils.DrawBorderString(spriteBatch, hitpoints.ToString(), drawParams.Position + Vector2.One * 16, color, 1, 0.5f, 0.5f);
+
+			if (mp.shellTimer > 0)
+			{
+				Utils.DrawBorderString(spriteBatch, (mp.shellTimer / 60 + 1).ToString(), drawParams.Position + new Vector2(16, 44), new Color(255, 100, 100), 0.75f, 0.5f, 0.5f);
+			}
 		}
 	}
 
