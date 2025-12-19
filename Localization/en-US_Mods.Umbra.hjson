@@ -653,6 +653,7 @@ UmbraSlottableEffects: {
 	HealThorns.Tooltip: "[i:75]Players unleash powerful poision thorns when using healing items"
 	ExtraHeal.Tooltip: "[i:75]Players heal an additional [c/FFFFAA:50] life when they have [c/FFFFAA:30] seconds of potion sickness remaining"
 	ShockingCrits.Tooltip: "[i:75]Players shock enemies with chain lightning when they critically strike"
+	FrostShell.Tooltip: Mods.Umbra.UmbraSlottableEffects.FrostShell.Tooltip
 }
 
 Buffs: {
@@ -664,6 +665,11 @@ Buffs: {
 	SetShatterBuff: {
 		DisplayName: Set Shatter
 		Description: Set bonuses are disabled
+	}
+
+	FrostShellBuff: {
+		DisplayName: Frost Shell Buff
+		Description: Mods.Umbra.Buffs.FrostShellBuff.Description
 	}
 }
 
