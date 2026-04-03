@@ -106,8 +106,8 @@ GUI: {
 		UmbraTooltipDesc:
 			'''
 			Umbra points are used to allocate nodes on the umbra tree.
-			The chance to gain a point of umbra increases with your doom,
-			currently you have a [c/AAAAFF:{0}%] chance to drop an umbra point on killing an enemy.
+			You will gain umbra points as you kill enemies, and can gain bonus progress by picking up umbra pickups.
+			currently you have a [c/AAAAFF:{0}%] chance to drop an umbra pickup on killing an enemy.
 			'''
 		Doom: Doom
 		DoomTooltipTitle: "{0} Doom"
@@ -212,7 +212,7 @@ UmbraPassives: {
 
 	StartPoint: {
 		Name: Umbral Tree
-		Tooltip: This is the umbral tree. You can spend your Umbra here to make the game more difficult and rewarding. Left click a flashing node to allocate it at its listed cost. You can right click nodes that no others depend on to de-activate them, for a refund of half their cost.
+		Tooltip: This is the umbral tree. You can spend your Umbra here to make the game more difficult and rewarding. Left click a flashing node to allocate it at its listed cost. You can right click nodes that no others depend on to de-activate them for a refund, at the cost of some gold.
 	}
 
 	PlayerWither: {
