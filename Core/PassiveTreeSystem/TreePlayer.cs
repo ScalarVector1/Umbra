@@ -2,6 +2,8 @@
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader.IO;
+using Umbra.Content.GUI;
+using Umbra.Core.Loaders.UILoading;
 
 namespace Umbra.Core.PassiveTreeSystem
 {
@@ -20,8 +22,11 @@ namespace Umbra.Core.PassiveTreeSystem
 				partialPoints -= nextPoint;
 				UmbraPoints += 1;
 
-				if (nextPoint < 40)
+				if (nextPoint < 500)
 					nextPoint += 2;
+
+				if (nextPoint < 1000)
+					nextPoint += 1;
 
 				CombatText.NewText(Player.Hitbox, new Color(200, 160, 255), Language.GetTextValue("Mods.Umbra.Misc.UmbraGainPopup"));
 
@@ -38,6 +43,12 @@ namespace Umbra.Core.PassiveTreeSystem
 					SoundEngine.PlaySound(SoundID.DrumKick);
 
 					UmbraNet.SyncPoints(Player.whoAmI);
+				}
+
+				if (firstPoint)
+				{
+					firstPoint = true;
+					UILoader.GetUIState<InventoryButton>().flashing = true;
 				}
 			}
 

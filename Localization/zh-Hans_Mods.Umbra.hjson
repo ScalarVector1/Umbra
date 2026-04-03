@@ -153,6 +153,14 @@ GUI: {
 		CloseButton: 关闭
 		FullscreenButton: 切换全屏
 		// StatButton: Toggle Effects List
+		// RefundButton: Refund All Nodes
+		/* RefundButtonDesc:
+			'''
+			Refund all allocated nodes at once.
+			Refund Cost: {0}
+
+			[c/FF4444: WARNING: This cannot be reversed!]
+			''' */
 		ExportButton: 导出暗影树
 		EditButton: 编辑暗影树
 		EditButtonDesc:
@@ -171,6 +179,7 @@ GUI: {
 		Doom: 厄难：[c/FFAAAA:{0} 厄难]
 		Cost: 花费：[c/BB88FF:{0} 暗影]
 		Refund: 返还：[c/BB88FF:{0} 暗影]
+		// RefundCost: Refund Cost: {0}
 	}
 
 	InventoryButton: {
@@ -676,6 +685,11 @@ UmbraPassives: {
 		// Name: Enemy Defense Penetration
 		// Tooltip: Enemies penetrate [c/AAAAFF:+2] defense
 	}
+
+	EldritchTouched: {
+		// Name: Mods.Umbra.UmbraPassives.EldritchTouched.Name
+		// Tooltip: Mods.Umbra.UmbraPassives.EldritchTouched.Tooltip
+	}
 }
 
 UmbraSlottableEffects: {
@@ -695,7 +709,7 @@ UmbraSlottableEffects: {
 	// HealThorns.Tooltip: "[i:75]Players unleash powerful poision thorns when using healing items"
 	// ExtraHeal.Tooltip: "[i:75]Players heal an additional [c/FFFFAA:50] life when they have [c/FFFFAA:30] seconds of potion sickness remaining"
 	// ShockingCrits.Tooltip: "[i:75]Players shock enemies with chain lightning when they critically strike"
-	// FrostShell.Tooltip: Mods.Umbra.UmbraSlottableEffects.FrostShell.Tooltip
+	// FrostShell.Tooltip: "[i:75]Players gain a regenerating frost shell, which can absorb damage up to their defense"
 }
 
 Buffs: {
@@ -710,8 +724,8 @@ Buffs: {
 	}
 
 	FrostShellBuff: {
-		// DisplayName: Frost Shell Buff
-		// Description: Mods.Umbra.Buffs.FrostShellBuff.Description
+		// DisplayName: Frost Shell
+		// Description: The frost shell will absorb some of the damage of the next hit you take
 	}
 }
 
@@ -723,6 +737,7 @@ Projectiles: {
 	// Flamebolt.DisplayName: Flamebolt
 	// HealThornProjectile.DisplayName: Heal Thorn Projectile
 	// ShockingCritsProjectile.DisplayName: Shocking Crits Projectile
+	// EldritchSwipe.DisplayName: Eldritch Swipe
 }
 
 Configs: {

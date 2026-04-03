@@ -41,7 +41,7 @@ namespace Umbra.Core
 
 			// grant partial points
 			Player lastPlayer = Main.player[npc.lastInteraction];
-			lastPlayer.GetModPlayer<TreePlayer>().partialPoints += npc.boss ? 15 : 1;
+			lastPlayer.GetModPlayer<TreePlayer>().partialPoints++;
 
 			UmbraNet.SyncPoints(npc.lastInteraction, npc.lastInteraction);
 		}

@@ -145,6 +145,14 @@ GUI: {
 		CloseButton: Close
 		FullscreenButton: Toggle Fullscreen
 		StatButton: Toggle Effects List
+		RefundButton: Refund All Nodes
+		RefundButtonDesc:
+			'''
+			Refund all allocated nodes at once.
+			Refund Cost: {0}
+
+			[c/FF4444: WARNING: This cannot be reversed!]
+			'''
 		ExportButton: Export Tree
 		EditButton: Enable/Edit custom tree
 		EditButtonDesc:
@@ -163,6 +171,7 @@ GUI: {
 		Doom: Doom: [c/FFAAAA:{0} Doom]
 		Cost: Cost: [c/BB88FF:{0} Umbra]
 		Refund: Refund: [c/BB88FF:{0} Umbra]
+		RefundCost: Refund Cost: {0}
 	}
 
 	InventoryButton: {
@@ -634,6 +643,11 @@ UmbraPassives: {
 		Name: Enemy Defense Penetration
 		Tooltip: Enemies penetrate [c/AAAAFF:+2] defense
 	}
+
+	EldritchTouched: {
+		Name: Mods.Umbra.UmbraPassives.EldritchTouched.Name
+		Tooltip: Mods.Umbra.UmbraPassives.EldritchTouched.Tooltip
+	}
 }
 
 UmbraSlottableEffects: {
@@ -681,6 +695,7 @@ Projectiles: {
 	Flamebolt.DisplayName: Flamebolt
 	HealThornProjectile.DisplayName: Heal Thorn Projectile
 	ShockingCritsProjectile.DisplayName: Shocking Crits Projectile
+	EldritchSwipe.DisplayName: Eldritch Swipe
 }
 
 Configs: {

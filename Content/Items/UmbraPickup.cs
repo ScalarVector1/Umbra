@@ -99,16 +99,9 @@ namespace Umbra.Content.Items
 		{
 			TreePlayer tp = player.GetModPlayer<TreePlayer>();
 
-			if (!tp.firstPoint)
-			{
-				tp.firstPoint = true;
-				UILoader.GetUIState<InventoryButton>().flashing = true;
-			}
+			tp.partialPoints += 5;
 
-			tp.UmbraPoints++;
-			CombatText.NewText(player.Hitbox, new Color(200, 160, 255), Language.GetTextValue("Mods.Umbra.Misc.UmbraGainPopup"));
-
-			for (int k = 0; k < 20; k++)
+			for (int k = 0; k < 5; k++)
 			{
 				var d = Dust.NewDustPerfect(Item.Center, DustID.FireworksRGB, Vector2.UnitX.RotatedByRandom(6.28f) * Main.rand.NextFloat(7f), 255, new Color(210, 160, 255), Main.rand.NextFloat(0.3f, 0.8f));
 				d.noGravity = true;
@@ -116,8 +109,8 @@ namespace Umbra.Content.Items
 
 			if (Main.myPlayer == player.whoAmI)
 			{
-				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast.WithPitchOffset(-0.1f).WithVolume(0.5f));
-				SoundEngine.PlaySound(SoundID.GuitarAm.WithVolume(0.4f).WithPitchOffset(-0.4f));
+				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast.WithPitchOffset(-0.1f).WithVolume(0.25f));
+				SoundEngine.PlaySound(SoundID.GuitarAm.WithVolume(0.2f).WithPitchOffset(-0.4f));
 				SoundEngine.PlaySound(SoundID.DrumKick);
 
 				UmbraNet.SyncPoints(player.whoAmI);
