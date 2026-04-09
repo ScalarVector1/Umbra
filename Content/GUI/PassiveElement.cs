@@ -4,6 +4,7 @@ using Terraria.Localization;
 using Terraria.UI;
 using Umbra.Core.Loaders.UILoading;
 using Umbra.Core.PassiveTreeSystem;
+using Umbra.Helpers;
 
 namespace Umbra.Content.GUI
 {
@@ -152,8 +153,11 @@ namespace Umbra.Content.GUI
 					if (!passive.active)
 						tip += "\n" + Language.GetText("Mods.Umbra.GUI.Node.Cost").Format(passive.Cost);
 
-					if (passive.active && passive.CanDeallocate(Main.LocalPlayer))
-						tip += "\n" + Language.GetText("Mods.Umbra.GUI.Node.Refund").Format((int)Math.Ceiling(passive.Cost / 2f));
+					if (passive.active && passive.NoDependants())
+					{
+						tip += "\n" + Language.GetText("Mods.Umbra.GUI.Node.Refund").Format(passive.Cost);
+						tip += "\n" + Language.GetText("Mods.Umbra.GUI.Node.RefundCost").Format(LocalizationHelper.GetCoinString(passive.RefundGoldCost, Main.LocalPlayer));
+					}
 				}
 
 				Tooltip.SetName(passive.DisplayName);

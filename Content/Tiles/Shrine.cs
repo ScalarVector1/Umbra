@@ -20,6 +20,9 @@ namespace Umbra.Content.Tiles
 
 			this.QuickSetFurniture(3, 3, DustID.Stone, SoundID.Tink, true, new Color(75, 75, 75), false, false, "Umbral Shrine", new AnchorData(AnchorType.SolidTile, 3, 0));
 			Main.tileLighted[Type] = true;
+			Main.tileNoAttach[Type] = true;
+			TileID.Sets.PreventsTileRemovalIfOnTopOfIt[Type] = true;
+			TileID.Sets.AvoidedByMeteorLanding[Type] = true;
 		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num)

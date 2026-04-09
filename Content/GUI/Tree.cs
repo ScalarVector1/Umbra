@@ -10,6 +10,7 @@ using Umbra.Content.GUI.Editor;
 using Umbra.Core;
 using Umbra.Core.Loaders.UILoading;
 using Umbra.Core.PassiveTreeSystem;
+using Umbra.Helpers;
 
 namespace Umbra.Content.GUI
 {
@@ -24,6 +25,7 @@ namespace Umbra.Content.GUI
 		private UIImageButton editButton;
 		private UIImageButton fullscreenButton;
 		private UIImageButton statButton;
+		private UIImageButton refundButton;
 
 		private NodeTypeSelector selector;
 		private IntEditor costEditor;
@@ -217,6 +219,28 @@ namespace Umbra.Content.GUI
 				statButton.SetVisibility(1, 1);
 				panel.Append(statButton);
 
+				refundButton = new UIImageButton(Assets.GUI.CustomButton);
+				refundButton.Left.Set(-36 - 38 - 40 - 42, 1f);
+				refundButton.Top.Set(-4, 0f);
+				refundButton.Width.Set(38, 0);
+				refundButton.Height.Set(38, 0);
+				refundButton.OnLeftClick += (a, b) =>
+				{
+					int cost = 0;
+					TreeSystem.tree.activeNodes.ForEach(n => cost += n.RefundGoldCost);
+
+					if (Main.LocalPlayer.CanAfford(cost))
+					{
+						TreeSystem.tree.Nodes.ForEach(n =>
+						{
+							if (n.active)
+								n.Deallocate(Main.LocalPlayer);
+						});
+					}
+				};
+				refundButton.SetVisibility(1, 1);
+				panel.Append(refundButton);
+
 				if (Main.netMode == NetmodeID.SinglePlayer && ModContent.GetInstance<UIConfig>().ShowCustomMode)
 				{
 					editButton = new UIImageButton(Assets.GUI.CustomButton);
@@ -328,6 +352,16 @@ namespace Umbra.Content.GUI
 			{
 				Tooltip.SetName(Language.GetTextValue("Mods.Umbra.GUI.Tree.StatButton"));
 				Tooltip.SetTooltip("");
+			}
+
+			if (refundButton.IsMouseHovering)
+			{
+				Tooltip.SetName(Language.GetTextValue("Mods.Umbra.GUI.Tree.RefundButton"));
+
+				int cost = 0;
+				TreeSystem.tree.activeNodes.ForEach(n => cost += n.RefundGoldCost);
+
+				Tooltip.SetTooltip(Language.GetText("Mods.Umbra.GUI.Tree.RefundButtonDesc").Format(LocalizationHelper.GetCoinString(cost, Main.LocalPlayer)));
 			}
 
 			if (exportButton != null && exportButton.IsMouseHovering)

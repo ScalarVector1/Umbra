@@ -33,6 +33,11 @@ namespace Umbra.Core.PassiveTreeSystem
 
 		public float endurance;
 
+		/// <summary>
+		/// Marks an NPC as 'special' with a limited tree modifier, so that they cant stack multiple effects that shouldn't be stacked
+		/// </summary>
+		public bool isSpecial;
+
 		public override bool InstancePerEntity => true;
 
 		public override bool AppliesToEntity(NPC entity, bool lateInstantiation)

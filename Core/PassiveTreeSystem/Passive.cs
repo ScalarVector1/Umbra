@@ -70,6 +70,9 @@ namespace Umbra.Core.PassiveTreeSystem
 		[JsonIgnore]
 		public int Height => size == 0 ? 38 : size == 1 ? 50 : size == 2 ? 58 : 38;
 
+		[JsonIgnore]
+		public virtual int RefundGoldCost => Cost * 2000 + difficulty * 250;
+
 		/// <summary>
 		/// If more than one of these nodes can be on the tree at a time. Should indicate if the effects can stack
 		/// or not. By default only small nodes are allowed to be duplicated.
@@ -204,6 +207,14 @@ namespace Umbra.Core.PassiveTreeSystem
 		{
 			return
 				active &&
+				player.CanAfford(RefundGoldCost) &&
+				!connections.Any(n => n.active && !n.HasPathToStartWithout(this));
+		}
+
+		public bool NoDependants()
+		{
+			return
+				active &&
 				!connections.Any(n => n.active && !n.HasPathToStartWithout(this));
 		}
 
@@ -233,12 +244,14 @@ namespace Umbra.Core.PassiveTreeSystem
 		}
 
 		/// <summary>
-		/// Deallocates this passive and refunds half its cost to the given player.
+		/// Deallocates this passive and refunds its cost to the given player.
 		/// </summary>
 		/// <param name="player"></param>
-		private void Deallocate(Player player)
+		internal void Deallocate(Player player)
 		{
-			int refundAmount = (int)Math.Ceiling(Cost / 2f);
+			player.BuyItem(RefundGoldCost);
+
+			int refundAmount = Cost;
 			player.GetModPlayer<TreePlayer>().UmbraPoints += refundAmount;
 			TreeSystem.tree.Deallocate(ID);
 			OnDeallocate();
