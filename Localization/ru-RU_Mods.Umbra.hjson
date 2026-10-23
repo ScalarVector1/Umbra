@@ -26,76 +26,76 @@ Items: {
 	}
 
 	ShrineItem: {
-		// DisplayName: Umbral Shrine
-		/* Tooltip:
+		DisplayName: Мрачная Гробница
+		Tooltip:
 			'''
-			A dark shrine which can hold umbra
-			Right clicking the shrine will depoist all of your umbra
-			Right clicking the shrine while holding no umbra will withdraw the stored umbra
-			''' */
+			Темная гробница, способная содержать мрак
+			ПКМ по гробнице, чтобы выложить все очки мрака
+			ПКМ по гробнице, не имея мрака, заберет весь мрак из гробницы
+			'''
 	}
 
 	Slottable: {
-		// DisplayName: Development Jewel
-		// Tooltip: This jewel is used for testing the jewel system
+		DisplayName: Самоцвет Разработки
+		Tooltip: Этот самоцвет используется для тестирования системы самоцветов
 	}
 
 	CraftedGem: {
-		// DisplayName: "{0} {1} Crafted Gemstone"
-		/* Tooltip:
+		DisplayName: "{0} {1} Созданный самоцвет"
+		Tooltip:
 			'''
-			[c/AAAAAA:Place this into a socket on the umbral tree to gain it's effects]
-			[c/AAAAAA:Can be reforged to change some effects]
-			''' */
-		// Variant1_0: Rough
-		// Variant1_1: Artificial
-		// Variant1_2: Imperfect
-		// Variant1_3: Dirty
-		// Variant1_4: Flawed
-		// Variant2_0: Cluster
-		// Variant2_1: Geode
-		// Variant2_2: Crystal
-		// Variant2_3: Clump
-		// Variant2_4: Stone
+			[c/AAAAAA:Поместите это в слот на дереве мрака и получите его эффекты]
+			[c/AAAAAA:Может быть перековано, чтобы изменить некоторые эффекты]
+			'''
+		Variant1_0: Грубый
+		Variant1_1: Искуственный
+		Variant1_2: Неидеальный
+		Variant1_3: Грязный
+		Variant1_4: Испорченный
+		Variant2_0: Кластерный
+		Variant2_1: Жеодоподобный
+		Variant2_2: Кристальный
+		Variant2_3: Кучкованный
+		Variant2_4: Каменный
 	}
 
 	LargeGem: {
-		// DisplayName: "{0} {1} Large Gemstone"
-		// Tooltip: "[c/AAAAAA:Place this into a socket on the umbral tree to gain it's effects]"
-		// Variant1_0: Gleaming
-		// Variant1_1: Shining
-		// Variant1_2: Bright
-		// Variant1_3: Radiant
-		// Variant1_4: Stellar
-		// Variant2_0: Cluster
-		// Variant2_1: Geode
-		// Variant2_2: Crystal
-		// Variant2_3: Jewel
-		// Variant2_4: Stone
+		DisplayName: "{0} {1} Большой самоцвет"
+		Tooltip: "[c/AAAAAA:Поместите это в слот на дереве мрака и получите его эффекты]"
+		Variant1_0: Сверкающий
+		Variant1_1: Сияющий
+		Variant1_2: Яркий
+		Variant1_3: Лучезарный
+		Variant1_4: Звездный
+		Variant2_0: Кластерный
+		Variant2_1: Жеодоподобный
+		Variant2_2: Кристальный
+		Variant2_3: Самоцветный
+		Variant2_4: Каменный
 	}
 
 	BasicSetting: {
-		// DisplayName: Basic Setting
-		// Tooltip: Used to craft gemstones
+		DisplayName: Базовая Шаблон
+		Tooltip: Исползуется, чтобы создавать самоцветы
 	}
 
 	DoomSigil: {
-		// DisplayName: Doom Sigil
-		/* Tooltip:
+		DisplayName: Печать Погибели
+		Tooltip:
 			'''
-			Fills a gemstone socket but has no positive effects
-			[c/AAAAAA:Place this into a socket on the umbral tree to gain it's effects]
-			''' */
+			Заполняет слот самоцвета, но не дает никаких положительных эффектов
+			[c/AAAAAA:Поместите это в слот на дереве мрака и получите его эффекты]
+			'''
 	}
 
 	CraftableGemCraft: {
-		// DisplayName: Random Crafted Gemstone
-		// Tooltip: "[c/AAAAAA:Craft a random crafted gemstone, which can be placed in slots in the umbral tree for beneficial effects]"
+		DisplayName: Случайный Созданный Самоцвет
+		Tooltip: "[c/AAAAAA:Создайте случайный созданный самоцвет, который может быть помещен в слот на древе мрака для положительных эффектов]"
 	}
 
 	LargeGemDropPlaceholder: {
-		// DisplayName: Random Large Gemstone
-		// Tooltip: "[c/AAAAAA:A random, unmodifiable gemstone, which can be placed in slots in the umbral tree for powerful effects]"
+		DisplayName: Случайный Большой Самоцвет
+		Tooltip: "[c/AAAAAA:Случайный, неизменяемый самоцвет, что может быть размещет в слоты на дереве мрака для положительных эффектов]"
 	}
 }
 
@@ -150,15 +150,15 @@ GUI: {
 			'''
 		CloseButton: Закрыть
 		FullscreenButton: Полноэкранный режим
-		// StatButton: Toggle Effects List
-		// RefundButton: Refund All Nodes
-		/* RefundButtonDesc:
+		StatButton: Включить Список Эффектов
+		RefundButton: Возместить все ноды
+		RefundButtonDesc:
 			'''
-			Refund all allocated nodes at once.
-			Refund Cost: {0}
+			Вернуть все выделенные ноды одновременно.
+			Стоимость возврата: {0}
 
-			[c/FF4444: WARNING: This cannot be reversed!]
-			''' */
+			[c/FF4444: ПРЕДУПРЕЖДЕНИЕ: Это невозможно отменить!]
+			'''
 		ExportButton: Экспорт вашего Дерева мрака
 		EditButton: Режим редактирования
 		EditButtonDesc:
@@ -178,7 +178,7 @@ GUI: {
 		Doom: Гибель: [c/FFAAAA:{0} оч. гибели]
 		Cost: Стоимость: [c/BB88FF:{0} оч. мрака]
 		Refund: Сброс: [c/BB88FF:+{0} оч. мрака]
-		// RefundCost: Refund Cost: {0}
+		RefundCost: Стоимость возврата: {0}
 	}
 
 	InventoryButton: {
@@ -650,33 +650,33 @@ UmbraPassives: {
 	}
 
 	Slot: {
-		// Name: Gemstone Slot
-		// Tooltip: Can hold a gemstone
+		Name: Слот Для Самоцвета
+		Tooltip: Может хранить самоцвет
 	}
 
 	DefenseWhilePotion: {
-		// Name: Potion Defense Penalty
-		// Tooltip: Players have [c/AAAAFF:-2] defense while under the effects of potion sickness
+		Name: Штраф к защите от зелий
+		Tooltip: Игроки имеют [c/AAAAFF:-2] ед. защиты, пока под эффектом послезельевой болезни
 	}
 
 	CorrosiveConcoctions: {
-		// Name: Corrosive Concoctions
-		// Tooltip: Consuming healing items inflicts set shatter for [c/AAAAFF:20] seconds [c/999999:(set shatter disables set bonuses from armor)]
+		Name: Едкие Смеси
+		Tooltip: Поглощение лечебных зельй накладывает разрушение комплекта на [c/AAAAFF:20] секунд [c/999999:(разрушение комплетка отключает бонусы комплекта от брони)]
 	}
 
 	SetShatter: {
-		// Name: Set Shatter
-		// Tooltip: Players are inflicted with set shatter when hit below half health [c/999999:(set shatter disables set bonuses from armor)]
+		Name: Разрушение Комплекта
+		Tooltip: Игроки получают разрушение комплекта, когда получают удар меньше, имея половины здоровья [c/999999:(разрушение комплетка отключает бонусы комплекта от брони)]
 	}
 
 	WeaknessWhilePotion: {
-		// Name: Potion Damage Penalty
-		// Tooltip: Players deal [c/AAAAFF:2%] decreased damage while under the effects of potion sickness
+		Name: Зельевой штраф к урону
+		Tooltip: Игроки наносят на [c/AAAAFF:2%] меньше урона, когда под эффектом послезельевой болезни
 	}
 
 	EnemyPenetrate: {
-		// Name: Enemy Defense Penetration
-		// Tooltip: Enemies penetrate [c/AAAAFF:+2] defense
+		Name: Вражеское Пробитие Брони
+		Tooltip: Проивники пробивают [c/AAAAFF:+2] ед. защиты
 	}
 
 	EldritchTouched: {
@@ -686,23 +686,23 @@ UmbraPassives: {
 }
 
 UmbraSlottableEffects: {
-	// PlayerLifeEffect.Tooltip: Players have [c/AAAAFF:+{0}] life
-	// PlayerCritEffect.Tooltip: Players have [c/AAAAFF:+{0}%] critical strike chance
-	// PlayerDamageEffect.Tooltip: Players have [c/AAAAFF:{0}%] increased damage
-	// PlayerDefenseEffect.Tooltip: Players have [c/AAAAFF:+{0}] defense
-	// PlayerEnduranceEffect.Tooltip: Players take [c/AAAAFF:{0}%] decreased damage from hits
-	// PlayerLifeRegenEffect.Tooltip: Players have [c/AAAAFF:+{0}] life regeneration per second
-	// PlayerManaEffect.Tooltip: Players have [c/AAAAFF:+{0}] mana
-	// PlayerManaRegenEffect.Tooltip: Players have [c/AAAAFF:+{0}] mana regeneration per second
-	// PlayerSpeedEffect.Tooltip: Players have [c/AAAAFF:{0}%] increased movement speed
-	// PlayerFlightEffect.Tooltip: Players have [c/AAAAFF:+{0}] seconds of flight time with wings
-	// PlayerKnockbackEffect.Tooltip: Players have [c/AAAAFF:{0}%] increased knockback
-	// PlayerArmorPenetrateEffect.Tooltip: Players penetrate [c/AAAAFF:+{0}] defense
-	// Flamebolts.Tooltip: "[i:75]Players release homing flame bolts when they attack"
-	// HealThorns.Tooltip: "[i:75]Players unleash powerful poision thorns when using healing items"
-	// ExtraHeal.Tooltip: "[i:75]Players heal an additional [c/FFFFAA:50] life when they have [c/FFFFAA:30] seconds of potion sickness remaining"
-	// ShockingCrits.Tooltip: "[i:75]Players shock enemies with chain lightning when they critically strike"
-	// FrostShell.Tooltip: "[i:75]Players gain a regenerating frost shell, which can absorb damage up to their defense"
+	PlayerLifeEffect.Tooltip: Игроки имеют [c/AAAAFF:+{0}] ед. здоровья
+	PlayerCritEffect.Tooltip: Игроки имеют [c/AAAAFF:+{0}%] шанса критического удара
+	PlayerDamageEffect.Tooltip: Игроки имеют на [c/AAAAFF:{0}%] урона больше
+	PlayerDefenseEffect.Tooltip: Игроки имеют [c/AAAAFF:+{0}] ед. защиты
+	PlayerEnduranceEffect.Tooltip: Игроки получают на [c/AAAAFF:{0}%] меньше урона от ударов
+	PlayerLifeRegenEffect.Tooltip: Игроки имеют [c/AAAAFF:+{0}] регенерацию здоровья в секунду
+	PlayerManaEffect.Tooltip: Игроки имеют [c/AAAAFF:+{0}] маны 
+	PlayerManaRegenEffect.Tooltip: Игроки имеют [c/AAAAFF:+{0}] регенерации маны в секунду
+	PlayerSpeedEffect.Tooltip: Игроки имеют на [c/AAAAFF:{0}%] скороси передвижения больше
+	PlayerFlightEffect.Tooltip: Игроки имеют на [c/AAAAFF:+{0}] секунд времени полетов на крыльях больше
+	PlayerKnockbackEffect.Tooltip: Игроки имеют на [c/AAAAFF:{0}%] повышенное отбрасывание
+	PlayerArmorPenetrateEffect.Tooltip: Игроки пробивают на [c/AAAAFF:+{0}] защиты больше
+	Flamebolts.Tooltip: "[i:75]Игроки запускают самонаводящиеся огненные снаряды, когда атакуют"
+	HealThorns.Tooltip: "[i:75]Игроки запускают сильные отравляющие шипы, когда используют лечебные предметы"
+	ExtraHeal.Tooltip: "[i:75]Игроки исцеляют дополнительные [c/FFFFAA:50] ед. здоровья, когда у них  остается [c/FFFFAA:30] секунд послезельевой болезни"
+	ShockingCrits.Tooltip: "[i:75]Игроки поражают врагов цепной молнией, когда наносят критические удары"
+	FrostShell.Tooltip: "[i:75]Игроки получают ледяной панцирь, что поглащает часть урона вплоть до вашей защиты"
 }
 
 Buffs: {
@@ -712,13 +712,13 @@ Buffs: {
 	}
 
 	SetShatterBuff: {
-		// DisplayName: Set Shatter
-		// Description: Set bonuses are disabled
+		DisplayName: Разрушение Комплекта
+		Description: Эффекты комплектов брони отключены!
 	}
 
 	FrostShellBuff: {
-		// DisplayName: Frost Shell
-		// Description: The frost shell will absorb some of the damage of the next hit you take
+		DisplayName: Ледяной панцирь
+		Description: Ледяной панцирь поглотит некоторое количество урона при следующем получении урона
 	}
 }
 
@@ -727,9 +727,9 @@ Projectiles: {
 	SnowflakeProjectile.DisplayName: Снежинка
 	SnowflakeShard.DisplayName: Сосульки
 	Spawner.DisplayName: Спавнер
-	// Flamebolt.DisplayName: Flamebolt
-	// HealThornProjectile.DisplayName: Heal Thorn Projectile
-	// ShockingCritsProjectile.DisplayName: Shocking Crits Projectile
+	Flamebolt.DisplayName: Огненный выстрел
+	HealThornProjectile.DisplayName: Снаряд лучебной лозы
+	ShockingCritsProjectile.DisplayName: Снаряд шокового критического удара
 	// EldritchSwipe.DisplayName: Eldritch Swipe
 }
 
@@ -753,11 +753,11 @@ Configs: {
 	}
 
 	CustomTreeConfig: {
-		// DisplayName: Custom Tree Config
+		DisplayName: Пользовательская конфигурация дерева
 
 		customTreeJson: {
-			// Label: custom Tree Json
-			// Tooltip: ""
+			Label: Json пользовательского дерева
+			Tooltip: ""
 		}
 	}
 }
@@ -774,31 +774,31 @@ Misc: {
 	UmbraGainPopup: +1 очко мрака
 }
 
-// Tiles.Shrine.MapEntry: Umbral Shrine
+Tiles.Shrine.MapEntry: Мрачная Гробница
 
 Achievements: {
 	FeatOfHaste: {
-		// FriendlyName: Feat Of Haste
-		// Description: Slay the moon lord while the 'Temporal Trance' node is allocated on the umbral tree, proving great speed and agility.
+		FriendlyName: Ловкость Спешки
+		Description: Победите Лунного Повелителя, пока нода 'Временной экстаз' активирована в дереве мрака, доказывая великую скорость и проворство.
 	}
 
 	UmbralAcolyte: {
-		// FriendlyName: Umbral Acolyte
-		// Description: Allocate your first node on the umbral tree.
+		FriendlyName: Мрачный прислужник
+		Description: Активируется свою первую ноду в дереве мрака.
 	}
 
 	UmbralAdept: {
-		// FriendlyName: Umbral Adept
-		// Description: Reach 100 doom by allocating nodes on the umbral tree.
+		FriendlyName: Мрачный Адепт
+		Description: Достигните 100 ед. гибели, активируя ноды на дереве мрака.
 	}
 
 	UmbralMaster: {
-		// FriendlyName: Umbral Master
-		// Description: Reach 1000 doom by allocating nodes on the umbral tree. Good luck.
+		FriendlyName: Мрачный Мастер
+		Description: Достигните 1000 ед. гибели, активируя ноды на дереве мрака. Удачи.
 	}
 
 	GlimmerOfHope: {
-		// FriendlyName: Glimmer Of Hope
-		// Description: Obtain a gemstone and place it into a socket on the umbral tree to harness its powerful effects.
+		FriendlyName: Проблеск надежды
+		Description: Получите самоцвет и вставьте его в слот на дереве мрака, чтобы застать его мощные эффекты.
 	}
 }
